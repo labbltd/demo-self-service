@@ -56,7 +56,7 @@ export function Tables() {
                           <div>
                             <Typography
                               variant="small"
-                              color="blue-gray"
+                              color="light-blue"
                               className="font-semibold"
                             >
                               {name}
@@ -78,7 +78,7 @@ export function Tables() {
                       <td className={className}>
                         <Chip
                           variant="gradient"
-                          color={online ? "green" : "blue-gray"}
+                          color={online ? "green" : "light-blue"}
                           value={online ? "online" : "offline"}
                           className="py-0.5 px-2 text-[11px] font-medium w-fit"
                         />
@@ -148,7 +148,7 @@ export function Tables() {
                           <Avatar src={img} alt={name} size="sm" />
                           <Typography
                             variant="small"
-                            color="blue-gray"
+                            color="light-blue"
                             className="font-bold"
                           >
                             {name}

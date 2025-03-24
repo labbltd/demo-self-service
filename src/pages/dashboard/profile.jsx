@@ -33,14 +33,14 @@ export function Profile() {
           <div className="mb-10 flex items-center justify-between flex-wrap gap-6">
             <div className="flex items-center gap-6">
               <Avatar
-                src="/img/bruce-mars.jpeg"
+                src="./img/bruce-mars.jpeg"
                 alt="bruce-mars"
                 size="xl"
                 variant="rounded"
-                className="rounded-lg shadow-lg shadow-blue-gray-500/40"
+                className="rounded-lg shadow-lg shadow-light-blue-500/40"
               />
               <div>
-                <Typography variant="h5" color="blue-gray" className="mb-1">
+                <Typography variant="h5" color="light-blue" className="mb-1">
                   Richard Davis
                 </Typography>
                 <Typography
@@ -72,7 +72,7 @@ export function Profile() {
           </div>
           <div className="gird-cols-1 mb-12 grid gap-12 px-4 lg:grid-cols-2 xl:grid-cols-3">
             <div>
-              <Typography variant="h6" color="blue-gray" className="mb-3">
+              <Typography variant="h6" color="light-blue" className="mb-3">
                 Platform Settings
               </Typography>
               <div className="flex flex-col gap-12">
@@ -121,7 +121,7 @@ export function Profile() {
               }
             />
             <div>
-              <Typography variant="h6" color="blue-gray" className="mb-3">
+              <Typography variant="h6" color="light-blue" className="mb-3">
                 Platform Settings
               </Typography>
               <ul className="flex flex-col gap-6">
@@ -140,7 +140,7 @@ export function Profile() {
             </div>
           </div>
           <div className="px-4 pb-4">
-            <Typography variant="h6" color="blue-gray" className="mb-2">
+            <Typography variant="h6" color="light-blue" className="mb-2">
               Projects
             </Typography>
             <Typography
@@ -173,7 +173,7 @@ export function Profile() {
                       </Typography>
                       <Typography
                         variant="h5"
-                        color="blue-gray"
+                        color="light-blue"
                         className="mt-1 mb-2"
                       >
                         {title}

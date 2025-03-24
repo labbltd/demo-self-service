@@ -15,7 +15,7 @@ export function ProfileInfoCard({ title, description, details, action }) {
         floated={false}
         className="mx-0 mt-0 mb-4 flex items-center justify-between gap-4"
       >
-        <Typography variant="h6" color="blue-gray">
+        <Typography variant="h6" color="light-blue">
           {title}
         </Typography>
         {action}
@@ -38,7 +38,7 @@ export function ProfileInfoCard({ title, description, details, action }) {
               <li key={key} className="flex items-center gap-4">
                 <Typography
                   variant="small"
-                  color="blue-gray"
+                  color="light-blue"
                   className="font-semibold capitalize"
                 >
                   {el}:

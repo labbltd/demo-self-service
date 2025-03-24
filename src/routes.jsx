@@ -1,13 +1,13 @@
+import { Home, Notifications, Profile, Tables } from "@/pages/dashboard";
 import {
   HomeIcon,
-  UserCircleIcon,
-  TableCellsIcon,
   InformationCircleIcon,
-  ServerStackIcon,
   RectangleStackIcon,
+  ServerStackIcon,
+  TableCellsIcon,
+  UserCircleIcon,
 } from "@heroicons/react/24/solid";
-import { Home, Profile, Tables, Notifications } from "@/pages/dashboard";
-import { SignIn, SignUp } from "@/pages/auth";
+import PegaEmbed from "./pages/dashboard/pega-embed";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -44,20 +44,20 @@ export const routes = [
     ],
   },
   {
-    title: "auth pages",
-    layout: "auth",
+    title: "services",
+    layout: "dashboard",
     pages: [
       {
         icon: <ServerStackIcon {...icon} />,
-        name: "sign in",
-        path: "/sign-in",
-        element: <SignIn />,
+        name: "Change address",
+        path: "/change-address",
+        element: <PegaEmbed />,
       },
       {
         icon: <RectangleStackIcon {...icon} />,
-        name: "sign up",
-        path: "/sign-up",
-        element: <SignUp />,
+        name: "Create Lead",
+        path: "/create-lead",
+        element: <PegaEmbed />,
       },
     ],
   },

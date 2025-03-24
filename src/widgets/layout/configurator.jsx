@@ -53,6 +53,7 @@ export function Configurator() {
     orange: "from-orange-400 to-orange-600",
     red: "from-red-400 to-red-600",
     pink: "from-pink-400 to-pink-600",
+    'light-blue': "from-blue-400 to-blue-400"
   };
 
   React.useEffect(() => {
@@ -71,7 +72,7 @@ export function Configurator() {
     >
       <div className="flex items-start justify-between px-6 pt-8 pb-6">
         <div>
-          <Typography variant="h5" color="blue-gray">
+          <Typography variant="h5" color="light-blue">
             Dashboard Configurator
           </Typography>
           <Typography className="font-normal text-blue-gray-600">
@@ -80,7 +81,7 @@ export function Configurator() {
         </div>
         <IconButton
           variant="text"
-          color="blue-gray"
+          color="light-blue"
           onClick={() => setOpenConfigurator(dispatch, false)}
         >
           <XMarkIcon strokeWidth={2.5} className="h-5 w-5" />
@@ -88,7 +89,7 @@ export function Configurator() {
       </div>
       <div className="py-4 px-6">
         <div className="mb-12">
-          <Typography variant="h6" color="blue-gray">
+          <Typography variant="h6" color="light-blue">
             Sidenav Colors
           </Typography>
           <div className="mt-3 flex items-center gap-2">
@@ -106,7 +107,7 @@ export function Configurator() {
           </div>
         </div>
         <div className="mb-12">
-          <Typography variant="h6" color="blue-gray">
+          <Typography variant="h6" color="light-blue">
             Sidenav Types
           </Typography>
           <Typography variant="small" color="gray">
@@ -136,7 +137,7 @@ export function Configurator() {
         <div className="mb-12">
           <hr />
           <div className="flex items-center justify-between py-5">
-            <Typography variant="h6" color="blue-gray">
+            <Typography variant="h6" color="light-blue">
               Navbar Fixed
             </Typography>
             <Switch
@@ -159,7 +160,7 @@ export function Configurator() {
               href="https://www.material-tailwind.com/docs/react/installation?rel=mtdr"
               target="_black"
             >
-              <Button variant="outlined" color="blue-gray" fullWidth>
+              <Button variant="outlined" color="light-blue" fullWidth>
                 View Documentation
               </Button>
             </a>
@@ -167,7 +168,7 @@ export function Configurator() {
               href="https://www.material-tailwind.com/blocks/react?rel=mtdr"
               target="_black"
             >
-              <Button variant="outlined" color="blue-gray" fullWidth>
+              <Button variant="outlined" color="light-blue" fullWidth>
                 Material Tailwind PRO
               </Button>
             </a>
@@ -207,7 +208,7 @@ export function Configurator() {
           </a>
         </div>
         <div className="text-center">
-          <Typography variant="h6" color="blue-gray">
+          <Typography variant="h6" color="light-blue">
             Thank you for sharing ❤️
           </Typography>
           <div className="mt-4 flex justify-center gap-2">

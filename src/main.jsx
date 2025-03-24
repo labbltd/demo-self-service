@@ -17,10 +17,13 @@ import { ThemeProvider } from "@material-tailwind/react";
 import { MaterialTailwindControllerProvider } from "@/context";
 import "../public/css/tailwind.css";
 
+const customTheme = {
+};
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <ThemeProvider>
+    <BrowserRouter basename="/demo-self-service/">
+      <ThemeProvider value={customTheme}>
         <MaterialTailwindControllerProvider>
           <App />
         </MaterialTailwindControllerProvider>

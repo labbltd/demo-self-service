@@ -9,12 +9,12 @@ export function MessageCard({ img, name, message, action }) {
           src={img}
           alt={name}
           variant="rounded"
-          className="shadow-lg shadow-blue-gray-500/25"
+          className="shadow-lg shadow-light-blue-500/25"
         />
         <div>
           <Typography
             variant="small"
-            color="blue-gray"
+            color="light-blue"
             className="mb-1 font-semibold"
           >
             {name}
