@@ -1,5 +1,6 @@
 import { Home, Notifications, Profile, Tables } from "@/pages/dashboard";
 import {
+  ChatBubbleBottomCenterIcon,
   HomeIcon,
   InformationCircleIcon,
   RectangleStackIcon,
@@ -8,6 +9,7 @@ import {
   UserCircleIcon,
 } from "@heroicons/react/24/solid";
 import PegaEmbed from "./pages/dashboard/pega-embed";
+import Chat from "./pages/dashboard/chat";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -40,6 +42,12 @@ export const routes = [
         name: "notifications",
         path: "/notifications",
         element: <Notifications />,
+      },
+      {
+        icon: <ChatBubbleBottomCenterIcon {...icon} />,
+        name: "chat",
+        path: "/chat",
+        element: <Chat />,
       },
     ],
   },
