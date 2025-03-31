@@ -16,6 +16,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@material-tailwind/react";
 import { MaterialTailwindControllerProvider } from "@/context";
 import "../public/css/tailwind.css";
+import { ChatProvider } from "./context/chat-context";
 
 const customTheme = {
 };
@@ -25,7 +26,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <BrowserRouter basename="/demo-self-service/">
       <ThemeProvider value={customTheme}>
         <MaterialTailwindControllerProvider>
-          <App />
+          <ChatProvider>
+            <App />
+          </ChatProvider>
         </MaterialTailwindControllerProvider>
       </ThemeProvider>
     </BrowserRouter>
