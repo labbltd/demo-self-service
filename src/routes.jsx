@@ -57,15 +57,15 @@ export const routes = [
     pages: [
       {
         icon: <ServerStackIcon {...icon} />,
-        name: "Change address",
-        path: "/change-address",
-        element: <PegaEmbed />,
+        name: "Make Payment",
+        path: "/make-payment",
+        element: <PegaEmbed caseTypeID='Labb-LabbCS-Work-Service-MakePayment'/>,
       },
       {
         icon: <RectangleStackIcon {...icon} />,
-        name: "Create Lead",
-        path: "/create-lead",
-        element: <PegaEmbed />,
+        name: "Update Contact Profile",
+        path: "/update-contact-profile",
+        element: <PegaEmbed caseTypeID='Labb-LabbCS-Work-Service-UpdateContactProfile'/>,
       },
     ],
   },
