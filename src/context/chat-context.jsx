@@ -1,9 +1,14 @@
-import React, { createContext, useContext, useState, useEffect, useRef } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 
 const ChatContext = createContext();
 const socket = io("https://labbchathook.onrender.com"); // Ensure socket persists
-
+// for localhost development
+// const socket = {
+//   on: () => {},
+//   off: () => {},
+//   emit: () => {},
+// }
 export const ChatProvider = ({ children }) => {
   const options = [
     { value: "ABC1234581", label: "John Brown" },
@@ -39,10 +44,10 @@ export const ChatProvider = ({ children }) => {
         }
         return [...prevChat, { text: "", sender: "server", type: "not-supported", author: data.author }];
       });
-      
+
       acknowledgmentCallback && acknowledgmentCallback();
     };
-    
+
     socket.on("serverMessage", handleServerMessage);
     return () => {
       socket.off("serverMessage", handleServerMessage);
@@ -61,7 +66,7 @@ export const ChatProvider = ({ children }) => {
 
     try {
       socket.emit("clientMessage", message, (acknowledgment) => console.log("Server acknowledgment:", acknowledgment));
-      
+
       if (type === "text" && !isPostback) {
         setChat((prevChat) => [...prevChat, { text, sender: "user", type: "text", author: selectedOption.label }]);
         setInput("");

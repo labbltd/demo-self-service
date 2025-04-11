@@ -8,8 +8,10 @@ import {
   TableCellsIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/solid";
-import PegaEmbed from "./pages/dashboard/pega-embed";
 import Chat from "./pages/dashboard/chat";
+import LabbPegaEmbed from "./pages/dashboard/labb-pega-embed";
+import OotbPegaEmbed from "./pages/dashboard/ootb-pega-embed";
+import './pega/ContainerMapping';
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -59,13 +61,13 @@ export const routes = [
         icon: <ServerStackIcon {...icon} />,
         name: "Make Payment",
         path: "/make-payment",
-        element: <PegaEmbed caseTypeID='Labb-LabbCS-Work-Service-MakePayment'/>,
+        element: <OotbPegaEmbed caseTypeID='Labb-LabbCS-Work-Service-MakePayment'/>,
       },
       {
         icon: <RectangleStackIcon {...icon} />,
         name: "Update Contact Profile",
         path: "/update-contact-profile",
-        element: <PegaEmbed caseTypeID='Labb-LabbCS-Work-Service-UpdateContactProfile'/>,
+        element: <LabbPegaEmbed caseTypeID='Labb-LabbCS-Work-Service-UpdateContactProfile'/>,
       },
     ],
   },
