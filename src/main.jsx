@@ -22,15 +22,13 @@ const customTheme = {
 };
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <HashRouter>
-      <ThemeProvider value={customTheme}>
-        <MaterialTailwindControllerProvider>
-          <ChatProvider>
-            <App />
-          </ChatProvider>
-        </MaterialTailwindControllerProvider>
-      </ThemeProvider>
-    </HashRouter>
-  </React.StrictMode>
+  <HashRouter>
+    <ThemeProvider value={customTheme}>
+      <MaterialTailwindControllerProvider>
+        <ChatProvider>
+          <App />
+        </ChatProvider>
+      </MaterialTailwindControllerProvider>
+    </ThemeProvider>
+  </HashRouter>
 );
