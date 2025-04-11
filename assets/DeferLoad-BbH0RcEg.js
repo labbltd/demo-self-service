@@ -1,0 +1,1 @@
+import{j as e,a as o,G as s}from"./index-DtbnKw2O.js";function c(r){const{label:a}=r.container.config;return e.jsxs(e.Fragment,{children:[e.jsx("pre",{children:"DeferLoad"}),a&&e.jsx(o.Typography,{variant:"h6",color:"blue-gray",className:"mt-6",children:a}),r.container.children.map((n,t)=>e.jsx(s,{container:n},n.id+t))]})}export{c as default};
