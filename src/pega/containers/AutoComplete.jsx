@@ -2,7 +2,7 @@ import { Option, Select } from "@material-tailwind/react";
 import FormControl from "../components/FormControl";
 import DxInput from "./Input";
 
-export default function DxAutocomplete(props) {
+export default function DxAutoComplete(props) {
     const { label, value, datasource = [], validatemessage, helpertext } = props.container.config;
     function setValue(value) {
         props.container.updateFieldValue(value);
