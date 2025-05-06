@@ -1,0 +1,100 @@
+{
+  "name": "vue-hca",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "applications/vue-hca/src",
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "build": {
+      "executor": "@nx/vite:build",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/applications/vue-hca",
+        "skipTypeCheck": true
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "vue-hca:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "vue-hca:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "vue-hca:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "preview": {
+      "dependsOn": [
+        "build"
+      ],
+      "executor": "@nx/vite:preview-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "vue-hca:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "vue-hca:build:development"
+        },
+        "production": {
+          "buildTarget": "vue-hca:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": [
+        "{options.reportsDirectory}"
+      ],
+      "options": {
+        "reportsDirectory": "../../../coverage/applications/vue-hca"
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "dependsOn": [
+        "build"
+      ],
+      "options": {
+        "buildTarget": "vue-hca:build",
+        "spa": true
+      }
+    },
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "applications/vue-hca-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "vue-hca:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "vue-hca:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "vue-hca:serve-static"
+        }
+      }
+    }
+  }
+}

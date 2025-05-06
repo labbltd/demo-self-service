@@ -1,0 +1,124 @@
+{
+  "name": "react-cmcmarkets",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "applications/react-cmcmarkets/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/applications/react-cmcmarkets/",
+        "index": "applications/react-cmcmarkets/src/index.html",
+        "baseHref": "/",
+        "main": "applications/react-cmcmarkets/src/main.tsx",
+        "polyfills": "applications/react-cmcmarkets/src/polyfills.ts",
+        "tsConfig": "applications/react-cmcmarkets/tsconfig.app.json",
+        "assets": [
+          "applications/react-cmcmarkets/src/favicon.ico"
+        ],
+        "styles": [
+          "applications/react-cmcmarkets/src/styles.css"
+        ],
+        "scripts": [],
+        "webpackConfig": "applications/react-cmcmarkets/webpack.config.js",
+        "babelUpwardRootMode": true,
+        "watch": true
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "applications/react-cmcmarkets/src/environments/environment.ts",
+              "with": "applications/react-cmcmarkets/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "build-webcomponent": {
+      "executor": "@nrwl/rollup:rollup",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/applications/react-cmcmarkets",
+        "tsConfig": "applications/react-cmcmarkets/tsconfig.lib.json",
+        "project": "applications/react-cmcmarkets/package.json",
+        "entryFile": "applications/react-cmcmarkets/src/webcomponent.tsx",
+        "external": [
+          "react",
+          "react/jsx-runtime",
+          "@labb/dx-engine",
+          "@labb/react-adapter"
+        ],
+        "rollupConfig": "@nx/react/plugins/bundle-rollup",
+        "compiler": "babel"
+      }
+    },
+    "serve": {
+      "executor": "@nx/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "react-cmcmarkets:build",
+        "hmr": true,
+        "proxyConfig": "applications/react-cmcmarkets/proxy.conf.json",
+        "port": 4203
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "react-cmcmarkets:build:development"
+        },
+        "production": {
+          "buildTarget": "react-cmcmarkets:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/applications/react-cmcmarkets"
+      ],
+      "options": {
+        "jestConfig": "applications/react-cmcmarkets/jest.config.ts"
+      }
+    },
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "applications/react-cmcmarkets/e2e/cypress.config.ts",
+        "testingType": "e2e"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "react-cmcmarkets:serve:production"
+        },
+        "development": {
+          "devServerTarget": "react-cmcmarkets:serve:development",
+          "watch": true
+        }
+      }
+    }
+  }
+}

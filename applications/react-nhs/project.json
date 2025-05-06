@@ -1,0 +1,133 @@
+{
+  "name": "react-nhs",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "applications/react-nhs/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/applications/react-nhs",
+        "index": "applications/react-nhs/src/index.html",
+        "baseHref": "/",
+        "main": "applications/react-nhs/src/main.tsx",
+        "polyfills": "applications/react-nhs/src/polyfills.ts",
+        "tsConfig": "applications/react-nhs/tsconfig.app.json",
+        "assets": [
+          "applications/react-nhs/src/favicon.ico",
+          {
+            "glob": "bootstrap-shell.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./constellation"
+          },
+          {
+            "glob": "bootstrap-shell.*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./constellation"
+          },
+          {
+            "glob": "lib_asset.json",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./constellation"
+          },
+          {
+            "glob": "constellation-core.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./constellation/prerequisite"
+          },
+          {
+            "glob": "constellation-core.*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./constellation/prerequisite"
+          },
+          {
+            "glob": "**/*.*",
+            "input": "./node_modules/nhsuk-frontend/packages/assets",
+            "output": "./assets"
+          }
+        ],
+        "styles": ["applications/react-nhs/src/styles.scss"],
+        "scripts": [
+          {
+            "input": "node_modules/nhsuk-frontend/dist/nhsuk.min.js",
+            "bundleName": "nhsuk",
+            "inject": false
+          }
+        ],
+        "babelUpwardRootMode": true,
+        "webpackConfig": "applications/react-nhs/webpack.config.js"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "applications/react-nhs/src/environments/environment.ts",
+              "with": "applications/react-nhs/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "react-nhs:build",
+        "hmr": true,
+        "proxyConfig": "applications/react-nhs/proxy.conf.json",
+        "port": 4204
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "react-nhs:build:development"
+        },
+        "production": {
+          "buildTarget": "react-nhs:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/applications/react-nhs"],
+      "options": {
+        "jestConfig": "applications/react-nhs/jest.config.ts"
+      }
+    },
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "applications/react-nhs/e2e/cypress.config.ts",
+        "testingType": "e2e"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "react-nhs:serve:production"
+        },
+        "development": {
+          "devServerTarget": "react-nhs:serve:development",
+          "watch": true
+        }
+      }
+    }
+  }
+}

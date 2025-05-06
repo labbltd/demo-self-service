@@ -1,0 +1,34 @@
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { PContainerComponent } from '@labb/angular-adapter';
+import { ListItem } from 'carbon-components-angular';
+
+@Component({
+  selector: 'dx-dropdown-control',
+  template: `<ibm-dropdown
+    [label]="container.config.label"
+    [helperText]="container.config.helperText"
+    [invalid]="!!container.config.validatemessage"
+    [invalidText]="container.config.validatemessage"
+    [placeholder]="container.config.placeholder"
+    [disabled]="container.config.readOnly"
+    (selected)="selected($event)"
+    >
+      <ibm-dropdown-list [items]="items"></ibm-dropdown-list>
+  </ibm-dropdown>`,
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class DropdownComponent extends PContainerComponent implements OnInit {
+  public items: ListItem[] = [];
+
+  public ngOnInit(): void {
+    this.items = this.container.config.datasource.map((item: { key: string, value: string }) => ({
+      content: item.value,
+      key: item.key,
+      selected: item.key === this.container.config.value
+    }));
+  }
+
+  public selected(val: Object): void {
+    this.container.updateFieldValue((val as any).item.key);
+  }
+}

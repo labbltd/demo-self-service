@@ -1,0 +1,118 @@
+{
+  "name": "angular-athora",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "applications/angular-athora/src",
+  "prefix": "dx",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/applications/angular-athora",
+        "index": "applications/angular-athora/src/index.html",
+        "main": "applications/angular-athora/src/main.ts",
+        "polyfills": "applications/angular-athora/src/polyfills.ts",
+        "tsConfig": "applications/angular-athora/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "applications/angular-athora/src/favicon.ico",
+          "applications/angular-athora/src/assets",
+          {
+            "glob": "bootstrap-shell.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./constellation"
+          },
+          {
+            "glob": "bootstrap-shell.*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./constellation"
+          },
+          {
+            "glob": "lib_asset.json",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./constellation"
+          },
+          {
+            "glob": "constellation-core.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./constellation/prerequisite"
+          },
+          {
+            "glob": "constellation-core.*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./constellation/prerequisite"
+          }
+        ],
+        "styles": [
+          "applications/angular-athora/src/zwitserleven.css",
+          "applications/angular-athora/src/styles.scss"
+        ],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "applications/angular-athora/src/environments/environment.ts",
+              "with": "applications/angular-athora/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true,
+          "verbose": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "angular-athora:build:production"
+        },
+        "development": {
+          "buildTarget": "angular-athora:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "proxyConfig": "applications/angular-athora/proxy.conf.json",
+        "port": 4201
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "angular-athora:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "applications/angular-athora/e2e/cypress.config.ts",
+        "testingType": "e2e"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "angular-athora:serve:production"
+        },
+        "development": {
+          "devServerTarget": "angular-athora:serve:development",
+          "watch": false
+        }
+      }
+    }
+  }
+}

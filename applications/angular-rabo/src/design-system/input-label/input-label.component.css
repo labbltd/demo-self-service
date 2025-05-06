@@ -1,0 +1,80 @@
+:host {
+  display: block;
+}
+
+[class^='sfc-input-label'] {
+  line-height: normal;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+}
+
+[class^='sfc-input-label'] *,
+[class^='sfc-input-label'] *::before,
+[class^='sfc-input-label'] *::after {
+  box-sizing: border-box;
+}
+
+::selection {
+  color: var(--sfc-color-text-selection);
+  background-color: var(--sfc-color-background-selection);
+}
+
+sfc-input-label {
+  display: block;
+}
+
+.sfc-input-label {
+  line-height: var(--sfc-input-label-line-height, normal);
+  color: var(--sfc-paragraph-color-text);
+  font-family: var(--sfc-paragraph-font-family);
+  line-height: var(--sfc-paragraph-font-line-height);
+  font-size: var(--sfc-paragraph-font-size);
+  font-style: var(--sfc-paragraph-font-style);
+  font-weight: var(--sfc-paragraph-font-weight);
+  margin: var(--sfc-paragraph-margin);
+  -webkit-font-smoothing: var(--sfc-paragraph-font-smoothing);
+  color: var(--sfc-input-label-color-text, #202122);
+}
+
+.sfc-input-label__container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sfc-input-label-container-gap-zoom-200, 4px);
+}
+
+.sfc-input-label__label {
+  font-weight: var(--sfc-input-label-label-font-weight, 700);
+  cursor: var(
+    --sfc-input-label-cursor,
+    var(--sfc-input-label-label-cursor, default)
+  );
+}
+
+.sfc-input-label__label-end {
+  color: var(--sfc-input-label-label-end-color-text, #737578);
+  flex-grow: 1;
+}
+
+.sfc-input-label__label-end:empty {
+  display: none;
+}
+
+.sfc-input-label--state-disabled {
+  color: var(--sfc-input-label-color-text-disabled, #bbbcbe);
+}
+
+.sfc-input-label--state-disabled .sfc-input-label__label-end {
+  color: var(--sfc-input-label-label-end-color-text-disabled, #bbbcbe);
+}
+
+@media (min-width: 320px) {
+  .sfc-input-label__container {
+    flex-direction: row;
+    gap: var(--sfc-input-label-container-gap, 12px);
+  }
+
+  .sfc-input-label__label-end {
+    text-align: var(--sfc-input-label-label-end-text-align, end);
+    white-space: var(--sfc-input-label-label-end-white-space, nowrap);
+  }
+}

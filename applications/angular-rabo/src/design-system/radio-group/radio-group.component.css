@@ -1,0 +1,31 @@
+[class^='sfc-radio-group'] {
+  line-height: normal;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+}
+
+.sfc-radio-group {
+  --sfc-button-padding-left: var(
+    --sfc-form-elements-button-padding-inline-start,
+    12px
+  );
+  --sfc-button-padding-right: var(
+    --sfc-form-elements-button-padding-inline-end,
+    12px
+  );
+  display: block;
+  margin: var(--sfc-input-margin, var(--sfc-form-elements-margin, 0 0 25px));
+  font-family: Myriad, Segoe UI, Helvetica Neue, arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  border: var(--sfc-radio-group-border, none);
+  padding: var(--sfc-radio-group-padding, 0);
+}
+
+
+.sfc-radio-group sfc-input-label {
+    margin-bottom: var(--sfc-form-elements-input-label-margin-block-end, 4px);
+}
+
+.sfc-radio-group sfc-input-label {
+    margin-bottom: var(--sfc-radio-group-label-margin-block, 16px);
+}

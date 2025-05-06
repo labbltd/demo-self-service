@@ -1,0 +1,23 @@
+<div class="sfc-input-money" [ngClass]="{
+        'sfc-input-money--state-has-errors': hasErrors,
+        'sfc-input-money--state-has-focus': isFocused
+        }">
+    <div class="sfc-input-money__input-container">
+        <div class="sfc-input-money__prefix">
+            {{prefix}}
+        </div>
+        <div class="sfc-input-money__input">
+            <input type="text" [value]="value" required=""
+                dxInputMoney
+                placeholder="0" inputmode="decimal"
+                autocomplete="off"
+                (change)="change($event)"
+                (focus)="focus()"
+                (blur)="blur($event)">
+        </div>
+        <div class="sfc-input-money__input-end">
+            <slot name="input-end">
+            </slot>
+        </div>
+    </div>
+</div>

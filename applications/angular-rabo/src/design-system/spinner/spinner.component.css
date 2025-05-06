@@ -1,0 +1,38 @@
+:host {
+  display: inline-block;
+}
+
+[class^='sfc-spinner'] *,
+[class^='sfc-spinner'] ::before,
+[class^='sfc-spinner'] ::after {
+  box-sizing: border-box;
+}
+
+.sfc-spinner {
+  animation-name: rotate-spinner;
+  animation-iteration-count: var(
+    --sfc-spinner-motion-iteration-count,
+    infinite
+  );
+  animation-duration: var(
+    --sfc-spinner-motion-duration,
+    var(--sfc-motion-duration, 1s)
+  );
+  animation-timing-function: var(--sfc-spinner-motion-timing-function, linear);
+  height: var(--sfc-spinner-size-md, 40px);
+  width: var(--sfc-spinner-size-md, 40px);
+}
+
+.sfc-spinner--sm {
+  height: var(--sfc-spinner-size-sm, 24px);
+  width: var(--sfc-spinner-size-sm, 24px);
+}
+
+@keyframes rotate-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

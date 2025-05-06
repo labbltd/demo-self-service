@@ -1,0 +1,90 @@
+[class^='sfc-item'] {
+  line-height: normal;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+}
+
+.sfc-item {
+  color: var(--sfc-paragraph-color-text);
+  font-family: var(--sfc-paragraph-font-family);
+  line-height: var(--sfc-paragraph-font-line-height);
+  font-size: var(--sfc-paragraph-font-size);
+  font-style: var(--sfc-paragraph-font-style);
+  font-weight: var(--sfc-paragraph-font-weight);
+  margin: var(--sfc-paragraph-margin);
+  -webkit-font-smoothing: var(--sfc-paragraph-font-smoothing);
+  display: flex;
+  flex-direction: column;
+  padding: var(--sfc-item-padding-block-start, 16px)
+    var(--sfc-item-padding-inline-end, 8px)
+    var(--sfc-item-padding-block-end, 16px)
+    var(--sfc-item-padding-inline-start, 8px);
+  margin-left: var(--sfc-item-margin-inline, -8px);
+  margin-right: var(--sfc-item-margin-inline, -8px);
+  text-decoration: var(--sfc-item-text-decoration, none);
+}
+
+@media (min-width: 320px) {
+  .sfc-item {
+    flex-direction: row;
+  }
+}
+
+.sfc-item__content {
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+[class^='sfc-item'] *,
+[class^='sfc-item'] *::before,
+[class^='sfc-item'] *::after {
+  box-sizing: border-box;
+}
+
+.sfc-item__header-wrapper {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (min-width: 320px) {
+  .sfc-item__header-wrapper {
+    flex-direction: row;
+  }
+}
+
+.sfc-item:not(.sfc-item--fixed-label-end) .sfc-item__header-wrapper {
+  flex-wrap: wrap;
+}
+
+.sfc-item__label,
+.sfc-item__label-end,
+.sfc-item__label-bottom {
+  font-size: var(--sfc-item-label-font-size, 16px);
+  line-height: var(--sfc-item-label-line-height, normal);
+  display: flex;
+  align-items: center;
+}
+
+.sfc-item__label {
+  margin: var(--sfc-item-label-margin-block-start, 4px)
+    var(--sfc-item-label-margin-inline-end, 16px)
+    var(--sfc-item-label-margin-block-end, 4px)
+    var(--sfc-item-label-margin-inline-start, 0);
+}
+
+.sfc-item__label,
+.sfc-item__label-end,
+.sfc-item__label-bottom {
+  font-size: var(--sfc-item-label-font-size, 16px);
+  line-height: var(--sfc-item-label-line-height, normal);
+  display: flex;
+  align-items: center;
+}
+
+.sfc-item__label-end {
+  color: var(--sfc-item-label-end-color-text, #737578);
+  margin: var(--sfc-item-label-end-margin, 4px 0);
+}

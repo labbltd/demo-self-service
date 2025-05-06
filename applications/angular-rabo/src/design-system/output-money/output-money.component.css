@@ -1,0 +1,15 @@
+[class^='sfc-output-money'] {
+  line-height: normal;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+}
+
+[class^='sfc-output-money'] *,
+[class^='sfc-output-money'] *::before,
+[class^='sfc-output-money'] *::after {
+  box-sizing: border-box;
+}
+
+:host .sfc-output-money__wrapper {
+  word-break: var(--sfc-output-money-word-break, break-all);
+}

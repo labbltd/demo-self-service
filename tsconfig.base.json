@@ -1,0 +1,35 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": false,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": [
+      "es2021",
+      "dom",
+      "dom.iterable"
+    ],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@labb/demo-utilities": [
+        "libraries/utilities/src/index.ts"
+      ]
+    },
+    "typeRoots": [
+      "node_modules/@types",
+      "node_modules/@labb"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
+}

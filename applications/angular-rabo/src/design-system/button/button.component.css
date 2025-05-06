@@ -1,0 +1,113 @@
+:host button {
+  border: 0px !important;
+  clip: rect(0px, 0px, 0px, 0px) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0px !important;
+  position: absolute !important;
+  width: 1px !important;
+}
+:host [class^='sfc-button'] {
+  line-height: normal;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+}
+:host .sfc-button {
+  font-family: Myriad, 'Segoe UI', 'Helvetica Neue', arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  justify-content: center;
+  min-height: var(--sfc-button-height, 48px);
+  height: auto;
+  align-items: center;
+  width: var(--sfc-button-width, 100%);
+  font-size: var(--sfc-button-font-size, 19px);
+  font-weight: var(--sfc-button-font-weight, 800);
+  border-color: var(--sfc-button-color-border, transparent);
+  border-style: var(--sfc-button-border-style, solid);
+  border-width: var(--sfc-button-border-width, 1px);
+  border-radius: var(--sfc-button-border-radius, 4px);
+  margin: var(--sfc-button-margin, 0);
+  padding-block-start: var(--sfc-button-padding-block-start-multiline, 12px);
+  padding-block-end: var(--sfc-button-padding-block-end-multiline, 12px);
+  padding-inline-start: var(
+    --sfc-button-padding-left,
+    var(--sfc-button-padding-inline-start, 24px)
+  );
+  padding-inline-end: var(
+    --sfc-button-padding-right,
+    var(--sfc-button-padding-inline-end, 24px)
+  );
+  user-select: none;
+  line-height: var(--sfc-button-line-height, 1);
+  text-transform: var(--sfc-button-font-transform, none);
+  text-align: var(--sfc-button-font-align, center);
+  -webkit-tap-highlight-color: var(
+    --sfc-button-tap-highlight-color,
+    transparent
+  );
+  transition-property: var(
+    --sfc-button-motion-property,
+    color,
+    background-color,
+    border
+  );
+  transition-timing-function: var(
+    --sfc-button-motion-timing-function,
+    cubic-bezier(0.5, 1, 0.89, 1)
+  );
+  transition-duration: var(
+    --sfc-button-motion-duration,
+    var(--sfc-motion-duration, 0.4s)
+  );
+}
+:host .sfc-button--primary {
+  background-color: var(--sfc-button-color-background-primary, #fa6400);
+  color: var(--sfc-button-color-text-primary, white);
+}
+:host([active]) .sfc-button--primary {
+  background-color: var(--sfc-button-color-background-primary-active, #e05a00);
+  color: var(--sfc-button-color-text-primary-active, white);
+}
+:host .sfc-button--secondary {
+  background-color: var(--sfc-button-color-background-secondary, white);
+  border-color: var(--sfc-button-color-border-secondary, #000061);
+  color: var(--sfc-button-color-text-secondary, #000061);
+}
+:host([active]) .sfc-button--secondary {
+  background-color: var(
+    --sfc-button-color-background-secondary-active,
+    #e0e0e1
+  );
+  border-color: var(--sfc-button-color-border-secondary-active, #000061);
+  color: var(--sfc-button-color-text-secondary-active, #000061);
+}
+:host(:not([disabled])) .sfc-button {
+  cursor: var(--sfc-button-cursor, pointer);
+}
+:host [class^='sfc-button'] *,
+:host [class^='sfc-button'] ::before,
+:host [class^='sfc-button'] ::after {
+  box-sizing: border-box;
+}
+:host .sfc-button__label {
+  display: flex;
+  align-items: center;
+}
+:host .sfc-button dx-spinner {
+  position: absolute;
+}
+:host .sfc-button__label--loading {
+  visibility: hidden;
+}
+:host .sfc-button__hidden-label {
+  border: 0 !important;
+  clip: rect(0, 0, 0, 0) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+}

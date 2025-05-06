@@ -1,0 +1,95 @@
+[class^='sfc-radio-button'] {
+  line-height: normal;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+}
+
+.sfc-radio-button {
+  font-family: Myriad, Segoe UI, Helvetica Neue, arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  align-content: center;
+  color: var(--sfc-radio-button-color-text, #202122);
+  display: inline-flex;
+  width: auto;
+  position: relative;
+}
+
+[class^='sfc-radio-button'] *,
+[class^='sfc-radio-button'] *::before,
+[class^='sfc-radio-button'] *::after {
+  box-sizing: border-box;
+}
+
+.sfc-radio-button__input input {
+  appearance: none !important;
+  position: absolute !important;
+  opacity: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: calc(
+    var(--sfc-radio-button-wrapper-size, 24px) +
+      var(--sfc-radio-button-wrapper-margin-inline-start, 8px)
+  ) !important;
+  height: 100% !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  cursor: var(--sfc-radio-button-input-cursor, pointer) !important;
+}
+
+.sfc-radio-button__box-wrapper {
+  flex: 0 0 auto;
+  z-index: 1;
+  align-items: center;
+  display: inline-flex;
+  height: var(--sfc-radio-button-wrapper-size, 24px);
+  justify-content: center;
+  width: var(--sfc-radio-button-wrapper-size, 24px);
+  margin-right: var(--sfc-radio-button-wrapper-margin-inline-start, 8px);
+  pointer-events: none;
+}
+
+.sfc-radio-button__box {
+  border-width: var(--sfc-radio-button-border-width, 1px);
+  border-style: var(--sfc-radio-button-border-style, solid);
+  border-color: var(--sfc-radio-button-color-border, #737578);
+  background: var(--sfc-radio-button-color-background, white);
+  border-radius: var(--sfc-radio-button-border-radius, 50%);
+  display: inline-block;
+  height: var(--sfc-radio-button-box-size, 22px);
+  width: var(--sfc-radio-button-box-size, 22px);
+}
+
+.sfc-radio-button--state-has-error:not(.sfc-radio-button--state-disabled)
+  .sfc-radio-button__box {
+  border-color: var(--sfc-radio-button-color-border-error, #e03100);
+}
+
+.sfc-radio-button--state-checked .sfc-radio-button__box {
+  background: var(--sfc-radio-button-color-background-checked, #ff6600);
+  box-shadow: var(
+    --sfc-radio-button-box-shadow-selected,
+    0 0 0 4px white inset,
+    0 0 0 5px #ff6600 inset
+  );
+}
+
+.sfc-radio-button__label {
+  flex: 1 1 auto;
+}
+
+.sfc-radio-button__label label {
+  font-family: Myriad, Segoe UI, Helvetica Neue, arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased !important;
+  display: block !important;
+  line-height: var(--sfc-radio-button-text-line-height, 1.5) !important;
+  cursor: var(--sfc-radio-button-label-cursor, pointer) !important;
+}
+
+.sfc-radio-button--state-focus-visible {
+  outline-offset: var(--sfc-focus-outline-offset, 2px);
+  border-radius: var(--sfc-focus-border-radius, 4px);
+  outline-width: var(--sfc-focus-outline-width, 3px) !important;
+  outline-style: var(--sfc-focus-outline-style, solid) !important;
+  outline-color: var(--sfc-focus-outline-color, #0059ff) !important;
+  box-shadow: var(--sfc-focus-box-shadow, 0 0 0 3px white) !important;
+}

@@ -1,0 +1,108 @@
+<citi-header></citi-header>
+<div class="cbolui-cds" style="padding: 50px">
+    <citi-simple-layout [steps]="[{name: 'Step 1'}, {name: 'Step 2'}, {name: 'Step 3', active: true}]">
+        <h1>Heading 1</h1>
+
+        <div class="d-md-flex form-row">
+            <div class="col-12 col-md-6 ps-md-0 pe-md-4 py-md-3">
+                <cds-form-field label="Dropdown">
+                    <cds-dropdown>
+                        <cds-option value="Option 1"></cds-option>
+                        <cds-option value="Option 2"></cds-option>
+                    </cds-dropdown>
+                </cds-form-field>
+            </div>
+            <div class="col-12 col-md-6 ps-md-0 pe-md-4 py-md-3">
+                <cds-form-field label="Error" errorMessage="This field is required">
+                    <cds-dropdown>
+                        <cds-option value="Option 1"></cds-option>
+                        <cds-option value="Option 2"></cds-option>
+                    </cds-dropdown>
+                </cds-form-field>
+            </div>
+        </div>
+        <div class="d-md-flex form-row">
+            <div class="col-12 col-md-6 ps-md-0 pe-md-4 py-md-3">
+                <cds-form-field label="Input Field" for="input-field">
+                    <input cdsInput type="text" name="input-field">
+                </cds-form-field>
+            </div>
+            <div class="col-12 col-md-6 ps-md-0 pe-md-4 py-md-3">
+                <cds-form-field label="Placeholder" for="placeholder">
+                    <input cdsInput type="text" placeholder="Placeholder" name="placeholder">
+                </cds-form-field>
+            </div>
+        </div>
+        <div class="d-md-flex form-row">
+            <div class="col-12 col-md-6 ps-md-0 pe-md-4 py-md-3">
+                <cds-form-field label="Tooltip" for="tooltip"
+                    [tooltip]="{title: 'tooltip', body: 'This is an explanation'}">
+                    <input cdsInput type="text" name="tooltip">
+                </cds-form-field>
+            </div>
+            <div class="col-12 col-md-6 ps-md-0 pe-md-4 py-md-3">
+                <cds-form-field label="Errors" for="errors" errorMessage="This field is required">
+                    <input cdsInput type="text" name="errors">
+                </cds-form-field>
+            </div>
+        </div>
+
+        <div class="d-md-flex form-row">
+            <div class="col-12 col-md-6 ps-md-0 pe-md-4 py-md-3">
+                <cds-form-field>
+                    <cds-checkbox label="Checkbox" for="checkbox">
+                        <input cdsInput type="checkbox" name="checkbox">
+                    </cds-checkbox>
+                </cds-form-field>
+            </div>
+            <div class="col-12 col-md-6 ps-md-0 pe-md-4 py-md-3">
+                <cds-form-field errorMessage="This field is required">
+                    <cds-checkbox label="Errors" for="checkbox-error">
+                        <input cdsInput type="checkbox" name="checkbox-error">
+                    </cds-checkbox>
+                </cds-form-field>
+            </div>
+        </div>
+
+        <div class="d-md-flex form-row">
+            <div class="col-12 col-md-6 ps-md-0 pe-md-4 py-md-3">
+                <h5>Radio Horizontal</h5>
+                <cds-form-field>
+                    <cds-radio-group>
+                        <cds-radio label="Option 1" for="horizontal-value1">
+                            <input cdsInput type="radio" name="radio" id="horizontal-value1" value="1">
+                        </cds-radio>
+                        <cds-radio label="Option 2" for="horizontal-value2">
+                            <input cdsInput type="radio" name="radio" id="horizontal-value2" value="2">
+                        </cds-radio>
+                    </cds-radio-group>
+                </cds-form-field>
+            </div>
+            <div class="col-12 col-md-6 ps-md-0 pe-md-4 py-md-3">
+                <h5>Errors</h5>
+                <cds-form-field errorMessage="This field is required">
+                    <cds-radio-group [hasError]="true">
+                        <cds-radio label="Option 1" for="error-value1">
+                            <input cdsInput type="radio" name="radio" id="error-value1" value="1">
+                        </cds-radio>
+                        <cds-radio label="Option 2" for="error-value2">
+                            <input cdsInput type="radio" name="radio" id="error-value2" value="2">
+                        </cds-radio>
+                    </cds-radio-group>
+                </cds-form-field>
+            </div>
+        </div>
+
+        <h5>Radio Vertical</h5>
+        <cds-form-field>
+            <cds-radio-group direction="column">
+                <cds-radio label="Option 1" for="vertical-value1">
+                    <input cdsInput type="radio" name="radio" id="vertical-value1" value="1">
+                </cds-radio>
+                <cds-radio label="Option 2" for="vertical-value2">
+                    <input cdsInput type="radio" name="radio" id="vertical-value2" value="2">
+                </cds-radio>
+            </cds-radio-group>
+        </cds-form-field>
+    </citi-simple-layout>
+</div>

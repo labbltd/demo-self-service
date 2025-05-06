@@ -1,0 +1,25 @@
+import { DxReactAdapter } from '@labb/react-adapter';
+import React from 'react';
+
+DxReactAdapter.registerMapping('Attachment', React.lazy(() => import('./containers/Attachment')));
+DxReactAdapter.registerMapping('AutoComplete', React.lazy(() => import('./containers/Dropdown')));
+DxReactAdapter.registerMapping('Checkbox', React.lazy(() => import('./containers/Checkbox')));
+DxReactAdapter.registerMapping('Currency', React.lazy(() => import('./containers/TextInput')));
+DxReactAdapter.registerMapping('Date', React.lazy(() => import('./containers/Date')));
+DxReactAdapter.registerMapping('DateTime', React.lazy(() => import('./containers/TextInput')));
+DxReactAdapter.registerMapping('Decimal', React.lazy(() => import('./containers/TextInput')));
+DxReactAdapter.registerMapping('Default', React.lazy(() => import('./containers/Default')));
+DxReactAdapter.registerMapping('DefaultForm', React.lazy(() => import('./containers/Default')));
+DxReactAdapter.registerMapping('Dropdown', React.lazy(() => import('./containers/Dropdown')));
+DxReactAdapter.registerMapping('Email', React.lazy(() => import('./containers/TextInput')));
+DxReactAdapter.registerMapping('FlowContainer', React.lazy(() => import('./containers/FlowContainer')));
+DxReactAdapter.registerMapping('Integer', React.lazy(() => import('./containers/TextInput')));
+DxReactAdapter.registerMapping('Percentage', React.lazy(() => import('./containers/TextInput')));
+DxReactAdapter.registerMapping('Phone', React.lazy(() => import('./containers/TextInput')));
+DxReactAdapter.registerMapping('RadioButtons', React.lazy(() => import('./containers/RadioButtons')));
+DxReactAdapter.registerMapping('SimpleTable', React.lazy(() => import('./containers/SimpleTable')));
+DxReactAdapter.registerMapping('TextInput', React.lazy(() => import('./containers/TextInput')));
+DxReactAdapter.registerMapping('Time', React.lazy(() => import('./containers/TextInput')));
+DxReactAdapter.registerMapping('Todo', React.lazy(() => import('./containers/Todo')));
+DxReactAdapter.registerMapping('View', React.lazy(() => import('./containers/Default')));
+DxReactAdapter.registerMapping('URL', React.lazy(() => import('./containers/URL')));

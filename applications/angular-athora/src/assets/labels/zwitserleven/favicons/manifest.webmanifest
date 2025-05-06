@@ -1,0 +1,19 @@
+{
+  "name": "Zwitserleven",
+  "short_name": "Zwitserleven",
+  "icons": [
+    {
+      "src": "/assets/labels/zwitserleven/favicons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/labels/zwitserleven/favicons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#fff",
+  "background_color": "#db0512",
+  "display": "standalone"
+}

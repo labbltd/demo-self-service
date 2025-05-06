@@ -1,0 +1,29 @@
+{
+  "name": "utilities",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libraries/utilities/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "build": {
+      "executor": "@nx/rollup:rollup",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/libraries/utilities",
+        "tsConfig": "libraries/utilities/tsconfig.lib.json",
+        "packageJson": "libraries/utilities/package.json",
+        "main": "libraries/utilities/src/index.ts",
+        "format": [
+          "esm",
+          "cjs"
+        ],
+        "generateExportsField": true
+      }
+    }
+  }
+}

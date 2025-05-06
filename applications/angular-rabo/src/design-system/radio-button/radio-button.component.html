@@ -1,0 +1,20 @@
+<div class="sfc-radio-button" 
+    [ngClass]="{
+        'sfc-radio-button--state-checked': selected,
+        'sfc-radio-button--state-has-error': hasErrors,
+        'sfc-radio-button--state-focus-visible': isFocused
+    }">
+    <div class="sfc-radio-button__input">
+        <input type="radio" [name]="key" [value]="value"
+            [id]="key + '_' + value"
+            (change)="emit($event)"
+            (focus)="isFocused = true"
+            (blur)="isFocused = false">
+    </div>
+    <div class="sfc-radio-button__box-wrapper">
+        <div class="sfc-radio-button__box"></div>
+    </div>
+    <div class="sfc-radio-button__label">
+        <label [for]="key + '_' + value">{{value}}</label>
+    </div>
+</div>

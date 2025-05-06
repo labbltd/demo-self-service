@@ -1,0 +1,23 @@
+@import '../design-system/main.css';
+
+.flex {
+    display: grid;
+    grid-auto-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+}
+.xray .flex {
+    display: block;
+}
+
+.flex>* {
+    padding: 0 1rem;
+}
+
+.radio label {
+    display: block;
+}
+
+.pega {
+    // border: 1px dashed blue;
+    // padding: 5px;
+}

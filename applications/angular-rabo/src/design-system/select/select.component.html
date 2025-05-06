@@ -1,0 +1,24 @@
+<div class="sfc-select" [ngClass]="{
+        'sfc-select--state-has-errors': hasError, 
+        'sfc-select--state-has-focus': isFocused
+        }">
+    <dx-input-label [label]="label"></dx-input-label>
+    <div class="sfc-select__input-container">
+        <div class="sfc-select__input">
+            <select name="goal-code" required=""
+                (change)="emit($event)"
+                (focus)="isFocused = true"
+                (blur)="isFocused = false">
+                <option value="">Maak een keuze</option>
+                <option *ngFor="let option of options"
+                    [value]="option.value"
+                    [selected]="option.value === value">
+                    {{option.key}}
+                </option>
+            </select>
+        </div>
+        <dx-icon class="sfc-select__chevron"
+            name="chevron-down" size="sm"></dx-icon>
+    </div>
+    <div class="sfc-select__error-container"></div>
+</div>

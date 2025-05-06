@@ -1,0 +1,10 @@
+<div class="sfc-button" [ngClass]="{'sfc-button--primary': type === 'primary',
+    'sfc-button--secondary': type === 'secondary',
+    'sfc-button--tertiary': type === 'tertiary'}">
+    <dx-spinner *ngIf="loading"></dx-spinner>
+    <span class="sfc-button__hidden-label">Laden</span>
+    <span class="sfc-button__label"
+        [ngClass]="{'sfc-button__label--loading':loading}">
+        <ng-content></ng-content>
+    </span>
+</div>

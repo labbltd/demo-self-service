@@ -1,0 +1,13 @@
+<fieldset class="sfc-radio-group">
+    <dx-input-label class="sfc-margin-block-end-25"
+        [label]="label"></dx-input-label>
+    <dx-radio-button
+        *ngFor="let option of options; last as isLast"
+        class="sfc-display-block"
+        (valueChanged)="emit($event)"
+        [hasErrors]="hasErrors"
+        [ngClass]="{'sfc-margin-block-end-75': !isLast}"
+        [key]="label"
+        [value]="option.value"
+        [selected]="option.key === value"></dx-radio-button>
+</fieldset>

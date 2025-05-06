@@ -1,0 +1,19 @@
+<div class="sfc-item">
+    <div class="sfc-item__content">
+        <section>
+            <div class="sfc-item__header-wrapper">
+                <div class="sfc-item__label">
+                    <span>{{label}}</span>
+                </div>
+                <div class="sfc-item__label-end">
+                    <dx-output-money *ngIf="isAmount"
+                        [value]="value"></dx-output-money>
+                    <span *ngIf="!isAmount">{{value}}</span>
+                </div>
+            </div>
+        </section>
+        <div class="sfc-item__description">
+            <slot name="description"></slot>
+        </div>
+    </div>
+</div>

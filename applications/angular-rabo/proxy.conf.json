@@ -1,0 +1,8 @@
+{
+  "/prweb": {
+    "target_mocked": "http://localhost:3333",
+    "target": "https://labbconsulting02.pegalabs.io/",
+    "changeOrigin": true,
+    "secure": true
+  }
+}

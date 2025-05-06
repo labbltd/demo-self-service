@@ -1,0 +1,22 @@
+import { DxReactAdapter } from '@labb/react-adapter';
+import React from 'react';
+
+DxReactAdapter.registerMapping('Attachment', React.lazy(() => import('./containers/Attachment')));
+DxReactAdapter.registerMapping('Checkbox', React.lazy(() => import('./containers/DxCheckbox')));
+DxReactAdapter.registerMapping('Currency', React.lazy(() => import('./containers/DxTextInput')));
+DxReactAdapter.registerMapping('Date', React.lazy(() => import('./containers/DxDate')));
+DxReactAdapter.registerMapping('DateTime', React.lazy(() => import('./containers/DxTextInput')));
+DxReactAdapter.registerMapping('Decimal', React.lazy(() => import('./containers/DxTextInput')));
+DxReactAdapter.registerMapping('Default', React.lazy(() => import('./containers/Default')));
+DxReactAdapter.registerMapping('DefaultForm', React.lazy(() => import('./containers/DxDefaultForm')));
+DxReactAdapter.registerMapping('Dropdown', React.lazy(() => import('./containers/DxDropdown')));
+DxReactAdapter.registerMapping('Email', React.lazy(() => import('./containers/DxTextInput')));
+DxReactAdapter.registerMapping('FlowContainer', React.lazy(() => import('./containers/DxFlowContainer')));
+DxReactAdapter.registerMapping('Integer', React.lazy(() => import('./containers/DxTextInput')));
+DxReactAdapter.registerMapping('Percentage', React.lazy(() => import('./containers/DxTextInput')));
+DxReactAdapter.registerMapping('Phone', React.lazy(() => import('./containers/DxTextInput')));
+DxReactAdapter.registerMapping('RadioButtons', React.lazy(() => import('./containers/DxRadioButtons')));
+DxReactAdapter.registerMapping('TextInput', React.lazy(() => import('./containers/DxTextInput')));
+DxReactAdapter.registerMapping('Time', React.lazy(() => import('./containers/DxTextInput')));
+DxReactAdapter.registerMapping('Todo', React.lazy(() => import('./containers/Todo')));
+DxReactAdapter.registerMapping('DetailsThreeColumns', React.lazy(() => import('./containers/DetailsThreeColumns')));

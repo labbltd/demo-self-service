@@ -1,0 +1,8 @@
+{
+    "entryPoints": [
+        "src/index.d.ts"
+    ],
+    "disableSources": true,
+    "tsconfig": "./tsconfig.lib.json",
+    "readme": "./README.md",
+}

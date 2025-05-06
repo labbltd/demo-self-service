@@ -1,0 +1,22 @@
+<div class="sfc-input-wrapper"
+    [ngClass]="{'sfc-input-wrapper--state-has-errors': !!errorMessage}">
+    <div class="sfc-input-wrapper__label" *ngIf="label">
+        <dx-input-label [label]="label"
+            [labelEnd]="labelEnd"></dx-input-label>
+    </div>
+    <div class="sfc-input-wrapper__input">
+        <ng-content></ng-content>
+    </div>
+    <div class="sfc-input-wrapper__errors"
+        *ngIf="errorMessage">
+        <div class="sfc-input-error-root">
+            <div class="sfc-input-error">
+                <dx-icon class="sfc-input-error__icon"
+                    name="exclamation-circle-fill"
+                    size="xs">
+                </dx-icon>
+                <span>{{errorMessage}}</span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,140 @@
+{
+  "name": "angular-reference",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "applications/angular-reference/src",
+  "prefix": "dx",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "watch": true,
+        "outputPath": "dist/applications/angular-reference",
+        "index": "applications/angular-reference/src/index.html",
+        "main": "applications/angular-reference/src/main.ts",
+        "polyfills": "applications/angular-reference/src/polyfills.ts",
+        "tsConfig": "applications/angular-reference/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "applications/angular-reference/src/favicon.png",
+          "applications/angular-reference/src/angular.gif",
+          "applications/angular-reference/src/assets",
+          {
+            "glob": "bootstrap-shell.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./constellation"
+          },
+          {
+            "glob": "bootstrap-shell.*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./constellation"
+          },
+          {
+            "glob": "*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/js",
+            "output": "./constellation/prerequisite/js"
+          },
+          {
+            "glob": "lib_asset.json",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./constellation"
+          },
+          {
+            "glob": "constellation-core.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./constellation/prerequisite"
+          },
+          {
+            "glob": "constellation-core.*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./constellation/prerequisite"
+          },
+          {
+            "glob": "auth.html",
+            "input": "./node_modules/@labb/dx-engine/",
+            "output": "."
+          },
+          {
+            "glob": ".headers",
+            "input": "./",
+            "output": "."
+          }
+        ],
+        "styles": [
+          "applications/angular-reference/src/classless.css"
+        ],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "optimization": {
+            "styles": {
+              "inlineCritical": false
+            }
+          },
+          "fileReplacements": [
+            {
+              "replace": "applications/angular-reference/src/environments/environment.ts",
+              "with": "applications/angular-reference/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "angular-reference:build:production"
+        },
+        "development": {
+          "buildTarget": "angular-reference:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "proxyConfig": "applications/angular-reference/proxy.conf.json",
+        "port": 4201
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "angular-reference:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "applications/angular-reference/e2e/cypress.config.ts",
+        "testingType": "e2e"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "angular-reference:serve:production"
+        },
+        "development": {
+          "devServerTarget": "angular-reference:serve:development",
+          "watch": false
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+import { DxVueAdapter } from "@labb/vue-adapter";
+import Default from "./container-mapping/Default.vue";
+import Dropdown from "./container-mapping/Dropdown.vue";
+import FlowContainer from "./container-mapping/FlowContainer.vue";
+import RadioButtons from "./container-mapping/RadioButtons.vue";
+import TextInput from "./container-mapping/TextInput.vue";
+import Region from "./container-mapping/Region.vue";
+import Attachment from "./container-mapping/Attachment.vue";
+import Checkbox from "./container-mapping/Checkbox.vue";
+import DefaultForm from "./container-mapping/DefaultForm.vue";
+
+DxVueAdapter.registerMapping('default', Default);
+DxVueAdapter.registerMapping('DefaultForm', DefaultForm);
+DxVueAdapter.registerMapping('Region', Region);
+DxVueAdapter.registerMapping('FlowContainer', FlowContainer);
+DxVueAdapter.registerMapping('Currency', TextInput);
+DxVueAdapter.registerMapping('Checkbox', Checkbox);
+DxVueAdapter.registerMapping('TextInput', TextInput);
+DxVueAdapter.registerMapping('Date', TextInput);
+DxVueAdapter.registerMapping('Email', TextInput);
+DxVueAdapter.registerMapping('Dropdown', Dropdown);
+DxVueAdapter.registerMapping('RadioButtons', RadioButtons);
+DxVueAdapter.registerMapping('Attachment', Attachment);

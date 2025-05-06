@@ -1,0 +1,136 @@
+:host {
+    display: block;
+}
+
+.sfc-input-wrapper--state-has-errors>.sfc-input-wrapper__input {
+    margin-bottom: var(--sfc-input-wrapper-input-error-margin-block-end, 8px);
+}
+
+.sfc-input-wrapper__input {
+    margin-bottom: var(--sfc-input-wrapper-input-margin-block-end, 12px);
+}
+
+[class^="sfc-input-wrapper"] *,
+[class^="sfc-input-wrapper"] ::before,
+[class^="sfc-input-wrapper"] ::after {
+    box-sizing: border-box;
+}
+
+[class^="sfc-input-wrapper"] {
+    line-height: normal;
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
+}
+
+/*!@[class^=sfc-input-wrapper]*/
+[class^=sfc-input-wrapper].sc-sfc-input-wrapper {
+    line-height: normal;
+    box-sizing: border-box;
+    overflow-wrap: anywhere
+}
+
+/*!@[class^=sfc-input-wrapper] *,
+[class^=sfc-input-wrapper] *::before,
+[class^=sfc-input-wrapper] *::after*/
+[class^=sfc-input-wrapper].sc-sfc-input-wrapper *.sc-sfc-input-wrapper,
+[class^=sfc-input-wrapper].sc-sfc-input-wrapper *.sc-sfc-input-wrapper::before,
+[class^=sfc-input-wrapper].sc-sfc-input-wrapper *.sc-sfc-input-wrapper::after {
+    box-sizing: border-box
+}
+
+/*!@::selection*/
+.sc-sfc-input-wrapper::selection {
+    color: var(--sfc-color-text-selection);
+    background-color: var(--sfc-color-background-selection)
+}
+
+/*!@:host*/
+.sc-sfc-input-wrapper-h {
+    display: block
+}
+
+
+/*!@.sfc-input-wrapper .sfc-input-wrapper__slotted-input*/
+.sfc-input-wrapper .sc-sfc-input-wrapper-s>.sfc-input-wrapper__slotted-input {
+    --sfc-input-margin: 0 !important;
+    --sfc-input-border-radius: 0 !important
+}
+
+/*!@.sfc-input-wrapper .sfc-input-wrapper__slotted-input--stacked*/
+.sfc-input-wrapper .sc-sfc-input-wrapper-s>.sfc-input-wrapper__slotted-input--stacked {
+    --sfc-input-margin: -1px 0 0 0 !important
+}
+
+/*!@.sfc-input-wrapper .sfc-input-wrapper__slotted-input--first*/
+.sfc-input-wrapper .sc-sfc-input-wrapper-s>.sfc-input-wrapper__slotted-input--first {
+    --sfc-input-border-radius: var(--sfc-input-wrapper-border-radius, 4px) var(--sfc-input-wrapper-border-radius, 4px) 0 0 !important
+}
+
+/*!@.sfc-input-wrapper .sfc-input-wrapper__slotted-input--last*/
+.sfc-input-wrapper .sc-sfc-input-wrapper-s>.sfc-input-wrapper__slotted-input--last {
+    --sfc-input-border-radius: 0 0 var(--sfc-input-wrapper-border-radius, 4px) var(--sfc-input-wrapper-border-radius, 4px) !important
+}
+
+/*!@.sfc-input-wrapper .sfc-input-wrapper__slotted-input--single*/
+.sfc-input-wrapper .sc-sfc-input-wrapper-s>.sfc-input-wrapper__slotted-input--single {
+    --sfc-input-border-radius: var(--sfc-input-wrapper-border-radius, 4px) !important
+}
+
+.sfc-input-wrapper__label {
+    margin-bottom: var(--sfc-input-wrapper-label-margin-block-end, 4px);
+}
+
+/*!@.sfc-input-wrapper__label*/
+.sfc-input-wrapper__label.sc-sfc-input-wrapper {
+    margin-bottom: var(--sfc-input-wrapper-label-margin-block-end, 4px)
+}
+
+/*!@.sfc-input-wrapper__errors*/
+.sfc-input-wrapper__errors.sc-sfc-input-wrapper {
+    margin-bottom: var(--sfc-input-wrapper-errors-margin-block-end, 12px)
+}
+
+/*!@.sfc-input-wrapper__input*/
+.sfc-input-wrapper__input.sc-sfc-input-wrapper {
+    margin-bottom: var(--sfc-input-wrapper-input-margin-block-end, 12px)
+}
+
+/*!@.sfc-input-wrapper--state-has-errors > .sfc-input-wrapper__input*/
+.sfc-input-wrapper--state-has-errors.sc-sfc-input-wrapper>.sfc-input-wrapper__input.sc-sfc-input-wrapper {
+    margin-bottom: var(--sfc-input-wrapper-input-error-margin-block-end, 8px)
+}
+
+.sfc-input-wrapper__errors {
+    margin-bottom: var(--sfc-input-wrapper-errors-margin-block-end, 12px);
+}
+
+.sfc-input-error-root {
+    font-family: var(--sfc-paragraph-font-family);
+    line-height: var(--sfc-paragraph-font-line-height);
+    font-size: var(--sfc-paragraph-font-size);
+    font-style: var(--sfc-paragraph-font-style);
+    font-weight: var(--sfc-paragraph-font-weight);
+    margin: var(--sfc-paragraph-margin);
+    -webkit-font-smoothing: var(--sfc-paragraph-font-smoothing);
+    display: block;
+    color: var(--sfc-input-error-color-text, #e03100);
+}
+
+.sfc-input-error {
+    display: flex;
+    align-items: flex-start;
+}
+
+[class^="sfc-input-error"] {
+    line-height: normal;
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
+}
+
+.sfc-input-error__icon {
+    margin-top: 1px;
+    margin-right: var(--sfc-input-error-icon-margin-block-end, 4px);
+    color: var(--sfc-input-error-icon-color, #e03100);
+    display: inline-block;
+    fill: currentcolor;
+}

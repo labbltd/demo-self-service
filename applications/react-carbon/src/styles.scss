@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+@use '@carbon/react';
+
+.header {
+  margin-bottom: 5rem;
+
+  .cds--header {
+    background-color: white;
+  }
+}
+.sub-heading {
+  margin-bottom: 1.5rem;
+}
+.main {
+  padding: 50px;
+}
+.cds--header-panel--expanded {
+  padding: 10px;
+  background-color: white;
+  overflow-y: scroll;
+  width: 500px;
+}
+.main,
+.cds--header-panel--expanded {
+  h4,
+  .cds--label,
+  .cds--btn {
+    margin-top: 1.5rem;
+  }
+}
+
+.btn-group {
+  .cds--btn {
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+    margin-right: 5px;
+    margin-top: 5px;
+  }
+}
+
+.one-column {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: calc(1rem);
+}
+.two-column {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: calc(1rem);
+}
+.three-column {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: calc(1rem);
+}

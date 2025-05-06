@@ -1,0 +1,8 @@
+{
+  "name": "@labb/demo-utilities",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "dependencies": {
+    "@labb/dx-engine": "24.x"
+  }
+}

@@ -1,0 +1,74 @@
+<div class="floating-ticket-wrapper">
+    <div
+        class="floating-ticket-main sfc-padding-block-start-150">
+        <div class="sfc-padding-block-start-150">
+            <div class="card">
+                <div class="main">
+                    <h3 class="sfc-heading-3">
+                        Kosten
+                        per
+                        maand<a id="dl-"></a>
+                    </h3>
+                    <dx-output-money
+                        class="sfc-text--size-xxl sfc-text--color-gray-darker hydrated"
+                        value="0,00">
+                    </dx-output-money>
+                    <div>
+                        <p
+                            class="sfc-paragraph sfc-margin-block-start-50">
+                            <span translate="">Totale
+                                kosten: <dx-output-money
+                                    class="sfc-text--weight-semi-bold"
+                                    value="0,00"></dx-output-money>
+                            </span>
+                        </p>
+                    </div>
+                    <div
+                        class="list sfc-divider sfc-margin-block-start-100 sfc-padding-block-start-100">
+                        <dx-item label="Persoonlijke lening"
+                            value="0"
+                            [isAmount]="true"></dx-item>
+                        <dx-item label="Looptijd in maanden"
+                            value="0"></dx-item>
+                        <dx-item label="0% rente"
+                            value="0,00"
+                            [isAmount]="true"></dx-item>
+                    </div>
+                </div>
+                <div
+                    class="list sfc-divider sfc-margin-block-start-100 sfc-padding-block-start-100">
+
+                </div>
+                <div
+                    class="description sfc-divider sfc-margin-block-start-100 sfc-padding-block-start-100 sfc-display-flex sfc-align-items-center sfc-justify-content-between">
+                    <div slot="description">
+                        <div
+                            xmlns="http://www.w3.org/1999/html">
+                            <p data-senses="scenario-al-indication-text"
+                                class="sfc-paragraph sfc-margin-block-start-150">
+                                Deze
+                                bedragen
+                                geven
+                                een
+                                indicatie.
+                                <span
+                                    data-senses="desired-loan-assumptions-link"
+                                    tabindex="0"
+                                    class="sfc-link sfc-link-subtle">
+                                    Lees
+                                    hier
+                                    de
+                                    uitgangspunten
+                                    bij
+                                    de
+                                    berekening.
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <!---->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

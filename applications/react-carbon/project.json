@@ -1,0 +1,123 @@
+{
+  "name": "react-carbon",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "applications/react-carbon/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/applications/react-carbon",
+        "index": "applications/react-carbon/src/index.html",
+        "baseHref": "/",
+        "main": "applications/react-carbon/src/main.tsx",
+        "polyfills": "applications/react-carbon/src/polyfills.ts",
+        "tsConfig": "applications/react-carbon/tsconfig.app.json",
+        "assets": [
+          "applications/react-carbon/src/favicon.ico",
+          {
+            "glob": "bootstrap-shell.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./constellation"
+          },
+          {
+            "glob": "bootstrap-shell.*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./constellation"
+          },
+          {
+            "glob": "lib_asset.json",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./constellation"
+          },
+          {
+            "glob": "constellation-core.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./constellation/prerequisite"
+          },
+          {
+            "glob": "constellation-core.*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./constellation/prerequisite"
+          }
+        ],
+        "styles": ["applications/react-carbon/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "applications/react-carbon/webpack.config.js",
+        "babelUpwardRootMode": true,
+        "isolatedConfig": true
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "applications/react-carbon/src/environments/environment.ts",
+              "with": "applications/react-carbon/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "react-carbon:build",
+        "hmr": true,
+        "proxyConfig": "applications/react-carbon/proxy.conf.json",
+        "port": 4202
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "react-carbon:build:development"
+        },
+        "production": {
+          "buildTarget": "react-carbon:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/applications/react-carbon"],
+      "options": {
+        "jestConfig": "applications/react-carbon/jest.config.ts"
+      }
+    },
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "applications/react-carbon/e2e/cypress.config.ts",
+        "testingType": "e2e"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "react-carbon:serve:production"
+        },
+        "development": {
+          "devServerTarget": "react-carbon:serve:development",
+          "watch": true
+        }
+      }
+    }
+  }
+}

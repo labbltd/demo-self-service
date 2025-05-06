@@ -1,0 +1,30 @@
+:host {
+  display: inline-block;
+  fill: currentcolor;
+}
+
+.sfc-icon {
+  height: inherit;
+  width: inherit;
+  vertical-align: middle;
+  stroke: var(--sfc-icon-stroke);
+  stroke-width: var(--sfc-icon-stroke-width);
+}
+
+.sfc-icon--xs {
+  height: var(--sfc-icon-size-xs);
+  width: var(--sfc-icon-size-xs);
+  line-height: var(--sfc-icon-size-xs);
+}
+
+.sfc-icon--sm {
+  height: var(--sfc-icon-size-sm);
+  width: var(--sfc-icon-size-sm);
+  line-height: var(--sfc-icon-size-sm);
+}
+
+[class^='sfc-icon'] {
+  line-height: normal;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+}

@@ -1,0 +1,160 @@
+:host {
+  display: block;
+}
+
+[class^='sfc-input-money'] *,
+[class^='sfc-input-money'] ::before,
+[class^='sfc-input-money'] ::after {
+  box-sizing: border-box;
+}
+
+[class^='sfc-input-money'] {
+  line-height: normal;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+}
+
+.sfc-input-money {
+  font-family: Myriad, 'Segoe UI', 'Helvetica Neue', arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  --sfc-button-padding-left: var(
+    --sfc-form-elements-button-padding-inline-start,
+    12px
+  );
+  --sfc-button-padding-right: var(
+    --sfc-form-elements-button-padding-inline-end,
+    12px
+  );
+  display: block;
+  margin: var(--sfc-input-margin, var(--sfc-form-elements-margin, 0 0 25px));
+}
+
+.sfc-input-money__input-container {
+  align-items: center;
+  background-color: var(--sfc-form-elements-color-background, white);
+  border-width: var(
+    --sfc-input-border-width,
+    var(--sfc-form-elements-border-width, 1px)
+  );
+  border-style: var(--sfc-form-elements-border-style, solid);
+  border-color: var(--sfc-form-elements-color-border, #737578);
+  border-radius: var(
+    --sfc-input-border-radius,
+    var(--sfc-form-elements-border-radius, 4px)
+  );
+  height: var(--sfc-input-field-height, var(--sfc-form-elements-height, 48px));
+  font-size: var(--sfc-form-elements-font-size, 18px);
+  display: flex;
+  overflow: var(--sfc-form-elements-container-overflow, visible);
+}
+
+.sfc-input-money__input-container {
+  display: grid;
+  grid-auto-flow: column;
+  height: unset;
+}
+
+@media (min-width: 320px) {
+  .sfc-input-money__input-container {
+    display: flex;
+    height: var(
+      --sfc-input-field-height,
+      var(--sfc-input-money-container-height, 48px)
+    );
+    flex-wrap: unset;
+  }
+}
+
+.sfc-input-money--state-has-errors .sfc-input-money__input-container {
+  border-color: var(--sfc-form-elements-color-border-error, #e03100);
+  position: relative;
+  z-index: 1;
+}
+
+.sfc-input-money--state-has-focus .sfc-input-money__input-container {
+  outline-offset: var(--sfc-focus-outline-offset, 2px);
+  border-radius: var(--sfc-focus-border-radius, 4px);
+  outline-width: var(--sfc-focus-outline-width, 3px) !important;
+  outline-style: var(--sfc-focus-outline-style, solid) !important;
+  outline-color: var(--sfc-focus-outline-color, #0059ff) !important;
+  box-shadow: var(--sfc-focus-box-shadow, 0 0 0 3px white) !important;
+}
+
+.sfc-input-money__prefix {
+  margin-right: calc(
+    var(--sfc-form-elements-prefix-margin-inline-end, 8px) * -1
+  );
+}
+
+.sfc-input-money__prefix,
+.sfc-input-money__suffix {
+  color: var(--sfc-form-elements-prefix-suffix-color-text, #202122);
+}
+
+.sfc-input-money__prefix {
+  margin-left: var(--sfc-input-money-prefix-margin-inline-start, 16px);
+  overflow-wrap: normal;
+}
+
+.sfc-input-money--state-empty:not(.sfc-input-money--state-disabled)
+  .sfc-input-money__prefix,
+.sfc-input-money--state-empty:not(.sfc-input-money--state-disabled)
+  .sfc-input-money__suffix {
+  color: var(--sfc-form-elements-prefix-suffix-color-text-empty, #202122);
+}
+
+.sfc-input-money__input {
+  font-family: Myriad, 'Segoe UI', 'Helvetica Neue', arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: var(--sfc-form-elements-input-color-background, transparent);
+  border: var(--sfc-form-elements-border, none);
+  color: var(--sfc-form-elements-color-text, #202122);
+  font-size: var(--sfc-form-elements-font-size, 18px);
+  min-height: 100%;
+  width: 100%;
+  min-width: 0px;
+  flex: 1 1 auto;
+  height: 100%;
+}
+
+.sfc-input-money__input input {
+  font-family: Myriad, 'Segoe UI', 'Helvetica Neue', arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  padding: var(--sfc-form-elements-padding-block, 0)
+    var(--sfc-form-elements-padding-inline, 16px) !important;
+  color: inherit !important;
+  font-size: inherit !important;
+  background: inherit !important;
+  border: none !important;
+  box-sizing: border-box !important;
+  outline: 0px !important;
+}
+
+.sfc-input-money__input input {
+  min-height: var(
+    --sfc-input-field-height,
+    var(--sfc-input-money-slotted-input-min-height-zoom-200, 48px)
+  );
+}
+
+@media (min-width: 320px) {
+  .sfc-input-money__input input {
+    min-height: unset;
+  }
+}
+
+.sfc-input-money__input input:placeholder-shown,
+.sfc-input-money__input textarea:placeholder-shown {
+  -webkit-text-fill-color: var(
+    --sfc-form-elements-placeholder-color-text,
+    #737578
+  ) !important;
+}
+
+.sfc-input-money__input-end {
+  grid-area: 2 / 1 / auto / 3;
+  max-width: max-content;
+}

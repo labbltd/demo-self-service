@@ -1,0 +1,101 @@
+{
+  "name": "react-labb",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "applications/react-labb/src",
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "build": {
+      "executor": "@nx/vite:build",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/applications/react-labb",
+        "skipTypeCheck": true,
+        "postcssConfig": "applications/react-labb/postcss.config.js"
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "react-labb:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "react-labb:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "react-labb:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "preview": {
+      "dependsOn": [
+        "build"
+      ],
+      "executor": "@nx/vite:preview-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "react-labb:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "react-labb:build:development"
+        },
+        "production": {
+          "buildTarget": "react-labb:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": [
+        "{options.reportsDirectory}"
+      ],
+      "options": {
+        "reportsDirectory": "../../../coverage/applications/react-labb"
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "dependsOn": [
+        "build"
+      ],
+      "options": {
+        "buildTarget": "react-labb:build",
+        "spa": true
+      }
+    },
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "applications/react-labb-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "react-labb:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "react-labb:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "react-labb:serve-static"
+        }
+      }
+    }
+  }
+}

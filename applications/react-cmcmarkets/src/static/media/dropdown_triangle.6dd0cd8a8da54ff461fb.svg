@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="9px" height="6px" viewBox="0 0 9 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 55.2 (78181) - https://sketchapp.com -->
+    <title>90277382-2F17-4280-A098-5B36D69AB230</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <polygon id="path-1" points="4.70382263 10 4 9.30136903 8.33333333 5 12.6666667 9.30136903 11.962844 10 8.33333333 6.39726193"></polygon>
+    </defs>
+    <g id="Flow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="App-modal-Live---step-3.1.1.2" transform="translate(-780.000000, -240.000000)">
+            <g id="Group-3" transform="translate(490.000000, 53.600000)">
+                <g id="Stacked-Group-3" transform="translate(0.000000, 165.299688)">
+                    <g id="component/form/control/label-copy" transform="translate(234.000000, 0.000000)">
+                        <g id="element/form/input/default">
+                            <g id="icon/sketch/arrow" transform="translate(60.000000, 24.000000) scale(1, -1) translate(-60.000000, -24.000000) translate(52.000000, 16.000000)">
+                                <mask id="mask-2" fill="white">
+                                    <use xlink:href="#path-1"></use>
+                                </mask>
+                                <g id="Triangle" fill-rule="nonzero"></g>
+                                <g id="color/flat/dark-primary" mask="url(#mask-2)" fill="#1B2429" fill-rule="evenodd">
+                                    <rect id="Rectangle-3" x="0" y="0" width="16" height="16"></rect>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

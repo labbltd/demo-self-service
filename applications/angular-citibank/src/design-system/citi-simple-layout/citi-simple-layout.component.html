@@ -1,0 +1,32 @@
+<div class="nxt-container-wrapper">
+    <div class="col-md-12 col-xs-12 top-progress-bar">
+        <div class="inner-progression" [attr.style]="'width:' + progression + '%;'"></div>
+    </div><!---->
+    <div>
+        <div class="page-container">
+            @if(steps) {<div id="leftNavBar" class="left-section">
+                <div class="family-image-warpper">
+                    <img height="160px" src="assets/Family.jpg" alt="" class="family-img col-md-12">
+                </div>
+                <div class="col-md-12 parent-component-step-up">
+                    <h3 aria-level="1" class="steps-subheader">Steps</h3>
+
+                    <ul class="step-up-counter">
+                        @for (step of steps; track step.name; let index = $index) {
+                        <li class="col-md-12" [ngClass]="{blue: step.active}" aria-current="true">
+                            <!----><span class="col-md-1 step-up-indentation"> {{index + 1}}.
+                            </span><span class="col-md-10 step-up-indentation"> {{step.name}}</span>
+                        </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            }
+            <div class="right-section">
+                <div class="child-components col-md-12">
+                    <ng-content></ng-content>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
