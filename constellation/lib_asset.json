@@ -1,7 +1,0 @@
-{
-  "isSdk": true,
-  "isDevServerMode": false,
-  "externals": [],
-  "entry": [],
-  "prerequisite": [{ "constellation-core.c1cc37f6.js": "" }]
-}
