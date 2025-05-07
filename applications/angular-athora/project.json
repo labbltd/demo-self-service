@@ -10,6 +10,7 @@
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
+        "baseHref": "/demo-self-service/angular-athora/",
         "outputPath": "dist/demo-self-service/angular-athora",
         "index": "applications/angular-athora/src/index.html",
         "main": "applications/angular-athora/src/main.ts",
@@ -43,6 +44,11 @@
             "glob": "constellation-core.*.*",
             "input": "./node_modules/@pega/constellationjs/dist/",
             "output": "./constellation/prerequisite"
+          },
+          {
+            "glob": "*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/js/",
+            "output": "./constellation/prerequisite/js"
           }
         ],
         "styles": [

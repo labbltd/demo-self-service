@@ -6,6 +6,7 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
   root: __dirname,
+  base: '/demo-self-service/vue-hca/',
   cacheDir: '../../node_modules/.vite/applications/vue-hca',
 
   server: {
@@ -42,6 +43,10 @@ export default defineConfig({
         {
           src: "../../node_modules/@pega/constellationjs/dist/constellation-core.*.*",
           dest: "constellation/prerequisite"
+        },
+        {
+          src: "../../node_modules/@pega/constellationjs/dist/js/*.*",
+          dest: "constellation/prerequisite/js"
         }
       ]
     })

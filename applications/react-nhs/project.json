@@ -7,18 +7,25 @@
   "targets": {
     "build": {
       "executor": "@nx/webpack:webpack",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
         "outputPath": "dist/demo-self-service/react-nhs",
         "index": "applications/react-nhs/src/index.html",
-        "baseHref": "/",
+        "baseHref": "/demo-self-service/react-nhs/",
         "main": "applications/react-nhs/src/main.tsx",
         "polyfills": "applications/react-nhs/src/polyfills.ts",
         "tsConfig": "applications/react-nhs/tsconfig.app.json",
         "assets": [
           "applications/react-nhs/src/favicon.ico",
+          {
+            "glob": "auth.html",
+            "input": "./node_modules/@labb/dx-engine/",
+            "output": "./"
+          },
           {
             "glob": "bootstrap-shell.*",
             "input": "./node_modules/@pega/constellationjs/dist/",
@@ -28,6 +35,11 @@
             "glob": "bootstrap-shell.*.*",
             "input": "./node_modules/@pega/constellationjs/dist/",
             "output": "./constellation"
+          },
+          {
+            "glob": "*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/js",
+            "output": "./constellation/prerequisite/js"
           },
           {
             "glob": "lib_asset.json",
@@ -43,14 +55,11 @@
             "glob": "constellation-core.*.*",
             "input": "./node_modules/@pega/constellationjs/dist/",
             "output": "./constellation/prerequisite"
-          },
-          {
-            "glob": "**/*.*",
-            "input": "./node_modules/nhsuk-frontend/packages/assets",
-            "output": "./assets"
           }
         ],
-        "styles": ["applications/react-nhs/src/styles.scss"],
+        "styles": [
+          "applications/react-nhs/src/style.scss"
+        ],
         "scripts": [
           {
             "input": "node_modules/nhsuk-frontend/dist/nhsuk.min.js",
@@ -58,8 +67,8 @@
             "inject": false
           }
         ],
-        "babelUpwardRootMode": true,
-        "webpackConfig": "applications/react-nhs/webpack.config.js"
+        "webpackConfig": "applications/react-nhs/webpack.config.js",
+        "babelUpwardRootMode": true
       },
       "configurations": {
         "development": {
@@ -91,7 +100,7 @@
         "buildTarget": "react-nhs:build",
         "hmr": true,
         "proxyConfig": "applications/react-nhs/proxy.conf.json",
-        "port": 4204
+        "port": 4203
       },
       "configurations": {
         "development": {
@@ -108,7 +117,9 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/applications/react-nhs"],
+      "outputs": [
+        "{workspaceRoot}/coverage/applications/react-nhs"
+      ],
       "options": {
         "jestConfig": "applications/react-nhs/jest.config.ts"
       }

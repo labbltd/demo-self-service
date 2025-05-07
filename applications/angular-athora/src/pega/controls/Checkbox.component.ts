@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ControlComponent } from '../control.component';
-import { CheckboxProps } from '@pega/constellationjs';
+import { CheckboxProps } from '@labb/constellation-core-types';
 
 @Component({
   selector: 'dx-checkbox-control',

@@ -16,9 +16,6 @@ export default function FlowContainer(props: { container: PFlowContainer }) {
         {props.container.getActiveViewLabel() ||
           props.container.getAssignmentName()}
       </h1>
-      {props.container.view && (
-        <GeneratePContainer container={props.container.view} />
-      )}
       {props.container.children.map((child) => (
         <GeneratePContainer key={child.id} container={child} />
       ))}

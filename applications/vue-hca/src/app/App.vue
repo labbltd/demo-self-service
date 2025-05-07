@@ -2,27 +2,16 @@
 import { ref } from 'vue';
 
 import { TokenInfo } from '@labb/constellation-core-types';
-import { OAuth2Service } from '@labb/dx-engine';
-import { PegaEntry } from '@labb/vue-adapter';
+import { DemoBootstrap } from '@labb/demo-utilities';
+import PegaEntry from './container-mapping/PegaEntry.vue';
 
 import PageTemplate from '../../design-system/PageTemplate.vue';
 
-const infinityServer = 'http://localhost:3333/prweb';
-const authPath = '/PRRestService/oauth2/v1';
 const token = ref<TokenInfo | null>(null);
-
-OAuth2Service.getTokenAuthorizationCode({
-  appId: 'LabbCS',
-  authorizationUrl: `${infinityServer}${authPath}/authorize`,
-  accessTokenUrl: `${infinityServer}${authPath}/token`,
-  revokeUrl: `${infinityServer}${authPath}/revoke`,
-  redirectUrl: `http://localhost:4200/auth.html`,
-  authService: 'custom',
-  clientId: '13576784492731597416',
-  pkce: true,
-}).then((t) => {
-  token.value = t;
-});
+const infinityServer = DemoBootstrap.getServerUrl();
+const appId = DemoBootstrap.getAppId();
+const caseTypeID = DemoBootstrap.getCaseTypeId();
+DemoBootstrap.getToken().then(t => token.value = t);
 </script>
 
 <template>
@@ -54,9 +43,10 @@ OAuth2Service.getTokenAuthorizationCode({
     <div class="row pega">
       <PegaEntry
         v-if="token"
-        caseTypeID="ATHO-Insurance-Work-LeningBerekenen"
-        :infinityServer="infinityServer"
-        :token="token"
+        :appId
+        :caseTypeID
+        :infinityServer
+        :token
       />
     </div>
     <div class="row">

@@ -1,5 +1,5 @@
 import { GeneratePContainer } from '@labb/react-adapter';
-import { SimpleTable } from 'packages/libs/dx-engine/src/lib/sdk';
+import { SimpleTable } from '@labb/dx-engine';
 
 export default function SimpleTableSelect(props: { container: SimpleTable }) {
   const { label } = props.container.config;

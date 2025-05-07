@@ -7,13 +7,15 @@
   "targets": {
     "build": {
       "executor": "@nx/webpack:webpack",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
         "outputPath": "dist/demo-self-service/react-govuk",
         "index": "applications/react-govuk/src/index.html",
-        "baseHref": "/",
+        "baseHref": "/demo-self-service/react-govuk/",
         "main": "applications/react-govuk/src/main.tsx",
         "polyfills": "applications/react-govuk/src/polyfills.ts",
         "tsConfig": "applications/react-govuk/tsconfig.app.json",
@@ -46,6 +48,11 @@
           },
           {
             "glob": "*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/js/",
+            "output": "./constellation/prerequisite/js"
+          },
+          {
+            "glob": "*.*",
             "input": "./node_modules/govuk-frontend/govuk/assets/images",
             "output": "./assets/images"
           },
@@ -55,7 +62,9 @@
             "output": "./assets/fonts"
           }
         ],
-        "styles": ["applications/react-govuk/src/styles.scss"],
+        "styles": [
+          "applications/react-govuk/src/style.scss"
+        ],
         "scripts": [
           {
             "input": "node_modules/govuk-frontend/govuk/all.js",
@@ -113,7 +122,9 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/applications/react-govuk"],
+      "outputs": [
+        "{workspaceRoot}/coverage/applications/react-govuk"
+      ],
       "options": {
         "jestConfig": "applications/react-govuk/jest.config.ts"
       }

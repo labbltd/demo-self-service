@@ -7,10 +7,12 @@ export class DemoBootstrap {
         try {
             return JSON.parse(localStorage.getItem('LabbDemoConfig') || '');
         } catch (e) {
+            const server = 'https://labbconsulting05.pegalabs.io';
+            // const server = 'http://localhost:3333';
             return {
                 appAlias: 'LabbCS',
-                pegaServerUrl: 'https://labbconsulting05.pegalabs.io/prweb',
-                accessTokenUrl: 'https://labbconsulting05.pegalabs.io/prweb/PRRestService/oauth2/v1/token',
+                pegaServerUrl: `${server}/prweb`,
+                accessTokenUrl: `${server}/prweb/PRRestService/oauth2/v1/token`,
                 staticContentUrl: 'https://cs-cdn.constellation.pega.io/stage/8.24.51-236/react/prod',
                 redirectUrl: `${new URL(window.location.href).pathname}auth.html`,
                 authService: 'pega',

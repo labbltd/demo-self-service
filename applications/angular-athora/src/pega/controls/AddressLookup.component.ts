@@ -50,7 +50,8 @@ export class AddressLookupComponent extends PContainerComponent implements OnIni
   public street!: PContainer;
   public city!: PContainer;
 
-  public async ngOnInit(): Promise<void> {
+  public override async ngOnInit(): Promise<void> {
+    super.ngOnInit();
     this.zipcode = await this.container.createChild('TextInput', 'Postcode');
     this.houseNumber = await this.container.createChild('TextInput', 'Huisnummer');
     this.addition = await this.container.createChild('TextInput', 'Toevoeging');

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PicklistProps } from '@pega/constellationjs';
+import { PicklistProps } from '@labb/constellation-core-types';
 import { ControlComponent } from '../control.component';
 
 @Component({

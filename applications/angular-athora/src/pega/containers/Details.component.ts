@@ -5,11 +5,6 @@ import { PContainer } from '@labb/dx-engine';
 @Component({
   selector: 'dx-details-container',
   template: `
-    <ng-template
-      *ngIf="container.view"
-      dxContainer
-      [container]="container.view"
-    ></ng-template>
     <ng-container *ngFor="let child of container.children; trackBy: trackByFn">
       <ng-template dxContainer [container]="child"></ng-template>
     </ng-container>
@@ -18,7 +13,8 @@ import { PContainer } from '@labb/dx-engine';
 export class DetailsComponent extends PContainerComponent implements OnInit {
   public renderCount = 0;
 
-  public ngOnInit(): void {
+  public override ngOnInit(): void {
+    super.ngOnInit();
     this.container.updates.subscribe(() => {
       console.log(this.container.children.length);
       this.renderCount++;

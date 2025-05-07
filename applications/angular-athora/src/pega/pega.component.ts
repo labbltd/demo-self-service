@@ -1,33 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenInfo } from '@labb/constellation-core-types';
-import { OAuth2Service } from '@labb/dx-engine';
+import { DemoBootstrap } from '@labb/demo-utilities';
 
 @Component({
   selector: 'dx-case',
   template: `
-    <dx-loader *ngIf="loading"></dx-loader>
+    <dx-loader *ngIf="!loadingDone"></dx-loader>
     <dx-pega-entry *ngIf="token"
-      [caseTypeID]="'ATHO-Insurance-Work-LeningBerekenen'"
-      [token]="token"
-      [infinityServer]="infinityServer"
-      (loadingDone)="loading=false"></dx-pega-entry>
+              [caseTypeID]="caseTypeId"
+              [infinityServer]="infinityServer"
+              [localeId]="localeId"
+              [appId]="appId"
+              [token]="token"
+              (loadingDone)="loadingDone = true"></dx-pega-entry>
   `
 })
 export class PegaComponent implements OnInit {
-  public loading = true;
   public token!: TokenInfo;
-  public infinityServer!: string;
+  public authError!: string;
+  public loadingDone!: boolean;
+  public infinityServer = DemoBootstrap.getServerUrl();
+  public caseTypeId = DemoBootstrap.getCaseTypeId();
+  public appId = DemoBootstrap.getAppId();
+  public localeId = DemoBootstrap.getLocaleId();
 
-  public async ngOnInit(): Promise<void> {
-    this.infinityServer = 'https://labbconsulting02.pegalabs.io/prweb';
-    this.token = await OAuth2Service.getTokenAuthorizationCode(
-      {
-        authorizationUrl: '',
-        accessTokenUrl: '',
-        clientId: '45946986569480875840',
-        clientSecret: '17CA02A7E811F063861884214028D54D',
-        grantType: 'client_credentials'
-      }
-    );
+  public async ngOnInit() {
+    this.token = await DemoBootstrap.getToken();
   }
 }

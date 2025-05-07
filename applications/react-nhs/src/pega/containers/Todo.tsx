@@ -1,4 +1,4 @@
-import { Task } from "@pega/constellationjs";
+import { Task } from "@labb/constellation-core-types";
 import { PContainer } from "@labb/dx-engine";
 import { useState } from "react";
 

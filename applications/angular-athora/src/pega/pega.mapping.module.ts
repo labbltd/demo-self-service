@@ -20,8 +20,6 @@ import {
   DYNAMIC_CONTAINERS,
   PContainerModule,
 } from '@labb/angular-adapter';
-import { AppShellComponent } from './containers/AppShell.component';
-import { CaseViewComponent } from './containers/CaseView.component';
 import { DefaultComponent } from './containers/Default.component';
 import { DefaultFormComponent } from './containers/DefaultForm.component';
 import { DetailsComponent } from './containers/Details.component';
@@ -65,9 +63,7 @@ import { DxLoaderComponent } from './controls/Loader.component';
   ],
   declarations: [
     AddressLookupComponent,
-    AppShellComponent,
     DxAttachmentComponent,
-    CaseViewComponent,
     DxCheckboxComponent,
     DxDateComponent,
     DefaultComponent,
@@ -97,8 +93,6 @@ import { DxLoaderComponent } from './controls/Loader.component';
         default: DefaultComponent,
         Child: DefaultComponent,
         // layouts
-        AppShell: AppShellComponent,
-        CaseView: CaseViewComponent,
         Details: DetailsComponent,
         DefaultForm: DefaultFormComponent,
         FlowContainer: FlowContainerComponent,

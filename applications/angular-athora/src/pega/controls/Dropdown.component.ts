@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ControlComponent } from '../control.component';
-import { PicklistProps } from '@pega/constellationjs';
+import { PicklistProps } from '@labb/constellation-core-types';
 
 @Component({
   selector: 'dx-dropdown-control',

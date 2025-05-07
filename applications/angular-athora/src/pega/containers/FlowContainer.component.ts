@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActionButton } from '@pega/constellationjs';
+import { ActionButton } from '@labb/constellation-core-types';
 import { PContainerComponent } from '@labb/angular-adapter';
 import { FlowContainer } from '@labb/dx-engine';
 
@@ -15,11 +15,6 @@ import { FlowContainer } from '@labb/dx-engine';
     <dx-loader *ngIf="loading"></dx-loader>
     <div class="dip-ext-container">
       <mat-card *ngIf="container.hasAssignment()" appearance="outlined" class="transparent">
-        <ng-template
-          *ngIf="container.view"
-          dxContainer
-          [container]="container.view"
-        ></ng-template>
         <ng-template
           *ngFor="let child of container.children"
           dxContainer
@@ -81,7 +76,8 @@ export class FlowContainerComponent extends PContainerComponent<FlowContainer> i
   public errorMessage!: string;
   public loading = false;
 
-  public ngOnInit(): void {
+  public override ngOnInit(): void {
+    super.ngOnInit();
     const subTitle = document.querySelector('*[data-testid="subtitle"]');
     if (subTitle) {
       subTitle.innerHTML = this.container.getAssignmentName();

@@ -1,8 +1,8 @@
-import { FlowContainer as PFlowContainer } from '@labb/dx-engine';
+import { FlowContainer } from '@labb/dx-engine';
 import { GeneratePContainer } from '@labb/react-adapter';
 import { useState } from 'react';
 
-export default function FlowContainer(props: { container: PFlowContainer }) {
+export default function DxFlowContainer(props: { container: FlowContainer }) {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   function handleActionError(e: Error) {
@@ -16,16 +16,16 @@ export default function FlowContainer(props: { container: PFlowContainer }) {
         {props.container.getActiveViewLabel() ||
           props.container.getAssignmentName()}
       </h1>
-      {props.container.view && (
-        <GeneratePContainer container={props.container.view} />
-      )}
       {props.container.children.map((child) => (
         <GeneratePContainer key={child.id} container={child} />
       ))}
       {props.container.actionButtons && (
         <div className="nhsuk-button-group">
           {props.container.actionButtons.secondary.map((button, idx) => (
-            <button className="nhsuk-button nhsuk-button--secondary"
+            <button className={
+              "nhsuk-button nhsuk-button--secondary"
+              + " margin-right"
+            }
               data-module="nhsuk-button"
               data-prevent-double-click="true"
               key={`secondary_${idx}`}

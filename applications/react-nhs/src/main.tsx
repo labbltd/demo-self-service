@@ -1,30 +1,14 @@
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import './pega/ContainerMapping';
-
-import { TokenInfo } from '@pega/constellationjs';
+import { TokenInfo } from '@labb/constellation-core-types';
+import { DemoBootstrap } from '@labb/demo-utilities';
 import { PegaEmbed } from '@labb/react-adapter';
-import { AuthenticationService } from '@labb/dx-engine';
-import { OAuth2Config } from 'packages/libs/dx-engine/src/lib/AuthenticationService';
-
-const serverUrl = 'https://labbconsulting02.pegalabs.io/prweb';
-// const serverUrl = 'http://localhost:3333';
-const oauth: OAuth2Config = {
-  clientId: '22531038265545834813',
-  clientSecret: 'FD76E465330F75C59963D7102C835275',
-  username: 'customer@labb',
-  password: 'Tuesday2!',
-  grantType: 'password'
-};
-
-const serviceName = 'Book Appointment';
-const caseTypeID = 'NHS-Appointments-Work-BookAppointment';
+import ReactDOM from 'react-dom/client';
+import './pega/ContainerMapping';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
-(async () => {
-  const token = await AuthenticationService.oauthLogin(serverUrl, oauth) as TokenInfo;
+
+async function render() {
   root.render(<>
     <header className="nhsuk-header" role="banner">
       <div className="nhsuk-width-container nhsuk-header__container">
@@ -56,11 +40,13 @@ const root = ReactDOM.createRoot(
       <main className="nhsuk-main-wrapper" id="maincontent" role="main">
         <div className="nhsuk-grid-row">
           <div className="nhsuk-grid-column-two-thirds">
-
-            <h1>{serviceName}</h1>
+            <h1>  </h1>
             <PegaEmbed
-              serverUrl={serverUrl} token={token}
-              caseTypeID={caseTypeID}
+              token={await DemoBootstrap.getToken()}
+              caseTypeID={DemoBootstrap.getCaseTypeId()}
+              serverUrl={DemoBootstrap.getServerUrl()}
+              localeID={DemoBootstrap.getLocaleId()}
+              appID={DemoBootstrap.getAppId()}
             />
           </div>
         </div>
@@ -74,5 +60,16 @@ const root = ReactDOM.createRoot(
       </div>
     </footer>
   </>);
-})()
+}
 
+render();
+
+function Main(props: { token: TokenInfo }) {
+  return <PegaEmbed
+    token={props.token}
+    caseTypeID={DemoBootstrap.getCaseTypeId()}
+    serverUrl={DemoBootstrap.getServerUrl()}
+    localeID={DemoBootstrap.getLocaleId()}
+    appID={DemoBootstrap.getAppId()}
+  />
+}

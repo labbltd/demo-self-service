@@ -12,7 +12,7 @@ export default function Attachment(props: {
         onChange={(e) => props.container.uploadFile(e as unknown as Event)}
       />
       {props.container.config.helperText}
-      {props.container.config.validatemessages}
+      {props.container.config.validatemessage}
     </label>
   );
 }

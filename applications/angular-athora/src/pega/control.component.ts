@@ -1,6 +1,6 @@
 import { Directive, OnDestroy, OnInit } from "@angular/core";
 import { FormControl } from "@angular/forms";
-import { DefaultProps } from "@pega/constellationjs";
+import { DefaultProps } from "@labb/constellation-core-types";
 import { PContainerComponent } from "@labb/angular-adapter";
 import { PContainer } from "@labb/dx-engine";
 import { Subject, takeUntil } from "rxjs";
@@ -24,7 +24,8 @@ export abstract class ControlComponent<T = string, S extends ControlProps = Defa
     private destroyed = new Subject<boolean>();
     public helperTextOpen = false;
 
-    public ngOnInit(): void {
+    public override ngOnInit(): void {
+        super.ngOnInit();
         this.control.setValue(this.toControlValue(this.container.config.value));
         if (this.container.config.readOnly || this.container.config.disabled) {
             this.control.disable();
@@ -39,7 +40,8 @@ export abstract class ControlComponent<T = string, S extends ControlProps = Defa
         this.container.updates.subscribe(this.update.bind(this));
     }
 
-    public ngOnDestroy(): void {
+    public override ngOnDestroy(): void {
+        super.ngOnDestroy();
         this.destroyed.next(true);
         this.container.updates.unsubscribe(this.update.bind(this));
     }
