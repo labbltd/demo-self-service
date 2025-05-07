@@ -1,8 +1,8 @@
 {
-  "name": "angular-rabo",
+  "name": "angular-rabobank",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "applications/angular-rabo/src",
+  "sourceRoot": "applications/angular-rabobank/src",
   "prefix": "dx",
   "tags": [],
   "targets": {
@@ -12,15 +12,16 @@
         "{options.outputPath}"
       ],
       "options": {
-        "outputPath": "dist/demo-self-service/angular-rabo",
-        "index": "applications/angular-rabo/src/index.html",
-        "main": "applications/angular-rabo/src/main.ts",
-        "polyfills": "applications/angular-rabo/src/polyfills.ts",
-        "tsConfig": "applications/angular-rabo/tsconfig.app.json",
+        "baseHref": "/demo-self-service/angular-rabobank/",
+        "outputPath": "dist/demo-self-service/angular-rabobank",
+        "index": "applications/angular-rabobank/src/index.html",
+        "main": "applications/angular-rabobank/src/main.ts",
+        "polyfills": "applications/angular-rabobank/src/polyfills.ts",
+        "tsConfig": "applications/angular-rabobank/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
-          "applications/angular-rabo/src/favicon.ico",
-          "applications/angular-rabo/src/assets",
+          "applications/angular-rabobank/src/favicon.ico",
+          "applications/angular-rabobank/src/assets",
           {
             "glob": "bootstrap-shell.*",
             "input": "./node_modules/@pega/constellationjs/dist/",
@@ -45,10 +46,15 @@
             "glob": "constellation-core.*.*",
             "input": "./node_modules/@pega/constellationjs/dist/",
             "output": "./constellation/prerequisite"
+          },
+          {
+            "glob": "*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/js/",
+            "output": "./constellation/prerequisite/js"
           }
         ],
         "styles": [
-          "applications/angular-rabo/src/design-system/styles.scss"
+          "applications/angular-rabobank/src/design-system/styles.scss"
         ],
         "scripts": []
       },
@@ -56,8 +62,8 @@
         "production": {
           "fileReplacements": [
             {
-              "replace": "applications/angular-rabo/src/environments/environment.ts",
-              "with": "applications/angular-rabo/src/environments/environment.prod.ts"
+              "replace": "applications/angular-rabobank/src/environments/environment.ts",
+              "with": "applications/angular-rabobank/src/environments/environment.prod.ts"
             }
           ],
           "outputHashing": "all"
@@ -77,22 +83,22 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "buildTarget": "angular-rabo:build:production"
+          "buildTarget": "angular-rabobank:build:production"
         },
         "development": {
-          "buildTarget": "angular-rabo:build:development"
+          "buildTarget": "angular-rabobank:build:development"
         }
       },
       "defaultConfiguration": "development",
       "options": {
-        "proxyConfig": "applications/angular-rabo/proxy.conf.json",
+        "proxyConfig": "applications/angular-rabobank/proxy.conf.json",
         "port": 4201
       }
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "buildTarget": "angular-rabo:build"
+        "buildTarget": "angular-rabobank:build"
       }
     },
     "lint": {
@@ -101,15 +107,15 @@
     "e2e": {
       "executor": "@nx/cypress:cypress",
       "options": {
-        "cypressConfig": "applications/angular-rabo/e2e/cypress.config.ts",
+        "cypressConfig": "applications/angular-rabobank/e2e/cypress.config.ts",
         "testingType": "e2e"
       },
       "configurations": {
         "production": {
-          "devServerTarget": "angular-rabo:serve:production"
+          "devServerTarget": "angular-rabobank:serve:production"
         },
         "development": {
-          "devServerTarget": "angular-rabo:serve:development",
+          "devServerTarget": "angular-rabobank:serve:development",
           "watch": false
         }
       }

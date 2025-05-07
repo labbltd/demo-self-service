@@ -7,5 +7,5 @@ import { Component, Input } from "@angular/core";
 })
 export class IconComponent {
     @Input() name!: string;
-    @Input() size!: 'xs' | 'sm';
+    @Input() size: 'xs' | 'sm' = 'xs';
 }

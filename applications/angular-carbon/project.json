@@ -11,6 +11,7 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/demo-self-service/angular-carbon",
+        "baseHref": "/demo-self-service/angular-carbon/",
         "index": "applications/angular-carbon/src/index.html",
         "main": "applications/angular-carbon/src/main.ts",
         "polyfills": "applications/angular-carbon/src/polyfills.ts",
@@ -43,6 +44,11 @@
             "glob": "constellation-core.*.*",
             "input": "./node_modules/@pega/constellationjs/dist/",
             "output": "./constellation/prerequisite"
+          },
+          {
+            "glob": "*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/js/",
+            "output": "./constellation/prerequisite/js"
           }
         ],
         "styles": ["applications/angular-carbon/src/styles.scss"],

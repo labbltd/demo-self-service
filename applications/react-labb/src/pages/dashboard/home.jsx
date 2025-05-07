@@ -6,6 +6,7 @@ import {
   Chip,
   Typography
 } from "@material-tailwind/react";
+import { DemoBootstrap } from "@labb/demo-utilities";
 import { clientsData } from "../../data/clients-data";
 import { useState } from "react";
 import { personasData, scenariosData } from "../../data/scenarios-data";
@@ -13,6 +14,11 @@ import { personasData, scenariosData } from "../../data/scenarios-data";
 export function Home() {
   const [scenario, setScenario] = useState(null);
   const [persona, setPersona] = useState(null);
+
+  function updateScenario(scenario) {
+    DemoBootstrap.setCaseTypeId(scenario.caseTypeId);
+    setScenario(scenario);
+  }
 
   if (!persona) {
     return <>
@@ -49,8 +55,8 @@ export function Home() {
         Select your scenario
       </Typography>
       <div className="mt-8">
-        <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
-          {scenariosData.map(scenario => <Card onClick={() => setScenario(scenario)} className="cursor-pointer overflow-hidden xl:col-span-1 border border-blue-gray-100 shadow-sm">
+        <div className="mb-4 grid grid-cols-2 gap-6 xl:grid-cols-2">
+          {scenariosData.map(scenario => <Card onClick={() => updateScenario(scenario)} className="cursor-pointer overflow-hidden xl:col-span-1 border border-blue-gray-100 shadow-sm">
             <CardHeader
               floated={false}
               shadow={false}
@@ -86,12 +92,12 @@ export function Home() {
             className="m-0 flex items-center justify-between p-6"
           >
             <Typography variant="h6" color="blue-gray" className="mb-1">
-              {client.name} <Chip
+              {client.region} {client.name} {!client.available && <Chip
                 variant="gradient"
-                color={client.available ? "green" : "light-blue"}
-                value={client.available ? "available" : "in progress"}
+                color={client.available ? "green" : "orange"}
+                value={client.available ? "available" : "under construction"}
                 className="py-0.5 px-2 text-[11px] font-medium w-fit"
-              />
+              />}
             </Typography>
             <Avatar src={client.framework} size="sm" />
           </CardHeader>

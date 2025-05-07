@@ -1,2 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+$prefix: 'cds' !default;
 @import "carbon-components/scss/globals/scss/styles.scss";
+.cds--stack-scale-4 {
+    --cds-stack-gap: 1.5rem;
+}
+.cds--stack-vertical {
+    display: grid;
+    grid-auto-flow: row;
+    row-gap: var(--cds-stack-gap, 0);
+}

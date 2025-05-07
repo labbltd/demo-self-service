@@ -5,12 +5,10 @@ import {
 } from '@carbon/react';
 import { FlowContainer } from '@labb/dx-engine';
 import { GeneratePContainer } from '@labb/react-adapter';
-import { useContext, useState } from 'react';
-import { NavigationContext } from '../DxScreen';
+import { useState } from 'react';
 
 export default function DxFlowContainer(props: { container: FlowContainer }) {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const hideNavigation = useContext(NavigationContext);
 
   function handleActionError(e: Error) {
     console.error(e);
@@ -26,21 +24,21 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
   }
 
   function colCount(): number {
-    return hideNavigation ? 16 : isVertical() ? 10 : 10
+    return 10
   }
 
   return props.container.hasAssignment() ? <div>
     <Grid>
-      {!hideNavigation && <Column sm={isVertical() ? 2 : 4} md={isVertical() ? 2 : 8} lg={isVertical() ? 4 : 16}>
+      <Column sm={isVertical() ? 2 : 4} md={isVertical() ? 2 : 8} lg={isVertical() ? 4 : 16}>
         <ProgressIndicator currentIndex={currentStep()} vertical={isVertical()}>
-          {props.container.navigation.steps.map((step, i) => (
+          {props.container.navigation?.steps.map((step, i) => (
             <ProgressStep
               key={step.ID}
               label={step.name}
             />
           ))}
         </ProgressIndicator>
-      </Column>}
+      </Column>
       <Column sm={isVertical() ? 2 : 4} md={isVertical() ? 6 : 8} lg={isVertical() ? 12 : 16}>
         <Stack gap={4}>
           <Row>
@@ -50,9 +48,6 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
             </h4>
           </Row>
           <Row>
-            {props.container.view && (
-              <GeneratePContainer container={props.container.view} />
-            )}
             {props.container.children.map((child) => (
               <GeneratePContainer key={child.id} container={child} />
             ))}

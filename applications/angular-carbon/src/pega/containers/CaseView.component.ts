@@ -5,11 +5,6 @@ import { PContainerComponent } from '@labb/angular-adapter';
   selector: 'dx-case-view',
   template: `
     <ng-template
-      *ngIf="container.view"
-      dxContainer
-      [container]="container.view"
-    ></ng-template>
-    <ng-template
       *ngFor="let child of container.children"
       dxContainer
       [container]="child"

@@ -4,25 +4,35 @@ export class DemoBootstrap {
     private static config = DemoBootstrap.init();
 
     private static init() {
+        return {
+            appAlias: 'LabbCS',
+            pegaServerUrl: 'https://labbconsulting05.pegalabs.io/prweb',
+            accessTokenUrl: 'https://labbconsulting05.pegalabs.io/prweb/PRRestService/oauth2/v1/token',
+            staticContentUrl: 'https://cs-cdn.constellation.pega.io/stage/8.24.51-236/react/prod',
+            redirectUrl: `${new URL(window.location.href).pathname}auth.html`,
+            authService: 'pega',
+            clientId: '12113341416804660893',
+            clientSecret: '8164B7AEA010D996DB47D3881D9DC4EB',
+            localeId: 'en-US',
+            pkce: false,
+            caseTypeId: 'Labb-LabbCS-Work-Service-BikeTourBooking',
+            ...this.getConfig()
+        };
+    }
+
+    private static getConfig() {
         try {
-            return JSON.parse(localStorage.getItem('LabbDemoConfig') || '');
+            return JSON.parse(localStorage.getItem('LabbDemoConfig')!);
         } catch (e) {
-            const server = 'https://labbconsulting05.pegalabs.io';
-            // const server = 'http://localhost:3333';
-            return {
-                appAlias: 'LabbCS',
-                pegaServerUrl: `${server}/prweb`,
-                accessTokenUrl: `${server}/prweb/PRRestService/oauth2/v1/token`,
-                staticContentUrl: 'https://cs-cdn.constellation.pega.io/stage/8.24.51-236/react/prod',
-                redirectUrl: `${new URL(window.location.href).pathname}auth.html`,
-                authService: 'pega',
-                clientId: '12113341416804660893',
-                clientSecret: '8164B7AEA010D996DB47D3881D9DC4EB',
-                localeId: 'en-US',
-                pkce: false,
-                caseTypeId: 'Labb-LabbCS-Work-Service-BikeTourBooking'
-            };
+            return {};
         }
+    }
+
+    public static setCaseTypeId(caseTypeId: string) {
+        localStorage.setItem('LabbDemoConfig', JSON.stringify({
+            ...this.getConfig(),
+            caseTypeId: caseTypeId
+        }));
     }
 
     public static getCaseTypeId() {

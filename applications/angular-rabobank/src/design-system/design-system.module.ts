@@ -15,6 +15,8 @@ import { TicketComponent } from "./ticket/ticket.component";
 import { ButtonComponent } from "./button/button.component";
 import { PageHeaderFooterComponent } from "./page-header-footer/page-header-footer.component";
 import { SpinnerComponent } from "./spinner/spinner.component";
+import { InputComponent } from "./input/input.component";
+import { CheckboxComponent } from "./checkbox/checkbox.component";
 
 @NgModule({
     imports: [
@@ -38,6 +40,8 @@ import { SpinnerComponent } from "./spinner/spinner.component";
         RadioGroupComponent,
         SelectComponent,
         TicketComponent,
+        InputComponent,
+        CheckboxComponent
     ],
     exports: [
         ButtonComponent,
@@ -50,6 +54,8 @@ import { SpinnerComponent } from "./spinner/spinner.component";
         RadioGroupComponent,
         SelectComponent,
         TicketComponent,
+        InputComponent,
+        CheckboxComponent
     ]
 })
 export class DesignSystemModule { }

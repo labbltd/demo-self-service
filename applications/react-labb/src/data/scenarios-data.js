@@ -2,22 +2,26 @@ export const scenariosData = [
     {
         industry: 'Banking',
         description: 'Banking Journey — “Mortgage Pre-Approval + Application Initiation”',
-        image: 'img/mortgage.jpg'
+        image: 'img/mortgage.jpg',
+        caseTypeId: 'Labb-LabbCS-Work-Service-MortgageApplicationInitiation'
     },
     {
         industry: 'Healthcare',
         description: 'Healthcare Journey — “Personalised Care Plan Enrollment”',
-        image: 'img/healthcare.jpg'
+        image: 'img/healthcare.jpg',
+        caseTypeId: 'Labb-LabbCS-Work-Service-BikeTourBooking'
     },
     {
         industry: 'Insurance',
         description: 'Insurance Journey — “Multi-Channel Life Insurance Application”',
-        image: 'img/insurance.jpg'
+        image: 'img/insurance.jpg',
+        caseTypeId: 'Labb-LabbCS-Work-Service-BikeTourBooking'
     },
     {
         industry: 'Leisure',
         description: 'Organize your own bike trip from hotel to Red Rock, rent gear, plan your ride, and arrange return transportation — all through a self-service app.',
-        image: 'img/mountain-bike.jpg'
+        image: 'img/mountain-bike.jpg',
+        caseTypeId: 'Labb-LabbCS-Work-Service-BikeTourBooking'
     }
 ]
 

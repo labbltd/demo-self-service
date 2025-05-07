@@ -32,7 +32,8 @@ import { ListItem } from 'carbon-components-angular';
 export class ButtonGroupComponent extends PContainerComponent implements OnInit {
     public items: ListItem[] = [];
 
-    public ngOnInit(): void {
+    public override ngOnInit(): void {
+        super.ngOnInit()
         this.items = this.container.config.datasource.map((item: { key: string, value: string }) => ({
             content: item.value,
             selected: item.key === this.container.config.value

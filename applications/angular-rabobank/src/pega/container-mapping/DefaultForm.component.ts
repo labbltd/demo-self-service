@@ -9,11 +9,6 @@ import { PContainerComponent } from '@labb/angular-adapter';
       <div *ngIf="container.config.instructions && container.config.instructions !== 'none'" [innerHtml]="container.config.instructions"></div>
       <div [ngClass]="{'sfc-margin-block-start-200': container.config.instructions && container.config.instructions !== 'none'}">
         <div [ngClass]="divClass">
-          <ng-template
-              *ngIf="container.view"
-              dxContainer
-              [container]="container.view"
-            ></ng-template>
             <ng-template
               *ngFor="let child of container.children"
               dxContainer
@@ -61,7 +56,8 @@ export class DefaultFormComponent
   implements OnInit {
   public divClass = 'one-column';
 
-  public ngOnInit(): void {
+  public override ngOnInit(): void {
+    super.ngOnInit();
     switch (this.container.config.NumCols ? this.container.config.NumCols : '1') {
       case '1':
         this.divClass = 'one-column';

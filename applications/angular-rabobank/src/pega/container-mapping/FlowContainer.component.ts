@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActionButton } from '@pega/constellationjs';
+import { ActionButton } from '@labb/constellation-core-types';
 import { PContainerComponent } from '@labb/angular-adapter';
 import { FlowContainer } from '@labb/dx-engine';
 

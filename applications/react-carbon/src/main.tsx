@@ -1,26 +1,20 @@
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
-import './styles.scss';
-import './pega/ContainerMapping';
 
-import LabbHeader from './pega/components/header';
-import LabbContent from './pega/components/content';
+import { DemoBootstrap } from '@labb/demo-utilities';
 import { PegaEmbed } from '@labb/react-adapter';
-import { AuthenticationService } from '@labb/dx-engine';
+
+import './pega/ContainerMapping';
+import './styles.scss';
+
+import LabbContent from './pega/components/content';
+import LabbHeader from './pega/components/header';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
-const infinityServer = 'https://labbconsulting02.pegalabs.io/prweb';
-const tokenPromise = AuthenticationService.oauthLogin(
-  infinityServer,
-  {
-    clientId: '45946986569480875840',
-    clientSecret: '17CA02A7E811F063861884214028D54D',
-    grantType: 'client_credentials'
-  }
-);
-tokenPromise.then(token => {
+
+async function render() {
   root.render(
     <Suspense fallback={<h2>loading</h2>}>
       <div>
@@ -30,10 +24,17 @@ tokenPromise.then(token => {
           </LabbHeader>
         </div>
         <div className="main">
-          <PegaEmbed serverUrl={infinityServer} token={token} caseTypeID='ATHO-Insurance-Work-LeningBerekenen' />
+          <PegaEmbed
+            token={await await DemoBootstrap.getToken()}
+            caseTypeID={DemoBootstrap.getCaseTypeId()}
+            serverUrl={DemoBootstrap.getServerUrl()}
+            localeID={DemoBootstrap.getLocaleId()}
+            appID={DemoBootstrap.getAppId()}
+          />
         </div>
       </div>
     </Suspense>
   );
-})
+}
 
+render();

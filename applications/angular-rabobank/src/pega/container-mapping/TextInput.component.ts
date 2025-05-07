@@ -1,40 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component } from '@angular/core';
 import { PContainerComponent } from '@labb/angular-adapter';
 
 @Component({
   selector: 'dx-text-input-control',
-  template: `<ibm-label
-			[disabled]="container.config.readOnly"
-			[helperText]="container.config.helperText"
-			[invalid]="!!container.config.validatemessage"
-			[invalidText]="container.config.validatemessage">
-			{{container.config.label}}
-			<input ibmText
+  template: `
+  <dx-input-wrapper
+    [label]="container.config.label" 
+    [labelEnd]="container.config.helperText"
+    [errorMessage]="container.config.validatemessage">
+    <dx-input>
+      <input
+        [id]="container.id"
         [type]="type"
         [attr.inputmode]="inputmode"
         [attr.step]="step"
-        [formControl]="control"
+        [attr.readonly]="container.config.readOnly"
+        [attr.placeholder]="container.config.placeholder"
+        [value]="container.config.value"
         (change)="container.updateFieldValue(getValue($event.target))"
         (blur)="container.triggerFieldChange(getValue($event.target))"
-				[invalid]="!!container.config.validatemessage"
-				[placeholder]="container.config.placeholder ?? ''">
-		</ibm-label>`,
+      />
+    </dx-input>
+  </dx-input-wrapper>
+   `,
 })
-export class TextInputComponent extends PContainerComponent implements OnInit {
-  public control = new FormControl('');
-  public get label(): string {
-    return this.container.config.label || this.container.config.caption;
-  }
-
-  public override ngOnInit(): void {
-    super.ngOnInit();
-    this.control.setValue(this.container.config.value);
-    if (this.container.config.readOnly) {
-      this.control.disable();
-    }
-  }
-
+export class TextInputComponent extends PContainerComponent {
   public get type(): string {
     switch (this.container.config.fieldMetadata?.type) {
       case 'Decimal':
@@ -95,7 +85,7 @@ export class TextInputComponent extends PContainerComponent implements OnInit {
       case 'number':
         return t.valueAsNumber;
       case 'date':
-        return t.valueAsDate;
+        return t.valueAsDate?.toISOString().split('T')[0] || null;
       case 'checkbox':
         return t.checked;
       default:

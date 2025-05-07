@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { viteStaticCopy } from "vite-plugin-static-copy";
+import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 
 export default defineConfig({
   base: '/demo-self-service',
@@ -12,6 +13,7 @@ export default defineConfig({
   },
   plugins: [
     react(),
+    nxViteTsPaths(),
     viteStaticCopy({
       targets: [
         {

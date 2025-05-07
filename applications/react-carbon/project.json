@@ -13,7 +13,7 @@
         "compiler": "babel",
         "outputPath": "dist/demo-self-service/react-carbon",
         "index": "applications/react-carbon/src/index.html",
-        "baseHref": "/",
+        "baseHref": "/demo-self-service/react-carbon/",
         "main": "applications/react-carbon/src/main.tsx",
         "polyfills": "applications/react-carbon/src/polyfills.ts",
         "tsConfig": "applications/react-carbon/tsconfig.app.json",
@@ -43,6 +43,11 @@
             "glob": "constellation-core.*.*",
             "input": "./node_modules/@pega/constellationjs/dist/",
             "output": "./constellation/prerequisite"
+          },
+          {
+            "glob": "*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/js/",
+            "output": "./constellation/prerequisite/js"
           }
         ],
         "styles": ["applications/react-carbon/src/styles.scss"],

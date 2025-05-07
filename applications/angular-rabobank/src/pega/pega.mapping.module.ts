@@ -22,6 +22,8 @@ import { RadioButtonsComponent } from './container-mapping/RadioButtons.componen
 import { DesignSystemModule } from '../design-system/design-system.module';
 import { TranslatePipe } from './translate.pipe';
 import { ViewContainerComponent } from './container-mapping/ViewContainer.component';
+import { TextInputComponent } from './container-mapping/TextInput.component';
+import { CheckboxComponent } from './container-mapping/Checkbox.component';
 
 @NgModule({
   imports: [
@@ -34,6 +36,7 @@ import { ViewContainerComponent } from './container-mapping/ViewContainer.compon
     TranslatePipe,
     DropdownComponent,
     RadioButtonsComponent,
+    TextInputComponent,
     OneColumnComponent,
     DefaultComponent,
     DefaultFormComponent,
@@ -44,7 +47,8 @@ import { ViewContainerComponent } from './container-mapping/ViewContainer.compon
     AppShellComponent,
     DetailsComponent,
     CurrencyComponent,
-    ViewContainerComponent
+    ViewContainerComponent,
+    CheckboxComponent
   ],
   providers: [
     {
@@ -73,6 +77,9 @@ import { ViewContainerComponent } from './container-mapping/ViewContainer.compon
         Currency: CurrencyComponent,
         Dropdown: DropdownComponent,
         RadioButtons: RadioButtonsComponent,
+        TextInput: TextInputComponent,
+        Date: TextInputComponent,
+        Checkbox: CheckboxComponent
       },
       multi: true,
     },

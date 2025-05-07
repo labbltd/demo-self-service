@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActionButton, ActionButtons } from '@pega/constellationjs';
+import { ActionButton, ActionButtons } from '@labb/constellation-core-types';
 import { PContainerComponent } from '@labb/angular-adapter';
 import { FlowContainer } from '@labb/dx-engine';
 
@@ -16,36 +16,36 @@ import { Step } from 'carbon-components-angular';
     </div>
     <div ibmCol [columnNumbers]="rightColumn">
       <div ibmGrid>
-        <div ibmRow>
-          <h4>{{ title }}</h4>
-        </div>
-        
-        <div ibmRow>
-          <ng-template *ngIf="container.view"
-            dxContainer [container]="container.view"></ng-template>
-          <ng-template *ngFor="let child of container.children"
-            dxContainer [container]="child"></ng-template>
-        </div>
+        <div class="cds--stack-vertical cds--stack-scale-4">
+          <div ibmRow>
+            <h4>{{ title }}</h4>
+          </div>
+          
+          <div ibmRow>
+            <ng-template *ngFor="let child of container.children"
+              dxContainer [container]="child"></ng-template>
+          </div>
 
-        <div ibmRow *ngIf="buttons">
-          <button ibmButton="secondary"
-            *ngFor="let button of buttons.secondary"
-            (click)="buttonClick(button)">
-            {{ button.name }}
-          </button>
-          <button ibmButton="primary"
-            *ngFor="let button of buttons.main"
-            (click)="buttonClick(button)">
-            {{ button.name }}
-          </button>
+          <div ibmRow *ngIf="buttons">
+            <button ibmButton="secondary"
+              *ngFor="let button of buttons.secondary"
+              (click)="buttonClick(button)">
+              {{ button.name }}
+            </button>
+            <button ibmButton="primary"
+              *ngFor="let button of buttons.main"
+              (click)="buttonClick(button)">
+              {{ button.name }}
+            </button>
+          </div>
         </div>
-      </div>
-      <ibm-toast *ngIf="errorMessage" [notificationObj]="{
-          type: 'error',
-          title: 'Error',
-          subtitle: 'something went wrong',
-          caption: errorMessage,
-          showClose: true}"></ibm-toast>
+        <ibm-toast *ngIf="errorMessage" [notificationObj]="{
+            type: 'error',
+            title: 'Error',
+            subtitle: 'something went wrong',
+            caption: errorMessage,
+            showClose: true}"></ibm-toast>
+      </div> 
     </div>
   </div>
   `
@@ -85,7 +85,8 @@ export class FlowContainerComponent extends PContainerComponent<FlowContainer> i
     return this.container.actionButtons;
   }
 
-  public ngOnInit(): void {
+  public override ngOnInit(): void {
+    super.ngOnInit()
     this.container.updates.subscribe(() => {
       this.errorMessage = '';
     })

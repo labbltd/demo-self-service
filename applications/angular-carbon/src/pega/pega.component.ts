@@ -1,11 +1,6 @@
-import { Component, ViewEncapsulation } from '@angular/core';
-import { PCore, State, TokenInfo } from '@pega/constellationjs';
-
-declare global {
-  interface Window {
-    PCore: PCore<State>;
-  }
-}
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { TokenInfo } from '@labb/constellation-core-types';
+import { DemoBootstrap } from '@labb/demo-utilities';
 
 @Component({
   selector: 'dx-angular-engine',
@@ -21,7 +16,13 @@ declare global {
         <h2>Case creation</h2>
       </div>
     </div>
-    <dx-pega-entry caseTypeID="MyCaseTypeID" [token]="token"></dx-pega-entry>
+    <dx-pega-entry *ngIf="token"
+      [caseTypeID]="caseTypeId"
+      [infinityServer]="infinityServer"
+      [localeId]="localeId"
+      [appId]="appId"
+      [token]="token"
+      (loadingDone)="loadingDone = true"></dx-pega-entry>
   </div>
   `,
   styles: [
@@ -31,6 +32,16 @@ declare global {
   ],
   encapsulation: ViewEncapsulation.None
 })
-export class PegaComponent {
-  public token = {} as TokenInfo;
+export class PegaComponent implements OnInit {
+  public token!: TokenInfo;
+  public authError!: string;
+  public loadingDone!: boolean;
+  public infinityServer = DemoBootstrap.getServerUrl();
+  public caseTypeId = DemoBootstrap.getCaseTypeId();
+  public appId = DemoBootstrap.getAppId();
+  public localeId = DemoBootstrap.getLocaleId();
+
+  public async ngOnInit() {
+    this.token = await DemoBootstrap.getToken();
+  }
 }
