@@ -11,7 +11,7 @@
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
-        "outputPath": "dist/applications/react-hsbc",
+        "outputPath": "dist/demo-self-service/react-hsbc",
         "index": "applications/react-hsbc/src/index.html",
         "baseHref": "/demo-self-service/react-hsbc/",
         "main": "applications/react-hsbc/src/main.tsx",

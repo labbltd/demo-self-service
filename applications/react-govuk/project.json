@@ -11,7 +11,7 @@
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
-        "outputPath": "dist/applications/react-govuk",
+        "outputPath": "dist/demo-self-service/react-govuk",
         "index": "applications/react-govuk/src/index.html",
         "baseHref": "/",
         "main": "applications/react-govuk/src/main.tsx",

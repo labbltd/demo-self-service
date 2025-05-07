@@ -12,7 +12,7 @@
         "{options.outputPath}"
       ],
       "options": {
-        "outputPath": "dist/applications/angular-rabo",
+        "outputPath": "dist/demo-self-service/angular-rabo",
         "index": "applications/angular-rabo/src/index.html",
         "main": "applications/angular-rabo/src/main.ts",
         "polyfills": "applications/angular-rabo/src/polyfills.ts",

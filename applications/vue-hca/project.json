@@ -14,7 +14,7 @@
       ],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/applications/vue-hca",
+        "outputPath": "dist/demo-self-service/vue-hca",
         "skipTypeCheck": true
       },
       "configurations": {

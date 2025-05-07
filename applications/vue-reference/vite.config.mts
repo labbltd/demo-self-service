@@ -7,6 +7,7 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 export default defineConfig({
   root: __dirname,
   cacheDir: '../../node_modules/.vite/applications/vue-reference',
+  base: '/demo-self-service/vue-reference/',
 
   server: {
     port: 4200,
@@ -19,7 +20,7 @@ export default defineConfig({
   },
 
   plugins: [
-    vue(), 
+    vue(),
     nxViteTsPaths(),
     viteStaticCopy({
       targets: [
@@ -42,6 +43,10 @@ export default defineConfig({
         {
           src: "../../node_modules/@pega/constellationjs/dist/constellation-core.*.*",
           dest: "constellation/prerequisite"
+        },
+        {
+          src: "../../node_modules/@pega/constellationjs/dist/js/*.*",
+          dest: "constellation/prerequisite/js"
         }
       ]
     })
@@ -53,7 +58,7 @@ export default defineConfig({
   // },
 
   build: {
-    outDir: '../../dist/applications/vue-reference',
+    outDir: '../../dist/demo-self-service/vue-reference',
     emptyOutDir: true,
     reportCompressedSize: true,
     commonjsOptions: {

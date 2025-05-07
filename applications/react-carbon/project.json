@@ -11,7 +11,7 @@
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
-        "outputPath": "dist/applications/react-carbon",
+        "outputPath": "dist/demo-self-service/react-carbon",
         "index": "applications/react-carbon/src/index.html",
         "baseHref": "/",
         "main": "applications/react-carbon/src/main.tsx",

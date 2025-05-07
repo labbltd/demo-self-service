@@ -14,7 +14,7 @@
       ],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/applications/vue-reference",
+        "outputPath": "dist/demo-self-service/vue-reference",
         "skipTypeCheck": true
       },
       "configurations": {

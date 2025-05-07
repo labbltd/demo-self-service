@@ -13,7 +13,7 @@
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
-        "outputPath": "dist/applications/react-cmcmarkets/",
+        "outputPath": "dist/demo-self-service/react-cmcmarkets/",
         "index": "applications/react-cmcmarkets/src/index.html",
         "baseHref": "/",
         "main": "applications/react-cmcmarkets/src/main.tsx",
@@ -59,7 +59,7 @@
         "{options.outputPath}"
       ],
       "options": {
-        "outputPath": "dist/applications/react-cmcmarkets",
+        "outputPath": "dist/demo-self-service/react-cmcmarkets",
         "tsConfig": "applications/react-cmcmarkets/tsconfig.lib.json",
         "project": "applications/react-cmcmarkets/package.json",
         "entryFile": "applications/react-cmcmarkets/src/webcomponent.tsx",

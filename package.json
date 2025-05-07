@@ -3,7 +3,21 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "nx run angular-citibank:build:production && nx run react-hsbc:build:production"
+    "build": "npm run labb && npm run citi && npm run hsbc && npm run a-ref && npm run r-ref && npm run v-ref",
+    "athora": "nx run angular-athora:build:production",
+    "a-carbon": "nx run angular-carbon:build:production",
+    "citi": "nx run angular-citibank:build:production",
+    "rabo": "nx run angular-rabo:build:production",
+    "a-ref": "nx run angular-reference:build:production",
+    "r-carbon": "nx run react-carbon:build:production",
+    "cmc": "nx run react-cmcmarkets:build:production",
+    "govuk": "nx run react-govuk:build:production",
+    "hsbc": "nx run react-hsbc:build:production",
+    "labb": "nx run react-labb:build:production",
+    "nhs": "nx run react-nhs:build:production",
+    "r-ref": "nx run react-reference:build:production",
+    "hca": "nx run vue-hca:build:production",
+    "v-ref": "nx run vue-reference:build:production"
   },
   "dependencies": {
     "@angular-devkit/build-angular": "18.2.6",

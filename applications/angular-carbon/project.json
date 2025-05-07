@@ -10,7 +10,7 @@
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/applications/angular-carbon",
+        "outputPath": "dist/demo-self-service/angular-carbon",
         "index": "applications/angular-carbon/src/index.html",
         "main": "applications/angular-carbon/src/main.ts",
         "polyfills": "applications/angular-carbon/src/polyfills.ts",

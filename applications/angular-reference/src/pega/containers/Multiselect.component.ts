@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { PContainerComponent } from "@labb/angular-adapter";
-import { Multiselect } from "packages/libs/dx-engine/src/lib/containers/multiselect";
+import { Multiselect } from "@labb/dx-engine";
 
 @Component({
     selector: 'dx-multi-select',

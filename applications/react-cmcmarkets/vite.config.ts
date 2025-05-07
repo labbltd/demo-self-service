@@ -29,7 +29,7 @@ export default defineConfig({
   // },
   publicDir: 'src',
   build: {
-    outDir: '../../dist/applications/react-cmcmarkets',
+    outDir: '../../dist/demo-self-service/react-cmcmarkets',
     emptyOutDir: true,
     reportCompressedSize: true,
     commonjsOptions: {

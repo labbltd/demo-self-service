@@ -10,7 +10,7 @@
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/applications/angular-athora",
+        "outputPath": "dist/demo-self-service/angular-athora",
         "index": "applications/angular-athora/src/index.html",
         "main": "applications/angular-athora/src/main.ts",
         "polyfills": "applications/angular-athora/src/polyfills.ts",

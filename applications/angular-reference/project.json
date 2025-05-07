@@ -12,10 +12,10 @@
         "{options.outputPath}"
       ],
       "options": {
-        "watch": true,
-        "outputPath": "dist/applications/angular-reference",
+        "outputPath": "dist/demo-self-service/angular-reference",
         "index": "applications/angular-reference/src/index.html",
         "main": "applications/angular-reference/src/main.ts",
+        "baseHref": "/demo-self-service/angular-reference/",
         "polyfills": "applications/angular-reference/src/polyfills.ts",
         "tsConfig": "applications/angular-reference/tsconfig.app.json",
         "inlineStyleLanguage": "scss",

@@ -53,7 +53,7 @@ export default defineConfig({
   // },
 
   build: {
-    outDir: '../../dist/applications/vue-hca',
+    outDir: '../../dist/demo-self-service/vue-hca',
     emptyOutDir: true,
     reportCompressedSize: true,
     commonjsOptions: {

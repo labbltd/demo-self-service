@@ -14,7 +14,7 @@
       ],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/applications/react-labb",
+        "outputPath": "dist/demo-self-service",
         "skipTypeCheck": true,
         "postcssConfig": "applications/react-labb/postcss.config.js"
       },

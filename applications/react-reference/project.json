@@ -11,9 +11,9 @@
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
-        "outputPath": "dist/applications/react-reference",
+        "outputPath": "dist/demo-self-service/react-reference",
         "index": "applications/react-reference/src/index.html",
-        "baseHref": "/",
+        "baseHref": "/demo-self-service/react-reference/",
         "main": "applications/react-reference/src/main.tsx",
         "polyfills": "applications/react-reference/src/polyfills.ts",
         "tsConfig": "applications/react-reference/tsconfig.app.json",
