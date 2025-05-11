@@ -9,8 +9,13 @@ import {
 } from "react";
 import io from "socket.io-client";
 
-const socket = io("https://labbchathook.onrender.com");
-
+// const socket = io("https://labbchathook.onrender.com");
+// for localhost development
+const socket = {
+  on: (...args: any[]) => {},
+  off: (...args: any[]) => {},
+  emit: (...args: any[]) => {},
+}
 interface ChatChoice {
   text: string;
   payload: string;
@@ -18,23 +23,23 @@ interface ChatChoice {
 
 type ChatMessage =
   | {
-      type: "text";
-      text: string;
-      sender: "user" | "server";
-      author: string;
-    }
+    type: "text";
+    text: string;
+    sender: "user" | "server";
+    author: string;
+  }
   | {
-      type: "buttons";
-      choices: ChatChoice[];
-      sender: "server";
-      author: string;
-    }
+    type: "buttons";
+    choices: ChatChoice[];
+    sender: "server";
+    author: string;
+  }
   | {
-      type: "indicator" | "not-supported";
-      text: string;
-      sender: "server";
-      author: string;
-    };
+    type: "indicator" | "not-supported";
+    text: string;
+    sender: "server";
+    author: string;
+  };
 
 interface Option {
   value: string;

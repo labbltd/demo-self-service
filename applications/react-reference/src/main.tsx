@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(
 async function render() {
   root.render(
     <PegaEmbed
-      token={await await DemoBootstrap.getToken()}
+      token={await DemoBootstrap.getToken()}
       caseTypeID={DemoBootstrap.getCaseTypeId()}
       serverUrl={DemoBootstrap.getServerUrl()}
       localeID={DemoBootstrap.getLocaleId()}

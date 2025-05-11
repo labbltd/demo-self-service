@@ -15,7 +15,7 @@
         "compiler": "babel",
         "outputPath": "dist/demo-self-service/react-cmcmarkets/",
         "index": "applications/react-cmcmarkets/src/index.html",
-        "baseHref": "/",
+        "baseHref": "/demo-self-service/react-cmcmarkets/",
         "main": "applications/react-cmcmarkets/src/main.tsx",
         "polyfills": "applications/react-cmcmarkets/src/polyfills.ts",
         "tsConfig": "applications/react-cmcmarkets/tsconfig.app.json",

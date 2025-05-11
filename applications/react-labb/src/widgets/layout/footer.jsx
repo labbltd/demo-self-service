@@ -35,9 +35,9 @@ Footer.defaultProps = {
   brandName: "Labb ltd",
   brandLink: "https://www.labb.ltd",
   routes: [
-    { name: "About Us", path: "https://www.creative-tim.com/presentation" },
-    { name: "Blog", path: "https://www.creative-tim.com/blog" },
-    { name: "License", path: "https://www.creative-tim.com/license" },
+    { name: "About Us", path: "https://www.labb.ltd/about-us" },
+    { name: "Careers", path: "https://www.labb.ltd/careers" },
+    { name: "Contact", path: "https://www.labb.ltd/contact-us" },
   ],
 };
 

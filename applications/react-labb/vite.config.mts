@@ -39,6 +39,10 @@ export default defineConfig({
         {
           src: "../../node_modules/@pega/constellationjs/dist/constellation-core.*.*",
           dest: "./constellation/prerequisite"
+        },
+        {
+          src: "../../node_modules/@pega/constellationjs/dist/js/*.*",
+          dest: "./constellation/prerequisite/js"
         }
       ]
     })

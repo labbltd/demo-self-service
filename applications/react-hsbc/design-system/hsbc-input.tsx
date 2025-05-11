@@ -9,7 +9,7 @@ interface InputProps {
 
 export default function HsbcInput(props: InputProps) {
     return props.type === 'number' ? <div className="container_he7NW">
-        <div className="column_ycHBk width-1_RBepI">
+        <div className="column_ycHBk width-2_cYEL9">
             <TextInput {...props} />
         </div>
     </div> : TextInput(props);

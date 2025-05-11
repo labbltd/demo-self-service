@@ -1,15 +1,21 @@
-import { pegaConfig } from "@/pega/config";
+import { DemoBootstrap } from "@labb/demo-utilities";
 
-export default function OotbPegaEmbed(props) {
+export default function OotbPegaEmbed() {
     return <pega-embed id='theEmbed'
         action='createCase'
-        caseTypeID={props.caseTypeID}
+        caseTypeID={DemoBootstrap.getCaseTypeId()}
         casePage='assignment'
-        appAlias={pegaConfig.appAlias}
-        pegaServerUrl={pegaConfig.pegaServerUrl}
-        staticContentUrl={pegaConfig.staticContentUrl}
+        tokenUri={DemoBootstrap.getAccessTokenUrl()}
+        pegaServerUrl={DemoBootstrap.getServerUrl()}
+        staticContentUrl={DemoBootstrap.getStaticContentUrl()}
         autoReauth='true'
-        authService={pegaConfig.authService}
-        clientId={pegaConfig.clientId}
+        appAlias={DemoBootstrap.getAppId()}
+        grantType={DemoBootstrap.getAuthFlow() === 'client_credentials' ?
+            'clientCreds' : 'passwordCreds' // Supported values: 'authCode", 'customBearer', 'clientCreds', 'passwordCreds' or 'none'
+        }
+        userIdentifier={DemoBootstrap.getUsername()}
+        password={window.btoa(DemoBootstrap.getPassword())}
+        clientId={DemoBootstrap.getClientId()}
+        clientSecret={DemoBootstrap.getClientSecret()}
         style={{ width: '100%' }}></pega-embed>
 }

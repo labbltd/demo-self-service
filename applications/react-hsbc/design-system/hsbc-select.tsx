@@ -7,7 +7,7 @@ export default function HsbcSelect(props: {
 }) {
     return <div className="select_cyVdT fontSizeInput_iB7ra">
         <div className="selectValue_Td2sD paddingHorizontalInput_tn7be paddingVerticalInput_wCTe9" role="presentation">
-            {props.value ?? 'Please select'}
+            {props.value || 'Please select'}
         </div>
         <select
             className={

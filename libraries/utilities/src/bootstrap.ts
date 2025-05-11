@@ -1,11 +1,14 @@
-import { OAuth2Service } from '@labb/dx-engine';
+import { OAuth2Config, OAuth2Service } from '@labb/dx-engine';
 
 export class DemoBootstrap {
-    private static config = DemoBootstrap.init();
-
-    private static init() {
+    private static getConfig() {
+        let config;
+        try {
+            config = JSON.parse(localStorage.getItem('LabbDemoConfig')!);
+        } catch (e) {
+            config = {};
+        }
         return {
-            appAlias: 'LabbCS',
             pegaServerUrl: 'https://labbconsulting05.pegalabs.io/prweb',
             accessTokenUrl: 'https://labbconsulting05.pegalabs.io/prweb/PRRestService/oauth2/v1/token',
             staticContentUrl: 'https://cs-cdn.constellation.pega.io/stage/8.24.51-236/react/prod',
@@ -13,51 +16,93 @@ export class DemoBootstrap {
             authService: 'pega',
             clientId: '12113341416804660893',
             clientSecret: '8164B7AEA010D996DB47D3881D9DC4EB',
-            localeId: 'en-US',
+            localeId: 'en-GB',
             pkce: false,
-            caseTypeId: 'Labb-LabbCS-Work-Service-BikeTourBooking',
-            ...this.getConfig()
-        };
-    }
-
-    private static getConfig() {
-        try {
-            return JSON.parse(localStorage.getItem('LabbDemoConfig')!);
-        } catch (e) {
-            return {};
+            caseTypeId: 'Labb-LabbCS-Work-Service-InsuranceIssuance',
+            appAlias: 'LabbCS',
+            username: 'demo@PW25',
+            password: 'Labb@PW#32',
+            authFlow: 'password',
+            ...config
         }
     }
 
-    public static setCaseTypeId(caseTypeId: string) {
+    private static updateConfig(prop: string, val: string) {
         localStorage.setItem('LabbDemoConfig', JSON.stringify({
             ...this.getConfig(),
-            caseTypeId: caseTypeId
-        }));
+            [prop]: val
+        }))
+    }
+
+    public static setCaseTypeId(caseTypeId: string) {
+        this.updateConfig('caseTypeId', caseTypeId);
+    }
+
+    public static setAccessTokenUrl(accessTokenUrl: string) {
+        this.updateConfig('accessTokenUrl', accessTokenUrl);
+    }
+
+    public static setServerUrl(serverUrl: string) {
+        this.updateConfig('pegaServerUrl', serverUrl);
     }
 
     public static getCaseTypeId() {
-        return DemoBootstrap.fromUrl('caseTypeId') || this.config.caseTypeId;
+        return this.getConfig().caseTypeId;
+    }
+
+    public static getAccessTokenUrl() {
+        return this.getConfig().accessTokenUrl;
     }
 
     public static getServerUrl() {
-        return DemoBootstrap.fromUrl('serverUrl') || this.config.pegaServerUrl;
+        return this.getConfig().pegaServerUrl;
     }
     public static getAppId() {
-        return DemoBootstrap.fromUrl('appId') || this.config.appAlias;
+        return this.getConfig().appAlias;
     }
     public static getLocaleId() {
-        return DemoBootstrap.fromUrl('localeId') || this.config.localeId;
+        return this.getConfig().localeId;
+    }
+
+    public static getAuthFlow() {
+        return this.getConfig().authFlow;
+    }
+
+    public static getUsername() {
+        return this.getConfig().username;
+    }
+
+    public static getPassword() {
+        return this.getConfig().password;
+    }
+
+    public static getStaticContentUrl() {
+        return this.getConfig().staticContentUrl;
+    }
+
+    public static getAuthService() {
+        return this.getConfig().authService;
+    }
+
+    public static getClientId() {
+        return this.getConfig().clientId;
+    }
+
+    public static getClientSecret() {
+        return this.getConfig().clientSecret;
     }
 
     public static async getToken() {
-        return OAuth2Service.getTokenCredentials({
-            accessTokenUrl: this.config.accessTokenUrl,
-            clientId: this.config.clientId,
-            clientSecret: this.config.clientSecret
-        });
-    }
-
-    private static fromUrl(param: string) {
-        return new URLSearchParams(window.location.search).get(param);
+        const config: OAuth2Config = {
+            accessTokenUrl: this.getAccessTokenUrl(),
+            clientId: this.getClientId(),
+            clientSecret: this.getClientSecret()
+        };
+        if (this.getAuthFlow() === 'password') {
+            config.username = this.getUsername();
+            config.password = this.getPassword();
+            config.grantType = 'password';
+        }
+        return OAuth2Service.getTokenCredentials(config);
     }
 }

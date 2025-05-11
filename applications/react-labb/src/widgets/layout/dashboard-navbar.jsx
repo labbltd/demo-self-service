@@ -35,20 +35,18 @@ export function DashboardNavbar() {
   return (
     <Navbar
       color={fixedNavbar ? "white" : "transparent"}
-      className={`rounded-xl transition-all ${
-        fixedNavbar
+      className={`rounded-xl transition-all ${fixedNavbar
           ? "sticky top-4 z-40 py-3 shadow-md shadow-light-blue-500/5"
           : "px-0 py-1"
-      }`}
+        }`}
       fullWidth
       blurred={fixedNavbar}
     >
       <div className="flex flex-col-reverse justify-between gap-6 md:flex-row md:items-center">
         <div className="capitalize">
           <Breadcrumbs
-            className={`bg-transparent p-0 transition-all ${
-              fixedNavbar ? "mt-1" : ""
-            }`}
+            className={`bg-transparent p-0 transition-all ${fixedNavbar ? "mt-1" : ""
+              }`}
           >
             <Link to={`/${layout}`}>
               <Typography
@@ -87,11 +85,11 @@ export function DashboardNavbar() {
               className="hidden items-center gap-1 px-4 xl:flex normal-case"
             >
               <Avatar
-                  src="./img/team-2.jpeg"
-                  alt="item-1"
-                  size="sm"
-                  variant="circular"
-                />
+                src="./img/team-2.jpeg"
+                alt="item-1"
+                size="sm"
+                variant="circular"
+              />
               Daniel Wedema
             </Button>
             <IconButton
@@ -180,6 +178,13 @@ export function DashboardNavbar() {
               </MenuItem>
             </MenuList>
           </Menu>
+          <IconButton
+            variant="text"
+            color="blue-gray"
+            onClick={() => setOpenConfigurator(dispatch, true)}
+          >
+            <Cog6ToothIcon className="h-5 w-5 text-blue-gray-500" />
+          </IconButton>
         </div>
       </div>
     </Navbar>
