@@ -6,6 +6,7 @@ import { PContainerComponent } from '@labb/angular-adapter';
   template: `
     <div class="bx--label">{{label}}</div>
   `,
+  standalone: false
 })
 export class DetailsComponent extends PContainerComponent {
   public get label(): string {

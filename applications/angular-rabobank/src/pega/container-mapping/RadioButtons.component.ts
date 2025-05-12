@@ -15,6 +15,7 @@ import { PContainerComponent } from '@labb/angular-adapter';
             (valueChanged)="changeAndCommit($event)"></dx-radio-group>
     </dx-input-wrapper>
   `,
+  standalone: false
 })
 export class RadioButtonsComponent extends PContainerComponent {
   public changeAndCommit(value: string) {

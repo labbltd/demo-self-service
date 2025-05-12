@@ -7,52 +7,60 @@ import { FlowContainer } from '@labb/dx-engine';
   selector: 'dx-flow-container',
   template: `
     <form>
-      <ng-container *ngIf="!container.hasAssignment()">
-        <div *ngFor="let assignment of todoAssignments">
-          <div>{{assignment.processName}} > {{assignment.name}}</div>
-          <div>Assigned to {{assignment.assigneeInfo?.name}}</div>
-          <button type="button" (click)="openAssignment(assignment)">Go</button>
-        </div>
-      </ng-container>
-      <ng-container *ngIf="container.hasAssignment()">
+      @if (!container.hasAssignment()) {
+          @for(assignment of todoAssignments; track assignment.ID) {
+            <div>
+              <div>{{assignment.processName}} > {{assignment.name}}</div>
+              <div>Assigned to {{assignment.assigneeInfo?.name}}</div>
+              <button type="button" (click)="openAssignment(assignment)">Go</button>
+            </div>
+          }
+      } @else {
         <h2>
           {{ container.getActiveViewLabel() || container.getAssignmentName() }}
         </h2>
-        <nav *ngIf="container.navigation">
-          <ol>
-            <li *ngFor="let step of container.navigation.steps">{{step.name}} [{{step.visited_status}}]</li>
-          </ol>
-        </nav>
-        <div *ngFor="let message of container.config.pageMessages">
-          {{message.type}}: {{message.message}}
-        </div>
+        @if (container.navigation) {
+          <nav>
+            <ol>
+              @for (step of container.navigation.steps; track step.ID) {
+                <li>{{step.name}} [{{step.visited_status}}]</li>
+              }
+            </ol>
+          </nav>
+        }
+        @for (message of container.config.pageMessages; track message.message) {
+          <div>
+            {{message.type}}: {{message.message}}
+          </div>
+        }
         <fieldset>
-        <ng-template
-          *ngFor="let child of container.children"
-          dxContainer
-          [container]="child"
-        ></ng-template>
+          @for (child of container.children; track child.id) {
+            <ng-container dxContainer [container]="child"/>
+          }
         </fieldset>
-        <ng-container *ngIf="container.actionButtons">
-          <button
-            *ngFor="let button of container.actionButtons.secondary"
-            type="button"
-            [disabled]="loading"
-            (click)="buttonClick(button)">
-            {{ button.name }}
-          </button>
-          <button
-            *ngFor="let button of container.actionButtons.main"
-            type="button"
-            [disabled]="loading"
-            (click)="buttonClick(button)">
-            {{ button.name }}
-          </button>
-        </ng-container>
+        @if (container.actionButtons) {
+          @for (button of container.actionButtons.secondary; track button.actionID) {
+            <button
+              type="button"
+              [disabled]="loading"
+              (click)="buttonClick(button)">
+              {{ button.name }}
+            </button>
+          }
+          @for (button of container.actionButtons.main; track button.actionID) {
+            <button
+              type="button"
+              [disabled]="loading"
+              (click)="buttonClick(button)">
+              {{ button.name }}
+            </button>
+          }
+        }
         <div>{{ errorMessage }}</div>
-      </ng-container>
+      }
     </form>
-  `
+  `,
+  standalone: false
 })
 export class FlowContainerComponent extends PContainerComponent<FlowContainer> implements OnInit, OnDestroy {
   public todoAssignments: Assignment[] = [];

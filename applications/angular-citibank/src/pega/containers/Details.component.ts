@@ -8,6 +8,7 @@ import { PContainerComponent } from '@labb/angular-adapter';
       <ng-container *ngFor="let child of container.children" dxContainer [container]="child"></ng-container>
     </dl>
   `,
+  standalone: false
 })
 export class DetailsComponent extends PContainerComponent {
 }

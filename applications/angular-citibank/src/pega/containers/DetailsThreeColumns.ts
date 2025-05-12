@@ -36,6 +36,7 @@ import { PContainerComponent } from "@labb/angular-adapter";
             gap: calc(1rem);
         }
         `
-    ]
+    ],
+    standalone: false
 })
 export class DetailsThreeColumnComponent extends PContainerComponent { }

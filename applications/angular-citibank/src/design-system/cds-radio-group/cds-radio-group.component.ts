@@ -9,7 +9,8 @@ import { Component, ElementRef, Input, OnInit, Renderer2 } from "@angular/core";
     `,
     host: {
         class: 'cds-radio-group'
-    }
+    },
+    standalone: false
 })
 export class CdsRadioGroupComponent implements OnInit {
     @Input() direction = 'row';

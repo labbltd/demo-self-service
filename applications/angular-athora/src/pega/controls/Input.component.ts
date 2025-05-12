@@ -34,7 +34,8 @@ import { ControlComponent } from '../control.component';
       (closed)="helperTextOpen = false"
       [hint]="container.config.helperText"></dx-hint>
       </ng-container>
-`
+  `,
+  standalone: false
 })
 export class DxInputComponent extends ControlComponent<string> {
   public get type(): string {

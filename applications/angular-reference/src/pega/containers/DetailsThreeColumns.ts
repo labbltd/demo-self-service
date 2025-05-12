@@ -6,25 +6,19 @@ import { PContainerComponent } from "@labb/angular-adapter";
     template: `
         <div class="three-column">
             <div>
-                <ng-template
-                    *ngFor="let child of container.children[0].children"
-                    dxContainer
-                    [container]="child"
-                ></ng-template>
+                @for (child of container.children[0].children; track child.id) {
+                    <ng-container dxContainer [container]="child"/>
+                }
             </div>
             <div>
-                <ng-template
-                    *ngFor="let child of container.children[1].children"
-                    dxContainer
-                    [container]="child"
-                ></ng-template>
+                @for (child of container.children[1].children; track child.id) {
+                    <ng-container dxContainer [container]="child"/>
+                }
             </div>
             <div>
-                <ng-template
-                    *ngFor="let child of container.children[2].children"
-                    dxContainer
-                    [container]="child"
-                ></ng-template>
+                @for (child of container.children[2].children; track child.id) {
+                    <ng-container dxContainer [container]="child"/>
+                }
             </div>
         </div>
     `,
@@ -36,6 +30,7 @@ import { PContainerComponent } from "@labb/angular-adapter";
             gap: calc(1rem);
         }
         `
-    ]
+    ],
+    standalone: false
 })
 export class DetailsThreeColumnComponent extends PContainerComponent { }

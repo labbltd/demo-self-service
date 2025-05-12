@@ -4,7 +4,8 @@ import { Directive, ElementRef, Input, OnInit, Renderer2 } from "@angular/core";
     selector: '[cdsButton]',
     host: {
         class: 'cds-button ml-left btnWidth'
-    }
+    },
+    standalone: false
 })
 export class CdsButtonDirective implements OnInit {
     @Input() cdsButton!: string;

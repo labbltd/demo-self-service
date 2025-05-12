@@ -30,7 +30,8 @@ import { DemoBootstrap } from '@labb/demo-utilities';
     `.sub-heading { margin-bottom: 1.5rem;}`,
     `h4, .bx--label, .bx--btn { margin-top: 1.5rem;}`
   ],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  standalone: false
 })
 export class PegaComponent implements OnInit {
   public token!: TokenInfo;

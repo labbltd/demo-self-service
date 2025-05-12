@@ -23,6 +23,7 @@ import { PContainerComponent } from '@labb/angular-adapter';
     </dx-input>
   </dx-input-wrapper>
    `,
+  standalone: false
 })
 export class TextInputComponent extends PContainerComponent {
   public get type(): string {

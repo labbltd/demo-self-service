@@ -98,7 +98,8 @@ import { Component, Input, ViewEncapsulation } from "@angular/core";
         }
     `
     ],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class CheckboxComponent {
     @Input() label: string = '';

@@ -11,11 +11,12 @@ import { PContainer } from '@labb/dx-engine';
       </ng-container>
     } @else {
       <div class="card" appearance="outlined">
-        <h2>Het formulier wordt geleden!</h2>
+        <h2>Het formulier wordt geladen!</h2>
         <strong>Nog een ogenblik geduld.</strong>
       </div>
     }
   `,
+  standalone: false
 })
 export class ViewContainerComponent extends PContainerComponent {
   public trackByFn(index: number, item: PContainer): string {

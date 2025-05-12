@@ -1,0 +1,64 @@
+.horizontal-margin {
+    margin-right: var(--MdsIcon__trailingMargin, 8px);
+    margin-left: var(--MdsIcon__leadingMargin, 8px)
+}
+
+.icon,
+.icon-container {
+    display: inline-flex
+}
+
+.icon--16 svg {
+    width: var(--MdsIcon-_size-16__width, 16px);
+    height: var(--MdsIcon-_size-16__height, 16px)
+}
+
+.icon--20 svg {
+    width: var(--MdsIcon-_size-20__width, 20px);
+    height: var(--MdsIcon-_size-20__height, 20px)
+}
+
+.icon--24 svg {
+    width: var(--MdsIcon-_size-24__width, 24px);
+    height: var(--MdsIcon-_size-24__height, 24px)
+}
+
+.icon--48 svg,
+.icon--md svg {
+    width: var(--MdsIcon-_size-48__width, 48px);
+    height: var(--MdsIcon-_size-48__height, 48px)
+}
+
+.icon--default svg {
+    fill: var(--MdsIcon-_color-default__color, #565a5d)
+}
+
+.icon--inverse svg {
+    fill: var(--MdsIcon-_color-inverse__color, #fff)
+}
+
+.icon--warning svg {
+    fill: var(--MdsIcon-_color-warning__color, #e35205)
+}
+
+.icon--error svg {
+    fill: var(--MdsIcon-_color-error__color, #b80009)
+}
+
+.icon--success svg {
+    fill: var(--MdsIcon-_color-success__color, #4ea000)
+}
+
+.icon--interactive svg {
+    fill: var(--MdsIcon-_color-interactive__color, #005eb8)
+}
+
+.accessible-text {
+    clip: rect(.0625rem, .0625rem, .0625rem, .0625rem);
+    position: absolute !important;
+    padding: 0 !important;
+    border: 0 !important;
+    height: .0625rem !important;
+    width: .0625rem !important;
+    overflow: hidden
+}

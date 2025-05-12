@@ -14,3 +14,4 @@ DxReactAdapter.registerMapping('AutoComplete', React.lazy(() => import('./contai
 DxReactAdapter.registerMapping('DataReference', React.lazy(() => import('./containers/DataReference')));
 DxReactAdapter.registerMapping('Region', React.lazy(() => import('./containers/Region')));
 DxReactAdapter.registerMapping('DeferLoad', React.lazy(() => import('./containers/DeferLoad')));
+DxReactAdapter.registerMapping('SimpleTableSelect', React.lazy(() => import('./containers/SimpleTableSelect')));

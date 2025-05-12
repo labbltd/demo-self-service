@@ -10,14 +10,15 @@ import { LoggerService } from '@labb/dx-engine';
             [infinityServer]="infinityServer"
             [deployUrl]="deployUrl"
             [token]="token"></dx-pega-entry>
-  `
+  `,
+  standalone: false
 })
 export class PegaPortalComponent {
   public authError!: string;
   public infinityServer!: string;
   public deployUrl = 'http://localhost:4201/';
   public token = {} as TokenInfo;
-  
+
   public constructor() {
     LoggerService.enabled = true;
     // this.infinityServer = 'https://labbconsulting05.pegalabs.io/prweb';

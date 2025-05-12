@@ -29,6 +29,7 @@ import { PContainerComponent } from '@labb/angular-adapter';
       [container]="child"
     ></ng-template>
   `,
+  standalone: false
 })
 export class AppShellComponent extends PContainerComponent {
   public async search(target: any): Promise<void> {

@@ -27,7 +27,8 @@ import { ListItem } from 'carbon-components-angular';
             margin-right: 5px;
             margin-top: 5px;
         }`
-    ]
+    ],
+    standalone: false
 })
 export class ButtonGroupComponent extends PContainerComponent implements OnInit {
     public items: ListItem[] = [];

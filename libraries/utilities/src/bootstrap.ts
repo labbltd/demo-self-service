@@ -1,7 +1,7 @@
 import { OAuth2Config, OAuth2Service } from '@labb/dx-engine';
 
 export class DemoBootstrap {
-    private static getConfig() {
+    public static getConfig() {
         let config;
         try {
             config = JSON.parse(localStorage.getItem('LabbDemoConfig')!);
@@ -23,11 +23,12 @@ export class DemoBootstrap {
             username: 'demo@PW25',
             password: 'Labb@PW#32',
             authFlow: 'password',
+            useChat: true,
             ...config
         }
     }
 
-    private static updateConfig(prop: string, val: string) {
+    public static updateConfig(prop: string, val: string) {
         localStorage.setItem('LabbDemoConfig', JSON.stringify({
             ...this.getConfig(),
             [prop]: val
@@ -90,6 +91,10 @@ export class DemoBootstrap {
 
     public static getClientSecret() {
         return this.getConfig().clientSecret;
+    }
+
+    public static useChat() {
+        return this.getConfig().useChat;
     }
 
     public static async getToken() {

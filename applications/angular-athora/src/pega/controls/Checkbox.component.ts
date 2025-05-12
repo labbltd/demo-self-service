@@ -11,7 +11,8 @@ import { CheckboxProps } from '@labb/constellation-core-types';
     <mat-error *ngIf="container.config.validatemessage">{{container.config.validatemessage}}</mat-error>
     <br>
     <mat-hint *ngIf="container.config.helperText">{{container.config.helperText}}</mat-hint>
-`
+  `,
+  standalone: false
 })
 export class DxCheckboxComponent extends ControlComponent<boolean, CheckboxProps> {
   public async updateValue(value: boolean): Promise<void> {

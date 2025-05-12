@@ -2,7 +2,8 @@ import { Component, Input } from "@angular/core";
 
 @Component({
     selector: 'citi-simple-layout',
-    templateUrl: './citi-simple-layout.component.html'
+    templateUrl: './citi-simple-layout.component.html',
+    standalone: false
 })
 export class CitiSimpleLayout {
     @Input() steps!: { name: string, active?: boolean }[];

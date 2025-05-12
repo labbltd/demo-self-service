@@ -13,7 +13,9 @@ import { PContainerComponent } from '@labb/angular-adapter';
     ></textarea>
     {{ container.config.helperText }}
     {{ container.config.validatemessage }}
-  </label> `,
+  </label>
+  `,
+  standalone: false
 })
 export class TextAreaComponent extends PContainerComponent implements OnInit {
   public control = new FormControl('');

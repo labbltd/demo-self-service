@@ -3,7 +3,8 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 @Component({
     selector: 'dx-radio-group',
     templateUrl: 'radio-group.component.html',
-    styleUrl: 'radio-group.component.css'
+    styleUrl: 'radio-group.component.css',
+    standalone: false
 })
 export class RadioGroupComponent {
     @Input() value!: string;

@@ -4,7 +4,8 @@ import { Component } from "@angular/core";
     selector: 'dx-root',
     template: `
         <router-outlet></router-outlet>
-    `
+    `,
+    standalone: false
 })
 export class PegaComponent {
 }

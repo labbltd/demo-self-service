@@ -41,7 +41,8 @@ import { Attachment } from '@labb/dx-engine';
   `,
   host: {
     'class': 'dx-control'
-  }
+  },
+  standalone: false
 })
 export class DxAttachmentComponent extends PContainerComponent<Attachment> {
   public progress!: ProgressEvent<EventTarget>;

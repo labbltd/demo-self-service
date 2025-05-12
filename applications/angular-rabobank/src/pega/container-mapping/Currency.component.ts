@@ -13,6 +13,7 @@ import { PContainerComponent } from '@labb/angular-adapter';
       [hasErrors]="!!container.config.validatemessage"></dx-input-money>
   </dx-input-wrapper>
    `,
+  standalone: false
 })
 export class CurrencyComponent extends PContainerComponent {
 }

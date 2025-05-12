@@ -19,9 +19,7 @@ import { CdsDropdownService } from "./cds-dropdown.service";
     host: {
         class: 'cds-dropdown'
     },
-    providers: [
-        CdsDropdownService
-    ]
+    standalone: false
 })
 export class CdsDropdownComponent implements OnInit {
     @ViewChild(CdkPortal)

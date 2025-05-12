@@ -17,6 +17,7 @@ import { PContainer } from '@labb/dx-engine';
         </cds-radio-group>
     </cds-form-field>
   `,
+  standalone: false
 })
 export class RadioButtonsComponent extends PContainerComponent<PContainer<PicklistProps>> {
     public change(value: string) {

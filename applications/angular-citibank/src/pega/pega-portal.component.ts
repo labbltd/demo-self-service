@@ -10,7 +10,8 @@ import { LoggerService } from '@labb/dx-engine';
             [infinityServer]="infinityServer"
             [deployUrl]="deployUrl"
             [token]="token"></dx-pega-entry>
-  `
+  `,
+  standalone: false
 })
 export class PegaPortalComponent {
   public authError!: string;

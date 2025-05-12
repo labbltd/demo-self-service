@@ -8,7 +8,8 @@ import { View } from "@labb/dx-engine";
       <ng-container *ngFor="let child of container.children">
         <ng-template dxContainer [container]="child"></ng-template>
       </ng-container>
-    `
+    `,
+    standalone: false
 })
 export class ViewComponent extends PContainerComponent<View> {
 }

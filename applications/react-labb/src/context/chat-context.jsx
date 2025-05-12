@@ -1,14 +1,14 @@
+import { DemoBootstrap } from "@labb/demo-utilities";
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 
 const ChatContext = createContext();
-const socket = io("https://labbchathook.onrender.com"); // Ensure socket persists
-// for localhost development
-// const socket = {
-//   on: () => {},
-//   off: () => {},
-//   emit: () => {},
-// }
+const socket = DemoBootstrap.useChat() ? io("https://labbchathook.onrender.com") : {
+  on: () => { },
+  off: () => { },
+  emit: () => { },
+};
+
 export const ChatProvider = ({ children }) => {
   const options = [
     { value: "ABC1234581", label: "John Brown" },

@@ -5,18 +5,20 @@ import { DemoBootstrap } from '@labb/demo-utilities';
 @Component({
   selector: 'dx-case',
   template: `
-    <dx-pega-entry *ngIf="token"
-              [caseTypeID]="caseTypeId"
-              [infinityServer]="infinityServer"
-              [localeId]="localeId"
-              [appId]="appId"
-              [token]="token"
-              (loadingDone)="loadingDone = true"></dx-pega-entry>
-
-      <h1 *ngIf="!token && !authError">Authentication in progress</h1>
-      <h1 *ngIf="token && !loadingDone">Process is being loaded</h1>
-      <h1 *ngIf="authError">{{authError}}</h1>
-  `
+    @if (token) {
+      <dx-pega-entry
+        [caseTypeID]="caseTypeId"
+        [infinityServer]="infinityServer"
+        [localeId]="localeId"
+        [appId]="appId"
+        [token]="token"
+        (loadingDone)="loadingDone = true"></dx-pega-entry>
+    }
+    @if (!token && !authError) { <h1>Authentication in progress</h1> }
+    @if (token && !loadingDone) { <h1>Process is being loaded</h1> }
+    @if (authError) { <h1>{{authError}}</h1> }
+  `,
+  standalone: false
 })
 export class PegaCaseComponent implements OnInit {
   public token!: TokenInfo;

@@ -38,7 +38,8 @@ import { FlowContainer } from '@labb/dx-engine';
       </div>
       <div>{{ errorMessage }}</div>
     </citi-simple-layout>
-  `
+  `,
+  standalone: false
 })
 export class FlowContainerComponent extends PContainerComponent<FlowContainer> {
   public errorMessage?: string;

@@ -4,7 +4,7 @@ export const scenariosData = [
         industry: 'Banking',
         description: 'Sarah Connor is a 39yrs old mother of 2, who lives in London and is prospective buyer. Banking Journey — “Mortgage Pre-Approval + Application Initiation”',
         image: 'img/mortgage.jpg',
-        caseTypeId: 'Labb-LabbCS-Work-Service-MortgageApplicationInitiation',
+        caseTypeId: 'Labb-LabbCS-Work-Service-MortgagePreApproval',
         clients: [
             'angular-rabobank',
             'angular-citibank',

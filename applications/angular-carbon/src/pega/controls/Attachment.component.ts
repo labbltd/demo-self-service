@@ -14,6 +14,7 @@ import { FileItem } from 'carbon-components-angular';
       (filesChange)="uploadFile()">
 		</ibm-file-uploader>
   `,
+  standalone: false
 })
 export class AttachmentComponent extends PContainerComponent<Attachment> {
   public progress!: ProgressEvent<EventTarget>;

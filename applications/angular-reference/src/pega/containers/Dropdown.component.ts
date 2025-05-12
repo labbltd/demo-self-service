@@ -15,16 +15,16 @@ import { PContainerComponent } from '@labb/angular-adapter';
       <option disabled selected value="{undefined}">
         -- select an option --
       </option>
-      <option
-        *ngFor="let option of container.config.datasource"
-        [value]="option.key"
-      >
-        {{ option.value }}
-      </option>
+      @for (option of container.config.datasource; track option.key) {
+        <option [value]="option.key">
+          {{ option.value }}
+        </option>
+      }
     </select>
     {{ container.config.helperText }}
     {{ container.config.validatemessage }}
   </label> `,
+  standalone: false
 })
 export class DropdownComponent extends PContainerComponent implements OnInit {
   public control = new FormControl('');

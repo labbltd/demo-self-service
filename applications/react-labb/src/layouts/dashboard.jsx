@@ -10,7 +10,7 @@ import { Route, Routes } from "react-router-dom";
 
 export function Dashboard() {
   const [controller, dispatch] = useMaterialTailwindController();
-  const { sidenavType } = controller;
+  const { sidenavType, openConfigurator } = controller;
 
   return (
     <div className="min-h-screen bg-blue-gray-50/50">
@@ -22,7 +22,7 @@ export function Dashboard() {
       />
       <div className="p-4 xl:ml-80">
         <DashboardNavbar />
-        <Configurator />
+        {openConfigurator && <Configurator />}
         <Routes>
           {routes.map(
             ({ layout, pages }) =>

@@ -15,7 +15,8 @@ import { ListItem } from 'carbon-components-angular';
     >
       <ibm-dropdown-list [items]="items"></ibm-dropdown-list>
   </ibm-dropdown>`,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class DropdownComponent extends PContainerComponent implements OnInit {
   public items: ListItem[] = [];

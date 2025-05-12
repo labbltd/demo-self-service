@@ -14,6 +14,7 @@ import { PContainerComponent } from '@labb/angular-adapter';
             (valueChanged)="changeAndCommit($event)"></dx-select>
     </dx-input-wrapper>
   `,
+  standalone: false
 })
 export class DropdownComponent extends PContainerComponent {
   public changeAndCommit(value: string) {

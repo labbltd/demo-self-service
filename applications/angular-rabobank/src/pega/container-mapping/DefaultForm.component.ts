@@ -49,7 +49,8 @@ import { PContainerComponent } from '@labb/angular-adapter';
       }
     `,
   ],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  standalone: false
 })
 export class DefaultFormComponent
   extends PContainerComponent

@@ -15,28 +15,29 @@ import { PContainerComponent } from '@labb/angular-adapter';
   `,
   styles: [
     `
-      .one-column {
+      .one-column .body {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         gap: calc(1rem);
       }
     `,
     `
-      .two-column {
+      .two-column .body {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: calc(1rem);
       }
     `,
     `
-      .three-column {
+      .three-column .body {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: calc(1rem);
       }
     `,
   ],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  standalone: false
 })
 export class DefaultFormComponent
   extends PContainerComponent
@@ -59,7 +60,7 @@ export class DefaultFormComponent
         this.divClass = 'one-column';
         break;
     }
-    if (this.container.children.length <= 2) {
+    if (this.container.children[0].children.length <= 2) {
       this.divClass = 'one-column';
     }
   }

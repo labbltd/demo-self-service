@@ -4,13 +4,11 @@ import { PContainerComponent } from '@labb/angular-adapter';
 @Component({
   selector: 'dx-default-form-template',
   template: `
-    <div *ngIf="container.config.instructions && container.config.instructions !== 'none'" [innerHtml]="container.config.instructions"></div>
+    @if (container.config.instructions && container.config.instructions !== 'none') { <div [innerHtml]="container.config.instructions"></div> }
     <div [ngClass]="divClass">
-      <ng-template
-        *ngFor="let child of container.children"
-        dxContainer
-        [container]="child"
-      ></ng-template>
+      @for (child of container.children; track child.id) {
+        <ng-container dxContainer [container]="child"/>
+      }
     </div>
   `,
   styles: [
@@ -36,7 +34,8 @@ import { PContainerComponent } from '@labb/angular-adapter';
       }
     `,
   ],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  standalone: false
 })
 export class DefaultFormComponent
   extends PContainerComponent

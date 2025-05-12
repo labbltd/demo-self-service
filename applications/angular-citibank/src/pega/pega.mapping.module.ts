@@ -29,11 +29,12 @@ import { TextAreaComponent } from './containers/TextArea.component';
 import { TextInputComponent } from './containers/TextInput.component';
 import { ViewComponent } from './containers/View.component';
 import { CdsDesignSystemModule } from '../design-system/design-system.module';
+import { SignatureComponent } from './containers/Signature.component';
 
 @NgModule({
   imports: [
-    CommonModule, 
-    ReactiveFormsModule, 
+    CommonModule,
+    ReactiveFormsModule,
     PContainerModule,
     CdsDesignSystemModule
   ],
@@ -60,7 +61,8 @@ import { CdsDesignSystemModule } from '../design-system/design-system.module';
     CompareTableLayoutContainerComponent,
     ScalarListComponent,
     ActionableButtonComponent,
-    MultiselectComponent
+    MultiselectComponent,
+    SignatureComponent
   ],
   providers: [
     {
@@ -108,7 +110,8 @@ import { CdsDesignSystemModule } from '../design-system/design-system.module';
         // custom controls
         Labb_dx_ButtonGroup: RadioButtonsComponent,
         Labb_dx_Address: AddressLookupComponent,
-        Pega_Extensions_ActionableButton: ActionableButtonComponent
+        Pega_Extensions_ActionableButton: ActionableButtonComponent,
+        Pega_Extensions_SignatureCapture: SignatureComponent
       },
       multi: true,
     },

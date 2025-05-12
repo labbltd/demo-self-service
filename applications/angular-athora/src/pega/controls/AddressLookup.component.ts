@@ -40,7 +40,8 @@ import { PContainer } from "@labb/dx-engine";
     .found_address_unknown {
       background-color: #fbf8e3;
     }`
-  ]
+  ],
+  standalone: false
 })
 export class AddressLookupComponent extends PContainerComponent implements OnInit {
   public addressFound!: boolean;

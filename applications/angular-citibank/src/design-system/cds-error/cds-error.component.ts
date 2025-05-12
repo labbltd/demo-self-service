@@ -12,6 +12,7 @@ import { Component } from "@angular/core";
         `:host {
             display: block;
         }`
-    ]
+    ],
+    standalone: false
 })
 export class CdsErrorComponent { }

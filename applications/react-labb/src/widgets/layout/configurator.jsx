@@ -5,20 +5,16 @@ import {
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { DemoBootstrap } from "@labb/demo-utilities";
 import {
+  Checkbox,
   IconButton,
-  Input,
-  Typography
+  Input
 } from "@material-tailwind/react";
-import FormControl from "../../pega/components/FormControl";
 import { useState } from "react";
+import FormControl from "../../pega/components/FormControl";
 
 export function Configurator() {
   const [controller, dispatch] = useMaterialTailwindController();
-  const [serverConfig, setServerConfig] = useState({
-    serverUrl: DemoBootstrap.getServerUrl(),
-    accessTokenUrl: DemoBootstrap.getAccessTokenUrl(),
-    caseTypeId: DemoBootstrap.getCaseTypeId()
-  })
+  const [serverConfig, setServerConfig] = useState(DemoBootstrap.getConfig())
   const { openConfigurator } = controller;
 
   if (!openConfigurator) {
@@ -27,15 +23,9 @@ export function Configurator() {
 
   return (
     <aside
-      className={`fixed top-0 right-0 z-50 h-screen w-96 bg-white px-2.5 shadow-lg transition-transform duration-300 ${openConfigurator ? "translate-x-0" : "translate-x-96"
-        }`}
+      className={`overflow-auto fixed top-0 right-0 z-50 h-screen w-[42rem] bg-white px-2.5 shadow-lg transition-transform duration-300 ${openConfigurator ? "translate-x-0" : "translate-x-96"}`}
     >
       <div className="flex items-start justify-between px-6 pt-8 pb-6">
-        <div>
-          <Typography variant="h5" color="light-blue">
-            Dashboard Configurator
-          </Typography>
-        </div>
         <IconButton
           variant="text"
           color="light-blue"
@@ -44,38 +34,25 @@ export function Configurator() {
           <XMarkIcon strokeWidth={2.5} className="h-5 w-5" />
         </IconButton>
       </div>
-      <div className="py-4 px-6">
-        <div className="mb-12">
-          <Typography variant="h6" color="light-blue">
-            Infinity configuration
-          </Typography>
-          <div className="mt-3 flex flex-col gap-2">
-            <FormControl>
-              <Input
-                value={serverConfig.serverUrl}
-                onChange={v => setServerConfig({ ...serverConfig, serverUrl: v.target.value })}
-                onBlur={v => DemoBootstrap.setServerUrl(v.target.value)}
-                label="Server URL"
-                size="lg"
-              />
-            </FormControl><FormControl>
-              <Input
-                value={serverConfig.accessTokenUrl}
-                onChange={v => setServerConfig({ ...serverConfig, accessTokenUrl: v.target.value })}
-                onBlur={v => DemoBootstrap.setAccessTokenUrl(v.target.value)}
-                label="Access Token URL"
-                size="lg"
-              />
-            </FormControl><FormControl>
-              <Input
-                value={serverConfig.caseTypeId}
-                onChange={v => setServerConfig({ ...serverConfig, caseTypeId: v.target.value })}
-                onBlur={v => DemoBootstrap.setCaseTypeId(v.target.value)}
-                label="Case Type ID"
-                size="lg"
-              />
-            </FormControl>
-          </div>
+      <div className="px-6">
+        <div className="mt-3 flex flex-col gap-2">
+          {Object.entries(serverConfig).map(([key, value]) => <FormControl>
+            {typeof value === 'boolean' ? <Checkbox
+              checked={value}
+              onChange={v => {
+                setServerConfig({ ...serverConfig, [key]: v.target.checked })
+                DemoBootstrap.updateConfig(key, v.target.checked)
+              }}
+              label={key[0].toUpperCase() + key.replace(/([A-Z])/g, ' $1').slice(1)}
+              size="sm"
+            /> : <Input
+              value={value}
+              onChange={v => setServerConfig({ ...serverConfig, [key]: v.target.value })}
+              onBlur={v => DemoBootstrap.updateConfig(key, v.target.value)}
+              label={key[0].toUpperCase() + key.replace(/([A-Z])/g, ' $1').slice(1)}
+              size="sm"
+            />}
+          </FormControl>)}
         </div>
       </div>
     </aside>

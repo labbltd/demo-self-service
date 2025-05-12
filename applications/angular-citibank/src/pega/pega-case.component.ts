@@ -19,7 +19,8 @@ import { DemoBootstrap } from '@labb/demo-utilities';
       <h1 *ngIf="token && !loadingDone">Process is being loaded</h1>
       <h1 *ngIf="authError">{{authError}}</h1>
     </div>
-  `
+  `,
+  standalone: false
 })
 export class PegaCaseComponent implements OnInit {
   public token!: TokenInfo;

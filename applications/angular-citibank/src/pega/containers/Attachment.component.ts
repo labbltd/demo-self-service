@@ -49,6 +49,7 @@ import { Attachment, FileStatus } from '@labb/dx-engine';
     </table>
     <img *ngIf="downloadedImage" width="100%" [src]="'data:image/png;base64,' + downloadedImage" />
   `,
+  standalone: false
 })
 export class AttachmentComponent extends PContainerComponent<Attachment> {
   public downloadedImage?: string;

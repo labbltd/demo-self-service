@@ -4,11 +4,10 @@ import { PContainerComponent } from '@labb/angular-adapter';
 @Component({
   selector: 'dx-case-view',
   template: `
-    <ng-template
-      *ngFor="let child of container.children"
-      dxContainer
-      [container]="child"
-    ></ng-template>
+    @for (child of container.children; track child.id) {
+      <ng-container dxContainer [container]="child"/>
+    }
   `,
+  standalone: false
 })
-export class CaseViewComponent extends PContainerComponent {}
+export class CaseViewComponent extends PContainerComponent { }

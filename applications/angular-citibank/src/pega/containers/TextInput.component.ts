@@ -9,9 +9,15 @@ import { PContainer } from '@labb/dx-engine';
     <cds-form-field [label]="container.config.label" [for]="container.id"
         [tooltip]="{body: container.config.helperText}"
         [errorMessage]="container.config.validatemessage">
-        <input cdsInput [type]="type" [name]="container.id" (blur)="update($event.target)">
+        <input cdsInput
+          [value]="container.config.value"
+          [disabled]="disabled"
+          [type]="type"
+          [name]="container.id"
+          (blur)="update($event.target)">
     </cds-form-field>
-  `
+  `,
+  standalone: false
 })
 export class TextInputComponent extends PContainerComponent<PContainer<DefaultProps>> implements OnInit {
 
@@ -20,6 +26,10 @@ export class TextInputComponent extends PContainerComponent<PContainer<DefaultPr
       this.container.updateFieldValue(target.value);
       this.container.triggerFieldChange(target.value);
     }
+  }
+
+  public get disabled(): boolean {
+    return this.container.config.readOnly;
   }
 
   public get type(): string {

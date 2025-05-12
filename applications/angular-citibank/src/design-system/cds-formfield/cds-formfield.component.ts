@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ContentChildren, ElementRef, Input, QueryList, Renderer2 } from "@angular/core";
+import { AfterViewInit, Component, ContentChildren, ElementRef, Input, OnChanges, QueryList, Renderer2, SimpleChanges } from "@angular/core";
 import { CdsInputDirective } from "../cds-input/cds-input.directive";
 
 @Component({
@@ -49,9 +49,10 @@ import { CdsInputDirective } from "../cds-input/cds-input.directive";
     `,
     host: {
         'class': 'cds-form-field'
-    }
+    },
+    standalone: false
 })
-export class CdsFormfieldComponent implements AfterViewInit {
+export class CdsFormfieldComponent implements AfterViewInit, OnChanges {
     @ContentChildren(CdsInputDirective, { descendants: true, read: ElementRef })
     inputField!: QueryList<ElementRef<HTMLInputElement>>;
 
@@ -85,9 +86,21 @@ export class CdsFormfieldComponent implements AfterViewInit {
     ngAfterViewInit(): void {
         this.inputField.forEach(field => {
             this.renderer.addClass(field.nativeElement, this.typeClass + '-input');
+            this.toggleError();
+        });
+    }
+
+    ngOnChanges(): void {
+        this.toggleError();
+    }
+
+    toggleError(): void {
+        this.inputField?.forEach(field => {
             if (this.errorMessage) {
                 this.renderer.addClass(field.nativeElement, this.typeClass + (this.typeClass === 'cds' ? '-input' : '') + '-error')
+            } else {
+                this.renderer.removeClass(field.nativeElement, this.typeClass + (this.typeClass === 'cds' ? '-input' : '') + '-error')
             }
-        })
+        });
     }
 }

@@ -13,7 +13,9 @@ import { PContainerComponent } from '@labb/angular-adapter';
     [invalidText]="container.config.validatemessage"
     [value]="container.config.value"
     (valueChange)="selected($event)">
-  </ibm-date-picker>`,
+  </ibm-date-picker>
+  `,
+  standalone: false
 })
 export class DateComponent extends PContainerComponent {
   public selected(val: Date[]) {

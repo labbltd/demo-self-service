@@ -10,7 +10,8 @@ import { PContainer, PContainerFactory } from "@labb/dx-engine";
             dxContainer
             [container]="child"
         ></ng-template>
-    `
+    `,
+    standalone: false
 })
 export class ScalarListComponent extends PContainerComponent implements OnInit {
     items!: PContainer[];

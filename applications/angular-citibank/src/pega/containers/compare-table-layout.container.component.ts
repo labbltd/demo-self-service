@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Subject } from 'rxjs';
 
 import { PContainerComponent } from '@labb/angular-adapter';
 import { PContainer, PContainerFactory } from '@labb/dx-engine';
@@ -34,7 +33,8 @@ export interface CompareTableLayoutComponentScalarList {
                 }
             </div>
         </ng-container>
-    `
+    `,
+    standalone: false
 })
 export class CompareTableLayoutContainerComponent extends PContainerComponent implements OnInit {
     public control = new FormControl();

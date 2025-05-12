@@ -10,25 +10,25 @@ import { PContainerComponent } from '@labb/angular-adapter';
     </label>
     Create new case
     <ul>
-      <li
-        *ngFor="let caseType of container.config.caseTypes"
-        (click)="createCase(caseType)"
-      >
-        {{ caseType.pxPageViewIcon }} {{ caseType.pyLabel }}
-      </li>
+      @for (caseType of container.config.caseTypes; track caseType.pyLabel) {
+        <li (click)="createCase(caseType)">
+          {{ caseType.pxPageViewIcon }} {{ caseType.pyLabel }}
+        </li>
+      }
     </ul>
     Navigate to page
     <ul>
-      <li *ngFor="let page of container.config.pages" (click)="openPage(page)">
-        {{ page.pxPageViewIcon }} {{ page.pyLabel }}
-      </li>
+      @for (page of container.config.pages; track page.pyLabel) {
+        <li (click)="openPage(page)">
+          {{ page.pxPageViewIcon }} {{ page.pyLabel }}
+        </li>
+      }
     </ul>
-    <ng-template
-      *ngFor="let child of container.children"
-      dxContainer
-      [container]="child"
-    ></ng-template>
+    @for (child of container.children; track child.id) {
+      <ng-container dxContainer [container]="child"/>
+    }
   `,
+  standalone: false
 })
 export class AppShellComponent extends PContainerComponent {
   public async search(target: any): Promise<void> {

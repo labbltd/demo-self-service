@@ -22,7 +22,8 @@ import { PicklistProps } from '@labb/constellation-core-types';
     <dx-hint *ngIf="container.config.helperText && helperTextOpen"
       (closed)="helperTextOpen = false"
       [hint]="container.config.helperText"></dx-hint>
-  `
+  `,
+  standalone: false
 })
 export class DxDropdownComponent extends ControlComponent<string, PicklistProps> {
   public updateValue(val: string): void {

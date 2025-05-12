@@ -1,0 +1,166 @@
+/*
+ * For your app's CSS, import this file after your import of your specific brand typography CSS custom properties. For example:
+ * 
+ * @import '/@mds/resources-web/dist/typography/brands/MdsFoundation-cpo.css';
+ * @import '/@mds/resources-web/dist/typography/mds-typography.css';
+ *
+ * You can use the media query, `(prefers-color-scheme: dark)`, to get the CSS stylesheet for dark mode:
+ *
+ * @import '/@mds/resources-web/dist/typography/brands/MdsFoundation-cpo.css';
+ * @import '/@mds/resources-web/dist/typography/brands/MdsFoundation-cpo.dark.css' and (prefers-color-scheme: dark);
+ * @import '/@mds/resources-web/dist/typography/mds-typography.css';
+ */
+.mds-headline-large {
+  font-family: var(--semanticTypography__headlineLarge__family);
+  font-size: var(--semanticTypography__headlineLarge__size);
+  font-weight: var(--semanticTypography__headlineLarge__weight);
+  line-height: var(--semanticTypography__headlineLarge__size_line_height);
+}
+
+.mds-headline-extra-large {
+  font-family: var(--semanticTypography__headlineExtraLarge__family);
+  font-size: var(--semanticTypography__headlineExtraLarge__size);
+  font-weight: var(--semanticTypography__headlineExtraLarge__weight);
+  line-height: var(--semanticTypography__headlineExtraLarge__size_line_height);
+}
+
+.mds-headline-large-lighter {
+  font-family: var(--semanticTypography__headlineLargeLighter__family);
+  font-size: var(--semanticTypography__headlineLargeLighter__size);
+  font-weight: var(--semanticTypography__headlineLargeLighter__weight);
+  line-height: var(--semanticTypography__headlineLargeLighter__size_line_height);
+}
+
+.mds-headline-small {
+  font-family: var(--semanticTypography__headlineSmall__family);
+  font-size: var(--semanticTypography__headlineSmall__size);
+  font-weight: var(--semanticTypography__headlineSmall__weight);
+  line-height: var(--semanticTypography__headlineSmall__size_line_height);
+}
+
+.mds-title-xlarge {
+  font-family: var(--semanticTypography__titleXlarge__family);
+  font-size: var(--semanticTypography__titleXlarge__size);
+  font-weight: var(--semanticTypography__titleXlarge__weight);
+  line-height: var(--semanticTypography__titleXlarge__size_line_height);
+}
+
+.mds-title-xlarge-heavier {
+  font-family: var(--semanticTypography__titleXLargeHeavier__family);
+  font-size: var(--semanticTypography__titleXLargeHeavier__size);
+  font-weight: var(--semanticTypography__titleXLargeHeavier__weight);
+  line-height: var(--semanticTypography__titleXLargeHeavier__size_line_height);
+}
+
+.mds-title-large {
+  font-family: var(--semanticTypography__titleLarge__family);
+  font-size: var(--semanticTypography__titleLarge__size);
+  font-weight: var(--semanticTypography__titleLarge__weight);
+  line-height: var(--semanticTypography__titleLarge__size_line_height);
+}
+
+.mds-title-large-heavier {
+  font-family: var(--semanticTypography__titleLargeHeavier__family);
+  font-size: var(--semanticTypography__titleLargeHeavier__size);
+  font-weight: var(--semanticTypography__titleLargeHeavier__weight);
+  line-height: var(--semanticTypography__titleLargeHeavier__size_line_height);
+}
+
+.mds-title-medium {
+  font-family: var(--semanticTypography__titleMedium__family);
+  font-size: var(--semanticTypography__titleMedium__size);
+  font-weight: var(--semanticTypography__titleMedium__weight);
+  line-height: var(--semanticTypography__titleMedium__size_line_height);
+}
+
+.mds-title-medium-heavier {
+  font-family: var(--semanticTypography__titleMediumHeavier__family);
+  font-size: var(--semanticTypography__titleMediumHeavier__size);
+  font-weight: var(--semanticTypography__titleMediumHeavier__weight);
+  line-height: var(--semanticTypography__titleMediumHeavier__size_line_height);
+}
+
+.mds-subtitle-medium-heavier {
+  font-family: var(--semanticTypography__subtitleMediumHeavier__family);
+  font-size: var(--semanticTypography__subtitleMediumHeavier__size);
+  font-weight: var(--semanticTypography__subtitleMediumHeavier__weight);
+  line-height: var(--semanticTypography__subtitleMediumHeavier__size_line_height);
+}
+
+.mds-subtitle-medium {
+  font-family: var(--semanticTypography__subtitleMedium__family);
+  font-size: var(--semanticTypography__subtitleMedium__size);
+  font-weight: var(--semanticTypography__subtitleMedium__weight);
+  line-height: var(--semanticTypography__subtitleMedium__size_line_height);
+}
+
+.mds-body-large {
+  font-family: var(--semanticTypography__bodyLarge__family);
+  font-size: var(--semanticTypography__bodyLarge__size);
+  font-weight: var(--semanticTypography__bodyLarge__weight);
+  line-height: var(--semanticTypography__bodyLarge__size_line_height);
+}
+
+.mds-body-large-heavier {
+  font-family: var(--semanticTypography__bodyLargeHeavier__family);
+  font-size: var(--semanticTypography__bodyLargeHeavier__size);
+  font-weight: var(--semanticTypography__bodyLargeHeavier__weight);
+  line-height: var(--semanticTypography__bodyLargeHeavier__size_line_height);
+}
+
+.mds-body-medium-heavier {
+  font-family: var(--semanticTypography__bodyMediumHeavier__family);
+  font-size: var(--semanticTypography__bodyMediumHeavier__size);
+  font-weight: var(--semanticTypography__bodyMediumHeavier__weight);
+  line-height: var(--semanticTypography__bodyMediumHeavier__size_line_height);
+}
+
+.mds-body-medium {
+  font-family: var(--semanticTypography__bodyMedium__family);
+  font-size: var(--semanticTypography__bodyMedium__size);
+  font-weight: var(--semanticTypography__bodyMedium__weight);
+  line-height: var(--semanticTypography__bodyMedium__size_line_height);
+}
+
+.mds-body-small {
+  font-family: var(--semanticTypography__bodySmall__family);
+  font-size: var(--semanticTypography__bodySmall__size);
+  font-weight: var(--semanticTypography__bodySmall__weight);
+  line-height: var(--semanticTypography__bodySmall__size_line_height);
+}
+
+.mds-body-small-heavier {
+  font-family: var(--semanticTypography__bodySmallHeavier__family);
+  font-size: var(--semanticTypography__bodySmallHeavier__size);
+  font-weight: var(--semanticTypography__bodySmallHeavier__weight);
+  line-height: var(--semanticTypography__bodySmallHeavier__size_line_height);
+}
+
+@media (min-width: 576px) {
+  .mds-headline-large {
+    font-size: var(--semanticTypography__headlineLarge__tablet_size);
+    line-height: var(--semanticTypography__headlineLarge__tablet_size_line_height);
+  }
+  .mds-headline-large-lighter {
+    font-size: var(--semanticTypography__headlineLargeLighter__tablet_size);
+    line-height: var(--semanticTypography__headlineLargeLighter__tablet_size_line_height);
+  }
+  .mds-headline-small {
+    font-size: var(--semanticTypography__headlineSmall__tablet_size);
+    line-height: var(--semanticTypography__headlineSmall__tablet_size_line_height);
+  }
+}
+@media (min-width: 992px) {
+  .mds-headline-large {
+    font-size: var(--semanticTypography__headlineLarge__desktop_size);
+    line-height: var(--semanticTypography__headlineLarge__desktop_size_line_height);
+  }
+  .mds-headline-large-lighter {
+    font-size: var(--semanticTypography__headlineLargeLighter__desktop_size);
+    line-height: var(--semanticTypography__headlineLargeLighter__desktop_size_line_height);
+  }
+  .mds-headline-small {
+    font-size: var(--semanticTypography__headlineSmall__desktop_size);
+    line-height: var(--semanticTypography__headlineSmall__desktop_size_line_height);
+  }
+}

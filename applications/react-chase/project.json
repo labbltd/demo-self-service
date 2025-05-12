@@ -1,0 +1,133 @@
+{
+  "name": "react-chase",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "applications/react-chase/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/demo-self-service/react-chase",
+        "index": "applications/react-chase/src/index.html",
+        "baseHref": "/demo-self-service/react-chase/",
+        "main": "applications/react-chase/src/main.tsx",
+        "polyfills": "applications/react-chase/src/polyfills.ts",
+        "tsConfig": "applications/react-chase/tsconfig.app.json",
+        "assets": [
+          "applications/react-chase/src/favicon.ico",
+          "applications/react-chase/src/react.svg",
+          {
+            "glob": "auth.html",
+            "input": "./node_modules/@labb/dx-engine/",
+            "output": "./"
+          },
+          {
+            "glob": "bootstrap-shell.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./constellation"
+          },
+          {
+            "glob": "bootstrap-shell.*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./constellation"
+          },
+          {
+            "glob": "*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/js",
+            "output": "./constellation/prerequisite/js"
+          },
+          {
+            "glob": "lib_asset.json",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./constellation"
+          },
+          {
+            "glob": "constellation-core.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./constellation/prerequisite"
+          },
+          {
+            "glob": "constellation-core.*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./constellation/prerequisite"
+          }
+        ],
+        "styles": ["applications/react-chase/src/style.css"],
+        "scripts": [],
+        "webpackConfig": "applications/react-chase/webpack.config.js",
+        "babelUpwardRootMode": true
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "applications/react-chase/src/environments/environment.ts",
+              "with": "applications/react-chase/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "react-chase:build",
+        "hmr": true,
+        "proxyConfig": "applications/react-chase/proxy.conf.json",
+        "port": 4203
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "react-chase:build:development"
+        },
+        "production": {
+          "buildTarget": "react-chase:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/applications/react-chase"],
+      "options": {
+        "jestConfig": "applications/react-chase/jest.config.ts"
+      }
+    },
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "applications/react-chase/e2e/cypress.config.ts",
+        "testingType": "e2e"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "react-chase:serve:production"
+        },
+        "development": {
+          "devServerTarget": "react-chase:serve:development",
+          "watch": true
+        }
+      }
+    }
+  }
+}

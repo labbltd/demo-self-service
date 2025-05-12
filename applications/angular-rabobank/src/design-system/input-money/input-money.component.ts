@@ -3,7 +3,8 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 @Component({
     selector: 'dx-input-money',
     templateUrl: 'input-money.component.html',
-    styleUrl: 'input-money.component.css'
+    styleUrl: 'input-money.component.css',
+    standalone: false
 })
 export class InputMoneyComponent {
     @Input() value!: string;

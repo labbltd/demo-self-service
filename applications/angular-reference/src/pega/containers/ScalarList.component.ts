@@ -5,12 +5,11 @@ import { PContainer, PContainerFactory } from "@labb/dx-engine";
 @Component({
     selector: 'dx-scalar-list',
     template: `
-        <ng-template
-            *ngFor="let child of items"
-            dxContainer
-            [container]="child"
-        ></ng-template>
-    `
+        @for (child of items; track child.id) {
+            <ng-container dxContainer [container]="child"/>
+        }
+    `,
+    standalone: false
 })
 export class ScalarListComponent extends PContainerComponent implements OnInit {
     items!: PContainer[];

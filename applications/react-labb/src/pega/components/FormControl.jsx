@@ -3,7 +3,7 @@ import { Typography } from "@material-tailwind/react";
 
 export default function FormControl(props) {
     const { validatemessage, helpertext, children } = props;
-    return <div className="w-full mt-6">
+    return <div className="w-full mb-6">
         {children}
         {helpertext && !validatemessage && <Typography
             variant="small"

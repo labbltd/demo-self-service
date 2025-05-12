@@ -5,15 +5,20 @@ import { DemoBootstrap } from '@labb/demo-utilities';
 @Component({
   selector: 'dx-case',
   template: `
-    <dx-loader *ngIf="!loadingDone"></dx-loader>
-    <dx-pega-entry *ngIf="token"
-              [caseTypeID]="caseTypeId"
-              [infinityServer]="infinityServer"
-              [localeId]="localeId"
-              [appId]="appId"
-              [token]="token"
-              (loadingDone)="loadingDone = true"></dx-pega-entry>
-  `
+    @if (!loadingDone) {
+      <dx-loader></dx-loader>
+    }
+    @if (token) {
+      <dx-pega-entry *ngIf="token"
+          [caseTypeID]="caseTypeId"
+          [infinityServer]="infinityServer"
+          [localeId]="localeId"
+          [appId]="appId"
+          [token]="token"
+          (loadingDone)="loadingDone = true"></dx-pega-entry>
+    }
+  `,
+  standalone: false
 })
 export class PegaComponent implements OnInit {
   public token!: TokenInfo;

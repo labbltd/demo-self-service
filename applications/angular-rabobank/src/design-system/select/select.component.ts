@@ -3,7 +3,8 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 @Component({
     selector: 'dx-select',
     templateUrl: 'select.component.html',
-    styleUrl: 'select.component.css'
+    styleUrl: 'select.component.css',
+    standalone: false
 })
 export class SelectComponent {
     @Input() value!: string;

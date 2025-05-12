@@ -5,11 +5,16 @@ import { PContainerComponent } from '@labb/angular-adapter';
 @Component({
   selector: 'dx-text-input-control',
   template: `
-  <ng-container *ngIf="container.config.readOnly"><dt>{{ label }}</dt><dd>{{container.config.value ?? '--'}}</dd></ng-container>
-  <label *ngIf="!container.config.readOnly" [for]="container.id">
-    {{ label }}{{ container.config.required ? ' *' : '' }}
-    <span *ngIf="container.config.helperText" [attr.data-tooltip]="container.config.helperText">?</span>
-  </label>
+  @if (container.config.readOnly) {
+    <dt>{{ label }}</dt><dd>{{container.config.value ?? '--'}}</dd>
+  }
+  @if (!container.config.readOnly) {
+    <label [for]="container.id">
+      {{ label }}{{ container.config.required ? ' *' : '' }}
+      @if(container.config.helperText) {
+        <span [attr.data-tooltip]="container.config.helperText">?</span>
+      }
+    </label>
     <input
       [id]="container.id"
       [type]="type"
@@ -21,9 +26,10 @@ import { PContainerComponent } from '@labb/angular-adapter';
       (change)="container.updateFieldValue(getValue($event.target))"
       (blur)="container.triggerFieldChange(getValue($event.target))"
     />
-    {{ container.config.helperText }}
     {{ container.config.validatemessage }}
-  `
+  }
+  `,
+  standalone: false
 })
 export class TextInputComponent extends PContainerComponent implements OnInit {
   public control = new FormControl('');

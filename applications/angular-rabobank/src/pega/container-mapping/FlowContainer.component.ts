@@ -45,6 +45,7 @@ import { FlowContainer } from '@labb/dx-engine';
   <div>{{ errorMessage | translate}}</div>
   `,
   styles: [],
+  standalone: false
 })
 export class FlowContainerComponent extends PContainerComponent<FlowContainer> {
   public errorMessage!: string;

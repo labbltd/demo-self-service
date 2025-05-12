@@ -1,4 +1,4 @@
-import { Component, Inject, LOCALE_ID } from '@angular/core';
+import { Component } from '@angular/core';
 import { ControlComponent } from '../control.component';
 
 @Component({
@@ -26,7 +26,8 @@ import { ControlComponent } from '../control.component';
     <dx-hint *ngIf="container.config.helperText && helperTextOpen"
       (closed)="helperTextOpen = false"
       [hint]="container.config.helperText"></dx-hint>
-`
+  `,
+  standalone: false
 })
 export class DxDateComponent extends ControlComponent<Date> {
   public startDate = new Date(`${new Date().getFullYear() - 60}-${new Date().getMonth()}-${new Date().getDate()}`);

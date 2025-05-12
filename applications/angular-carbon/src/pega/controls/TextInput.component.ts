@@ -19,7 +19,9 @@ import { PContainerComponent } from '@labb/angular-adapter';
         (blur)="container.triggerFieldChange(getValue($event.target))"
 				[invalid]="!!container.config.validatemessage"
 				[placeholder]="container.config.placeholder ?? ''">
-		</ibm-label>`,
+		</ibm-label>
+    `,
+  standalone: false
 })
 export class TextInputComponent extends PContainerComponent implements OnInit {
   public control = new FormControl('');

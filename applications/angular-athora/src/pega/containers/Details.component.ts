@@ -9,6 +9,7 @@ import { PContainer } from '@labb/dx-engine';
       <ng-template dxContainer [container]="child"></ng-template>
     </ng-container>
   `,
+  standalone: false
 })
 export class DetailsComponent extends PContainerComponent implements OnInit {
   public renderCount = 0;

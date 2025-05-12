@@ -10,7 +10,8 @@ import { Component, Input } from "@angular/core";
     `,
     host: {
         class: 'cds-radio'
-    }
+    },
+    standalone: false
 })
 export class CdsRadioComponent {
     @Input() for!: string;

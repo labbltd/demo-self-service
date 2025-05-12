@@ -19,7 +19,9 @@ import { RadioChange } from 'carbon-components-angular';
           {{option.value}}
       </ibm-radio>
     </ibm-radio-group>
-  </ibm-label>`,
+  </ibm-label>
+  `,
+  standalone: false
 })
 export class RadioButtonsComponent extends PContainerComponent {
   public onChange(val: RadioChange): void {

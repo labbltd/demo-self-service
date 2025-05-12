@@ -14,6 +14,7 @@ import { CdsDesignSystemComponent } from './design-system.component';
 import { CdsDropdownComponent } from './cds-dropdown/cds-dropdown.component';
 import { CdsOptionComponent } from './cds-option/cds-option.component';
 import { CdsButtonDirective } from './cds-button/cds-button.directive';
+import { CdsDropdownService } from './cds-dropdown/cds-dropdown.service';
 
 const components: any[] = [
     CdsButtonDirective,

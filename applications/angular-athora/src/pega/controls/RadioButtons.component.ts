@@ -19,7 +19,8 @@ import { ControlComponent } from '../control.component';
     <dx-hint *ngIf="container.config.helperText && helperTextOpen"
       (closed)="helperTextOpen = false"
       [hint]="container.config.helperText"></dx-hint>
-  `
+  `,
+  standalone: false
 })
 export class DxRadioButtonsComponent extends ControlComponent<string, PicklistProps> {
   public override updateValue(value: string | null): void {

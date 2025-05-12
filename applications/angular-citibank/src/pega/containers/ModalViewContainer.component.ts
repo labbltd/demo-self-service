@@ -26,6 +26,7 @@ import { ModalViewContainer } from '@labb/dx-engine';
       </button>
     </dialog>
   `,
+  standalone: false
 })
 export class ModalViewContainerComponent extends PContainerComponent<ModalViewContainer> implements OnInit {
   @ViewChild('dialog') public dialog!: ElementRef;

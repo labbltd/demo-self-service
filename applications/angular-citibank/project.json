@@ -13,6 +13,7 @@
       ],
       "options": {
         "outputPath": "dist/demo-self-service/angular-citibank",
+        "baseHref": "/demo-self-service/angular-citibank/",
         "index": "applications/angular-citibank/src/index.html",
         "main": "applications/angular-citibank/src/main.ts",
         "polyfills": "applications/angular-citibank/src/polyfills.ts",

@@ -48,7 +48,8 @@ import { Step } from 'carbon-components-angular';
       </div> 
     </div>
   </div>
-  `
+  `,
+  standalone: false
 })
 export class FlowContainerComponent extends PContainerComponent<FlowContainer> implements OnInit {
   public errorMessage!: string;

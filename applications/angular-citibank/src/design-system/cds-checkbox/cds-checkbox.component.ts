@@ -9,7 +9,8 @@ import { CdsInputDirective } from "../cds-input/cds-input.directive";
     `,
     host: {
         class: 'cds-checkbox'
-    }
+    },
+    standalone: false
 })
 export class CdsCheckboxComponent {
     @ContentChild(CdsInputDirective, { descendants: true, read: ElementRef }) inputElement!: ElementRef<HTMLInputElement>;

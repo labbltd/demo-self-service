@@ -19,6 +19,7 @@ import { DxAmountsService } from './input-money.service';
       multi: true,
     },
   ],
+  standalone: false
 })
 export class DxInputAmountDirective implements ControlValueAccessor {
   /** allow a maximum number of digits in the input */

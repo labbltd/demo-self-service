@@ -9,7 +9,8 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
             </button>
             <div [innerHTML]="hint"></div>
         </div>
-    `
+    `,
+    standalone: false
 })
 export class DxHintComponent {
     @Input() hint!: string;

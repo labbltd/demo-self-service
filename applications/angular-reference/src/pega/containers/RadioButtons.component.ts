@@ -8,7 +8,7 @@ import { PContainerComponent } from '@labb/angular-adapter';
       <legend>
         {{ container.config.label }}{{ container.config.required ? ' *' : '' }}
       </legend>
-      <ng-container *ngFor="let option of container.config.datasource">
+      @for (option of container.config.datasource; track option.key) {
         <label>
           <input
             type="radio"
@@ -19,11 +19,12 @@ import { PContainerComponent } from '@labb/angular-adapter';
             [value]="option.key"
           />{{ option.value }}
         </label>
-      </ng-container>
+      }
       {{ container.config.helperText }}
       {{ container.config.validatemessage }}
     </fieldset>
   `,
+  standalone: false
 })
 export class RadioButtonsComponent extends PContainerComponent implements OnInit {
   public override ngOnInit(): void {

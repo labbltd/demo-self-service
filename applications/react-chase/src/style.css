@@ -1,0 +1,4 @@
+@import './design-system/tokens/foundation/MdsFoundation-cmb.css';
+@import './design-system/tokens/components/MdsComponents-cmb.css';
+@import './design-system/tokens/mds-typography.css';
+@import './design-system/main-style.css';

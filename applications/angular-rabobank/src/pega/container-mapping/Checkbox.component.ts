@@ -18,7 +18,8 @@ import { PContainerComponent } from '@labb/angular-adapter';
         (blur)="container.triggerFieldChange(getValue($event.target))"
       />
   </dx-checkbox-control>
-   `
+   `,
+  standalone: false
 })
 export class CheckboxComponent extends PContainerComponent {
   public getValue(

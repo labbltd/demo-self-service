@@ -31,7 +31,8 @@ interface Address {
   
   <div *ngIf="address">
     {{address.OrganisationName}} {{address.BuildingNumber}} {{address.AddressLine}} {{address.Postcode}} {{address.Town}}
-  </div>`
+  </div>`,
+  standalone: false
 })
 export class AddressLookupComponent extends PContainerComponent implements OnInit {
     public control = new FormControl('', { updateOn: 'blur' });

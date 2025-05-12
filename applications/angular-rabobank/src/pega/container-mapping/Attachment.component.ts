@@ -11,6 +11,7 @@ import { Attachment } from '@labb/dx-engine';
       {{ container.config.helperText }}
     </label>
   `,
+  standalone: false
 })
 export class AttachmentComponent extends PContainerComponent<Attachment> {
   public progress!: ProgressEvent<EventTarget>;

@@ -7,15 +7,24 @@ import { SimpleTable } from '@labb/dx-engine';
   template: `
     <table>
       <thead>
-        <tr><th *ngFor="let col of headers">{{col}}</th></tr>
+        <tr>
+          @for (col of headers; track col) {
+            <th>{{col}}</th>
+          }
+        </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let row of cells">
-          <td *ngFor="let col of row">{{col}}</td>
-        </tr>
+        @for (row of cells; track $index) {
+          <tr>
+            @for (col of row; track col) {
+              <td>{{col}}</td>
+            }
+          </tr>
+        }
       </tbody>
     </table>
   `,
+  standalone: false
 })
 export class SimpleTableComponent extends PContainerComponent<SimpleTable> {
 

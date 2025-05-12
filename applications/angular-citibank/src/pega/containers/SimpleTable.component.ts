@@ -16,6 +16,7 @@ import { SimpleTable } from '@labb/dx-engine';
       </tbody>
     </table>
   `,
+  standalone: false
 })
 export class SimpleTableComponent extends PContainerComponent<SimpleTable> {
 

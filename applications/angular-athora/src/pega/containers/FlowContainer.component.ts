@@ -69,7 +69,8 @@ import { FlowContainer } from '@labb/dx-engine';
       </div>
     </div>
     <div>{{ errorMessage }}</div>
-  `
+  `,
+  standalone: false
 })
 export class FlowContainerComponent extends PContainerComponent<FlowContainer> implements OnInit {
   public selectedIndex = 0;

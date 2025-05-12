@@ -1,0 +1,479 @@
+* {
+    box-sizing: border-box;
+    font-family: Open Sans, Helvetica Neue, helvetica, arial, sans-serif
+}
+
+.brand-bar {
+    display: block;
+    left: 0;
+    width: 100%;
+    overflow: unset;
+    background-color: var(--MdsBrandBar__barBackgroundColor, );
+    overflow-x: unset
+}
+
+.brand-bar::-webkit-scrollbar,
+.brand-bar::-webkit-scrollbar-thumb {
+    background: transparent;
+    height: .375rem
+}
+
+.brand-bar--custom {
+    overflow-x: overlay;
+    overflow-y: hidden
+}
+
+.brand-bar--opaque {
+    background-color: var(--MdsBrandBar-_opaque-true__barBackgroundColor, #005eb8)
+}
+
+.brand-bar-custom--full {
+    opacity: var(--MdsBrandBar-_opacity-full__barBackgroundOpacity, 1)
+}
+
+.brand-bar-custom--high {
+    opacity: var(--MdsBrandBar-_opacity-high__barBackgroundOpacity, .9)
+}
+
+.brand-bar:hover::-webkit-scrollbar,
+.brand-bar:hover::-webkit-scrollbar-thumb {
+    height: .375rem
+}
+
+.brand-bar:hover::-webkit-scrollbar-thumb {
+    background: hsla(0, 0%, 100%, .88);
+    border-radius: .1875rem
+}
+
+.brand-bar--search-box {
+    overflow: visible
+}
+
+@media screen and (min--moz-device-pixel-ratio:0) {
+    .brand-bar--search-box:hover {
+        overflow-x: visible
+    }
+}
+
+.brand-bar--full {
+    opacity: var(--MdsBrandBar-_opacity-full__barBackgroundOpacity, 1)
+}
+
+.brand-bar--high {
+    opacity: var(--MdsBrandBar-_opacity-high__barBackgroundOpacity, .9)
+}
+
+.brand-bar__container-wrap {
+    display: flex;
+    justify-content: center
+}
+
+.brand-bar__container-wrap-inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%
+}
+
+.brand-bar__hamburger-wrap {
+    display: flex
+}
+
+.brand-bar__container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: var(--MdsBrandBar__barHeightMobile, 52px);
+    padding-left: var(--MdsBrandBar__barLeadingTrailingPaddingMobile, 16px);
+    padding-right: var(--MdsBrandBar__barLeadingTrailingPaddingMobile, 16px);
+    transition: margin .25s cubic-bezier(0, 0, 0, 1)
+}
+
+@media screen and (min-width:768px) {
+    .brand-bar__container {
+        min-height: var(--MdsBrandBar__barHeightTablet, 60px);
+        padding-left: var(--MdsBrandBar__barLeadingTrailingPaddingTablet, 24px);
+        padding-right: var(--MdsBrandBar__barLeadingTrailingPaddingDesktop, 24px)
+    }
+}
+
+@media screen and (min-width:992px) {
+    .brand-bar__container {
+        min-height: var(--MdsBrandBar__barHeightDesktop, 60px);
+        padding-left: var(--MdsBrandBar__barLeadingTrailingPaddingDesktop, 24px);
+        padding-right: var(--MdsBrandBar__barLeadingTrailingPaddingDesktop, 24px)
+    }
+}
+
+.hide-default-slot {
+    display: none
+}
+
+.brand-bar__slot {
+    padding-left: var(--MdsBrandBar__barLeadingTrailingPaddingMobile, 16px);
+    padding-right: var(--MdsBrandBar__barLeadingTrailingPaddingMobile, 16px);
+    visibility: hidden;
+    z-index: -1;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    transition: all .25s cubic-bezier(0, 0, 0, 1), opacity 0s, z-index .5s
+}
+
+@media screen and (min-width:992px) {
+    .brand-bar__slot {
+        height: var(--MdsBrandBar__barHeightDesktop, 60px);
+        padding-left: var(--MdsBrandBar__barLeadingTrailingPaddingDesktop, 24px);
+        padding-right: var(--MdsBrandBar__barLeadingTrailingPaddingDesktop, 24px)
+    }
+}
+
+@media screen and (min-width:768px) {
+    .brand-bar__slot {
+        height: var(--MdsBrandBar__barHeightTablet, 60px);
+        padding-left: var(--MdsBrandBar__barLeadingTrailingPaddingTablet, 24px);
+        padding-right: var(--MdsBrandBar__barLeadingTrailingPaddingDesktop, 24px)
+    }
+}
+
+.brand-bar__slot--expanded {
+    top: 100%;
+    z-index: 1;
+    visibility: visible;
+    opacity: 1
+}
+
+.brand-bar__slot--custom {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    opacity: 1
+}
+
+.brand-bar__slot--collapsing {
+    animation-name: panel-opacity;
+    animation-duration: .2s;
+    animation-delay: 0s;
+    animation-timing-function: cubic-bezier(0, .2, .1, 1);
+    animation-fill-mode: forwards
+}
+
+@keyframes panel-opacity {
+    0% {
+        opacity: 1
+    }
+
+    to {
+        opacity: 0
+    }
+}
+
+.brand-bar__slot--transitioned {
+    opacity: 1
+}
+
+.brand-bar__slot--default.brand-bar__slot--expanded {
+    position: static;
+    height: auto
+}
+
+.brand-bar__left-container {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: flex-start
+}
+
+.brand-bar__controls--buttons {
+    font-weight: var(--MdsBrandBar__buttonTextWeight, );
+    font-size: var(--MdsBrandBar__buttonTextSize, );
+    line-height: var(--MdsBrandBar__buttonTextLineHeight, );
+    border-radius: var(--MdsBrandBar__buttonBorderRaidus, );
+    min-height: var(--MdsBrandBar__buttonMinHeight, )
+}
+
+.brand-bar__controls--links {
+    color: var(--MdsButton-_variant-tertiary-_inverse-true__textColor, #fff);
+    text-decoration: none;
+    padding: var(--MdsButton__topPadding, 6px) var(--MdsButton-_variant-tertiary__trailingPadding, 8px) var(--MdsButton__bottomPadding, 6px) var(--MdsButton-_variant-tertiary__leadingPadding, 8px);
+    font-weight: var(--MdsButton__textWeight, 600);
+    font-size: var(--MdsButton__textSize, 1rem);
+    line-height: var(--MdsButton__textLineHeight, 1.5rem);
+    min-height: var(--MdsButton__minHeight, 36px)
+}
+
+.brand-bar__controls--links:focus {
+    outline: var(--border__weight__1px, ) var(--border__style__dashed, ) var(--semanticColor__border__focusInverse, default-brand-get(semantic-color-border-focus-inverse))
+}
+
+.brand-bar__controls--links:active {
+    background-color: var(--MdsButton-_variant-tertiary-_inverse-true__backgroundColor--pressed, hsla(0, 0%, 100%, .24));
+    border-radius: var(----MdsButton__borderRadius, 4px)
+}
+
+.brand-bar__controls--links:hover {
+    background-color: var(--MdsButton-_variant-tertiary-_inverse-true__backgroundColor--hovered, rgba(0, 0, 0, .16));
+    border-radius: var(----MdsButton__borderRadius, 4px)
+}
+
+.brand-bar__hamburger-button {
+    margin-right: var(--MdsBrandBar__buttonSpaceBetween, 8px)
+}
+
+.brand-bar__left-controls {
+    display: flex;
+    align-items: center
+}
+
+.brand-bar__left-controls .brand-bar__controls--buttons,
+.brand-bar__left-controls .brand-bar__controls--links {
+    margin-right: var(--MdsBrandBar__buttonSpaceBetween, 8px)
+}
+
+@media print {
+    .brand-bar__left-controls {
+        visibility: hidden
+    }
+}
+
+.brand-bar__logo-container {
+    display: flex;
+    justify-content: center
+}
+
+.brand-bar__logo-text {
+    display: flex;
+    text-align: center;
+    color: var(--MdsBrandBar__logoTextColor, #fff);
+    line-height: var(--MdsBrandBar__xsLogoTextLineHeight, 1.75rem);
+    font-size: var(--MdsBrandBar__xsLogoTextSize, 1.125rem)
+}
+
+@media screen and (min-width:768px) {
+    .brand-bar__logo-text {
+        line-height: var(--MdsBrandBar__logoTextLineHeight, 2rem);
+        font-size: var(--MdsBrandBar__logoTextSize, 1.5rem)
+    }
+}
+
+@media print {
+    .brand-bar__logo-text {
+        visibility: hidden
+    }
+}
+
+.brand-bar__logo-link {
+    outline: none;
+    display: flex;
+    align-items: center;
+    text-decoration: none
+}
+
+.brand-bar__logo-link:focus {
+    outline: var(--border__weight__1px, ) var(--border__style__dashed, ) var(--semanticColor__border__focusInverse, default-brand-get(semantic-color-border-focus-inverse))
+}
+
+.brand-bar__image {
+    pointer-events: none;
+    height: var(--MdsBrandBar__logoHeight, 24px);
+    min-width: 100%
+}
+
+.brand-bar__right-controls {
+    display: flex;
+    align-items: center
+}
+
+.brand-bar__right-controls .brand-bar__controls--buttons,
+.brand-bar__right-controls .brand-bar__controls--links {
+    margin-left: var(--MdsBrandBar__buttonSpaceBetween, 8px)
+}
+
+@media print {
+    .brand-bar__right-controls {
+        visibility: hidden
+    }
+}
+
+.brand-bar__right-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end
+}
+
+.brand-bar__right-container--hide {
+    display: none
+}
+
+@media screen and (min-width:767px) {
+    .brand-bar__right-container--hide {
+        display: flex
+    }
+}
+
+.brand-bar__right-container--custom {
+    flex: 1
+}
+
+.brand-bar__search-box-container {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    height: calc(var(--MdsButton-_iconPosition-icon_only__minWidth, 36px) + .25rem);
+    width: calc(var(--MdsButton-_iconPosition-icon_only__minWidth, 36px) + var(--MdsBrandBar__utilityButtonTrailingPaddingMobile, 8px));
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    transition-property: width;
+    transition-duration: var(--MdsBrandBar__animationBoxAnimationTime, .5s);
+    transition-timing-function: var(--MdsBrandBar__animationBoxAnimationEase, cubic-bezier(0, 0, 0, 1))
+}
+
+@media screen and (min-width:768px) {
+    .brand-bar__search-box-container {
+        width: calc(var(--MdsButton-_iconPosition-icon_only__minWidth, 36px) + var(--MdsBrandBar__utilityButtonTrailingPaddingTablet, 16px))
+    }
+}
+
+@media screen and (min-width:992px) {
+    .brand-bar__search-box-container {
+        width: calc(var(--MdsButton-_iconPosition-icon_only__minWidth, 36px) + var(--MdsBrandBar__utilityButtonTrailingPaddingDesktop, 16px))
+    }
+}
+
+.brand-bar__search-box-container--expanded {
+    display: none
+}
+
+.brand-bar__search-box-container--not-expanding {
+    overflow: visible
+}
+
+.brand-bar__search-box-container--expanding {
+    overflow: visible;
+    width: var(--MdsBrandBar__searchBoxInlineWidth, 260px);
+    background-color: var(--MdsBrandBar__animationBoxBackgroundColor, hsla(0, 0%, 100%, .13));
+    margin: 0 1rem 0 0
+}
+
+.brand-bar__search-box-container--expanding.brand-bar__search-box-container--slot {
+    background-color: transparent
+}
+
+.brand-bar__search-box-overflow-container {
+    display: flex;
+    overflow: hidden;
+    height: 0;
+    opacity: 0;
+    transition-property: all;
+    transition-duration: var(--MdsBrandBar__animationBoxAnimationTime, .5s);
+    transition-timing-function: var(--MdsBrandBar__animationBoxAnimationEase, cubic-bezier(0, 0, 0, 1))
+}
+
+.brand-bar__search-box-overflow-container--expand {
+    overflow: visible;
+    height: 3.5rem;
+    opacity: 1
+}
+
+.brand-bar__search-box-button {
+    margin-left: .125rem
+}
+
+.brand-bar__search-box-button--expanded {
+    display: none
+}
+
+.brand-bar__search-box-cancel-button,
+.brand-bar__search-box-slot {
+    display: none;
+    margin: 0
+}
+
+.brand-bar__search-box-cancel-button--expanding,
+.brand-bar__search-box-slot--expanding {
+    display: flex;
+    overflow: hidden
+}
+
+.brand-bar__search-box-cancel-button--expanded,
+.brand-bar__search-box-slot--expanded {
+    opacity: 1;
+    display: flex;
+    overflow: visible
+}
+
+.brand-bar__search-box-cancel-button--collapsing,
+.brand-bar__search-box-slot--collapsing {
+    opacity: 0
+}
+
+@media screen and (min-width:768px) {
+
+    .brand-bar__search-box-cancel-button--collapsing.brand-bar__utilities--button-hidden,
+    .brand-bar__search-box-cancel-button--expanded.brand-bar__utilities--button-hidden,
+    .brand-bar__search-box-cancel-button--expanding.brand-bar__utilities--button-hidden,
+    .brand-bar__search-box-slot--collapsing.brand-bar__utilities--button-hidden,
+    .brand-bar__search-box-slot--expanded.brand-bar__utilities--button-hidden,
+    .brand-bar__search-box-slot--expanding.brand-bar__utilities--button-hidden {
+        display: none
+    }
+}
+
+.brand-bar__search-box {
+    width: var(--MdsBrandBar__searchBoxInlineWidth, 260px);
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: var(--MdsBrandBar__searchBoxAnimationTime, .5s);
+    transition-timing-function: var(--MdsBrandBar__searchBoxAnimationEase, cubic-bezier(0, 0, 0, 1));
+    transition-delay: var(--MdsBrandBar__animationOverlapTime, .1s);
+    display: none
+}
+
+.brand-bar__search-box--expanded {
+    opacity: 1;
+    display: block
+}
+
+.brand-bar__search-box--collapsing {
+    opacity: 0
+}
+
+.brand-bar__search-box-overflow {
+    width: 100%;
+    padding-right: var(--MdsBrandBar__searchBoxOverflowTrailingPadding, 20px);
+    padding-left: var(--MdsBrandBar__searchBoxOverflowLeadingPadding, 20px);
+    padding-bottom: var(--MdsBrandBar__searchBoxOverflowBottomPadding, 8px)
+}
+
+.brand-bar__utilities {
+    margin-right: var(--MdsBrandBar__utilityButtonTrailingPaddingMobile, 8px)
+}
+
+@media screen and (min-width:768px) {
+    .brand-bar__utilities {
+        margin-right: var(--MdsBrandBar__utilityButtonTrailingPaddingTablet, 16px)
+    }
+}
+
+@media screen and (min-width:992px) {
+    .brand-bar__utilities {
+        margin-right: var(--MdsBrandBar__utilityButtonTrailingPaddingDesktop, 16px)
+    }
+}
+
+.brand-bar__utilities--button-hidden {
+    display: none
+}
+
+.brand-bar__hidden {
+    clip: rect(.0625rem, .0625rem, .0625rem, .0625rem);
+    position: absolute !important;
+    padding: 0 !important;
+    border: 0 !important;
+    height: .0625rem !important;
+    width: .0625rem !important;
+    overflow: hidden
+}

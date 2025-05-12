@@ -19,7 +19,8 @@ import { ControlComponent } from '../control.component';
   `,
   host: {
     'class': 'dx-control'
-  }
+  },
+  standalone: false
 })
 export class DxTextAreaComponent extends ControlComponent<string> implements OnInit {
   public updateValue(value: string): void {

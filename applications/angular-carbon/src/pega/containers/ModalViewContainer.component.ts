@@ -17,5 +17,6 @@ import { PContainerComponent } from '@labb/angular-adapter';
       ></ng-template>
     </ng-template>
   `,
+  standalone: false
 })
 export class ModalViewContainerComponent extends PContainerComponent {}

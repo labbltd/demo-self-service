@@ -12,7 +12,8 @@ import { ControlComponent } from '../control.component';
   `,
   host: {
     'class': 'dx-control'
-  }
+  },
+  standalone: false
 })
 export class DxSlideComponent extends ControlComponent<boolean> implements OnInit {
   public updateValue(value: boolean): void {

@@ -19,7 +19,8 @@ import { Component } from "@angular/core";
       width: 100%;
       background-color: #33333387;
     }`
-    ]
+    ],
+    standalone: false
 })
 export class DxLoaderComponent {
 }

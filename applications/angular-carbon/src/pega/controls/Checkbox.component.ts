@@ -8,7 +8,9 @@ import { PContainerComponent } from '@labb/angular-adapter';
         [value]="container.config.value"
         (change)="change(null, $event)">
         {{container.config.caption}}
-    </ibm-checkbox>`
+    </ibm-checkbox>
+  `,
+  standalone: false
 })
 export class CheckboxComponent extends PContainerComponent {
   public change(e: any, t: Event): void {

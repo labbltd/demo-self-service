@@ -21,6 +21,7 @@ import { PContainerComponent } from '@labb/angular-adapter';
       {{ container.config.validatemessage }}
     </div>
    `,
+   standalone: false
 })
 export class CheckboxComponent extends PContainerComponent implements OnInit {
   public control = new FormControl('');

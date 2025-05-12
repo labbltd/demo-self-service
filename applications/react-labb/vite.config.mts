@@ -4,9 +4,11 @@ import { viteStaticCopy } from "vite-plugin-static-copy";
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 
 export default defineConfig({
-  base: '/demo-self-service',
+  root: __dirname,
+  cacheDir: '../../node_modules/.vite/applications/react-labb',
+  base: '/demo-self-service/',
   build: {
-    outDir: './docs',
+    outDir: '../../dist/demo-self-service/',
   },
   resolve: {
     alias: [{ find: "@", replacement: "/src" }],

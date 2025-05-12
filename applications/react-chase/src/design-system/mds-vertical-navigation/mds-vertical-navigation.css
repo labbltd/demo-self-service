@@ -1,0 +1,14 @@
+* {
+    box-sizing: border-box;
+    font-family: Open Sans, Helvetica Neue, helvetica, arial, sans-serif
+}
+
+.vertical-navigation {
+    min-width: var(--MdsVerticalNavigation__minWidth, 280px);
+    padding: 0 .0625rem;
+    background-color: var(--MdsVerticalNavigation__backgroundColor, #fff)
+}
+
+.vertical-navigation--inverse {
+    background-color: var(--MdsVerticalNavigation-_inverse-true__backgroundColor, #1f1b17)
+}

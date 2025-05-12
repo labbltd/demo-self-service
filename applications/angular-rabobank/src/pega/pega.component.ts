@@ -13,7 +13,8 @@ import { DemoBootstrap } from '@labb/demo-utilities';
               [token]="token"
               (loadingDone)="loadingDone = true"></dx-pega-entry>
   </dx-page-header-footer>
-`
+`,
+standalone: false
 })
 export class PegaComponent implements OnInit {
   public token!: TokenInfo;

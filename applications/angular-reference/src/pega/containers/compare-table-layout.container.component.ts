@@ -34,7 +34,8 @@ export interface CompareTableLayoutComponentScalarList {
                 }
             </div>
         </ng-container>
-    `
+    `,
+    standalone: false
 })
 export class CompareTableLayoutContainerComponent extends PContainerComponent implements OnInit {
     public control = new FormControl();

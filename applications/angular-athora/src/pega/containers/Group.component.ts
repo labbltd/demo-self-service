@@ -13,6 +13,7 @@ import { PContainer } from '@labb/dx-engine';
         </ng-container>
       </form>
   `,
+  standalone: false
 })
 export class GroupComponent extends PContainerComponent {
   public trackByFn(index: number, item: PContainer): string {

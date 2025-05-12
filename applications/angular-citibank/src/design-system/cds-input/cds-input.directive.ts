@@ -1,7 +1,8 @@
 import { Directive, ElementRef, HostListener, Renderer2 } from "@angular/core";
 
 @Directive({
-    selector: '[cdsInput]'
+    selector: '[cdsInput]',
+    standalone: false
 })
 export class CdsInputDirective {
     public constructor(
