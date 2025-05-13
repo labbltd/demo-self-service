@@ -10,20 +10,24 @@ import { PContainerComponent } from "@labb/angular-adapter";
             <thead>
                 <tr>
                     @for (header of headers; track header) {
-                        <th>{{header}}</th>
+                        <th [attr.data-track]="header">{{header}}</th>
                     }
                 </tr>
             </thead>
             <tbody>
-                @for (row of data; track row.pzInsKey) {
-                    <tr (click)="openAssignment(row)">
+                @for (row of data; track (row.pzInsKey || row.pyGUID)) {
+                    <tr (click)="select(row)" [attr.data-track]="(row.pzInsKey || row.pyGUID)">
                         @for(cell of columns; track cell) {
-                            <td>{{row[cell]}}</td>
+                            <td [attr.data-track]="cell">{{row[cell]}}</td>
                         }
                     </tr>
                 }
             </tbody>
         </table>
+        @if (container.config.value && container.config.referenceList === 'D_BikesList') {
+            <h4>Selected bike: {{selectedBike.TypeOfBike}}</h4>
+            <img width="300px" [src]="selectedBike?.DisplayImage"/>
+        }
     `,
     standalone: false,
     styles: [
@@ -43,15 +47,27 @@ export class ListViewComponent extends PContainerComponent implements OnInit {
     public headers!: string[];
     public columns!: string[];
 
+    public get selectedBike() {
+        return this.data.find(bike => bike.pyGUID === this.container.config.value);
+    }
+
     override async ngOnInit(): Promise<void> {
         super.ngOnInit();
-        this.headers = this.getColumns(this.container.config)
-            .map(col => col.config.label);
         this.columns = this.getColumns(this.container.pconnect.getRawMetadata().config)
             .map(col => col.config.value.replace('@P .', ''));
+        this.headers = this.getHeaders();
         const datapage = await window.PCore.getDataApiUtils().getData(this.container.config.referenceList, {})
         this.data = datapage.data.data;
         this.loading = false;
+    }
+
+    public select(row: any) {
+        if (this.container.config.rowClickAction === "openAssignment") {
+            this.openAssignment(row);
+        } else {
+            this.container.updateFieldValue(row.pyGUID);
+            this.container.triggerFieldChange(row.pyGUID);
+        }
     }
 
     public openAssignment(row: any) {
@@ -61,7 +77,12 @@ export class ListViewComponent extends PContainerComponent implements OnInit {
         this.container.pconnect.getActionsApi().openAssignment(pzInsKey, pxRefObjectClass, options);
     }
 
-    private getColumns(config: any): { config: { label: string, value: string } }[] {
+    private getHeaders() {
+        return this.getColumns(this.container.config)
+            .map((option, idx) => option.config.label || this.columns[idx]);
+    }
+
+    private getColumns(config: any): { config: { labelOption: string, label: string, value: string } }[] {
         return config.presets?.[0].children[0].children || [];
     }
 }

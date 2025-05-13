@@ -10,10 +10,9 @@ import { PContainerComponent } from '@labb/angular-adapter';
       <input
         [id]="container.id"
         type="checkbox"
-        [attr.readonly]="container.config.readOnly"
+        [disabled]="container.config.readOnly"
         [formControl]="control"
-        (change)="container.updateFieldValue(getValue($event.target))"
-        (blur)="container.triggerFieldChange(getValue($event.target))"
+        (change)="change($event)"
       />
       {{ label }}{{ container.config.required ? ' *' : '' }}
       </label>
@@ -21,7 +20,7 @@ import { PContainerComponent } from '@labb/angular-adapter';
       {{ container.config.validatemessage }}
     </div>
    `,
-   standalone: false
+  standalone: false
 })
 export class CheckboxComponent extends PContainerComponent implements OnInit {
   public control = new FormControl('');
@@ -42,5 +41,10 @@ export class CheckboxComponent extends PContainerComponent implements OnInit {
   ): number | Date | boolean | string | null {
     const t: HTMLInputElement = target as HTMLInputElement;
     return t.checked;
+  }
+
+  public change(event: Event) {
+    this.container.updateFieldValue(this.getValue(event.target))
+    this.container.triggerFieldChange(this.getValue(event.target))
   }
 }
