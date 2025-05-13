@@ -31,6 +31,7 @@ import { ViewComponent } from './containers/View.component';
 import { CdsDesignSystemModule } from '../design-system/design-system.module';
 import { SignatureComponent } from './containers/Signature.component';
 import { ListViewComponent } from './containers/ListView.component';
+import { CaseSummaryComponent } from './containers/CaseSummary.component';
 
 @NgModule({
   imports: [
@@ -64,7 +65,8 @@ import { ListViewComponent } from './containers/ListView.component';
     ActionableButtonComponent,
     MultiselectComponent,
     SignatureComponent,
-    ListViewComponent
+    ListViewComponent,
+    CaseSummaryComponent
   ],
   providers: [
     {
@@ -91,6 +93,7 @@ import { ListViewComponent } from './containers/ListView.component';
         SimpleTableSelect: SimpleTableComponent,
         ListPage: ListViewComponent,
         ListView: ListViewComponent,
+        CaseSummary: CaseSummaryComponent,
         // controls
         Attachment: AttachmentComponent,
         Checkbox: CheckboxComponent,

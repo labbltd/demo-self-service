@@ -10,7 +10,7 @@ import { PContainer } from '@labb/dx-engine';
         [tooltip]="{body: container.config.helperText}"
         [errorMessage]="container.config.validatemessage">
         <input cdsInput
-          [value]="container.config.value"
+          [value]="value"
           [disabled]="disabled"
           [type]="type"
           [name]="container.id"
@@ -25,6 +25,22 @@ export class TextInputComponent extends PContainerComponent<PContainer<DefaultPr
     if (target instanceof HTMLInputElement) {
       this.container.updateFieldValue(target.value);
       this.container.triggerFieldChange(target.value);
+    }
+  }
+
+  public get value(): string | number | boolean | null {
+    const v = this.container.config.value;
+    switch (this.type) {
+      case 'number':
+        return v;
+      case 'date':
+        return v?.split('T')[0] || null;
+      case 'datetime-local':
+        return v?.split('.')[0] || null;
+      case 'checkbox':
+        return v;
+      default:
+        return v;
     }
   }
 

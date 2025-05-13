@@ -1,0 +1,120 @@
+.matlist-section {
+    margin-bottom: 25px
+}
+
+.matlist-section button.accordion-trigger {
+    background: none;
+    border: none
+}
+
+.matlist-section button.accordion-trigger .category-title span {
+    white-space: normal
+}
+
+.matlist-section .category-title,
+.matlist-section h3 {
+    padding-left: 32px;
+    font-size: 16px;
+    line-height: 24px;
+    display: block;
+    font-family: Interstate-Regular;
+    font-weight: 300;
+    font-size: 1rem !important;
+    color: #333;
+    letter-spacing: 0;
+    line-height: 1.5rem !important;
+    text-align: left;
+    cursor: pointer;
+    margin: 0
+}
+
+.matlist-section .category-title:before {
+    width: 9px;
+    height: 8.18px;
+    transition: transform .4s ease-in-out !important;
+    transform-origin: 50%, 50%;
+    background: url(../../design-system/cds-assets/images/arrow-dropdown-down.svg) !important;
+    content: "";
+    margin-left: -32px;
+    padding-right: 16px;
+    position: absolute;
+    display: inline-block;
+    justify-content: center;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-top: 6px
+}
+
+.matlist-section .contentCollapsed .category-title:before {
+    transform: rotate(0)
+}
+
+.matlist-section .contentExpanded .category-title:before {
+    transform: rotate(180deg)
+}
+
+.matlist-section .category-content.content {
+    padding-left: 52px;
+    font-family: Interstate_Light;
+    font-weight: 100;
+    font-size: 1rem;
+    line-height: 1.3125rem
+}
+
+.matlist-section .category-content.content table {
+    background-color: transparent;
+    border: 1px solid #333;
+    margin-bottom: 20px
+}
+
+.matlist-section .category-content.content table td,
+.matlist-section .category-content.content table th {
+    border: 1px solid #333333;
+    padding: 5px 10px;
+    vertical-align: top
+}
+
+.matlist-section .category-content.content ol {
+    margin: 0 0 0 40px;
+    list-style-type: decimal
+}
+
+.matlist-section .category-content.content ol li {
+    text-indent: 0
+}
+
+.matlist-section .category-content.content ol li:before {
+    display: none
+}
+
+.matlist-section .category-content.content div {
+    margin: 15px 0 30px
+}
+
+.matlist-section .category-content.content p {
+    font-family: Interstate_Light;
+    font-weight: 100;
+    font-size: 1rem;
+    line-height: 1.3125rem
+}
+
+.matlist-section .category-content.content h4 {
+    font-size: 1rem
+}
+
+.matlist-section .contentText {
+    display: inline
+}
+
+.matlist-citishop-background {
+    background-color: #eff3f8;
+    padding: 20px 10px 10px;
+    margin-bottom: 10px
+}
+
+.matlist-section .body {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: calc(1rem);
+}

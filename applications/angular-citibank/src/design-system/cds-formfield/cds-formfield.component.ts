@@ -68,6 +68,8 @@ export class CdsFormfieldComponent implements AfterViewInit, OnChanges {
         switch (t) {
             case 'number': return 'text';
             case 'date': return 'text';
+            case 'datetime-local': return 'text';
+            case 'time': return 'text';
             case 'email': return 'text';
             default: return t;
         }
