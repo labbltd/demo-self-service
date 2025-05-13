@@ -2,9 +2,11 @@ import { DemoBootstrap } from "@labb/demo-utilities";
 
 export default function OotbPegaEmbed() {
     return <pega-embed id='theEmbed'
-        action='createCase'
+        action={DemoBootstrap.getAction()}
         caseTypeID={DemoBootstrap.getCaseTypeId()}
-        casePage='assignment'
+        pageID={DemoBootstrap.getPageId()}
+        pageClass={DemoBootstrap.getPageClass()}
+        casePage={DemoBootstrap.getCasePage()}
         tokenUri={DemoBootstrap.getAccessTokenUrl()}
         pegaServerUrl={DemoBootstrap.getServerUrl()}
         staticContentUrl={DemoBootstrap.getStaticContentUrl()}

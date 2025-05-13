@@ -30,6 +30,7 @@ import { TextInputComponent } from './containers/TextInput.component';
 import { ViewComponent } from './containers/View.component';
 import { CdsDesignSystemModule } from '../design-system/design-system.module';
 import { SignatureComponent } from './containers/Signature.component';
+import { ListViewComponent } from './containers/ListView.component';
 
 @NgModule({
   imports: [
@@ -62,7 +63,8 @@ import { SignatureComponent } from './containers/Signature.component';
     ScalarListComponent,
     ActionableButtonComponent,
     MultiselectComponent,
-    SignatureComponent
+    SignatureComponent,
+    ListViewComponent
   ],
   providers: [
     {
@@ -87,7 +89,8 @@ import { SignatureComponent } from './containers/Signature.component';
         DetailsThreeColumn: DetailsThreeColumnComponent,
         SimpleTable: SimpleTableComponent,
         SimpleTableSelect: SimpleTableComponent,
-        Pega_Extensions_CompareTableLayout: CompareTableLayoutContainerComponent,
+        ListPage: ListViewComponent,
+        ListView: ListViewComponent,
         // controls
         Attachment: AttachmentComponent,
         Checkbox: CheckboxComponent,
@@ -111,6 +114,7 @@ import { SignatureComponent } from './containers/Signature.component';
         Labb_dx_ButtonGroup: RadioButtonsComponent,
         Labb_dx_Address: AddressLookupComponent,
         Pega_Extensions_ActionableButton: ActionableButtonComponent,
+        Pega_Extensions_CompareTableLayout: CompareTableLayoutContainerComponent,
         Pega_Extensions_SignatureCapture: SignatureComponent
       },
       multi: true,

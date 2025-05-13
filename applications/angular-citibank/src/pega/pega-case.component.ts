@@ -8,7 +8,9 @@ import { DemoBootstrap } from '@labb/demo-utilities';
     <citi-header></citi-header>
     <div class="cbolui-cds" style="padding: 50px">
       <dx-pega-entry *ngIf="token"
-              [caseTypeID]="caseTypeId"
+              [caseTypeID]="action === 'createCase' ? caseTypeId : undefined"
+              [pageID]="action === 'openPage' ? pageId : undefined"
+              [className]="action === 'openPage' ? pageClass : undefined"
               [infinityServer]="infinityServer"
               [localeId]="localeId"
               [appId]="appId"
@@ -27,6 +29,9 @@ export class PegaCaseComponent implements OnInit {
   public authError!: string;
   public loadingDone!: boolean;
   public infinityServer = DemoBootstrap.getServerUrl();
+  public action = DemoBootstrap.getAction();
+  public pageId = DemoBootstrap.getPageId();
+  public pageClass = DemoBootstrap.getPageClass();
   public caseTypeId = DemoBootstrap.getCaseTypeId();
   public appId = DemoBootstrap.getAppId();
   public localeId = DemoBootstrap.getLocaleId();

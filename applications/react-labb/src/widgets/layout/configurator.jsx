@@ -36,7 +36,7 @@ export function Configurator() {
       </div>
       <div className="px-6">
         <div className="mt-3 flex flex-col gap-2">
-          {Object.entries(serverConfig).map(([key, value]) => <FormControl>
+          {Object.entries(serverConfig).map(([key, value]) => <FormControl key={key}>
             {typeof value === 'boolean' ? <Checkbox
               checked={value}
               onChange={v => {
@@ -44,13 +44,13 @@ export function Configurator() {
                 DemoBootstrap.updateConfig(key, v.target.checked)
               }}
               label={key[0].toUpperCase() + key.replace(/([A-Z])/g, ' $1').slice(1)}
-              size="sm"
+              size="md"
             /> : <Input
               value={value}
               onChange={v => setServerConfig({ ...serverConfig, [key]: v.target.value })}
               onBlur={v => DemoBootstrap.updateConfig(key, v.target.value)}
               label={key[0].toUpperCase() + key.replace(/([A-Z])/g, ' $1').slice(1)}
-              size="sm"
+              size="md"
             />}
           </FormControl>)}
         </div>

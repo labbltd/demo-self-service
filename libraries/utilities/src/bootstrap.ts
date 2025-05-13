@@ -9,21 +9,25 @@ export class DemoBootstrap {
             config = {};
         }
         return {
+            localeId: 'en-GB',
+            appAlias: 'LabbCS',
+            caseTypeId: 'Labb-LabbCS-Work-Service-InsuranceIssuance',
+            action: 'openPage',
+            pageId: 'pyWorklist',
+            pageClass: 'Data-Portal',
+            casePage: 'assignment',
             pegaServerUrl: 'https://labbconsulting05.pegalabs.io/prweb',
             accessTokenUrl: 'https://labbconsulting05.pegalabs.io/prweb/PRRestService/oauth2/v1/token',
+            useChat: true,
             staticContentUrl: 'https://cs-cdn.constellation.pega.io/stage/8.24.51-236/react/prod',
-            redirectUrl: `${new URL(window.location.href).pathname}auth.html`,
-            authService: 'pega',
             clientId: '12113341416804660893',
             clientSecret: '8164B7AEA010D996DB47D3881D9DC4EB',
-            localeId: 'en-GB',
-            pkce: false,
-            caseTypeId: 'Labb-LabbCS-Work-Service-InsuranceIssuance',
-            appAlias: 'LabbCS',
+            authFlow: 'password',
             username: 'demo@PW25',
             password: 'Labb@PW#32',
-            authFlow: 'password',
-            useChat: true,
+            authService: 'pega',
+            redirectUrl: `${new URL(window.location.href).pathname}auth.html`,
+            pkce: false,
             ...config
         }
     }
@@ -45,6 +49,22 @@ export class DemoBootstrap {
 
     public static setServerUrl(serverUrl: string) {
         this.updateConfig('pegaServerUrl', serverUrl);
+    }
+
+    public static getAction() {
+        return this.getConfig().action;
+    }
+
+    public static getPageId() {
+        return this.getConfig().pageId;
+    }
+
+    public static getPageClass() {
+        return this.getConfig().pageClass;
+    }
+
+    public static getCasePage() {
+        return this.getConfig().casePage;
     }
 
     public static getCaseTypeId() {
