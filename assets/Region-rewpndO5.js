@@ -1,1 +1,0 @@
-import{j as a,a as o,G as i}from"./index-B0s9k-XD.js";function c(n){const{label:e}=n.container.config;return a.jsxs(a.Fragment,{children:[e&&a.jsx(o.Typography,{variant:"h6",color:"blue-gray",className:"mt-6",children:e}),n.container.children.map((r,t)=>a.jsx(i,{container:r},r.id+t))]})}export{c as default};
