@@ -28,6 +28,8 @@ export class DemoBootstrap {
             authService: 'pega',
             redirectUrl: `${new URL(window.location.href).pathname}auth.html`,
             pkce: false,
+            labbified: false,
+            labbLogo: 'https://labbltd.github.io/demo-self-service/img/Labb%20Dark%20Blue%20Logo-RGB-1.png',
             ...config
         }
     }
@@ -49,6 +51,11 @@ export class DemoBootstrap {
 
     public static setServerUrl(serverUrl: string) {
         this.updateConfig('pegaServerUrl', serverUrl);
+    }
+
+    public static getLabbLogo() {
+        const config = this.getConfig();
+        return config.labbified ? config.labbLogo : null;
     }
 
     public static getAction() {

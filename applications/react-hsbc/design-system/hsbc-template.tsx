@@ -1,3 +1,5 @@
+import { DemoBootstrap } from "@labb/demo-utilities";
+
 export default function HsbcTemplate(props: { productName: string, productImage: string, children: JSX.Element | JSX.Element[] }) {
     return <div className="page_zSle1">
         <header className="header_V_Egs flex_zDz_l">
@@ -6,7 +8,8 @@ export default function HsbcTemplate(props: { productName: string, productImage:
                     <div className="grid_ghPKb clearfix_hhLma">
                         <div className="cell_uuvmm size12_bNMEu"><div>
                             <span className="logo_L856C" title="HSBC logo" role="img">
-                                <svg focusable="false" id="logo-hsbc" role="img" viewBox="0 0 285 38">
+                                {DemoBootstrap.getLabbLogo() && <img src={DemoBootstrap.getLabbLogo()} />}
+                                {!DemoBootstrap.getLabbLogo() && <svg focusable="false" id="logo-hsbc" role="img" viewBox="0 0 285 38">
                                     <title>HSBC - The Hongkong and Shanghai Banking Corporation - UK</title>
                                     <polygon fill="#db0011" points="91.87 23 69 0 69 46 91.87 23"></polygon>
                                     <polygon fill="#db0011" points="46 23 69 0 23 0 46 23"></polygon>
@@ -18,7 +21,7 @@ export default function HsbcTemplate(props: { productName: string, productImage:
                                     <path d="M162.81,32.95c-6.2,0-9-4-9-9.82s3.1-10.08,9.17-10.08c3.88,0,7.62,1.68,7.62,6.07H166.3a3.17,3.17,0,0,0-3.36-3c-3.75,0-4.91,4-4.91,7.11s1.16,6.59,4.78,6.59a3.41,3.41,0,0,0,3.62-3h4.39c-.52,4.39-4,6.07-8,6.07"></path>
                                     <path d="M185.81,32.95c-4.78,0-7.37-2.71-7.37-7.37V13.44h1.81v11.5a6.92,6.92,0,0,0,.9,4.26,5.95,5.95,0,0,0,9.69-.65,8.5,8.5,0,0,0,.52-3.62V13.44h1.81V25.58c0,4.52-2.71,7.37-7.37,7.37"></path>
                                     <path d="M197.05,13.44h1.68V32.69h-1.68Zm1.81,8.79,8.53-8.79h2.33l-8.79,8.66,9.69,10.6h-2.33Z"></path>
-                                </svg>
+                                </svg>}
                             </span>
                         </div>
                         </div>
