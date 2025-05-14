@@ -24,7 +24,7 @@ export const scenariosData = [
         industry: 'Healthcare',
         description: 'John Conner is a patient with diabetes on basic health care and needs more coverage. Healthcare Journey — “Personalised Care Plan Enrollment”',
         image: 'img/healthcare.jpg',
-        caseTypeId: 'Labb-LabbCS-Work-Service-BikeTourBooking',
+        caseTypeId: 'Labb-LabbCS-Work-Service-UpgradeCarePlan',
         clients: [
             'react-nhs',
             'vue-hca'
