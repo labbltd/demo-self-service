@@ -1,5 +1,13 @@
 export const scenariosData = [
     {
+        profile: 'img/team-4.jpeg',
+        industry: 'Any',
+        description: 'Ian Malcolm has filed multiple service requests and is notified that there are outstanding tasks for him to complete',
+        image: 'img/work-from-home.jpg',
+        pageId: 'pyWorklist',
+        pageClass: 'Data-Portal'
+    },
+    {
         profile: 'img/team-1.jpeg',
         industry: 'Banking',
         description: 'Sarah Connor is a 39yrs old mother of 2, who lives in London and is prospective buyer. Banking Journey — “Mortgage Pre-Approval + Application Initiation”',

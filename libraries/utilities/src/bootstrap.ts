@@ -41,8 +41,20 @@ export class DemoBootstrap {
         }))
     }
 
+    public static setAction(action: string) {
+        this.updateConfig('action', action);
+    }
+
     public static setCaseTypeId(caseTypeId: string) {
         this.updateConfig('caseTypeId', caseTypeId);
+    }
+
+    public static setPageId(pageId: string) {
+        this.updateConfig('pageId', pageId);
+    }
+
+    public static setPageClass(pageClass: string) {
+        this.updateConfig('pageClass', pageClass);
     }
 
     public static setAccessTokenUrl(accessTokenUrl: string) {

@@ -26,7 +26,15 @@ export function Home() {
   }, []);
 
   function updateScenario(scenario) {
-    DemoBootstrap.setCaseTypeId(scenario.caseTypeId);
+    if (scenario.caseTypeId) {
+      DemoBootstrap.setAction('createCase');
+      DemoBootstrap.setCaseTypeId(scenario.caseTypeId);
+    }
+    if (scenario.pageId) {
+      DemoBootstrap.setAction('openPage');
+      DemoBootstrap.setCaseTypeId(scenario.pageId);
+      DemoBootstrap.setPageClass(scenario.pageClass);
+    }
     setScenario(scenario);
   }
 
@@ -76,7 +84,7 @@ function Scenario(props) {
       {scenario.description && <Typography variant="paragraph" color="blue-gray" className="mb-4">
         {scenario.description}
       </Typography>}
-      {scenario.image && <img src={scenario.image} />}
+      {scenario.image && <img src={scenario.image} width="100%"/>}
     </CardBody>
   </Card>
 }
