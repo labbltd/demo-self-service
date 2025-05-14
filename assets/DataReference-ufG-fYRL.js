@@ -1,1 +1,0 @@
-import{j as e,G as t}from"./index-BjNDvVvS.js";function s(r){return e.jsxs(e.Fragment,{children:[e.jsx("pre",{children:"DataReference"}),r.container.children.map((n,a)=>e.jsx(t,{container:n},n.id+a))]})}export{s as default};
