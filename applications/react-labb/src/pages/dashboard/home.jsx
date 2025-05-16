@@ -45,46 +45,69 @@ export function Home() {
 }
 
 function Scenarios(props) {
+  const [allCaseTypes, setAllCaseTypes] = useState(false);
+  const [open, setOpen] = useState('');
   const scenarios = [
     ...scenariosData,
-    ...props.caseTypes
+    ...(allCaseTypes ? props.caseTypes : [])
       ?.filter(caseType => !scenariosData.find(scenario => scenario.caseTypeId === caseType.ID))
-      .map(caseType => ({ industry: caseType.name, caseTypeId: caseType.ID }))
+      .map(caseType => ({ type: caseType.name, caseTypeId: caseType.ID }))
   ]
   return <>
     <Typography variant="h2" color="blue-gray" className="mb-1">
       Select your scenario
     </Typography>
     <div className="mt-8">
-      <div className="mb-4 grid grid-cols-2 gap-6 xl:grid-cols-2">
-        {scenarios.map(scenario => <Scenario
-          key={scenario.industry}
+      <div className="mb-4 grid gap-6 xl:grid-cols-1">
+        {scenarios.map(scenario => <StructuredCard
+          key={scenario.type}
           scenario={scenario}
+          open={open}
+          setOpen={setOpen}
           updateScenario={props.updateScenario} />)}
       </div>
     </div>
+    <Button variant='outlined' className="mb-2" onClick={() => setAllCaseTypes(!allCaseTypes)}>
+      {allCaseTypes ? 'Show less case types' : 'Show all case types'}
+    </Button>
   </>;
 }
 
-function Scenario(props) {
+function StructuredCard(props) {
   const { scenario, updateScenario } = props;
-  return <Card key={scenario.description} onClick={() => updateScenario(scenario)} className="cursor-pointer overflow-hidden xl:col-span-1 border border-blue-gray-100 shadow-sm">
-    <CardHeader
-      floated={false}
+  return <Card>
+    <CardHeader floated={false}
       shadow={false}
-      color="transparent"
-      className="m-0 flex items-center justify-between p-6"
-    >
-      <Typography variant="h6" color="blue-gray" className="mb-1">
-        {scenario.industry}
-      </Typography>
-      {scenario.profile && <Avatar src={scenario.profile} size="sm" />}
+      color="transparent">
+      <div>
+        <Typography variant="h4" color="blue-gray" className="mb-1">
+          {scenario.type}
+        </Typography>
+        {scenario.title && <Typography variant="small"
+          className="flex items-center gap-1 font-normal text-blue-gray-600">
+          {scenario.title}
+        </Typography>}
+      </div>
     </CardHeader>
-    <CardBody className="overflow-x-scroll px-0 pt-0 p-6">
-      {scenario.description && <Typography variant="paragraph" color="blue-gray" className="mb-4">
-        {scenario.description}
-      </Typography>}
-      {scenario.image && <img src={scenario.image} width="100%"/>}
+    <CardBody>
+      <div className="grid gap-y-10 gap-x-6 sm:grid-cols-1 md:grid-cols-2">
+        <div>
+          {scenario.description && <Typography variant="paragraph" color="blue-gray" className="mb-4">
+            {scenario.description}
+          </Typography>}
+          {scenario.image && <img src={scenario.image} width="100%" />}
+        </div>
+        <div>
+          {scenario.proofPoints && <ul className="list-disc list-inside">
+            {scenario.proofPoints.map(point => <li key={point} dangerouslySetInnerHTML={{ __html: point }}></li>)}
+          </ul>}
+          <div className="text-center">
+            <Button variant='outlined' className="mt-12" onClick={() => updateScenario(scenario)}>
+              Get started
+            </Button>
+          </div>
+        </div>
+      </div>
     </CardBody>
   </Card>
 }
