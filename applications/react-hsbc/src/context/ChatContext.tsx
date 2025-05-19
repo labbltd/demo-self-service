@@ -10,11 +10,13 @@ import {
 } from "react";
 import io from "socket.io-client";
 
-const socket = DemoBootstrap.useChat() ? io("https://labbchathook.onrender.com") : {
-  on: () => { },
-  off: () => { },
-  emit: () => { },
-};
+const socket = DemoBootstrap.useChat()
+  ? io("https://labbchathook.onrender.com")
+  : {
+      on: () => {},
+      off: () => {},
+      emit: () => {},
+    };
 
 interface ChatChoice {
   text: string;
@@ -23,23 +25,23 @@ interface ChatChoice {
 
 type ChatMessage =
   | {
-    type: "text";
-    text: string;
-    sender: "user" | "server";
-    author: string;
-  }
+      type: "text";
+      text: string;
+      sender: "user" | "server";
+      author: string;
+    }
   | {
-    type: "buttons";
-    choices: ChatChoice[];
-    sender: "server";
-    author: string;
-  }
+      type: "buttons";
+      choices: ChatChoice[];
+      sender: "server";
+      author: string;
+    }
   | {
-    type: "indicator" | "not-supported";
-    text: string;
-    sender: "server";
-    author: string;
-  };
+      type: "indicator" | "not-supported";
+      text: string;
+      sender: "server";
+      author: string;
+    };
 
 interface Option {
   value: string;
@@ -153,14 +155,16 @@ export const ChatProvider = ({ children }: ChatProviderProps): JSX.Element => {
     text?: string,
     isPostback = false
   ) => {
-    const message = {
+    const message: any = {
       type,
       customer_id: selectedOption.value,
       customer_name: selectedOption.label,
       message_id: Date.now(),
-      text: text ? [text] : [],
       postback: isPostback ? text : undefined,
     };
+    if (text) {
+      message.text = [text];
+    }
 
     try {
       socket.emit("clientMessage", message, (ack: any) =>
