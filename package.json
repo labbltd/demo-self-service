@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "build": "nx run-many -t build --parallel=10 --exclude=react-cmcmarkets",
+    "build:development": "nx run-many -t build -c development --parallel=10 --exclude=react-cmcmarkets",
     "serve": "http-server dist",
     "reset": "rm -rf dist && npx nx reset && rm -rf .nx/cache"
   },
@@ -32,10 +33,10 @@
     "@carbon/icons-react": "^11.11.0",
     "@carbon/react": "^1.18.0-rc.0",
     "@heroicons/react": "2.0.18",
-    "@labb/angular-adapter": "24.19.1",
-    "@labb/constellation-core-types": "24.2.2",
-    "@labb/dx-engine": "^24.2.4",
-    "@labb/react-adapter": "^24.18.2",
+    "@labb/angular-adapter": "^24.19.2",
+    "@labb/constellation-core-types": "^24.2.3",
+    "@labb/dx-engine": "^24.2.6",
+    "@labb/react-adapter": "^24.18.3",
     "@labb/vue-adapter": "^24.3.1",
     "@material-tailwind/react": "2.1.9",
     "@nx/angular": "20.5.0",

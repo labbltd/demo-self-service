@@ -4,7 +4,7 @@ import { PContainerComponent } from '@labb/angular-adapter';
 @Component({
   selector: 'dx-default-container',
   template: `
-    <div [ngClass]="{group: container.componentName.startsWith('Group'), readOnly: container.config.readOnly}">
+    <div [ngClass]="{group: container.pconnect.getComponentName().startsWith('Group'), readOnly: container.config.readOnly}">
       @for (message of container.config.httpMessages; track message.message) {
         <div>
           {{message.type}}: {{message.message}}
@@ -22,4 +22,5 @@ import { PContainerComponent } from '@labb/angular-adapter';
   `,
   standalone: false
 })
-export class DefaultComponent extends PContainerComponent { }
+export class DefaultComponent extends PContainerComponent {
+}

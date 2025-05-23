@@ -7,7 +7,7 @@ export default function FlowContainer(props: { container: PFlowContainer }) {
 
   function handleActionError(e: Error) {
     console.error(e);
-    setErrorMessage(e.message || 'Error');
+    setErrorMessage(e?.message || 'Error');
   }
 
   if (!props.container.hasAssignment()) {

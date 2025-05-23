@@ -4,23 +4,27 @@ import { PContainerComponent } from '@labb/angular-adapter';
 
 @Component({
   selector: 'dx-dropdown-control',
-  template: `<label
-    >{{ container.config.label }}{{ container.config.required ? ' *' : '' }}
-    <select
-      [id]="container.id"
-      [formControl]="control"
-      (change)="container.updateFieldValue(getValue($event.target))"
-      (blur)="container.triggerFieldChange(getValue($event.target))"
-    >
-      <option disabled selected value="{undefined}">
-        -- select an option --
-      </option>
-      @for (option of container.config.datasource; track option.key) {
-        <option [value]="option.key">
-          {{ option.value }}
+  template: `
+  <label>{{ container.config.label }}{{ container.config.required ? ' *' : '' }}
+    @if(!container.config.readOnly) {
+      <select
+        [id]="container.id"
+        [formControl]="control"
+        (change)="container.updateFieldValue(getValue($event.target))"
+        (blur)="container.triggerFieldChange(getValue($event.target))"
+      >
+        <option disabled selected value="{undefined}">
+          -- select an option --
         </option>
-      }
-    </select>
+        @for (option of container.config.datasource; track option.key) {
+          <option [value]="option.key">
+            {{ option.value }}
+          </option>
+        }
+      </select>
+    } @else {
+      <span>{{container.config.value}}</span>
+    }
     {{ container.config.helperText }}
     {{ container.config.validatemessage }}
   </label> `,

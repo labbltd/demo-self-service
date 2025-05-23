@@ -9,12 +9,15 @@ import { PContainer } from '@labb/dx-engine';
     <cds-form-field [label]="container.config.label" [for]="container.id"
         [tooltip]="{body: container.config.helperText}"
         [errorMessage]="container.config.validatemessage">
-        <input cdsInput
-          [value]="value"
-          [disabled]="disabled"
-          [type]="type"
-          [name]="container.id"
-          (blur)="update($event.target)">
+        @if(disabled) {
+          {{value}}
+        } @else {
+          <input cdsInput
+            [value]="value"
+            [type]="type"
+            [name]="container.id"
+            (blur)="update($event.target)">
+        }
     </cds-form-field>
   `,
   standalone: false

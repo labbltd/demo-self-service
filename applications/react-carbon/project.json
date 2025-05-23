@@ -22,32 +22,32 @@
           {
             "glob": "bootstrap-shell.*",
             "input": "./node_modules/@pega/constellationjs/dist/",
-            "output": "./constellation"
+            "output": "./"
           },
           {
             "glob": "bootstrap-shell.*.*",
             "input": "./node_modules/@pega/constellationjs/dist/",
-            "output": "./constellation"
+            "output": "./"
           },
           {
             "glob": "lib_asset.json",
             "input": "./node_modules/@pega/constellationjs/dist/",
-            "output": "./constellation"
+            "output": "./"
           },
           {
             "glob": "constellation-core.*",
             "input": "./node_modules/@pega/constellationjs/dist/",
-            "output": "./constellation/prerequisite"
+            "output": "./prerequisite"
           },
           {
             "glob": "constellation-core.*.*",
             "input": "./node_modules/@pega/constellationjs/dist/",
-            "output": "./constellation/prerequisite"
+            "output": "./prerequisite"
           },
           {
             "glob": "*.*",
             "input": "./node_modules/@pega/constellationjs/dist/js/",
-            "output": "./constellation/prerequisite/js"
+            "output": "./prerequisite/js"
           }
         ],
         "styles": ["applications/react-carbon/src/styles.scss"],

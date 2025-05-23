@@ -3,30 +3,22 @@ import { FormControl } from '@angular/forms';
 import { PContainerComponent } from '@labb/angular-adapter';
 
 @Component({
-  selector: 'dx-text-input-control',
+  selector: 'dx-checkbox-control',
   template: `
-    <div>
-      <label [for]="container.id">
-      <input
-        [id]="container.id"
-        type="checkbox"
-        [disabled]="container.config.readOnly"
-        [formControl]="control"
-        (change)="change($event)"
-      />
-      {{ label }}{{ container.config.required ? ' *' : '' }}
-      </label>
-      {{ container.config.helperText }}
-      {{ container.config.validatemessage }}
-    </div>
+      <cds-form-field [errorMessage]="container.config.validatemessage" [tooltip]="container.config.helperText" [label]="container.config.label">
+        @if(container.config.readOnly) {
+          {{container.config.value}}
+        } @else {
+          <cds-checkbox [label]="container.config.caption" [for]="container.id">
+              <input [id]="container.id" cdsInput type="checkbox" [formControl]="control" (change)="change($event)">
+          </cds-checkbox>
+        }
+      </cds-form-field>
    `,
   standalone: false
 })
 export class CheckboxComponent extends PContainerComponent implements OnInit {
   public control = new FormControl('');
-  public get label(): string {
-    return this.container.config.label || this.container.config.caption;
-  }
 
   public override ngOnInit(): void {
     super.ngOnInit();

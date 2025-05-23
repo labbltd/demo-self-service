@@ -25,7 +25,6 @@ export interface CompareTableLayoutComponentScalarList {
                         <div class="ap-selection-card">
                             <pre>value="{{selectionCardItem.id}}" selectionLabel="{{selectionCardItem.label}}"</pre>
                             @for (child of selectionCardItem.children; track $index) {
-                                <pre>[dxContainerStart {{child.componentName}} {{child.config.value}}]</pre>
                                 <ng-template dxContainer [container]="child"]></ng-template>
                             }
                         </div>

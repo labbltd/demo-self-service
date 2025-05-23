@@ -7,7 +7,9 @@ import { DemoBootstrap } from '@labb/demo-utilities';
   template: `
     @if (token) {
       <dx-pega-entry
-        [caseTypeID]="caseTypeId"
+        [caseTypeID]="action === 'createCase' ? caseTypeId : undefined"
+        [pageID]="action === 'openPage' ? pageId : undefined"
+        [className]="action === 'openPage' ? pageClass : undefined"
         [infinityServer]="infinityServer"
         [localeId]="localeId"
         [appId]="appId"
@@ -25,6 +27,9 @@ export class PegaCaseComponent implements OnInit {
   public authError!: string;
   public loadingDone!: boolean;
   public infinityServer = DemoBootstrap.getServerUrl();
+  public action = DemoBootstrap.getAction();
+  public pageId = DemoBootstrap.getPageId();
+  public pageClass = DemoBootstrap.getPageClass();
   public caseTypeId = DemoBootstrap.getCaseTypeId();
   public appId = DemoBootstrap.getAppId();
   public localeId = DemoBootstrap.getLocaleId();

@@ -5,49 +5,30 @@ import { Attachment, FileStatus } from '@labb/dx-engine';
 @Component({
   selector: 'dx-attachment-control',
   template: `
-    <label>
-      {{ container.config.label }}{{ container.config.required ? ' *' : '' }}
-      <input #fileInput type="file" 
-        (change)="upload($event)" 
-        [multiple]="allowMultiple"
-        *ngIf="allowMultiple || !container.files.length"
-      />
-      {{ container.config.helperText }}
-      {{ container.config.validatemessage }}
-      {{ container.config.extensions }}
-    </label>
-    <table *ngIf="container.files?.length">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Size</th>
-          <th>Type</th>
-          <th>Uploaded</th>
-          <th>Error</th>
-          <th>Error Status</th>
-          <th>Progress</th>
-          <th>ID</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let file of container.files">
-          <td>{{file.name}}</td>
-          <td>{{file.size}}</td>
-          <td>{{file.type}}</td>
-          <td>{{file.uploaded}}</td>
-          <td>{{file.error}}</td>
-          <td>{{file.errorStatus}}</td>
-          <td>{{file.progress}}</td>
-          <td>{{file.id}}</td>
-          <td>
-            <button type="button" (click)="remove(file)">delete</button>
-            <button *ngIf="file.linked" (click)="download(file)">download</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <img *ngIf="downloadedImage" width="100%" [src]="'data:image/png;base64,' + downloadedImage" />
+    <cds-form-field [label]="container.config.label" [for]="container.id"
+        [tooltip]="{body: container.config.helperText}"
+        [errorMessage]="container.config.validatemessage">
+        @if(allowMultiple || !container.files.length) {
+          <input cdsInput type="file" class="form-control"
+            (change)="upload($event)"
+            [multiple]="allowMultiple"
+          />
+        } @else {
+          {{container.files[0].name}}
+        }
+        {{ container.config.extensions }}
+        @for(file of container.files; track file.id) {
+            @if (file.uploaded){ 
+              <cds-icon name="checkmark"/>
+              <cds-icon name="trash" (click)="remove(file)"/>
+            }
+            @else { {{file.progress}} }
+            @if(file.linked) { <cds-icon name="eye" (click)="download(file)"/> }
+        }
+    </cds-form-field>
+    @if(downloadedImage) {
+      <img width="100%" [src]="'data:image/png;base64,' + downloadedImage" />
+    }
   `,
   standalone: false
 })

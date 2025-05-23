@@ -9,7 +9,7 @@ export class DemoBootstrap {
             config = {};
         }
         return {
-            localeId: 'en-GB',
+            localeId: 'en-US',
             appAlias: 'LabbCS',
             caseTypeId: 'Labb-LabbCS-Work-Service-InsuranceIssuance',
             action: 'openPage',

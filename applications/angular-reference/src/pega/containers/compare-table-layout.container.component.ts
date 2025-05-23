@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Subject } from 'rxjs';
 
 import { PContainerComponent } from '@labb/angular-adapter';
 import { PContainer, PContainerFactory } from '@labb/dx-engine';
@@ -26,7 +25,7 @@ export interface CompareTableLayoutComponentScalarList {
                         <div class="ap-selection-card">
                             <pre>value="{{selectionCardItem.id}}" selectionLabel="{{selectionCardItem.label}}"</pre>
                             @for (child of selectionCardItem.children; track $index) {
-                                <pre>[dxContainerStart {{child.componentName}} {{child.config.value}}]</pre>
+                                <pre>[dxContainerStart {{child.pconnect.getComponentName()}} {{child.config.value}}]</pre>
                                 <ng-template dxContainer [container]="child"]></ng-template>
                             }
                         </div>

@@ -1,5 +1,5 @@
 import { DxReactAdapter } from '@labb/react-adapter';
-import React from 'react';
+import * as React from 'react';
 
 DxReactAdapter.registerMapping('Attachment', React.lazy(() => import('./containers/Attachment')));
 DxReactAdapter.registerMapping('Checkbox', React.lazy(() => import('./containers/Checkbox')));
@@ -23,3 +23,6 @@ DxReactAdapter.registerMapping('AppShell', React.lazy(() => import('./containers
 DxReactAdapter.registerMapping('AppAnnouncement', React.lazy(() => import('./containers/AppAnnouncement')))
 DxReactAdapter.registerMapping('Todo', React.lazy(() => import('./containers/Todo')))
 DxReactAdapter.registerMapping('DetailsThreeColumns', React.lazy(() => import('./containers/DetailsThreeColumns')))
+DxReactAdapter.registerMapping('SimpleTableManual', React.lazy(() => import('./containers/SimpleTableManual')))
+DxReactAdapter.registerMapping('ListView', React.lazy(() => import('./containers/ListView')))
+DxReactAdapter.registerMapping('ListPage', React.lazy(() => import('./containers/ListView')))

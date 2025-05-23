@@ -9,10 +9,13 @@ const root = ReactDOM.createRoot(
 );
 
 async function render() {
+  const action = DemoBootstrap.getAction();
   root.render(
     <PegaEmbed
       token={await DemoBootstrap.getToken()}
-      caseTypeID={DemoBootstrap.getCaseTypeId()}
+      caseTypeID={action === 'createCase' ? DemoBootstrap.getCaseTypeId() : undefined}
+      pageID={action === 'openPage' ? DemoBootstrap.getPageId() : undefined}
+      className={action === 'openPage' ? DemoBootstrap.getPageClass() : undefined}
       serverUrl={DemoBootstrap.getServerUrl()}
       localeID={DemoBootstrap.getLocaleId()}
       appID={DemoBootstrap.getAppId()}

@@ -18,13 +18,14 @@ import { DetailsComponent } from './containers/Details.component';
 import { DetailsThreeColumnComponent } from './containers/DetailsThreeColumns';
 import { DropdownComponent } from './containers/Dropdown.component';
 import { FlowContainerComponent } from './containers/FlowContainer.component';
+import { ListViewComponent } from './containers/ListView.component';
 import { ModalViewContainerComponent } from './containers/ModalViewContainer.component';
 import { MultiselectComponent } from './containers/Multiselect.component';
 import { OneColumnComponent } from './containers/OneColumn.component';
 import { RadioButtonsComponent } from './containers/RadioButtons.component';
 import { RichTextComponent } from './containers/RichText.component';
 import { ScalarListComponent } from './containers/ScalarList.component';
-import { SimpleTableComponent } from './containers/SimpleTable.component';
+import { SimpleTableManualComponent } from './containers/SimpleTableManual.component';
 import { TextAreaComponent } from './containers/TextArea.component';
 import { TextInputComponent } from './containers/TextInput.component';
 import { ViewComponent } from './containers/View.component';
@@ -49,19 +50,19 @@ import { ViewComponent } from './containers/View.component';
     AddressLookupComponent,
     DetailsThreeColumnComponent,
     CheckboxComponent,
-    SimpleTableComponent,
     ViewComponent,
     CompareTableLayoutContainerComponent,
     ScalarListComponent,
     ActionableButtonComponent,
-    MultiselectComponent
+    MultiselectComponent,
+    ListViewComponent,
+    SimpleTableManualComponent
   ],
   providers: [
     {
       provide: DYNAMIC_CONTAINERS,
       useValue: {
         default: DefaultComponent,
-        Child: DefaultComponent,
         // layouts
         AppShell: AppShellComponent,
         CaseView: CaseViewComponent,
@@ -70,12 +71,7 @@ import { ViewComponent } from './containers/View.component';
         FlowContainer: FlowContainerComponent,
         ModalViewContainer: ModalViewContainerComponent,
         OneColumn: OneColumnComponent,
-        PreviewViewContainer: DefaultComponent,
-        reference: DefaultComponent,
-        Region: DefaultComponent,
-        RootContainer: DefaultComponent,
         View: ViewComponent,
-        ViewContainer: DefaultComponent,
         DetailsThreeColumn: DetailsThreeColumnComponent,
         Pega_Extensions_CompareTableLayout: CompareTableLayoutContainerComponent,
         // controls
@@ -97,6 +93,8 @@ import { ViewComponent } from './containers/View.component';
         Time: TextInputComponent,
         Multiselect: MultiselectComponent,
         ScalarList: ScalarListComponent,
+        SimpleTableManual: SimpleTableManualComponent,
+        ListView: ListViewComponent,
         // custom controls
         Labb_dx_ButtonGroup: RadioButtonsComponent,
         Labb_dx_Address: AddressLookupComponent,
