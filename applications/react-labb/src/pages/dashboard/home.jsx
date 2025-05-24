@@ -12,10 +12,13 @@ import {
 import { useEffect, useState } from "react";
 import { clientsData } from "../../data/clients-data";
 import { scenariosData } from "../../data/scenarios-data";
+import './home.css';
 
 export function Home() {
   const [scenario, setScenario] = useState(null);
   const [caseTypes, setCaseTypes] = useState([]);
+  const [useFilter, setUseFilter] = useState(true);
+  const [url, setUrl] = useState();
 
   useEffect(() => {
     DemoBootstrap.getToken()
@@ -38,10 +41,55 @@ export function Home() {
     setScenario(scenario);
   }
 
-  if (!scenario) {
-    return <Scenarios updateScenario={s => updateScenario(s)} caseTypes={caseTypes} />
-  }
-  return <Clients scenario={scenario} setScenario={setScenario} />
+  return <>
+    <div className="flex justify-between">
+      <div>
+        {!scenario && <Typography variant="h2" color="blue-gray" className="my-2 ml-[1.5rem]">
+          Select your scenario
+        </Typography>}
+        {(scenario && !url) && <Typography variant="h2" color="blue-gray" className="my-2 ml-[1.5rem]">
+          Select a company
+        </Typography>}
+      </div>
+      <div>
+        {scenario && <Button variant='outlined' className="mr-6 mt-4" onClick={() => { setScenario(null); setUrl(null) }}>
+          &lt; Select different scenario
+        </Button>}
+        {url && <a href={url} target="__blank"><Button variant='outlined' className="mr-6 mt-4">
+          Open in new tab
+        </Button></a>}
+        {(scenario && !url) && <Button variant='outlined' className="mt-4 mr-4" onClick={() => setUseFilter(!useFilter)}>
+          Show {useFilter ? 'more' : 'less'} clients
+        </Button>}
+      </div>
+    </div>
+    {!scenario && <Scenarios updateScenario={s => updateScenario(s)} caseTypes={caseTypes} />}
+    {(scenario && !url) && <Clients scenario={scenario} setScenario={setScenario} setUrl={setUrl} useFilter={useFilter} />}
+    {url &&
+      <div className="browser-container mt-4">
+        <div className="browser-row">
+          <div className="browser-column browser-left">
+            <span className="browser-dot" style={{ background: '#ED594A' }}></span>
+            <span className="browser-dot" style={{ background: '#FDD800' }}></span>
+            <span className="browser-dot" style={{ background: '#5AC05A' }}></span>
+          </div>
+          <div className="browser-column browser-middle">
+            <input className="browser-url" type="text" value={url} onChange={(e) => setUrl(e.target.value)} />
+          </div>
+          <div className="browser-column browser-right">
+            <div style={{ float: 'right' }}>
+              <span className="browser-bar"></span>
+              <span className="browser-bar"></span>
+              <span className="browser-bar"></span>
+            </div>
+          </div>
+        </div>
+        <div className="browser-content">
+          <iframe src={url} style={{ width: '100%', height: '100vh' }} />
+        </div>
+      </div>
+    }
+  </>
 }
 
 function Scenarios(props) {
@@ -54,10 +102,7 @@ function Scenarios(props) {
       .map(caseType => ({ type: caseType.name, caseTypeId: caseType.ID }))
   ]
   return <>
-    <Typography variant="h2" color="blue-gray" className="mb-1">
-      Select your scenario
-    </Typography>
-    <div className="mt-8">
+    <div className="mt-2">
       <div className="mb-4 grid gap-6 xl:grid-cols-1">
         {scenarios.map(scenario => <StructuredCard
           key={scenario.type}
@@ -67,7 +112,7 @@ function Scenarios(props) {
           updateScenario={props.updateScenario} />)}
       </div>
     </div>
-    <Button variant='outlined' className="mb-2" onClick={() => setAllCaseTypes(!allCaseTypes)}>
+    <Button variant='outlined' className="mb-4 ml-5" onClick={() => setAllCaseTypes(!allCaseTypes)}>
       {allCaseTypes ? 'Show less case types' : 'Show all case types'}
     </Button>
   </>;
@@ -75,7 +120,7 @@ function Scenarios(props) {
 
 function StructuredCard(props) {
   const { scenario, updateScenario } = props;
-  return <Card>
+  return <Card style={{ margin: '0 1.5rem' }}>
     <CardHeader floated={false}
       shadow={false}
       color="transparent">
@@ -113,24 +158,15 @@ function StructuredCard(props) {
 }
 
 function Clients(props) {
-  const [useFilter, setUseFilter] = useState(true);
+  const { useFilter } = props;
   return <>
-    <Typography variant="h2" color="blue-gray" className="mb-1">
-      Select your company
-    </Typography>
-    <Button variant='outlined' className="mr-6 mt-4" onClick={() => props.setScenario(null)}>
-      &lt; Select different scenario
-    </Button>
-    {props.scenario.clients && <Button variant='outlined' className="mt-4" onClick={() => setUseFilter(!useFilter)}>
-      Show {useFilter ? 'all' : 'less'} clients
-    </Button>}
-    <div className="mt-8">
+    <div className="mt-4 mx-4">
       <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
         {clientsData
           .filter(client =>
             !useFilter || !props.scenario.clients || props.scenario.clients.includes(client.link.split('/')[2])
           )
-          .map(client => <a href={client.link} key={client.link}><Card className="overflow-hidden xl:col-span-1 border border-blue-gray-100 shadow-sm">
+          .map(client => <a onClick={() => props.setUrl(client.link)} key={client.link}><Card className="overflow-hidden xl:col-span-1 border border-blue-gray-100 shadow-sm">
             <CardHeader
               floated={false}
               shadow={false}

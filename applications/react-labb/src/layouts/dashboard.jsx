@@ -17,21 +17,23 @@ export function Dashboard() {
       <Sidenav
         routes={routes}
         brandImg={
-          sidenavType === "dark" ? "./img/Labb White Logo-RGB.png" : "./img/Labb Dark Blue Logo-RGB-1.png"
+          sidenavType === "dark" ? "./img/PW Logo - White.svg" : "./img/PW Logo - Black.svg"
         }
       />
-      <div className="p-4 xl:ml-80">
+      <div className="transition-transform duration-300 xl:ml-[18rem] flex flex-col h-screen justify-between">
         <DashboardNavbar />
         {openConfigurator && <Configurator />}
-        <Routes>
-          {routes.map(
-            ({ layout, pages }) =>
-              layout === "dashboard" &&
-              pages.map(({ path, element }) => (
-                <Route path={path} element={element} />
-              ))
-          )}
-        </Routes>
+        <div className="mb-auto">
+          <Routes>
+            {routes.map(
+              ({ layout, pages }) =>
+                layout === "dashboard" &&
+                pages.map(({ path, element }) => (
+                  <Route path={path} element={element} />
+                ))
+            )}
+          </Routes>
+        </div>
         <div className="text-blue-gray-600">
           <Footer />
         </div>

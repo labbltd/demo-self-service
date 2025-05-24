@@ -3,12 +3,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { PContainerModule } from '@labb/angular-adapter';
 
+import { CdsDesignSystemComponent } from '../design-system/design-system.component';
+import { CdsDesignSystemModule } from '../design-system/design-system.module';
 import { PegaCaseComponent } from './pega-case.component';
 import { PegaPortalComponent } from './pega-portal.component';
 import { PegaComponent } from './pega.component';
 import { PegaMappingModule } from './pega.mapping.module';
-import { CdsDesignSystemModule } from '../design-system/design-system.module';
-import { CdsDesignSystemComponent } from '../design-system/design-system.component';
 
 @NgModule({
   imports: [

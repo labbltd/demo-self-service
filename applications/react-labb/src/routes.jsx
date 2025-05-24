@@ -32,35 +32,12 @@ export const routes = [
         path: "/chat",
         element: <Chat />,
       },
-    ],
-  },
-  {
-    layout: "auth",
-    pages: [
-      {
-        icon: <LockOpenIcon {...icon} />,
-        name: "Sign In",
-        path: "/sign-in",
-        element: <SignIn />,
-      }
-    ],
-  },
-  {
-    title: "services",
-    layout: "dashboard",
-    pages: [
       {
         icon: <ServerStackIcon {...icon} />,
         name: "Constellation Embed",
         path: "/constellation",
         element: <OotbPegaEmbed caseTypeID='Labb-LabbCS-Work-Service-MakePayment'/>,
-      },
-      {
-        icon: <RectangleStackIcon {...icon} />,
-        name: "DX Accelerator Embed",
-        path: "/dx-accelerator",
-        element: <LabbPegaEmbed caseTypeID='Labb-LabbCS-Work-Service-UpdateContactProfile'/>,
-      },
+      }
     ],
   },
 ];

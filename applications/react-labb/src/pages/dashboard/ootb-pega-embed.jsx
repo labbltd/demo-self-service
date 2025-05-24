@@ -19,5 +19,5 @@ export default function OotbPegaEmbed() {
         password={window.btoa(DemoBootstrap.getPassword())}
         clientId={DemoBootstrap.getClientId()}
         clientSecret={DemoBootstrap.getClientSecret()}
-        style={{ width: '100%' }}></pega-embed>
+        style={{ width: '100%', padding: '50px' }}></pega-embed>
 }

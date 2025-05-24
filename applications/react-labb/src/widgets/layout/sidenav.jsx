@@ -1,13 +1,12 @@
-import PropTypes from "prop-types";
-import { Link, NavLink } from "react-router-dom";
+import { setOpenSidenav, useMaterialTailwindController } from "@/context";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
-  Avatar,
   Button,
   IconButton,
-  Typography,
+  Typography
 } from "@material-tailwind/react";
-import { useMaterialTailwindController, setOpenSidenav } from "@/context";
+import PropTypes from "prop-types";
+import { Link, NavLink } from "react-router-dom";
 
 export function Sidenav({ brandImg, brandName, routes }) {
   const [controller, dispatch] = useMaterialTailwindController();
@@ -21,13 +20,20 @@ export function Sidenav({ brandImg, brandName, routes }) {
   return (
     <aside
       className={`${sidenavTypes[sidenavType]} ${openSidenav ? "translate-x-0" : "-translate-x-80"
-        } fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0 border border-blue-gray-100`}
+        } fixed inset-0 z-50 h-[100vh] w-72 transition-transform duration-300 xl:translate-x-0`}
+      style={{
+        backgroundImage: 'url(./img/lion.png)',
+        backgroundSize: 'contain',
+        backgroundPositionY: 'bottom',
+        backgroundRepeat: 'no-repeat',
+        backgroundColor: 'black',
+      }}
     >
       <div
         className={`relative`}
       >
         <Link to="/" className="py-6 px-8 flex justify-center">
-          <img style={{width: '180px'}} src={brandImg} />
+          <img src="./img/PW Logo - White.svg" />
         </Link>
         <IconButton
           variant="text"
@@ -40,7 +46,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
           <XMarkIcon strokeWidth={2.5} className="h-5 w-5 text-white" />
         </IconButton>
       </div>
-      <div className="m-4">
+      <div className="m-4" style={{ background: 'white' }}>
         {routes.map(({ layout, title, pages }, key) => (
           <ul key={key} className="mb-4 flex flex-col gap-1">
             {title && (
@@ -67,13 +73,13 @@ export function Sidenav({ brandImg, brandName, routes }) {
                             ? "white"
                             : "blue-gray"
                       }
-                      className="flex items-center gap-4 px-4 capitalize"
+                      className="flex items-center gap-4 px-4 capitalize rounded-none"
                       fullWidth
                     >
                       {icon}
                       <Typography
                         color="inherit"
-                        className="font-medium capitalize"
+                        className={`font-medium capitalize ${openSidenav ? '' : 'xs:hidden'}`}
                       >
                         {name}
                       </Typography>
