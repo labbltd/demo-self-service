@@ -2,26 +2,31 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
+  DYNAMIC_CONTAINERS,
   PContainerModule,
-  DYNAMIC_CONTAINERS
 } from '@labb/angular-adapter';
-import { AppShellComponent } from './containers/AppShell.component';
-import { CaseViewComponent } from './containers/CaseView.component';
+import { ActionableButtonComponent } from './containers/ActionableButton.component';
+import { AttachmentComponent } from './containers/Attachment.component';
+import { CaseSummaryComponent } from './containers/CaseSummary.component';
+import { CheckboxComponent } from './containers/Checkbox.component';
 import { DefaultComponent } from './containers/Default.component';
 import { DefaultFormComponent } from './containers/DefaultForm.component';
 import { DetailsComponent } from './containers/Details.component';
+import { DetailsThreeColumnComponent } from './containers/DetailsThreeColumns';
+import { DetailsTwoColumnComponent } from './containers/DetailsTwoColumns';
+import { DropdownComponent } from './containers/Dropdown.component';
 import { FlowContainerComponent } from './containers/FlowContainer.component';
+import { ListViewComponent } from './containers/ListView.component';
+import { LocationComponent } from './containers/Location.component';
+import { MaskedInputComponent } from './containers/MaskedInput.component';
 import { ModalViewContainerComponent } from './containers/ModalViewContainer.component';
-import { OneColumnComponent } from './containers/OneColumn.component';
-import { AttachmentComponent } from './controls/Attachment.component';
-import { CheckboxComponent } from './controls/Checkbox.component';
-import { DateComponent } from './controls/Date.component';
-import { DropdownComponent } from './controls/Dropdown.component';
-import { RadioButtonsComponent } from './controls/RadioButtons.component';
-import { RichTextComponent } from './controls/RichText.component';
-import { TextAreaComponent } from './controls/TextArea.component';
-import { TextInputComponent } from './controls/TextInput.component';
-import { ButtonGroupComponent } from './controls/ButtonGroup.component';
+import { MultiselectComponent } from './containers/Multiselect.component';
+import { RadioButtonsComponent } from './containers/RadioButtons.component';
+import { SignatureComponent } from './containers/Signature.component';
+import { SimpleTableManualComponent } from './containers/SimpleTableManual.component';
+import { TextAreaComponent } from './containers/TextArea.component';
+import { TextInputComponent } from './containers/TextInput.component';
+import { ViewComponent } from './containers/View.component';
 
 import {
   ButtonModule,
@@ -38,11 +43,10 @@ import {
   TableModule,
   TilesModule,
 } from 'carbon-components-angular';
-import { AddressLookupComponent } from './controls/AddressLookup.component';
 
 @NgModule({
   imports: [
-    ButtonModule,
+        ButtonModule,
     CheckboxModule,
     ComboBoxModule,
     CommonModule,
@@ -60,62 +64,72 @@ import { AddressLookupComponent } from './controls/AddressLookup.component';
     TilesModule,
   ],
   declarations: [
-    AddressLookupComponent,
-    AppShellComponent,
-    AttachmentComponent,
-    ButtonGroupComponent,
-    CaseViewComponent,
-    CheckboxComponent,
-    DateComponent,
+    DropdownComponent,
+    TextInputComponent,
+    RadioButtonsComponent,
     DefaultComponent,
     DefaultFormComponent,
-    DetailsComponent,
-    DropdownComponent,
     FlowContainerComponent,
     ModalViewContainerComponent,
-    OneColumnComponent,
-    RadioButtonsComponent,
-    RichTextComponent,
+    AttachmentComponent,
     TextAreaComponent,
-    TextInputComponent,
+    DetailsComponent,
+    DetailsThreeColumnComponent,
+    CheckboxComponent,
+    ViewComponent,
+    ActionableButtonComponent,
+    MultiselectComponent,
+    ListViewComponent,
+    SimpleTableManualComponent,
+    DetailsTwoColumnComponent,
+    CaseSummaryComponent,
+    SignatureComponent,
+    LocationComponent,
+    MaskedInputComponent
   ],
   providers: [
     {
       provide: DYNAMIC_CONTAINERS,
       useValue: {
-        AppShell: AppShellComponent,
-        Attachment: AttachmentComponent,
-        CaseView: CaseViewComponent,
-        Checkbox: CheckboxComponent,
-        Currency: TextInputComponent,
-        Date: DateComponent,
-        DateTime: TextInputComponent,
-        Decimal: TextInputComponent,
         default: DefaultComponent,
+
+        // layouts
+        CaseSummary: CaseSummaryComponent,
         DefaultForm: DefaultFormComponent,
         Details: DetailsComponent,
+        DetailsThreeColumn: DetailsThreeColumnComponent,
+        DetailsTwoColumn: DetailsTwoColumnComponent,
+        FlowContainer: FlowContainerComponent,
+        ListPage: ListViewComponent,
+        ListView: ListViewComponent,
+        ModalViewContainer: ModalViewContainerComponent,
+        SimpleTableManual: SimpleTableManualComponent,
+        View: ViewComponent,
+
+        // controls
+        Attachment: AttachmentComponent,
+        Checkbox: CheckboxComponent,
+        Currency: TextInputComponent,
+        Date: TextInputComponent,
+        DateTime: TextInputComponent,
+        Decimal: TextInputComponent,
         Dropdown: DropdownComponent,
         Email: TextInputComponent,
-        FlowContainer: FlowContainerComponent,
-        Group: DefaultComponent,
         Integer: TextInputComponent,
-        Labb_dx_Address: AddressLookupComponent,
-        Labb_dx_ButtonGroup: ButtonGroupComponent,
-        ModalViewContainer: ModalViewContainerComponent,
-        OneColumn: OneColumnComponent,
+        Location: LocationComponent,
+        Multiselect: MultiselectComponent,
         Percentage: TextInputComponent,
         Phone: TextInputComponent,
-        PreviewViewContainer: DefaultComponent,
         RadioButtons: RadioButtonsComponent,
-        reference: DefaultComponent,
-        Region: DefaultComponent,
-        RichText: RichTextComponent,
-        RootContainer: DefaultComponent,
+        RichText: TextAreaComponent,
         TextArea: TextAreaComponent,
         TextInput: TextInputComponent,
         Time: TextInputComponent,
-        View: DefaultComponent,
-        ViewContainer: DefaultComponent,
+
+        // custom controls
+        Pega_Extensions_ActionableButton: ActionableButtonComponent,
+        Pega_Extensions_MaskedInput: MaskedInputComponent,
+        Pega_Extensions_SignatureCapture: SignatureComponent,
       },
       multi: true,
     },

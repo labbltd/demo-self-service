@@ -15,13 +15,14 @@ import { CdsInputDirective } from "../cds-input/cds-input.directive";
                 'cds-form-field-input': type === 'input',
                 'cds-form-field-checkbox': type === 'checkbox',
                 'cds-form-field-radio': type === 'radio',
-                'cds-form-field-dropdown': type === 'dropdown'
+                'cds-form-field-dropdown': type === 'dropdown',
+                'cds-form-field-textarea': type === 'textarea'
             }">
             <ng-content></ng-content>
             @if (tooltip && tooltip.body) {
-                <div role="tooltip" tabindex="0" class="toolTipWrapper">
+                <div role="tooltip" tabindex="0" class="toolTipWrapper" (click)="tooltip.active = true">
                     <div class="tool-tip-directive">
-                        <span (click)="tooltip.active = true">?</span>
+                        <span >?</span>
                         <div class="tool-tip" [ngClass]="{
                             'active': tooltip.active
                             }">
@@ -32,7 +33,7 @@ import { CdsInputDirective } from "../cds-input/cds-input.directive";
                             }
                             <span [innerHTML]="tooltip.body.substring(0,300)"></span>
                             <div class="arrow-down"></div>
-                            <div tabindex="0" class="close-tool-tip" (click)="tooltip.active=false">
+                            <div tabindex="0" class="close-tool-tip" (click)="tooltip.active=false; $event.stopPropagation()">
                                 <div>X</div>
                             </div>
                         </div>
@@ -78,6 +79,7 @@ export class CdsFormfieldComponent implements AfterViewInit, OnChanges {
     public get typeClass() {
         switch (this.type) {
             case 'text': return 'cds';
+            case 'textarea': return 'cds-textarea';
             case 'checkbox': return 'cds-checkbox';
             case 'radio': return 'cds-radio';
             case 'dropdown': return 'cds-dd';

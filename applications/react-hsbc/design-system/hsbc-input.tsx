@@ -1,10 +1,13 @@
+import { MutableRefObject } from "react";
+
 interface InputProps {
     id: string,
     type: string,
     value?: string,
     onChange?: (v: string) => void,
     onBlur?: (v: string) => void,
-    invalid?: boolean
+    invalid?: boolean,
+    reference?: MutableRefObject<HTMLInputElement | null>
 }
 
 export default function HsbcInput(props: InputProps) {
@@ -21,6 +24,7 @@ function TextInput(props: InputProps) {
             'input_cSOEz fontSizeInput_iB7ra paddingVerticalInput_wCTe9 paddingHorizontalInput_tn7be'
             + (props.invalid ? ' invalid_Wd4pb' : '')
         }
+        ref={props.reference}
         id={props.id}
         name={props.id}
         type={props.type}

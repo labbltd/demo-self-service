@@ -3,8 +3,7 @@ import { ref } from 'vue';
 
 import { TokenInfo } from '@labb/constellation-core-types';
 import { DemoBootstrap } from '@labb/demo-utilities';
-import PegaEntry from './container-mapping/PegaEntry.vue';
-
+import { PegaEntry } from '@labb/vue-adapter';
 import PageTemplate from '../../design-system/PageTemplate.vue';
 
 const token = ref<TokenInfo | null>(null);

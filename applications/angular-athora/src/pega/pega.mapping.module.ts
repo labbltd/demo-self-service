@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -20,25 +20,31 @@ import {
   DYNAMIC_CONTAINERS,
   PContainerModule,
 } from '@labb/angular-adapter';
+import { ActionableButtonComponent } from './containers/ActionableButton.component';
+import { AttachmentComponent } from './containers/Attachment.component';
+import { CaseSummaryComponent } from './containers/CaseSummary.component';
+import { CheckboxComponent } from './containers/Checkbox.component';
 import { DefaultComponent } from './containers/Default.component';
 import { DefaultFormComponent } from './containers/DefaultForm.component';
 import { DetailsComponent } from './containers/Details.component';
+import { DetailsThreeColumnComponent } from './containers/DetailsThreeColumns';
+import { DetailsTwoColumnComponent } from './containers/DetailsTwoColumns';
+import { DropdownComponent } from './containers/Dropdown.component';
 import { FlowContainerComponent } from './containers/FlowContainer.component';
+import { ListViewComponent } from './containers/ListView.component';
+import { LocationComponent } from './containers/Location.component';
+import { MaskedInputComponent } from './containers/MaskedInput.component';
 import { ModalViewContainerComponent } from './containers/ModalViewContainer.component';
-import { OneColumnComponent } from './containers/OneColumn.component';
-import { AddressLookupComponent } from './controls/AddressLookup.component';
-import { DxAttachmentComponent } from './controls/Attachment.component';
-import { DxCheckboxComponent } from './controls/Checkbox.component';
-import { DxDateComponent } from './controls/Date.component';
-import { DxDropdownComponent } from './controls/Dropdown.component';
-import { DxRadioButtonsComponent } from './controls/RadioButtons.component';
-import { DxSlideComponent } from './controls/Slide.component';
-import { DxTextAreaComponent } from './controls/TextArea.component';
-import { DxInputComponent } from './controls/Input.component';
-import { DxHintComponent } from './controls/Hint.component';
+import { MultiselectComponent } from './containers/Multiselect.component';
+import { RadioButtonsComponent } from './containers/RadioButtons.component';
+import { SignatureComponent } from './containers/Signature.component';
+import { SimpleTableManualComponent } from './containers/SimpleTableManual.component';
+import { TextAreaComponent } from './containers/TextArea.component';
+import { TextInputComponent } from './containers/TextInput.component';
+import { ViewComponent } from './containers/View.component';
 import { TranslatePipe } from './translate.pipe';
-import { GroupComponent } from './containers/Group.component';
-import { DxLoaderComponent } from './controls/Loader.component';
+import { DxHintComponent } from './containers/Hint.component';
+import { DxLoaderComponent } from './containers/Loader.component';
 
 @NgModule({
   imports: [
@@ -62,76 +68,78 @@ import { DxLoaderComponent } from './controls/Loader.component';
     ReactiveFormsModule,
   ],
   declarations: [
-    AddressLookupComponent,
-    DxAttachmentComponent,
-    DxCheckboxComponent,
-    DxDateComponent,
+    DropdownComponent,
+    TextInputComponent,
+    RadioButtonsComponent,
     DefaultComponent,
     DefaultFormComponent,
-    DetailsComponent,
-    DxDropdownComponent,
-    DxHintComponent,
-    DxLoaderComponent,
     FlowContainerComponent,
-    GroupComponent,
     ModalViewContainerComponent,
-    OneColumnComponent,
-    DxRadioButtonsComponent,
-    DxSlideComponent,
-    DxTextAreaComponent,
-    DxInputComponent,
+    AttachmentComponent,
+    TextAreaComponent,
+    DetailsComponent,
+    DetailsThreeColumnComponent,
+    CheckboxComponent,
+    ViewComponent,
+    ActionableButtonComponent,
+    MultiselectComponent,
+    ListViewComponent,
+    SimpleTableManualComponent,
+    DetailsTwoColumnComponent,
+    CaseSummaryComponent,
+    SignatureComponent,
+    LocationComponent,
+    MaskedInputComponent,
     TranslatePipe,
+    DxHintComponent,
+    DxLoaderComponent
   ],
   providers: [
-    {
-      provide: LOCALE_ID,
-      useValue: 'nl'
-    },
     {
       provide: DYNAMIC_CONTAINERS,
       useValue: {
         default: DefaultComponent,
-        Child: DefaultComponent,
+
         // layouts
-        Details: DetailsComponent,
+        CaseSummary: CaseSummaryComponent,
         DefaultForm: DefaultFormComponent,
+        Details: DetailsComponent,
+        DetailsThreeColumn: DetailsThreeColumnComponent,
+        DetailsTwoColumn: DetailsTwoColumnComponent,
         FlowContainer: FlowContainerComponent,
+        ListPage: ListViewComponent,
+        ListView: ListViewComponent,
         ModalViewContainer: ModalViewContainerComponent,
-        OneColumn: OneColumnComponent,
-        PreviewViewContainer: DefaultComponent,
-        reference: DefaultComponent,
-        Region: DefaultComponent,
-        RootContainer: DefaultComponent,
-        View: DefaultComponent,
-        Group: GroupComponent,
-        ViewContainer: DefaultComponent,
+        SimpleTableManual: SimpleTableManualComponent,
+        View: ViewComponent,
+
         // controls
-        Attachment: DxAttachmentComponent,
-        Checkbox: DxCheckboxComponent,
-        Currency: DxInputComponent,
-        Date: DxDateComponent,
-        DateTime: DxInputComponent,
-        Decimal: DxInputComponent,
-        Dropdown: DxDropdownComponent,
-        Email: DxInputComponent,
-        Integer: DxInputComponent,
-        Percentage: DxInputComponent,
-        Phone: DxInputComponent,
-        RadioButtons: DxRadioButtonsComponent,
-        RichText: DxTextAreaComponent,
-        TextArea: DxTextAreaComponent,
-        TextInput: DxInputComponent,
-        Text: DxInputComponent,
-        Time: DxInputComponent,
+        Attachment: AttachmentComponent,
+        Checkbox: CheckboxComponent,
+        Currency: TextInputComponent,
+        Date: TextInputComponent,
+        DateTime: TextInputComponent,
+        Decimal: TextInputComponent,
+        Dropdown: DropdownComponent,
+        Email: TextInputComponent,
+        Integer: TextInputComponent,
+        Location: LocationComponent,
+        Multiselect: MultiselectComponent,
+        Percentage: TextInputComponent,
+        Phone: TextInputComponent,
+        RadioButtons: RadioButtonsComponent,
+        RichText: TextAreaComponent,
+        TextArea: TextAreaComponent,
+        TextInput: TextInputComponent,
+        Time: TextInputComponent,
+
         // custom controls
-        Labb_Extensions_LabbAddressLookup: AddressLookupComponent,
-        Labb_dx_Switch: DxSlideComponent
+        Pega_Extensions_ActionableButton: ActionableButtonComponent,
+        Pega_Extensions_MaskedInput: MaskedInputComponent,
+        Pega_Extensions_SignatureCapture: SignatureComponent,
       },
       multi: true,
-    }
+    },
   ],
-  exports: [
-    DxLoaderComponent
-  ]
 })
 export class PegaMappingModule { }

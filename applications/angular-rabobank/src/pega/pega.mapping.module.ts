@@ -1,85 +1,105 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import {
   DYNAMIC_CONTAINERS,
   PContainerModule,
 } from '@labb/angular-adapter';
-
-import { AppShellComponent } from './container-mapping/AppShell.component';
-import { AttachmentComponent } from './container-mapping/Attachment.component';
-import { CaseViewComponent } from './container-mapping/CaseView.component';
-import { CurrencyComponent } from './container-mapping/Currency.component';
-import { DefaultComponent } from './container-mapping/Default.component';
-import { DefaultFormComponent } from './container-mapping/DefaultForm.component';
-import { DetailsComponent } from './container-mapping/Details.component';
-import { DropdownComponent } from './container-mapping/Dropdown.component';
-import { FlowContainerComponent } from './container-mapping/FlowContainer.component';
-import { ModalViewContainerComponent } from './container-mapping/ModalViewContainer.component';
-import { OneColumnComponent } from './container-mapping/OneColumn.component';
-import { RadioButtonsComponent } from './container-mapping/RadioButtons.component';
-import { DesignSystemModule } from '../design-system/design-system.module';
+import { ActionableButtonComponent } from './containers/ActionableButton.component';
+import { AttachmentComponent } from './containers/Attachment.component';
+import { CaseSummaryComponent } from './containers/CaseSummary.component';
+import { CheckboxComponent } from './containers/Checkbox.component';
+import { DefaultComponent } from './containers/Default.component';
+import { DefaultFormComponent } from './containers/DefaultForm.component';
+import { DetailsComponent } from './containers/Details.component';
+import { DetailsThreeColumnComponent } from './containers/DetailsThreeColumns';
+import { DetailsTwoColumnComponent } from './containers/DetailsTwoColumns';
+import { DropdownComponent } from './containers/Dropdown.component';
+import { FlowContainerComponent } from './containers/FlowContainer.component';
+import { ListViewComponent } from './containers/ListView.component';
+import { LocationComponent } from './containers/Location.component';
+import { MaskedInputComponent } from './containers/MaskedInput.component';
+import { ModalViewContainerComponent } from './containers/ModalViewContainer.component';
+import { MultiselectComponent } from './containers/Multiselect.component';
+import { RadioButtonsComponent } from './containers/RadioButtons.component';
+import { SignatureComponent } from './containers/Signature.component';
+import { SimpleTableManualComponent } from './containers/SimpleTableManual.component';
+import { TextAreaComponent } from './containers/TextArea.component';
+import { TextInputComponent } from './containers/TextInput.component';
+import { ViewComponent } from './containers/View.component';
 import { TranslatePipe } from './translate.pipe';
-import { ViewContainerComponent } from './container-mapping/ViewContainer.component';
-import { TextInputComponent } from './container-mapping/TextInput.component';
-import { CheckboxComponent } from './container-mapping/Checkbox.component';
+import { DesignSystemModule } from '../design-system/design-system.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    DesignSystemModule,
-    PContainerModule
-  ],
+  imports: [CommonModule, ReactiveFormsModule, DesignSystemModule, PContainerModule],
   declarations: [
     TranslatePipe,
     DropdownComponent,
-    RadioButtonsComponent,
     TextInputComponent,
-    OneColumnComponent,
+    RadioButtonsComponent,
     DefaultComponent,
     DefaultFormComponent,
     FlowContainerComponent,
-    CaseViewComponent,
     ModalViewContainerComponent,
     AttachmentComponent,
-    AppShellComponent,
+    TextAreaComponent,
     DetailsComponent,
-    CurrencyComponent,
-    ViewContainerComponent,
-    CheckboxComponent
+    DetailsThreeColumnComponent,
+    CheckboxComponent,
+    ViewComponent,
+    ActionableButtonComponent,
+    MultiselectComponent,
+    ListViewComponent,
+    SimpleTableManualComponent,
+    DetailsTwoColumnComponent,
+    CaseSummaryComponent,
+    SignatureComponent,
+    LocationComponent,
+    MaskedInputComponent
   ],
   providers: [
     {
       provide: DYNAMIC_CONTAINERS,
       useValue: {
         default: DefaultComponent,
-        Child: DefaultComponent,
 
         // layouts
-        AppShell: AppShellComponent,
-        CaseView: CaseViewComponent,
-        Details: DetailsComponent,
+        CaseSummary: CaseSummaryComponent,
         DefaultForm: DefaultFormComponent,
+        Details: DetailsComponent,
+        DetailsThreeColumn: DetailsThreeColumnComponent,
+        DetailsTwoColumn: DetailsTwoColumnComponent,
         FlowContainer: FlowContainerComponent,
+        ListPage: ListViewComponent,
+        ListView: ListViewComponent,
         ModalViewContainer: ModalViewContainerComponent,
-        OneColumn: OneColumnComponent,
-        PreviewViewContainer: DefaultComponent,
-        reference: DefaultComponent,
-        Region: DefaultComponent,
-        RootContainer: DefaultComponent,
-        View: DefaultComponent,
-        ViewContainer: ViewContainerComponent,
-        Group: DefaultComponent,
+        SimpleTableManual: SimpleTableManualComponent,
+        View: ViewComponent,
 
         // controls
-        Currency: CurrencyComponent,
-        Dropdown: DropdownComponent,
-        RadioButtons: RadioButtonsComponent,
-        TextInput: TextInputComponent,
+        Attachment: AttachmentComponent,
+        Checkbox: CheckboxComponent,
+        Currency: TextInputComponent,
         Date: TextInputComponent,
-        Checkbox: CheckboxComponent
+        DateTime: TextInputComponent,
+        Decimal: TextInputComponent,
+        Dropdown: DropdownComponent,
+        Email: TextInputComponent,
+        Integer: TextInputComponent,
+        Location: LocationComponent,
+        Multiselect: MultiselectComponent,
+        Percentage: TextInputComponent,
+        Phone: TextInputComponent,
+        RadioButtons: RadioButtonsComponent,
+        RichText: TextAreaComponent,
+        TextArea: TextAreaComponent,
+        TextInput: TextInputComponent,
+        Time: TextInputComponent,
+
+        // custom controls
+        Pega_Extensions_ActionableButton: ActionableButtonComponent,
+        Pega_Extensions_MaskedInput: MaskedInputComponent,
+        Pega_Extensions_SignatureCapture: SignatureComponent,
       },
       multi: true,
     },

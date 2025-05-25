@@ -1,5 +1,5 @@
 export default function HsbcRadio(props: {
-    id: string,
+    id?: string,
     options: { key: string, value: string }[],
     value?: string,
     onChange?: (v: string) => void

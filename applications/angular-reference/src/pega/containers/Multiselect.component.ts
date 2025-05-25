@@ -7,7 +7,7 @@ import { Multiselect } from "@labb/dx-engine";
     template: `
         <label>
             {{container.config.label}}
-            <input type="text" (blur)="container.onSearchHandler($event)">
+            <input type="text" (blur)="search($event)">
         </label>
         @for (item of container.itemsTree; track item.id) {
             <label>
@@ -18,4 +18,8 @@ import { Multiselect } from "@labb/dx-engine";
     standalone: false
 })
 export class MultiselectComponent extends PContainerComponent<Multiselect> {
+    public search(event: Event) {
+        const value = (event.target as HTMLInputElement).value
+        this.container.onSearchHandler(value);
+    }
 }

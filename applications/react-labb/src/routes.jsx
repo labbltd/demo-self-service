@@ -1,14 +1,10 @@
 import { Home } from "@/pages/dashboard";
 import {
   ChatBubbleBottomCenterIcon,
-  HomeIcon,
-  LockOpenIcon,
-  RectangleStackIcon,
-  ServerStackIcon
+  ComputerDesktopIcon,
+  HomeIcon
 } from "@heroicons/react/24/solid";
-import SignIn from "./pages/auth/sign-in";
 import Chat from "./pages/dashboard/chat";
-import LabbPegaEmbed from "./pages/dashboard/labb-pega-embed";
 import OotbPegaEmbed from "./pages/dashboard/ootb-pega-embed";
 import './pega/ContainerMapping';
 
@@ -33,7 +29,7 @@ export const routes = [
         element: <Chat />,
       },
       {
-        icon: <ServerStackIcon {...icon} />,
+        icon: <ComputerDesktopIcon {...icon} />,
         name: "Constellation Embed",
         path: "/constellation",
         element: <OotbPegaEmbed caseTypeID='Labb-LabbCS-Work-Service-MakePayment'/>,

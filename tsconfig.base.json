@@ -21,6 +21,9 @@
     "paths": {
       "@labb/demo-utilities": [
         "libraries/utilities/src/index.ts"
+      ],
+      "@labb/vue-adapter": [
+        "libraries/vue-adapter/src/index.ts"
       ]
     },
     "typeRoots": [

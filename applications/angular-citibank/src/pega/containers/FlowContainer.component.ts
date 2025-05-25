@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PContainerComponent } from '@labb/angular-adapter';
 import { ActionButton, Assignment } from '@labb/constellation-core-types';
 import { FlowContainer } from '@labb/dx-engine';
@@ -6,38 +6,45 @@ import { FlowContainer } from '@labb/dx-engine';
 @Component({
   selector: 'dx-flow-container',
   template: `
-    <citi-simple-layout *ngIf="container.hasAssignment()" [steps]="steps">
-      <div *ngFor="let message of container.config.pageMessages">
-        {{message.type}}: {{message.message}}
-      </div>
+    @for (message of container.config.caseMessages; track message) {
+        <div>
+          {{message}}
+        </div>
+    }
+    @if (container.hasAssignment()) {
+      <citi-simple-layout [steps]="steps">
+        <div *ngFor="let message of container.config.pageMessages">
+          {{message.type}}: {{message.message}}
+        </div>
 
-      <ng-template
-        *ngFor="let child of container.children"
-        dxContainer
-        [container]="child"
-      ></ng-template>
+        <ng-template
+          *ngFor="let child of container.children"
+          dxContainer
+          [container]="child"
+        ></ng-template>
 
-      <div *ngIf="container.actionButtons" 
-        class="col-xs-12 btnAllignment">
-        <button
-        *ngFor="let button of container.actionButtons.secondary"
-          [disabled]="loading"
-          cdsButton="secondary"
-          size="large"
-          (click)="buttonClick(button)">
-          {{ button.name }}
-        </button>
-        <button
-          *ngFor="let button of container.actionButtons.main"
-          [disabled]="loading"
-          cdsButton="primary"
-          size="large"
-          (click)="buttonClick(button)">
-          {{ button.name }}
-        </button>
-      </div>
-      <div>{{ errorMessage }}</div>
-    </citi-simple-layout>
+        <div *ngIf="container.actionButtons" 
+          class="col-xs-12 btnAllignment">
+          <button
+          *ngFor="let button of container.actionButtons.secondary"
+            [disabled]="loading"
+            cdsButton="secondary"
+            size="large"
+            (click)="buttonClick(button)">
+            {{ button.name }}
+          </button>
+          <button
+            *ngFor="let button of container.actionButtons.main"
+            [disabled]="loading"
+            cdsButton="primary"
+            size="large"
+            (click)="buttonClick(button)">
+            {{ button.name }}
+          </button>
+        </div>
+        <div>{{ errorMessage }}</div>
+      </citi-simple-layout>
+    }
   `,
   standalone: false
 })

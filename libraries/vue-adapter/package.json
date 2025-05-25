@@ -1,0 +1,27 @@
+{
+  "name": "@labb/vue-adapter",
+  "description": "An adapter that provides a connection between the Pega infinity server and the VueJS framework.",
+  "version": "24.3.2",
+  "peerDependencies": {
+    "vue": "3.x",
+    "@labb/dx-engine": "24.x",
+    "@pega/constellationjs": "24.x"
+  },
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "require": "./index.js"
+    }
+  },
+  "homepage": "https://labbltd.github.io/dx-accelerator",
+  "keywords": [
+    "Pega",
+    "DX API",
+    "ConstellationJS",
+    "DX Accelerator",
+    "VueJS"
+  ],
+  "license": "SEE LICENSE IN LICENSE"
+}

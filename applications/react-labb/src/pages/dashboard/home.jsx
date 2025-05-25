@@ -55,11 +55,14 @@ export function Home() {
         {scenario && <Button variant='outlined' className="mr-6 mt-4" onClick={() => { setScenario(null); setUrl(null) }}>
           &lt; Select different scenario
         </Button>}
+        {url && <Button variant='outlined' className="mr-6 mt-4" onClick={() => { setUrl(null) }}>
+          &lt; Select different company
+        </Button>}
         {url && <a href={url} target="__blank"><Button variant='outlined' className="mr-6 mt-4">
           Open in new tab
         </Button></a>}
         {(scenario && !url) && <Button variant='outlined' className="mt-4 mr-4" onClick={() => setUseFilter(!useFilter)}>
-          Show {useFilter ? 'more' : 'less'} clients
+          Show {useFilter ? 'more' : 'less'} companies
         </Button>}
       </div>
     </div>
@@ -85,7 +88,7 @@ export function Home() {
           </div>
         </div>
         <div className="browser-content">
-          <iframe src={url} style={{ width: '100%', height: '100vh' }} />
+          <iframe src={url} style={{ width: '100%', height: 'calc(100vh - 180px)' }} />
         </div>
       </div>
     }

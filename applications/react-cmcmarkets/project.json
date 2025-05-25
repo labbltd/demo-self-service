@@ -20,15 +20,49 @@
         "polyfills": "applications/react-cmcmarkets/src/polyfills.ts",
         "tsConfig": "applications/react-cmcmarkets/tsconfig.app.json",
         "assets": [
-          "applications/react-cmcmarkets/src/favicon.ico"
+          "applications/react-cmcmarkets/src/favicon.ico",
+          {
+            "glob": "auth.html",
+            "input": "./node_modules/@labb/dx-engine/",
+            "output": "./"
+          },
+          {
+            "glob": "bootstrap-shell.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./"
+          },
+          {
+            "glob": "bootstrap-shell.*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./"
+          },
+          {
+            "glob": "*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/js",
+            "output": "./prerequisite/js"
+          },
+          {
+            "glob": "lib_asset.json",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./"
+          },
+          {
+            "glob": "constellation-core.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./prerequisite"
+          },
+          {
+            "glob": "constellation-core.*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./prerequisite"
+          }
         ],
         "styles": [
           "applications/react-cmcmarkets/src/styles.css"
         ],
         "scripts": [],
         "webpackConfig": "applications/react-cmcmarkets/webpack.config.js",
-        "babelUpwardRootMode": true,
-        "watch": true
+        "babelUpwardRootMode": true
       },
       "configurations": {
         "development": {

@@ -57,7 +57,10 @@
             "output": "./prerequisite"
           }
         ],
-        "styles": ["applications/react-hsbc/src/style.css"],
+        "styles": [
+          "applications/react-hsbc/src/style.css",
+          "applications/react-hsbc/design-system/hsbc-panel.css"
+        ],
         "scripts": [],
         "webpackConfig": "applications/react-hsbc/webpack.config.js",
         "babelUpwardRootMode": true

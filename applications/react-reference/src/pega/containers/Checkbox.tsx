@@ -7,17 +7,17 @@ export default function Checkbox(props: {
     return target.value === 'on';
   }
 
-  return (
+  return <>
     <label>
-      {props.container.config.caption}
       {props.container.config.required ? ' *' : ''}
       <input
         type="checkbox"
         onChange={(e) => props.container.updateFieldValue(getValue(e.target))}
         onBlur={(e) => props.container.triggerFieldChange(getValue(e.target))}
       />
-      {props.container.config.helperText}
-      {props.container.config.validatemessage}
+      {props.container.config.caption}
     </label>
-  );
+    {props.container.config.helperText}
+    {props.container.config.validatemessage}
+  </>;
 }

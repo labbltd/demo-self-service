@@ -26,27 +26,27 @@ export default defineConfig({
       targets: [
         {
           src: "../../node_modules/@pega/constellationjs/dist/bootstrap-shell.js",
-          dest: "constellation"
+          dest: "./"
         },
         {
           src: "../../node_modules/@pega/constellationjs/dist/bootstrap-shell.*.*",
-          dest: "constellation"
+          dest: "./"
         },
         {
           src: "../../node_modules/@pega/constellationjs/dist/lib_asset.json",
-          dest: "constellation"
+          dest: "./"
         },
         {
           src: "../../node_modules/@pega/constellationjs/dist/constellation-core.*",
-          dest: "constellation/prerequisite"
+          dest: "./prerequisite"
         },
         {
           src: "../../node_modules/@pega/constellationjs/dist/constellation-core.*.*",
-          dest: "constellation/prerequisite"
+          dest: "./prerequisite"
         },
         {
           src: "../../node_modules/@pega/constellationjs/dist/js/*.*",
-          dest: "constellation/prerequisite/js"
+          dest: "./prerequisite/js"
         }
       ]
     })

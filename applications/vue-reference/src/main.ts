@@ -4,4 +4,4 @@ import './app/ContainerMapping';
 
 const app = createApp(App);
 
-app.mount('#root');
+app.mount('app-root');

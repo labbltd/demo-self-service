@@ -2,12 +2,12 @@
     box-sizing: border-box
 }
 
-#react-root,
+app-root,
 html {
     height: 100%
 }
 
-#react-root {
+app-root {
     color: #58585a;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.562rem;
@@ -21,12 +21,12 @@ html {
     padding: 0
 }
 
-#react-root,
+app-root,
 button {
     font-size: 16px
 }
 
-#react-root {
+app-root {
     height: 100%
 }
 
@@ -83,999 +83,999 @@ a.teams>button {
 }
 
 .flags_flag_ad__VbCka::before {
-    background-image: url(http://localhost:8081/static/media/ad.828d9d8c62043a26a0e4.svg)
+    background-image: url(static/media/ad.828d9d8c62043a26a0e4.svg)
 }
 
 .flags_flag_ae__v5sy3::before {
-    background-image: url(http://localhost:8081/static/media/ae.bcbbb2cbaa9fa0aae122.svg)
+    background-image: url(static/media/ae.bcbbb2cbaa9fa0aae122.svg)
 }
 
 .flags_flag_af__3DIs5::before {
-    background-image: url(http://localhost:8081/static/media/af.03412c91e38b0d44d0a2.svg)
+    background-image: url(static/media/af.03412c91e38b0d44d0a2.svg)
 }
 
 .flags_flag_ag__hCTBs::before {
-    background-image: url(http://localhost:8081/static/media/ag.cd5f7986d91be9d936c3.svg)
+    background-image: url(static/media/ag.cd5f7986d91be9d936c3.svg)
 }
 
 .flags_flag_ai__E\+39O::before {
-    background-image: url(http://localhost:8081/static/media/ai.fd3ffd237b95c6f0e401.svg)
+    background-image: url(static/media/ai.fd3ffd237b95c6f0e401.svg)
 }
 
 .flags_flag_al__5ZJeB::before {
-    background-image: url(http://localhost:8081/static/media/al.e955cd23348edcdeccc1.svg)
+    background-image: url(static/media/al.e955cd23348edcdeccc1.svg)
 }
 
 .flags_flag_am__VmxD4::before {
-    background-image: url(http://localhost:8081/static/media/am.6291e2878eeffc4327f1.svg)
+    background-image: url(static/media/am.6291e2878eeffc4327f1.svg)
 }
 
 .flags_flag_ao__8HUkO::before {
-    background-image: url(http://localhost:8081/static/media/ao.dcf1e966ecfe4e0258dd.svg)
+    background-image: url(static/media/ao.dcf1e966ecfe4e0258dd.svg)
 }
 
 .flags_flag_aq__dbnZ6::before {
-    background-image: url(http://localhost:8081/static/media/aq.303b11d32ac9d07912fc.svg)
+    background-image: url(static/media/aq.303b11d32ac9d07912fc.svg)
 }
 
 .flags_flag_ar__P\+3Bj::before {
-    background-image: url(http://localhost:8081/static/media/ar.6a7b7b250a7f0f3960e1.svg)
+    background-image: url(static/media/ar.6a7b7b250a7f0f3960e1.svg)
 }
 
 .flags_flag_as__6V8x1::before {
-    background-image: url(http://localhost:8081/static/media/as.e855dcb39cffcaf19b91.svg)
+    background-image: url(static/media/as.e855dcb39cffcaf19b91.svg)
 }
 
 .flags_flag_at__d2MAq::before {
-    background-image: url(http://localhost:8081/static/media/at.014b94b117f983cda8ff.svg)
+    background-image: url(static/media/at.014b94b117f983cda8ff.svg)
 }
 
 .flags_flag_au__7jBrH::before {
-    background-image: url(http://localhost:8081/static/media/au.dd1760ce4af27818306a.svg)
+    background-image: url(static/media/au.dd1760ce4af27818306a.svg)
 }
 
 .flags_flag_aw__EELC4::before {
-    background-image: url(http://localhost:8081/static/media/aw.1a9556538e743fac12f7.svg)
+    background-image: url(static/media/aw.1a9556538e743fac12f7.svg)
 }
 
 .flags_flag_ax__ZsWlj::before {
-    background-image: url(http://localhost:8081/static/media/ax.afc5abc19ea2ffd31005.svg)
+    background-image: url(static/media/ax.afc5abc19ea2ffd31005.svg)
 }
 
 .flags_flag_az__g7PI1::before {
-    background-image: url(http://localhost:8081/static/media/az.302b01b551265d2c3ffa.svg)
+    background-image: url(static/media/az.302b01b551265d2c3ffa.svg)
 }
 
 .flags_flag_ba__tE\+k4::before {
-    background-image: url(http://localhost:8081/static/media/ba.43bcce38ab7870b0e68d.svg)
+    background-image: url(static/media/ba.43bcce38ab7870b0e68d.svg)
 }
 
 .flags_flag_bb__\+tUOh::before {
-    background-image: url(http://localhost:8081/static/media/bb.b0e171749c98f62df901.svg)
+    background-image: url(static/media/bb.b0e171749c98f62df901.svg)
 }
 
 .flags_flag_bd__U2gXI::before {
-    background-image: url(http://localhost:8081/static/media/bd.e9ac60d918962f906957.svg)
+    background-image: url(static/media/bd.e9ac60d918962f906957.svg)
 }
 
 .flags_flag_be__ffpcY::before {
-    background-image: url(http://localhost:8081/static/media/be.7806d0cb9bc6aa0ca8b4.svg)
+    background-image: url(static/media/be.7806d0cb9bc6aa0ca8b4.svg)
 }
 
 .flags_flag_bf__lS8rD::before {
-    background-image: url(http://localhost:8081/static/media/bf.1a7a4f33f3aac91183f2.svg)
+    background-image: url(static/media/bf.1a7a4f33f3aac91183f2.svg)
 }
 
 .flags_flag_bg__FCNyi::before {
-    background-image: url(http://localhost:8081/static/media/bg.1cfb5ee22272da203621.svg)
+    background-image: url(static/media/bg.1cfb5ee22272da203621.svg)
 }
 
 .flags_flag_bh__JlUOC::before {
-    background-image: url(http://localhost:8081/static/media/bh.4da02938fecc891161e5.svg)
+    background-image: url(static/media/bh.4da02938fecc891161e5.svg)
 }
 
 .flags_flag_bi__OkC::before {
-    background-image: url(http://localhost:8081/static/media/bi.36e260ce0df4a96bc6c9.svg)
+    background-image: url(static/media/bi.36e260ce0df4a96bc6c9.svg)
 }
 
 .flags_flag_bj__N\+Oud::before {
-    background-image: url(http://localhost:8081/static/media/bj.c9649dbb226588701efc.svg)
+    background-image: url(static/media/bj.c9649dbb226588701efc.svg)
 }
 
 .flags_flag_bl__ApHVE::before {
-    background-image: url(http://localhost:8081/static/media/bl.2b7587abd6f198b56a04.svg)
+    background-image: url(static/media/bl.2b7587abd6f198b56a04.svg)
 }
 
 .flags_flag_bm__6012w::before {
-    background-image: url(http://localhost:8081/static/media/bm.458f98ec1e0b2d0019d2.svg)
+    background-image: url(static/media/bm.458f98ec1e0b2d0019d2.svg)
 }
 
 .flags_flag_bn__0dodP::before {
-    background-image: url(http://localhost:8081/static/media/bn.f964b0730c98719e52ef.svg)
+    background-image: url(static/media/bn.f964b0730c98719e52ef.svg)
 }
 
 .flags_flag_bo__r-8tU::before {
-    background-image: url(http://localhost:8081/static/media/bo.82720b03a4a36e65ac67.svg)
+    background-image: url(static/media/bo.82720b03a4a36e65ac67.svg)
 }
 
 .flags_flag_bq__0knLj::before {
-    background-image: url(http://localhost:8081/static/media/bq.082ccd6db5def537c82a.svg)
+    background-image: url(static/media/bq.082ccd6db5def537c82a.svg)
 }
 
 .flags_flag_br__jkgHy::before {
-    background-image: url(http://localhost:8081/static/media/br.46d9eb52cef525e9d85e.svg)
+    background-image: url(static/media/br.46d9eb52cef525e9d85e.svg)
 }
 
 .flags_flag_bs__6NtiK::before {
-    background-image: url(http://localhost:8081/static/media/bs.929b1134cad80cc85d12.svg)
+    background-image: url(static/media/bs.929b1134cad80cc85d12.svg)
 }
 
 .flags_flag_bt__E716D::before {
-    background-image: url(http://localhost:8081/static/media/bt.7b92eb4c0c8fc1b0b144.svg)
+    background-image: url(static/media/bt.7b92eb4c0c8fc1b0b144.svg)
 }
 
 .flags_flag_bv__EMbK\+::before {
-    background-image: url(http://localhost:8081/static/media/bv.a0dbef9df125c12ab6a5.svg)
+    background-image: url(static/media/bv.a0dbef9df125c12ab6a5.svg)
 }
 
 .flags_flag_bw__IEveF::before {
-    background-image: url(http://localhost:8081/static/media/bw.9609a72fa2c128c0300f.svg)
+    background-image: url(static/media/bw.9609a72fa2c128c0300f.svg)
 }
 
 .flags_flag_by__C39T5::before {
-    background-image: url(http://localhost:8081/static/media/by.3a1ae2185e9afd395e6b.svg)
+    background-image: url(static/media/by.3a1ae2185e9afd395e6b.svg)
 }
 
 .flags_flag_bz__T\+KI2::before {
-    background-image: url(http://localhost:8081/static/media/bz.152abd8d9f99774456f1.svg)
+    background-image: url(static/media/bz.152abd8d9f99774456f1.svg)
 }
 
 .flags_flag_ca__tnrAo::before {
-    background-image: url(http://localhost:8081/static/media/ca.efb35652c3bec6e7df96.svg)
+    background-image: url(static/media/ca.efb35652c3bec6e7df96.svg)
 }
 
 .flags_flag_cc__I3aTV::before {
-    background-image: url(http://localhost:8081/static/media/cc.7375ca014f01c2c6fbe0.svg)
+    background-image: url(static/media/cc.7375ca014f01c2c6fbe0.svg)
 }
 
 .flags_flag_cd__Eb5qW::before {
-    background-image: url(http://localhost:8081/static/media/cd.4d75b3780549543c7f7a.svg)
+    background-image: url(static/media/cd.4d75b3780549543c7f7a.svg)
 }
 
 .flags_flag_cf__MLmpr::before {
-    background-image: url(http://localhost:8081/static/media/cf.c2b4d408f6552478bf7b.svg)
+    background-image: url(static/media/cf.c2b4d408f6552478bf7b.svg)
 }
 
 .flags_flag_cg__380U7::before {
-    background-image: url(http://localhost:8081/static/media/cg.384e7dae4ad9ad0647ef.svg)
+    background-image: url(static/media/cg.384e7dae4ad9ad0647ef.svg)
 }
 
 .flags_flag_ch__uQesi::before {
-    background-image: url(http://localhost:8081/static/media/ch.49d277c96aa20c9e6c01.svg)
+    background-image: url(static/media/ch.49d277c96aa20c9e6c01.svg)
 }
 
 .flags_flag_ci__q\+f8Y::before {
-    background-image: url(http://localhost:8081/static/media/ci.6fb775f07d4af02c4ddb.svg)
+    background-image: url(static/media/ci.6fb775f07d4af02c4ddb.svg)
 }
 
 .flags_flag_ck__dZuGg::before {
-    background-image: url(http://localhost:8081/static/media/ck.4b0176c03f6d159add5d.svg)
+    background-image: url(static/media/ck.4b0176c03f6d159add5d.svg)
 }
 
 .flags_flag_cl__F1E-P::before {
-    background-image: url(http://localhost:8081/static/media/cl.89f44f81275dba40ce68.svg)
+    background-image: url(static/media/cl.89f44f81275dba40ce68.svg)
 }
 
 .flags_flag_cm__tcBYn::before {
-    background-image: url(http://localhost:8081/static/media/cm.eb4cbbfe2427017a7855.svg)
+    background-image: url(static/media/cm.eb4cbbfe2427017a7855.svg)
 }
 
 .flags_flag_cn__MelKQ::before {
-    background-image: url(http://localhost:8081/static/media/cn.ddc8c3f6b5e7157511f8.svg)
+    background-image: url(static/media/cn.ddc8c3f6b5e7157511f8.svg)
 }
 
 .flags_flag_co__6IpYL::before {
-    background-image: url(http://localhost:8081/static/media/co.616fbe2fae4eb8eb9250.svg)
+    background-image: url(static/media/co.616fbe2fae4eb8eb9250.svg)
 }
 
 .flags_flag_cr__Y5sRz::before {
-    background-image: url(http://localhost:8081/static/media/cr.b9e32234f4c4b9d4d23c.svg)
+    background-image: url(static/media/cr.b9e32234f4c4b9d4d23c.svg)
 }
 
 .flags_flag_cu__t4ltA::before {
-    background-image: url(http://localhost:8081/static/media/cu.0a499324f6909928abf5.svg)
+    background-image: url(static/media/cu.0a499324f6909928abf5.svg)
 }
 
 .flags_flag_cv__Piv5y::before {
-    background-image: url(http://localhost:8081/static/media/cv.771a63e88e157c82c45a.svg)
+    background-image: url(static/media/cv.771a63e88e157c82c45a.svg)
 }
 
 .flags_flag_cw__xsqh8::before {
-    background-image: url(http://localhost:8081/static/media/cw.e95152b925e733bddbed.svg)
+    background-image: url(static/media/cw.e95152b925e733bddbed.svg)
 }
 
 .flags_flag_cx__BlSZb::before {
-    background-image: url(http://localhost:8081/static/media/cx.e5097191315895bfe81b.svg)
+    background-image: url(static/media/cx.e5097191315895bfe81b.svg)
 }
 
 .flags_flag_cy__t2hAE::before {
-    background-image: url(http://localhost:8081/static/media/cy.77ed2b380bbac957f31a.svg)
+    background-image: url(static/media/cy.77ed2b380bbac957f31a.svg)
 }
 
 .flags_flag_cz__Xuoa6::before {
-    background-image: url(http://localhost:8081/static/media/cz.52ba1c8f928b6e109657.svg)
+    background-image: url(static/media/cz.52ba1c8f928b6e109657.svg)
 }
 
 .flags_flag_de__Pa3Va::before {
-    background-image: url(http://localhost:8081/static/media/de.e5316adebc2d6f79fe39.svg)
+    background-image: url(static/media/de.e5316adebc2d6f79fe39.svg)
 }
 
 .flags_flag_dj__IBnpQ::before {
-    background-image: url(http://localhost:8081/static/media/dj.71cf15bfdae4875204d6.svg)
+    background-image: url(static/media/dj.71cf15bfdae4875204d6.svg)
 }
 
 .flags_flag_dk__5aJtq::before {
-    background-image: url(http://localhost:8081/static/media/dk.d83d2b9840c398cb206b.svg)
+    background-image: url(static/media/dk.d83d2b9840c398cb206b.svg)
 }
 
 .flags_flag_dm__28AQ1::before {
-    background-image: url(http://localhost:8081/static/media/dm.29411c9a49282669f74c.svg)
+    background-image: url(static/media/dm.29411c9a49282669f74c.svg)
 }
 
 .flags_flag_do__04I5w::before {
-    background-image: url(http://localhost:8081/static/media/do.112f9da25cf6a972d217.svg)
+    background-image: url(static/media/do.112f9da25cf6a972d217.svg)
 }
 
 .flags_flag_dz__ShSOl::before {
-    background-image: url(http://localhost:8081/static/media/dz.8ec59ccba0161b6d1357.svg)
+    background-image: url(static/media/dz.8ec59ccba0161b6d1357.svg)
 }
 
 .flags_flag_ec__QanTn::before {
-    background-image: url(http://localhost:8081/static/media/ec.30a0a3008824b3efc2e2.svg)
+    background-image: url(static/media/ec.30a0a3008824b3efc2e2.svg)
 }
 
 .flags_flag_ee__1lO4S::before {
-    background-image: url(http://localhost:8081/static/media/ee.65f4a3d8a979c3ca5a96.svg)
+    background-image: url(static/media/ee.65f4a3d8a979c3ca5a96.svg)
 }
 
 .flags_flag_eg__B8jHf::before {
-    background-image: url(http://localhost:8081/static/media/eg.0621dac241f2963dce83.svg)
+    background-image: url(static/media/eg.0621dac241f2963dce83.svg)
 }
 
 .flags_flag_eh__GvBB1::before {
-    background-image: url(http://localhost:8081/static/media/eh.799b45ba4041a1e36e5c.svg)
+    background-image: url(static/media/eh.799b45ba4041a1e36e5c.svg)
 }
 
 .flags_flag_er__Lh1Yw::before {
-    background-image: url(http://localhost:8081/static/media/er.31a061905846a168e877.svg)
+    background-image: url(static/media/er.31a061905846a168e877.svg)
 }
 
 .flags_flag_es__pxP-H::before {
-    background-image: url(http://localhost:8081/static/media/es.9022b6f140f424591417.svg)
+    background-image: url(static/media/es.9022b6f140f424591417.svg)
 }
 
 .flags_flag_et__ZcxkX::before {
-    background-image: url(http://localhost:8081/static/media/et.383fca54e1eaaa8ecf8e.svg)
+    background-image: url(static/media/et.383fca54e1eaaa8ecf8e.svg)
 }
 
 .flags_flag_fi__-J\+6w::before {
-    background-image: url(http://localhost:8081/static/media/fi.f972d4ad6d0c43f50da6.svg)
+    background-image: url(static/media/fi.f972d4ad6d0c43f50da6.svg)
 }
 
 .flags_flag_fj__HTUyO::before {
-    background-image: url(http://localhost:8081/static/media/fj.7e4e2c498a78689aa6d9.svg)
+    background-image: url(static/media/fj.7e4e2c498a78689aa6d9.svg)
 }
 
 .flags_flag_fk__nNNsE::before {
-    background-image: url(http://localhost:8081/static/media/fk.55f09b0a4d5000fef70b.svg)
+    background-image: url(static/media/fk.55f09b0a4d5000fef70b.svg)
 }
 
 .flags_flag_fm__d8GSe::before {
-    background-image: url(http://localhost:8081/static/media/fm.0c77bf240d17cbb72560.svg)
+    background-image: url(static/media/fm.0c77bf240d17cbb72560.svg)
 }
 
 .flags_flag_fo__X1MgD::before {
-    background-image: url(http://localhost:8081/static/media/fo.7844db71e1f68678e784.svg)
+    background-image: url(static/media/fo.7844db71e1f68678e784.svg)
 }
 
 .flags_flag_fr__-WBHj::before {
-    background-image: url(http://localhost:8081/static/media/fr.193fbc0521a2c04c1cf4.svg)
+    background-image: url(static/media/fr.193fbc0521a2c04c1cf4.svg)
 }
 
 .flags_flag_ga__xOXr5::before {
-    background-image: url(http://localhost:8081/static/media/ga.b5b9b62fadf5f1632aff.svg)
+    background-image: url(static/media/ga.b5b9b62fadf5f1632aff.svg)
 }
 
 .flags_flag_gb__x6iY-::before {
-    background-image: url(http://localhost:8081/static/media/gb.a9bd2845fd9be96eaf96.svg)
+    background-image: url(static/media/gb.a9bd2845fd9be96eaf96.svg)
 }
 
 .flags_flag_gd__hR0-0::before {
-    background-image: url(http://localhost:8081/static/media/gd.d1128053016c878f9d58.svg)
+    background-image: url(static/media/gd.d1128053016c878f9d58.svg)
 }
 
 .flags_flag_ge__nvhDj::before {
-    background-image: url(http://localhost:8081/static/media/ge.9696038585bd3fc2abc4.svg)
+    background-image: url(static/media/ge.9696038585bd3fc2abc4.svg)
 }
 
 .flags_flag_gf__nrVv5::before {
-    background-image: url(http://localhost:8081/static/media/gf.99b4d16dda881fd022fe.svg)
+    background-image: url(static/media/gf.99b4d16dda881fd022fe.svg)
 }
 
 .flags_flag_gg__eqUSb::before {
-    background-image: url(http://localhost:8081/static/media/gg.4c6152c30643993e15c6.svg)
+    background-image: url(static/media/gg.4c6152c30643993e15c6.svg)
 }
 
 .flags_flag_gh__0uRaq::before {
-    background-image: url(http://localhost:8081/static/media/gh.2bbc2039d5121f46f66b.svg)
+    background-image: url(static/media/gh.2bbc2039d5121f46f66b.svg)
 }
 
 .flags_flag_gi__q07fV::before {
-    background-image: url(http://localhost:8081/static/media/gi.da0467f23c3431fdc981.svg)
+    background-image: url(static/media/gi.da0467f23c3431fdc981.svg)
 }
 
 .flags_flag_gl__tgdC7::before {
-    background-image: url(http://localhost:8081/static/media/gl.9a54143f65b02e273670.svg)
+    background-image: url(static/media/gl.9a54143f65b02e273670.svg)
 }
 
 .flags_flag_gm__cF0cE::before {
-    background-image: url(http://localhost:8081/static/media/gm.3c66b459630baeba3559.svg)
+    background-image: url(static/media/gm.3c66b459630baeba3559.svg)
 }
 
 .flags_flag_gn__LPSTJ::before {
-    background-image: url(http://localhost:8081/static/media/gn.ea1b6b3ed0ee052f825d.svg)
+    background-image: url(static/media/gn.ea1b6b3ed0ee052f825d.svg)
 }
 
 .flags_flag_gp__cO\+82::before {
-    background-image: url(http://localhost:8081/static/media/gp.3b415faf9f49827ce27f.svg)
+    background-image: url(static/media/gp.3b415faf9f49827ce27f.svg)
 }
 
 .flags_flag_gq__vXgNV::before {
-    background-image: url(http://localhost:8081/static/media/gq.1f2b45ca0b4b97edab4a.svg)
+    background-image: url(static/media/gq.1f2b45ca0b4b97edab4a.svg)
 }
 
 .flags_flag_gr__BBJQH::before {
-    background-image: url(http://localhost:8081/static/media/gr.ee8135c60d62d9a0ab6c.svg)
+    background-image: url(static/media/gr.ee8135c60d62d9a0ab6c.svg)
 }
 
 .flags_flag_gs__VbVrD::before {
-    background-image: url(http://localhost:8081/static/media/gs.62046d1aacc0f42a441a.svg)
+    background-image: url(static/media/gs.62046d1aacc0f42a441a.svg)
 }
 
 .flags_flag_gt__CJzpg::before {
-    background-image: url(http://localhost:8081/static/media/gt.f6b8c0f12ec01638e441.svg)
+    background-image: url(static/media/gt.f6b8c0f12ec01638e441.svg)
 }
 
 .flags_flag_gu__EZijB::before {
-    background-image: url(http://localhost:8081/static/media/gu.63700bdd961ab128810a.svg)
+    background-image: url(static/media/gu.63700bdd961ab128810a.svg)
 }
 
 .flags_flag_gw__nqVLV::before {
-    background-image: url(http://localhost:8081/static/media/gw.fe2fc61b32748be82f10.svg)
+    background-image: url(static/media/gw.fe2fc61b32748be82f10.svg)
 }
 
 .flags_flag_gy__OEcpn::before {
-    background-image: url(http://localhost:8081/static/media/gy.e948cf4f9aea5db2ef97.svg)
+    background-image: url(static/media/gy.e948cf4f9aea5db2ef97.svg)
 }
 
 .flags_flag_hk__gqXip::before {
-    background-image: url(http://localhost:8081/static/media/hk.5043f05f6522038d4ede.svg)
+    background-image: url(static/media/hk.5043f05f6522038d4ede.svg)
 }
 
 .flags_flag_hm__RNAGv::before {
-    background-image: url(http://localhost:8081/static/media/hm.4050b3f5921dd63c2e2d.svg)
+    background-image: url(static/media/hm.4050b3f5921dd63c2e2d.svg)
 }
 
 .flags_flag_hn__ouLlb::before {
-    background-image: url(http://localhost:8081/static/media/hn.cba64dd3f1701077d3bc.svg)
+    background-image: url(static/media/hn.cba64dd3f1701077d3bc.svg)
 }
 
 .flags_flag_hr__1IUn5::before {
-    background-image: url(http://localhost:8081/static/media/hr.e598c7874b3a2ea01915.svg)
+    background-image: url(static/media/hr.e598c7874b3a2ea01915.svg)
 }
 
 .flags_flag_ht__NB88Y::before {
-    background-image: url(http://localhost:8081/static/media/ht.6b88c7d2819c6edc17ca.svg)
+    background-image: url(static/media/ht.6b88c7d2819c6edc17ca.svg)
 }
 
 .flags_flag_hu__5ZTR4::before {
-    background-image: url(http://localhost:8081/static/media/hu.b4afa8ba4b9a5494e6d2.svg)
+    background-image: url(static/media/hu.b4afa8ba4b9a5494e6d2.svg)
 }
 
 .flags_flag_id__6xJM5::before {
-    background-image: url(http://localhost:8081/static/media/id.24dc86d935e39127ccdb.svg)
+    background-image: url(static/media/id.24dc86d935e39127ccdb.svg)
 }
 
 .flags_flag_ie__NPGcm::before {
-    background-image: url(http://localhost:8081/static/media/ie.933683695409183c62c8.svg)
+    background-image: url(static/media/ie.933683695409183c62c8.svg)
 }
 
 .flags_flag_il__hm2wK::before {
-    background-image: url(http://localhost:8081/static/media/il.6701e0f046e27d38cb29.svg)
+    background-image: url(static/media/il.6701e0f046e27d38cb29.svg)
 }
 
 .flags_flag_im__9HHUd::before {
-    background-image: url(http://localhost:8081/static/media/im.3d2e63e176cba618f396.svg)
+    background-image: url(static/media/im.3d2e63e176cba618f396.svg)
 }
 
 .flags_flag_in__yBLnC::before {
-    background-image: url(http://localhost:8081/static/media/in.e739b194b7ee0ae6c33e.svg)
+    background-image: url(static/media/in.e739b194b7ee0ae6c33e.svg)
 }
 
 .flags_flag_io__x8lF1::before {
-    background-image: url(http://localhost:8081/static/media/io.21130dd44abbb1d26493.svg)
+    background-image: url(static/media/io.21130dd44abbb1d26493.svg)
 }
 
 .flags_flag_iq__wJIkP::before {
-    background-image: url(http://localhost:8081/static/media/iq.50d966387fd97f33760a.svg)
+    background-image: url(static/media/iq.50d966387fd97f33760a.svg)
 }
 
 .flags_flag_ir__kaL0s::before {
-    background-image: url(http://localhost:8081/static/media/ir.84e05fc18c71a755e7fe.svg)
+    background-image: url(static/media/ir.84e05fc18c71a755e7fe.svg)
 }
 
 .flags_flag_is__x-qp\+::before {
-    background-image: url(http://localhost:8081/static/media/is.89be1b7112f0cd01b865.svg)
+    background-image: url(static/media/is.89be1b7112f0cd01b865.svg)
 }
 
 .flags_flag_it__dqC72::before {
-    background-image: url(http://localhost:8081/static/media/it.73869f99889d1d10e7e0.svg)
+    background-image: url(static/media/it.73869f99889d1d10e7e0.svg)
 }
 
 .flags_flag_je__4\+-To::before {
-    background-image: url(http://localhost:8081/static/media/je.937a06a7f102cb5c70b6.svg)
+    background-image: url(static/media/je.937a06a7f102cb5c70b6.svg)
 }
 
 .flags_flag_jm__g5p-q::before {
-    background-image: url(http://localhost:8081/static/media/jm.818a3c55187b137fcb85.svg)
+    background-image: url(static/media/jm.818a3c55187b137fcb85.svg)
 }
 
 .flags_flag_jo__V540a::before {
-    background-image: url(http://localhost:8081/static/media/jo.3abd5f5ecba1c4a0881e.svg)
+    background-image: url(static/media/jo.3abd5f5ecba1c4a0881e.svg)
 }
 
 .flags_flag_jp__dek5E::before {
-    background-image: url(http://localhost:8081/static/media/jp.4c804454d98160571c78.svg)
+    background-image: url(static/media/jp.4c804454d98160571c78.svg)
 }
 
 .flags_flag_ke__JXhS-::before {
-    background-image: url(http://localhost:8081/static/media/ke.55d663b2ec8bbc63989c.svg)
+    background-image: url(static/media/ke.55d663b2ec8bbc63989c.svg)
 }
 
 .flags_flag_kg__W1kDW::before {
-    background-image: url(http://localhost:8081/static/media/kg.58c395a62befea51fe55.svg)
+    background-image: url(static/media/kg.58c395a62befea51fe55.svg)
 }
 
 .flags_flag_kh__sGI\+R::before {
-    background-image: url(http://localhost:8081/static/media/kh.2fbda01fa3e6fbfa3fc7.svg)
+    background-image: url(static/media/kh.2fbda01fa3e6fbfa3fc7.svg)
 }
 
 .flags_flag_ki__f\+AO0::before {
-    background-image: url(http://localhost:8081/static/media/ki.3fe8bdea3cf870387b40.svg)
+    background-image: url(static/media/ki.3fe8bdea3cf870387b40.svg)
 }
 
 .flags_flag_km__RMSjF::before {
-    background-image: url(http://localhost:8081/static/media/km.1d6273480224826da816.svg)
+    background-image: url(static/media/km.1d6273480224826da816.svg)
 }
 
 .flags_flag_kn__QLtXi::before {
-    background-image: url(http://localhost:8081/static/media/kn.43bc298c05f52343652d.svg)
+    background-image: url(static/media/kn.43bc298c05f52343652d.svg)
 }
 
 .flags_flag_kp__03FqG::before {
-    background-image: url(http://localhost:8081/static/media/kp.9fd3021e3f7d74dc7a57.svg)
+    background-image: url(static/media/kp.9fd3021e3f7d74dc7a57.svg)
 }
 
 .flags_flag_kr__yRvU-::before {
-    background-image: url(http://localhost:8081/static/media/kr.893263e73f879b8a853c.svg)
+    background-image: url(static/media/kr.893263e73f879b8a853c.svg)
 }
 
 .flags_flag_kw__BEJwS::before {
-    background-image: url(http://localhost:8081/static/media/kw.584cd93f677cb830c098.svg)
+    background-image: url(static/media/kw.584cd93f677cb830c098.svg)
 }
 
 .flags_flag_ky__841JP::before {
-    background-image: url(http://localhost:8081/static/media/ky.63d8f29557f58e55b4a4.svg)
+    background-image: url(static/media/ky.63d8f29557f58e55b4a4.svg)
 }
 
 .flags_flag_kz__I7gTK::before {
-    background-image: url(http://localhost:8081/static/media/kz.64e40aca1abb71a9a6e3.svg)
+    background-image: url(static/media/kz.64e40aca1abb71a9a6e3.svg)
 }
 
 .flags_flag_la__A0PXj::before {
-    background-image: url(http://localhost:8081/static/media/la.25a36cc11e1bbad8f508.svg)
+    background-image: url(static/media/la.25a36cc11e1bbad8f508.svg)
 }
 
 .flags_flag_lb__pXYw1::before {
-    background-image: url(http://localhost:8081/static/media/lb.675dd9cbea7927c3f6af.svg)
+    background-image: url(static/media/lb.675dd9cbea7927c3f6af.svg)
 }
 
 .flags_flag_lc__3Bcex::before {
-    background-image: url(http://localhost:8081/static/media/lc.57a1f4149290988cd8e7.svg)
+    background-image: url(static/media/lc.57a1f4149290988cd8e7.svg)
 }
 
 .flags_flag_li__5cQAP::before {
-    background-image: url(http://localhost:8081/static/media/li.249e148d1c5f7093bbe9.svg)
+    background-image: url(static/media/li.249e148d1c5f7093bbe9.svg)
 }
 
 .flags_flag_lk__1XPJV::before {
-    background-image: url(http://localhost:8081/static/media/lk.1ffbc3865ecc15c1da27.svg)
+    background-image: url(static/media/lk.1ffbc3865ecc15c1da27.svg)
 }
 
 .flags_flag_lr__kh60u::before {
-    background-image: url(http://localhost:8081/static/media/lr.4af9961baf121d5c0de8.svg)
+    background-image: url(static/media/lr.4af9961baf121d5c0de8.svg)
 }
 
 .flags_flag_ls__xuwHu::before {
-    background-image: url(http://localhost:8081/static/media/ls.04f822b0c7521e1ef475.svg)
+    background-image: url(static/media/ls.04f822b0c7521e1ef475.svg)
 }
 
 .flags_flag_lt__y3jsV::before {
-    background-image: url(http://localhost:8081/static/media/lt.04cf258e344a75553bb7.svg)
+    background-image: url(static/media/lt.04cf258e344a75553bb7.svg)
 }
 
 .flags_flag_lu__ruClt::before {
-    background-image: url(http://localhost:8081/static/media/lu.f40a33152d2c329370a9.svg)
+    background-image: url(static/media/lu.f40a33152d2c329370a9.svg)
 }
 
 .flags_flag_lv__lQ2Fj::before {
-    background-image: url(http://localhost:8081/static/media/lv.458e99b777585ed69025.svg)
+    background-image: url(static/media/lv.458e99b777585ed69025.svg)
 }
 
 .flags_flag_ly__zEI5Z::before {
-    background-image: url(http://localhost:8081/static/media/ly.f93c267c9bce51287e8d.svg)
+    background-image: url(static/media/ly.f93c267c9bce51287e8d.svg)
 }
 
 .flags_flag_ma__Z3Emq::before {
-    background-image: url(http://localhost:8081/static/media/ma.fa3e99609339199a6545.svg)
+    background-image: url(static/media/ma.fa3e99609339199a6545.svg)
 }
 
 .flags_flag_mc__9uWyb::before {
-    background-image: url(http://localhost:8081/static/media/mc.5c5b19d1f3f8041a069f.svg)
+    background-image: url(static/media/mc.5c5b19d1f3f8041a069f.svg)
 }
 
 .flags_flag_md__g7FWZ::before {
-    background-image: url(http://localhost:8081/static/media/md.af4db83b67b1f34f8829.svg)
+    background-image: url(static/media/md.af4db83b67b1f34f8829.svg)
 }
 
 .flags_flag_me__Edqsb::before {
-    background-image: url(http://localhost:8081/static/media/me.dd4c02968aaefdeaa0a6.svg)
+    background-image: url(static/media/me.dd4c02968aaefdeaa0a6.svg)
 }
 
 .flags_flag_mf__Yj3gu::before {
-    background-image: url(http://localhost:8081/static/media/mf.d2193fdb41e0ae0e395d.svg)
+    background-image: url(static/media/mf.d2193fdb41e0ae0e395d.svg)
 }
 
 .flags_flag_mg__JC5RY::before {
-    background-image: url(http://localhost:8081/static/media/mg.335074852cd54f97d8e3.svg)
+    background-image: url(static/media/mg.335074852cd54f97d8e3.svg)
 }
 
 .flags_flag_mh__V1Uo\+::before {
-    background-image: url(http://localhost:8081/static/media/mh.554fb812ec1be31aa85a.svg)
+    background-image: url(static/media/mh.554fb812ec1be31aa85a.svg)
 }
 
 .flags_flag_mk__JD9XU::before {
-    background-image: url(http://localhost:8081/static/media/mk.9432e7d9dd61acba798a.svg)
+    background-image: url(static/media/mk.9432e7d9dd61acba798a.svg)
 }
 
 .flags_flag_ml__CHNoa::before {
-    background-image: url(http://localhost:8081/static/media/ml.26e44660275239471c86.svg)
+    background-image: url(static/media/ml.26e44660275239471c86.svg)
 }
 
 .flags_flag_mm__2DCpc::before {
-    background-image: url(http://localhost:8081/static/media/mm.f6c8607e09a9402a9635.svg)
+    background-image: url(static/media/mm.f6c8607e09a9402a9635.svg)
 }
 
 .flags_flag_mn__h-dwh::before {
-    background-image: url(http://localhost:8081/static/media/mn.9e1ee95dfe7a37c32428.svg)
+    background-image: url(static/media/mn.9e1ee95dfe7a37c32428.svg)
 }
 
 .flags_flag_mo__WtPcJ::before {
-    background-image: url(http://localhost:8081/static/media/mo.df6917fd173e3e581774.svg)
+    background-image: url(static/media/mo.df6917fd173e3e581774.svg)
 }
 
 .flags_flag_mp__zC3xn::before {
-    background-image: url(http://localhost:8081/static/media/mp.f433286690ac33ad7116.svg)
+    background-image: url(static/media/mp.f433286690ac33ad7116.svg)
 }
 
 .flags_flag_mq__JVeDu::before {
-    background-image: url(http://localhost:8081/static/media/mq.9cdae873b995eb8338b4.svg)
+    background-image: url(static/media/mq.9cdae873b995eb8338b4.svg)
 }
 
 .flags_flag_mr__g9scF::before {
-    background-image: url(http://localhost:8081/static/media/mr.22da2dfa6157b1849765.svg)
+    background-image: url(static/media/mr.22da2dfa6157b1849765.svg)
 }
 
 .flags_flag_ms__NWYR-::before {
-    background-image: url(http://localhost:8081/static/media/ms.c6877684a117d1987b48.svg)
+    background-image: url(static/media/ms.c6877684a117d1987b48.svg)
 }
 
 .flags_flag_mt__TrIJu::before {
-    background-image: url(http://localhost:8081/static/media/mt.55fb019dba39390c5e88.svg)
+    background-image: url(static/media/mt.55fb019dba39390c5e88.svg)
 }
 
 .flags_flag_mu__a94MX::before {
-    background-image: url(http://localhost:8081/static/media/mu.24a9735238dfff01d361.svg)
+    background-image: url(static/media/mu.24a9735238dfff01d361.svg)
 }
 
 .flags_flag_mv__JJTGe::before {
-    background-image: url(http://localhost:8081/static/media/mv.baa407ebf21f3da56efa.svg)
+    background-image: url(static/media/mv.baa407ebf21f3da56efa.svg)
 }
 
 .flags_flag_mw__qu8zZ::before {
-    background-image: url(http://localhost:8081/static/media/mw.8e62aef0f99d9ec2a97d.svg)
+    background-image: url(static/media/mw.8e62aef0f99d9ec2a97d.svg)
 }
 
 .flags_flag_mx__7LkwR::before {
-    background-image: url(http://localhost:8081/static/media/mx.10f3746db81fffc5894c.svg)
+    background-image: url(static/media/mx.10f3746db81fffc5894c.svg)
 }
 
 .flags_flag_my__g9K1D::before {
-    background-image: url(http://localhost:8081/static/media/my.645d2fbfdea51a5b71e3.svg)
+    background-image: url(static/media/my.645d2fbfdea51a5b71e3.svg)
 }
 
 .flags_flag_mz__jH0N9::before {
-    background-image: url(http://localhost:8081/static/media/mz.4c696fa45c844fe502b7.svg)
+    background-image: url(static/media/mz.4c696fa45c844fe502b7.svg)
 }
 
 .flags_flag_na__lTt-0::before {
-    background-image: url(http://localhost:8081/static/media/na.e335bb35e497aaf0dbe8.svg)
+    background-image: url(static/media/na.e335bb35e497aaf0dbe8.svg)
 }
 
 .flags_flag_nc__cdBcv::before {
-    background-image: url(http://localhost:8081/static/media/nc.9f3379ef6676e984b7cd.svg)
+    background-image: url(static/media/nc.9f3379ef6676e984b7cd.svg)
 }
 
 .flags_flag_ne__N4cko::before {
-    background-image: url(http://localhost:8081/static/media/ne.5a508910838400247ce4.svg)
+    background-image: url(static/media/ne.5a508910838400247ce4.svg)
 }
 
 .flags_flag_nf__wPvxe::before {
-    background-image: url(http://localhost:8081/static/media/nf.d3f4a2c0d959ffe9e37b.svg)
+    background-image: url(static/media/nf.d3f4a2c0d959ffe9e37b.svg)
 }
 
 .flags_flag_ng__apOwq::before {
-    background-image: url(http://localhost:8081/static/media/ng.1b00f0e40bf6671968be.svg)
+    background-image: url(static/media/ng.1b00f0e40bf6671968be.svg)
 }
 
 .flags_flag_ni__Bw\+SI::before {
-    background-image: url(http://localhost:8081/static/media/ni.d6158b8ec51f553752b6.svg)
+    background-image: url(static/media/ni.d6158b8ec51f553752b6.svg)
 }
 
 .flags_flag_nl__Gza-M::before {
-    background-image: url(http://localhost:8081/static/media/nl.9d4a525fe7fa5a78231c.svg)
+    background-image: url(static/media/nl.9d4a525fe7fa5a78231c.svg)
 }
 
 .flags_flag_no__OFi-o::before {
-    background-image: url(http://localhost:8081/static/media/no.c1784c5e2b8f7694b2fd.svg)
+    background-image: url(static/media/no.c1784c5e2b8f7694b2fd.svg)
 }
 
 .flags_flag_np__HJjHI::before {
-    background-image: url(http://localhost:8081/static/media/np.216a8d2a51c4db3f0222.svg)
+    background-image: url(static/media/np.216a8d2a51c4db3f0222.svg)
 }
 
 .flags_flag_nr__1eOG-::before {
-    background-image: url(http://localhost:8081/static/media/nr.e40b9e0c184eecad1184.svg)
+    background-image: url(static/media/nr.e40b9e0c184eecad1184.svg)
 }
 
 .flags_flag_nu__Nn5eJ::before {
-    background-image: url(http://localhost:8081/static/media/nu.dbff33331c356722ce15.svg)
+    background-image: url(static/media/nu.dbff33331c356722ce15.svg)
 }
 
 .flags_flag_nz__CWYZA::before {
-    background-image: url(http://localhost:8081/static/media/nz.9aa89d3e3548e2e9ed37.svg)
+    background-image: url(static/media/nz.9aa89d3e3548e2e9ed37.svg)
 }
 
 .flags_flag_om__Ee9h-::before {
-    background-image: url(http://localhost:8081/static/media/om.cf72330b6fe1017e0836.svg)
+    background-image: url(static/media/om.cf72330b6fe1017e0836.svg)
 }
 
 .flags_flag_pa__GyZfn::before {
-    background-image: url(http://localhost:8081/static/media/pa.3f4707c94a8841f66a47.svg)
+    background-image: url(static/media/pa.3f4707c94a8841f66a47.svg)
 }
 
 .flags_flag_pe__qFewD::before {
-    background-image: url(http://localhost:8081/static/media/pe.e7a9389abb40adc15f79.svg)
+    background-image: url(static/media/pe.e7a9389abb40adc15f79.svg)
 }
 
 .flags_flag_pf__PgM9P::before {
-    background-image: url(http://localhost:8081/static/media/pf.2c14ae64fb4e9f816338.svg)
+    background-image: url(static/media/pf.2c14ae64fb4e9f816338.svg)
 }
 
 .flags_flag_pg__Av4BW::before {
-    background-image: url(http://localhost:8081/static/media/pg.abc81ff99e566b446f92.svg)
+    background-image: url(static/media/pg.abc81ff99e566b446f92.svg)
 }
 
 .flags_flag_ph__-8QHB::before {
-    background-image: url(http://localhost:8081/static/media/ph.b70e266bc49ac26c4ea0.svg)
+    background-image: url(static/media/ph.b70e266bc49ac26c4ea0.svg)
 }
 
 .flags_flag_pk__uE5jG::before {
-    background-image: url(http://localhost:8081/static/media/pk.c6b49a9f5bb9af1e1077.svg)
+    background-image: url(static/media/pk.c6b49a9f5bb9af1e1077.svg)
 }
 
 .flags_flag_pl__soNQ-::before {
-    background-image: url(http://localhost:8081/static/media/pl.ff5284c3db807f24fba7.svg)
+    background-image: url(static/media/pl.ff5284c3db807f24fba7.svg)
 }
 
 .flags_flag_pm__m8Vcj::before {
-    background-image: url(http://localhost:8081/static/media/pm.b0e22e82f4ec173a730d.svg)
+    background-image: url(static/media/pm.b0e22e82f4ec173a730d.svg)
 }
 
 .flags_flag_pn__zuyCP::before {
-    background-image: url(http://localhost:8081/static/media/pn.c568083abaa11481ad50.svg)
+    background-image: url(static/media/pn.c568083abaa11481ad50.svg)
 }
 
 .flags_flag_pr__eueVG::before {
-    background-image: url(http://localhost:8081/static/media/pr.6c89e3897c100d8c2f76.svg)
+    background-image: url(static/media/pr.6c89e3897c100d8c2f76.svg)
 }
 
 .flags_flag_ps__XAgPk::before {
-    background-image: url(http://localhost:8081/static/media/ps.3a0dc2f0d457213afc63.svg)
+    background-image: url(static/media/ps.3a0dc2f0d457213afc63.svg)
 }
 
 .flags_flag_pt__vNHkL::before {
-    background-image: url(http://localhost:8081/static/media/pt.645059c5a7c00d6b2c96.svg)
+    background-image: url(static/media/pt.645059c5a7c00d6b2c96.svg)
 }
 
 .flags_flag_pw__Aq0RD::before {
-    background-image: url(http://localhost:8081/static/media/pw.5948ddc6dcb9a681f53d.svg)
+    background-image: url(static/media/pw.5948ddc6dcb9a681f53d.svg)
 }
 
 .flags_flag_py__qRH1a::before {
-    background-image: url(http://localhost:8081/static/media/py.c9084660110c0c8df345.svg)
+    background-image: url(static/media/py.c9084660110c0c8df345.svg)
 }
 
 .flags_flag_qa__YPrSE::before {
-    background-image: url(http://localhost:8081/static/media/qa.40687d3e535351956c87.svg)
+    background-image: url(static/media/qa.40687d3e535351956c87.svg)
 }
 
 .flags_flag_re__igQMf::before {
-    background-image: url(http://localhost:8081/static/media/re.0bf1dd02e64ce260e344.svg)
+    background-image: url(static/media/re.0bf1dd02e64ce260e344.svg)
 }
 
 .flags_flag_ro__7KPVh::before {
-    background-image: url(http://localhost:8081/static/media/ro.028cf08fb957a6d9c64d.svg)
+    background-image: url(static/media/ro.028cf08fb957a6d9c64d.svg)
 }
 
 .flags_flag_rs__3uxkR::before {
-    background-image: url(http://localhost:8081/static/media/rs.53126246f7606e09aca4.svg)
+    background-image: url(static/media/rs.53126246f7606e09aca4.svg)
 }
 
 .flags_flag_ru__nuz\+9::before {
-    background-image: url(http://localhost:8081/static/media/ru.05234af27207253323b7.svg)
+    background-image: url(static/media/ru.05234af27207253323b7.svg)
 }
 
 .flags_flag_rw__MPr9i::before {
-    background-image: url(http://localhost:8081/static/media/rw.b876f6d9250761e91f6f.svg)
+    background-image: url(static/media/rw.b876f6d9250761e91f6f.svg)
 }
 
 .flags_flag_sa__OHSTL::before {
-    background-image: url(http://localhost:8081/static/media/sa.97b6fd07419ffdbf3751.svg)
+    background-image: url(static/media/sa.97b6fd07419ffdbf3751.svg)
 }
 
 .flags_flag_sb__ArOK9::before {
-    background-image: url(http://localhost:8081/static/media/sb.ce4d6414dcb54322eb6e.svg)
+    background-image: url(static/media/sb.ce4d6414dcb54322eb6e.svg)
 }
 
 .flags_flag_sc__xB2cf::before {
-    background-image: url(http://localhost:8081/static/media/sc.0ae428cea90ba6de074c.svg)
+    background-image: url(static/media/sc.0ae428cea90ba6de074c.svg)
 }
 
 .flags_flag_sd__ZuOK-::before {
-    background-image: url(http://localhost:8081/static/media/sd.e6347c04675387377943.svg)
+    background-image: url(static/media/sd.e6347c04675387377943.svg)
 }
 
 .flags_flag_se__sFH\+Y::before {
-    background-image: url(http://localhost:8081/static/media/se.2c17c00bbd6e25728902.svg)
+    background-image: url(static/media/se.2c17c00bbd6e25728902.svg)
 }
 
 .flags_flag_sg__y8V0g::before {
-    background-image: url(http://localhost:8081/static/media/sg.12919d6222c2390520d5.svg)
+    background-image: url(static/media/sg.12919d6222c2390520d5.svg)
 }
 
 .flags_flag_sh__hHr21::before {
-    background-image: url(http://localhost:8081/static/media/sh.20ec88cae319c396eb1f.svg)
+    background-image: url(static/media/sh.20ec88cae319c396eb1f.svg)
 }
 
 .flags_flag_si__qZMdv::before {
-    background-image: url(http://localhost:8081/static/media/si.bc8b5ad628c497268ef1.svg)
+    background-image: url(static/media/si.bc8b5ad628c497268ef1.svg)
 }
 
 .flags_flag_sj__i4FGo::before {
-    background-image: url(http://localhost:8081/static/media/sj.cc842bf6422415d73fd3.svg)
+    background-image: url(static/media/sj.cc842bf6422415d73fd3.svg)
 }
 
 .flags_flag_sk__szBY9::before {
-    background-image: url(http://localhost:8081/static/media/sk.fd95226265fa2e97773d.svg)
+    background-image: url(static/media/sk.fd95226265fa2e97773d.svg)
 }
 
 .flags_flag_sl__m58-h::before {
-    background-image: url(http://localhost:8081/static/media/sl.367f5c71c57874cf0f8c.svg)
+    background-image: url(static/media/sl.367f5c71c57874cf0f8c.svg)
 }
 
 .flags_flag_sm__wtZLc::before {
-    background-image: url(http://localhost:8081/static/media/sm.9ca0007a83b778fb34db.svg)
+    background-image: url(static/media/sm.9ca0007a83b778fb34db.svg)
 }
 
 .flags_flag_sn__hViU0::before {
-    background-image: url(http://localhost:8081/static/media/sn.12a64e97a2448a1a15f9.svg)
+    background-image: url(static/media/sn.12a64e97a2448a1a15f9.svg)
 }
 
 .flags_flag_so__38CXZ::before {
-    background-image: url(http://localhost:8081/static/media/so.15e9221c372aa85146ae.svg)
+    background-image: url(static/media/so.15e9221c372aa85146ae.svg)
 }
 
 .flags_flag_sr__30-gq::before {
-    background-image: url(http://localhost:8081/static/media/sr.5a345f8ebba96e1eabfc.svg)
+    background-image: url(static/media/sr.5a345f8ebba96e1eabfc.svg)
 }
 
 .flags_flag_ss__VqZzn::before {
-    background-image: url(http://localhost:8081/static/media/ss.8b2f0948a0fdc4f59715.svg)
+    background-image: url(static/media/ss.8b2f0948a0fdc4f59715.svg)
 }
 
 .flags_flag_st__CvNlZ::before {
-    background-image: url(http://localhost:8081/static/media/st.02a19c7f4850f0aa2498.svg)
+    background-image: url(static/media/st.02a19c7f4850f0aa2498.svg)
 }
 
 .flags_flag_sv__zMIWm::before {
-    background-image: url(http://localhost:8081/static/media/sv.c5b7a88da0a76e8d5584.svg)
+    background-image: url(static/media/sv.c5b7a88da0a76e8d5584.svg)
 }
 
 .flags_flag_sx__HFBFZ::before {
-    background-image: url(http://localhost:8081/static/media/sx.2175354a7aac47007546.svg)
+    background-image: url(static/media/sx.2175354a7aac47007546.svg)
 }
 
 .flags_flag_sy__\+JJVj::before {
-    background-image: url(http://localhost:8081/static/media/sy.b86ca545f438e20dd6a6.svg)
+    background-image: url(static/media/sy.b86ca545f438e20dd6a6.svg)
 }
 
 .flags_flag_sz__FSoer::before {
-    background-image: url(http://localhost:8081/static/media/sz.af91e9da095760f97ead.svg)
+    background-image: url(static/media/sz.af91e9da095760f97ead.svg)
 }
 
 .flags_flag_tc__GFA1H::before {
-    background-image: url(http://localhost:8081/static/media/tc.f74ae43be38082fc105a.svg)
+    background-image: url(static/media/tc.f74ae43be38082fc105a.svg)
 }
 
 .flags_flag_td__LHyv\+::before {
-    background-image: url(http://localhost:8081/static/media/td.180f416f04d69f203dd0.svg)
+    background-image: url(static/media/td.180f416f04d69f203dd0.svg)
 }
 
 .flags_flag_tf__\+obAT::before {
-    background-image: url(http://localhost:8081/static/media/tf.a0a0fd598248bc52ea31.svg)
+    background-image: url(static/media/tf.a0a0fd598248bc52ea31.svg)
 }
 
 .flags_flag_tg__rIzrd::before {
-    background-image: url(http://localhost:8081/static/media/tg.1b41a4055db984ba0eaf.svg)
+    background-image: url(static/media/tg.1b41a4055db984ba0eaf.svg)
 }
 
 .flags_flag_th__pJMsN::before {
-    background-image: url(http://localhost:8081/static/media/th.1366e19e7eae1ecc57d4.svg)
+    background-image: url(static/media/th.1366e19e7eae1ecc57d4.svg)
 }
 
 .flags_flag_tj__cBYxl::before {
-    background-image: url(http://localhost:8081/static/media/tj.839f273d8f391e996568.svg)
+    background-image: url(static/media/tj.839f273d8f391e996568.svg)
 }
 
 .flags_flag_tk__0rF1B::before {
-    background-image: url(http://localhost:8081/static/media/tk.935191a17c8c68076fad.svg)
+    background-image: url(static/media/tk.935191a17c8c68076fad.svg)
 }
 
 .flags_flag_tl__\+M3Qt::before {
-    background-image: url(http://localhost:8081/static/media/tl.f7f0998622f591edea2f.svg)
+    background-image: url(static/media/tl.f7f0998622f591edea2f.svg)
 }
 
 .flags_flag_tm__NM4fY::before {
-    background-image: url(http://localhost:8081/static/media/tm.dfbaa21e5c2e3f51c147.svg)
+    background-image: url(static/media/tm.dfbaa21e5c2e3f51c147.svg)
 }
 
 .flags_flag_tn__YY51h::before {
-    background-image: url(http://localhost:8081/static/media/tn.8ab7256aac5c8e7d77a5.svg)
+    background-image: url(static/media/tn.8ab7256aac5c8e7d77a5.svg)
 }
 
 .flags_flag_to__ou37Y::before {
-    background-image: url(http://localhost:8081/static/media/to.6678aeed124ad82b10df.svg)
+    background-image: url(static/media/to.6678aeed124ad82b10df.svg)
 }
 
 .flags_flag_tr__xbA-V::before {
-    background-image: url(http://localhost:8081/static/media/tr.137555a8e5d011e5a799.svg)
+    background-image: url(static/media/tr.137555a8e5d011e5a799.svg)
 }
 
 .flags_flag_tt__cr515::before {
-    background-image: url(http://localhost:8081/static/media/tt.828de8023793bd34fe0e.svg)
+    background-image: url(static/media/tt.828de8023793bd34fe0e.svg)
 }
 
 .flags_flag_tv__Ej0Je::before {
-    background-image: url(http://localhost:8081/static/media/tv.1836b623c49321f66716.svg)
+    background-image: url(static/media/tv.1836b623c49321f66716.svg)
 }
 
 .flags_flag_tw__H9DBJ::before {
-    background-image: url(http://localhost:8081/static/media/tw.0e99b0ca012aed2e6d89.svg)
+    background-image: url(static/media/tw.0e99b0ca012aed2e6d89.svg)
 }
 
 .flags_flag_tz__9b6::before {
-    background-image: url(http://localhost:8081/static/media/tz.259f5860c5d3159494a9.svg)
+    background-image: url(static/media/tz.259f5860c5d3159494a9.svg)
 }
 
 .flags_flag_ua__2wyHY::before {
-    background-image: url(http://localhost:8081/static/media/ua.41f78cec2f5d49f6c8d1.svg)
+    background-image: url(static/media/ua.41f78cec2f5d49f6c8d1.svg)
 }
 
 .flags_flag_ug__s8Dxq::before {
-    background-image: url(http://localhost:8081/static/media/ug.463f178dfb397cc94a9e.svg)
+    background-image: url(static/media/ug.463f178dfb397cc94a9e.svg)
 }
 
 .flags_flag_um__vzHkW::before {
-    background-image: url(http://localhost:8081/static/media/um.c6387424b1ad5f914f4d.svg)
+    background-image: url(static/media/um.c6387424b1ad5f914f4d.svg)
 }
 
 .flags_flag_us__3GZtD::before {
-    background-image: url(http://localhost:8081/static/media/us.5cc5f3b454908f4f2692.svg)
+    background-image: url(static/media/us.5cc5f3b454908f4f2692.svg)
 }
 
 .flags_flag_uy__OlCOM::before {
-    background-image: url(http://localhost:8081/static/media/uy.f53324b64139322fc0b8.svg)
+    background-image: url(static/media/uy.f53324b64139322fc0b8.svg)
 }
 
 .flags_flag_uz__R1HwJ::before {
-    background-image: url(http://localhost:8081/static/media/uz.a1a8b587f69d4a71d6f7.svg)
+    background-image: url(static/media/uz.a1a8b587f69d4a71d6f7.svg)
 }
 
 .flags_flag_va__sBsCG::before {
-    background-image: url(http://localhost:8081/static/media/va.c09c897ecb4e4223e83e.svg)
+    background-image: url(static/media/va.c09c897ecb4e4223e83e.svg)
 }
 
 .flags_flag_vc__WiYrP::before {
-    background-image: url(http://localhost:8081/static/media/vc.1474ccf5a8807db4d5ec.svg)
+    background-image: url(static/media/vc.1474ccf5a8807db4d5ec.svg)
 }
 
 .flags_flag_ve__E11LV::before {
-    background-image: url(http://localhost:8081/static/media/ve.42c44704cd1bfe413e41.svg)
+    background-image: url(static/media/ve.42c44704cd1bfe413e41.svg)
 }
 
 .flags_flag_vg__I05j7::before {
-    background-image: url(http://localhost:8081/static/media/vg.37b510b2f9de3b2f1570.svg)
+    background-image: url(static/media/vg.37b510b2f9de3b2f1570.svg)
 }
 
 .flags_flag_vi__kbEFf::before {
-    background-image: url(http://localhost:8081/static/media/vi.3a2cefa979e6007642c8.svg)
+    background-image: url(static/media/vi.3a2cefa979e6007642c8.svg)
 }
 
 .flags_flag_vn__JAu7B::before {
-    background-image: url(http://localhost:8081/static/media/vn.aa591eadf9bfbc055224.svg)
+    background-image: url(static/media/vn.aa591eadf9bfbc055224.svg)
 }
 
 .flags_flag_vu__J7Csc::before {
-    background-image: url(http://localhost:8081/static/media/vu.f228f473e20a04fc0d9c.svg)
+    background-image: url(static/media/vu.f228f473e20a04fc0d9c.svg)
 }
 
 .flags_flag_wf__W1RS7::before {
-    background-image: url(http://localhost:8081/static/media/wf.de394ff1c79b7d620579.svg)
+    background-image: url(static/media/wf.de394ff1c79b7d620579.svg)
 }
 
 .flags_flag_ws__QudF4::before {
-    background-image: url(http://localhost:8081/static/media/ws.17e330de6578c1e9b404.svg)
+    background-image: url(static/media/ws.17e330de6578c1e9b404.svg)
 }
 
 .flags_flag_ye__DZ4PN::before {
-    background-image: url(http://localhost:8081/static/media/ye.f5eed2e9ba167ce15b5a.svg)
+    background-image: url(static/media/ye.f5eed2e9ba167ce15b5a.svg)
 }
 
 .flags_flag_yt__UOlDJ::before {
-    background-image: url(http://localhost:8081/static/media/yt.597e031d32679163d9da.svg)
+    background-image: url(static/media/yt.597e031d32679163d9da.svg)
 }
 
 .flags_flag_za__iBhs7::before {
-    background-image: url(http://localhost:8081/static/media/za.0386a651cf88fc6217d8.svg)
+    background-image: url(static/media/za.0386a651cf88fc6217d8.svg)
 }
 
 .flags_flag_zm__4EWvY::before {
-    background-image: url(http://localhost:8081/static/media/zm.2d02ca9d780e1f949fb4.svg)
+    background-image: url(static/media/zm.2d02ca9d780e1f949fb4.svg)
 }
 
 .flags_flag_zw__IdROJ::before {
-    background-image: url(http://localhost:8081/static/media/zw.e72628996a3463928593.svg)
+    background-image: url(static/media/zw.e72628996a3463928593.svg)
 }
 
 .ktGFTL {
@@ -1697,7 +1697,7 @@ a.common_themePRO__tjzlt {
 }
 
 .SelectWithAutoComplete_indicator__Bwh2S {
-    background: url(http://localhost:8081/static/media/dropdown_triangle.c9b8fd30d334f1cf23a9.svg) no-repeat 0;
+    background: url(static/media/dropdown_triangle.c9b8fd30d334f1cf23a9.svg) no-repeat 0;
     background-size: 100%;
     height: 24px;
     width: 12px
@@ -1705,7 +1705,7 @@ a.common_themePRO__tjzlt {
 
 .SelectWithAutoComplete_container__NIOqT.SelectWithAutoComplete_disabled__78gPS .SelectWithAutoComplete_indicator__Bwh2S,
 .SelectWithAutoComplete_container__NIOqT:not(.SelectWithAutoComplete_disabled__78gPS):hover .SelectWithAutoComplete_indicator__Bwh2S {
-    background-image: url(http://localhost:8081/static/media/dropdown_triangle_hover.0faa82b9b117e55845b7.svg)
+    background-image: url(static/media/dropdown_triangle_hover.0faa82b9b117e55845b7.svg)
 }
 
 .InfoBox_container__MPQfE {
@@ -1771,23 +1771,23 @@ a.common_themePRO__tjzlt {
 }
 
 .CheckboxWithBorder_error__o8aI0 .CheckboxWithBorder_label__pEO {
-    background: url(http://localhost:8081/static/media/error.52767caa76dc8dcb06ad.svg) 0 no-repeat
+    background: url(static/media/error.52767caa76dc8dcb06ad.svg) 0 no-repeat
 }
 
 .CheckboxWithBorder_checked__SJv55 .CheckboxWithBorder_label__pEO {
-    background: url(http://localhost:8081/static/media/checked-blue.cc8c18e17aa6e9aad224.svg) 0 no-repeat
+    background: url(static/media/checked-blue.cc8c18e17aa6e9aad224.svg) 0 no-repeat
 }
 
 .CheckboxWithBorder_checked__SJv55.CheckboxWithBorder_partners__u9oUX .CheckboxWithBorder_label__pEO {
-    background: url(http://localhost:8081/static/media/checked-purple.2dca9e8749f9137ccf23.svg) 0 no-repeat
+    background: url(static/media/checked-purple.2dca9e8749f9137ccf23.svg) 0 no-repeat
 }
 
 .CheckboxWithBorder_checked__SJv55.CheckboxWithBorder_insti__bs3FE .CheckboxWithBorder_label__pEO {
-    background: url(http://localhost:8081/static/media/checked-sand.e44cefbf2065354f4126.svg) 0 no-repeat
+    background: url(static/media/checked-sand.e44cefbf2065354f4126.svg) 0 no-repeat
 }
 
 .CheckboxWithBorder_label__pEO {
-    background: url(http://localhost:8081/static/media/unchecked.510d2c1284843b9f8f1d.svg) 0 no-repeat;
+    background: url(static/media/unchecked.510d2c1284843b9f8f1d.svg) 0 no-repeat;
     background-size: auto 20px;
     cursor: pointer;
     font-family: Arial, serif;
@@ -2071,7 +2071,7 @@ a.common_themePRO__tjzlt {
 }
 
 .CheckboxGroup_checkboxInputChecked__cl8D5+.CheckboxGroup_checkboxLabel__wpwhW span::before {
-    background: url(http://localhost:8081/static/media/blue-tick.b4457f3ce16014530c66.png) no-repeat -2px -1px;
+    background: url(static/media/blue-tick.b4457f3ce16014530c66.png) no-repeat -2px -1px;
     content: "";
     position: absolute;
     top: 3px
@@ -2103,15 +2103,15 @@ a.common_themePRO__tjzlt {
 }
 
 .CheckboxGroup_checkboxGroup__DA4mF.CheckboxGroup_themePRO__njKun .CheckboxGroup_checkboxInputChecked__cl8D5+.CheckboxGroup_checkboxLabel__wpwhW span::before {
-    background: url(http://localhost:8081/static/media/green-tick.927d7fe2f58e3e465a68.svg) no-repeat -2px -1px
+    background: url(static/media/green-tick.927d7fe2f58e3e465a68.svg) no-repeat -2px -1px
 }
 
 .CheckboxGroup_checkboxGroup__DA4mF.CheckboxGroup_partners__RJBM9 .CheckboxGroup_checkboxInputChecked__cl8D5+.CheckboxGroup_checkboxLabel__wpwhW span::before {
-    background: url(http://localhost:8081/static/media/purple-tick.ac25b265878adf3ca15e.svg) no-repeat -2px -1px
+    background: url(static/media/purple-tick.ac25b265878adf3ca15e.svg) no-repeat -2px -1px
 }
 
 .CheckboxGroup_checkboxGroup__DA4mF.CheckboxGroup_insti__xI2H5 .CheckboxGroup_checkboxInputChecked__cl8D5+.CheckboxGroup_checkboxLabel__wpwhW span::before {
-    background: url(http://localhost:8081/static/media/sand-tick.6727601b999fc40ee75d.svg) no-repeat -2px -1px
+    background: url(static/media/sand-tick.6727601b999fc40ee75d.svg) no-repeat -2px -1px
 }
 
 .CheckboxGroup_checkboxGroup__DA4mF.CheckboxGroup_insti__xI2H5 .CheckboxGroup_checkboxInputChecked__cl8D5+.CheckboxGroup_checkboxLabel__wpwhW span::before,
@@ -2328,7 +2328,7 @@ a.common_themePRO__tjzlt {
 }
 
 .SelectWithTextInput_selectOverlay__WFz60:after {
-    background: url(http://localhost:8081/static/media/dropdown_triangle.6dd0cd8a8da54ff461fb.svg) no-repeat 0;
+    background: url(static/media/dropdown_triangle.6dd0cd8a8da54ff461fb.svg) no-repeat 0;
     background-size: 9px;
     content: "";
     height: 24px;
@@ -2339,7 +2339,7 @@ a.common_themePRO__tjzlt {
 }
 
 .SelectWithTextInput_select__616LZ:hover+.SelectWithTextInput_selectOverlay__WFz60:after {
-    background-image: url(http://localhost:8081/static/media/dropdown_triangle_hover.e00df2928e69a12818b5.svg)
+    background-image: url(static/media/dropdown_triangle_hover.e00df2928e69a12818b5.svg)
 }
 
 .SelectWithTextInput_inputContainer__oNnO2 {
@@ -2401,14 +2401,14 @@ a.common_themePRO__tjzlt {
 }
 
 .SelectWithTextInput_indicator__s\+R9m {
-    background: url(http://localhost:8081/static/media/dropdown_triangle.6dd0cd8a8da54ff461fb.svg) no-repeat 0;
+    background: url(static/media/dropdown_triangle.6dd0cd8a8da54ff461fb.svg) no-repeat 0;
     background-size: 12px;
     height: 24px;
     width: 16px
 }
 
 .SelectWithTextInput_contentContainer__asqEf:hover .SelectWithTextInput_indicator__s\+R9m {
-    background-image: url(http://localhost:8081/static/media/dropdown_triangle_hover.e00df2928e69a12818b5.svg)
+    background-image: url(static/media/dropdown_triangle_hover.e00df2928e69a12818b5.svg)
 }
 
 .SelectWithTextInput_contentContainer__asqEf.SelectWithTextInput_center__LG1XS .cmc-select__value-container .cmc-select__single-value,
@@ -2845,7 +2845,7 @@ a.common_themePRO__tjzlt {
 }
 
 .gxwePb {
-    background: url(http://localhost:8081/static/media/est.6a6a981a8d1d177ba827.svg) left center / 26px no-repeat;
+    background: url(static/media/est.6a6a981a8d1d177ba827.svg) left center / 26px no-repeat;
     padding-left: 45px;
 }
 

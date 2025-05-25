@@ -3,7 +3,7 @@ export const clientsData = [
         name: 'JP Morgan Chase',
         logo: 'img/logo-morgan.png',
         framework: 'img/logo-angular.png',
-        link: '/demo-self-service/angular-morgan-chase/',
+        link: '/demo-self-service/react-chase/',
         available: false,
         region: '🇺🇸'
     },
@@ -44,7 +44,7 @@ export const clientsData = [
         logo: 'img/logo-cmc-markets.png',
         framework: 'img/logo-react.png',
         link: '/demo-self-service/react-cmcmarkets/',
-        available: false,
+        available: true,
         region: '🇬🇧'
     },
     {

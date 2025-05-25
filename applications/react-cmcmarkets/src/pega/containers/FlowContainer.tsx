@@ -18,7 +18,7 @@ export default function FlowContainer(props: { container: PFlowContainer }) {
 
   return <div className="sc-dBmzty eAErfA">
     <div className="sc-lbJcrp kqyALu">
-      <div className="sc-czkgLR ijbUQt">
+      <div className="sc-czkgLR ijbUQt" style={{height: '100vh'}}>
         {props.container.pconnect
           .getDataObject()
           .caseInfo.navigation.steps.length > 1 && <Navigation steps={props.container.pconnect

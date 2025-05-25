@@ -1,0 +1,11 @@
+{
+    "entryPoints": [
+        "../../../dist/packages/adapters/vue-adapter/index.d.ts"
+    ],
+    "tsconfig": "tsconfig.typedoc.json",
+    "disableSources": true,
+    "readme": "./README.md",
+    "plugin": [
+        "typedoc-plugin-vue"
+    ]
+}

@@ -79,7 +79,9 @@ export default function TextInput(props: {
         return t.value;
     }
   }
-
+  if (props.container.config.readOnly) {
+    return <><dt>{ props.container.config.label }</dt><dd>{props.container.config.value ?? '--'}</dd></>;
+  }
   return <>
     <label htmlFor={props.container.id}>
       {props.container.config.label}

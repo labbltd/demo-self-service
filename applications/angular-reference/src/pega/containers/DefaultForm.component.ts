@@ -4,7 +4,6 @@ import { PContainerComponent } from '@labb/angular-adapter';
 @Component({
   selector: 'dx-default-form-template',
   template: `
-    @if (container.config.instructions && container.config.instructions !== 'none') { <div [innerHtml]="container.config.instructions"></div> }
     <div [ngClass]="divClass">
       @for (child of container.children; track child.id) {
         <ng-container dxContainer [container]="child"/>

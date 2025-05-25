@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function CmCDropdown(props: { label: string, helperText: string, width?: string, value?: string, options: { key: string, value: string }[], errorMessage?: string, selected: (key: string) => void, flagged?: boolean }) {
+export default function CmCDropdown(props: { width?: string, value?: string, options: { key: string, value: string }[], errorMessage?: string, selected: (key: string) => void, flagged?: boolean }) {
     const [opened, setOpened] = useState(false);
     const { width, value, options, errorMessage, selected, flagged = false } = props;
 

@@ -8,7 +8,11 @@ import { Step } from 'carbon-components-angular';
 @Component({
   selector: 'dx-flow-container',
   template: `
-  <ibm-tile *ngIf="!container.hasAssignment()">Thank you! The next step in this case has been routed appropriately.</ibm-tile>
+  @for (message of container.config.caseMessages; track message) {
+    <div>
+        <ibm-tile>{{message}}</ibm-tile>
+    </div>
+  }
   <div ibmRow *ngIf="container.hasAssignment()">
     <div ibmCol [columnNumbers]="leftColumn">
         <ibm-progress-indicator [orientation]="navigationOrientation"

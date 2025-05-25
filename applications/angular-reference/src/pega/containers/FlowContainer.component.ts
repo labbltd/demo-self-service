@@ -7,6 +7,11 @@ import { FlowContainer } from '@labb/dx-engine';
   selector: 'dx-flow-container',
   template: `
     <form>
+      @for (message of container.config.caseMessages; track message) {
+        <div>
+          {{message}}
+        </div>
+      }
       @if (!container.hasAssignment()) {
           @for(assignment of todoAssignments; track assignment.ID) {
             <div>
@@ -16,9 +21,6 @@ import { FlowContainer } from '@labb/dx-engine';
             </div>
           }
       } @else {
-        <h2>
-          {{ container.getActiveViewLabel() || container.getAssignmentName() }}
-        </h2>
         @if (container.navigation) {
           <nav>
             <ol>
@@ -34,6 +36,12 @@ import { FlowContainer } from '@labb/dx-engine';
           </div>
         }
         <fieldset>
+          <legend>
+            <h2>
+            {{container.getActiveViewLabel() ||
+              container.getAssignmentName()}}
+              </h2>
+          </legend>
           @for (child of container.children; track child.id) {
             <ng-container dxContainer [container]="child"/>
           }
