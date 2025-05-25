@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[119],{4119:(e,n,r)=>{r.r(n),r.d(n,{default:()=>t});var d=r(1085);function t(e){return(0,d.jsxs)(d.Fragment,{children:[(0,d.jsx)("pre",{children:"Address component"}),(0,d.jsx)("button",{onClick:n=>(e.container.updateFieldValue("GBR"),void e.container.triggerFieldChange("GBR")),children:"Update address"})]})}}}]);
