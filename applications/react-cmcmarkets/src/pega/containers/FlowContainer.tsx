@@ -1,10 +1,10 @@
-import { FlowContainer as PFlowContainer } from '@labb/dx-engine';
+import { FlowContainer } from '@labb/dx-engine';
 import { GeneratePContainer } from '@labb/react-adapter';
 import { useState } from 'react';
 import Navigation from '../../cmc-design/cmc-navigation';
 import Buttons from '../../cmc-design/cmc-buttons';
 
-export default function FlowContainer(props: { container: PFlowContainer }) {
+export default function DxFlowContainer(props: { container: FlowContainer }) {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   function handleActionError(e: Error) {
@@ -19,11 +19,7 @@ export default function FlowContainer(props: { container: PFlowContainer }) {
   return <div className="sc-dBmzty eAErfA">
     <div className="sc-lbJcrp kqyALu">
       <div className="sc-czkgLR ijbUQt" style={{height: '100vh'}}>
-        {props.container.pconnect
-          .getDataObject()
-          .caseInfo.navigation.steps.length > 1 && <Navigation steps={props.container.pconnect
-            .getDataObject()
-            .caseInfo.navigation.steps}></Navigation>}
+        {props.container.navigation?.steps.length > 1 && <Navigation steps={props.container.navigation.steps}></Navigation>}
 
         <div id="page" className="sc-dycYrt PEfgR screen">
           <div style={{ position: 'fixed', zIndex: 9999, inset: '16px', pointerEvents: 'none' }}></div>
