@@ -1,0 +1,133 @@
+{
+  "name": "react-centraalbeheer",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "applications/react-centraalbeheer/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/demo-self-service/react-centraalbeheer",
+        "index": "applications/react-centraalbeheer/src/index.html",
+        "baseHref": "/demo-self-service/react-centraalbeheer/",
+        "main": "applications/react-centraalbeheer/src/main.tsx",
+        "polyfills": "applications/react-centraalbeheer/src/polyfills.ts",
+        "tsConfig": "applications/react-centraalbeheer/tsconfig.app.json",
+        "assets": [
+          "applications/react-centraalbeheer/src/favicon.ico",
+          "applications/react-centraalbeheer/src/react.svg",
+          {
+            "glob": "auth.html",
+            "input": "./node_modules/@labb/dx-engine/",
+            "output": "./"
+          },
+          {
+            "glob": "bootstrap-shell.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./"
+          },
+          {
+            "glob": "bootstrap-shell.*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./"
+          },
+          {
+            "glob": "*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/js",
+            "output": "./prerequisite/js"
+          },
+          {
+            "glob": "lib_asset.json",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./"
+          },
+          {
+            "glob": "constellation-core.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./prerequisite"
+          },
+          {
+            "glob": "constellation-core.*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./prerequisite"
+          }
+        ],
+        "styles": ["applications/react-centraalbeheer/src/index.css"],
+        "scripts": [],
+        "webpackConfig": "applications/react-centraalbeheer/webpack.config.js",
+        "babelUpwardRootMode": true
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "applications/react-centraalbeheer/src/environments/environment.ts",
+              "with": "applications/react-centraalbeheer/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "react-centraalbeheer:build",
+        "hmr": true,
+        "proxyConfig": "applications/react-centraalbeheer/proxy.conf.json",
+        "port": 4203
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "react-centraalbeheer:build:development"
+        },
+        "production": {
+          "buildTarget": "react-centraalbeheer:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/applications/react-centraalbeheer"],
+      "options": {
+        "jestConfig": "applications/react-centraalbeheer/jest.config.ts"
+      }
+    },
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "applications/react-centraalbeheer/e2e/cypress.config.ts",
+        "testingType": "e2e"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "react-centraalbeheer:serve:production"
+        },
+        "development": {
+          "devServerTarget": "react-centraalbeheer:serve:development",
+          "watch": true
+        }
+      }
+    }
+  }
+}

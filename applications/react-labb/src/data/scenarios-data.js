@@ -87,5 +87,14 @@ export const scenariosData = [
         image: 'img/work-from-home.jpg',
         pageId: 'pyWorklist',
         pageClass: 'Data-Portal'
+    },
+    {
+        image: 'img/fnol.png',
+        type: 'First notice of loss',
+        caseTypeId: 'Labb-LabbCS-Work-Service-FNOL-ClaimIntake',
+        clients: [
+            'react-fbto',
+            'react-centraalbeheer'
+        ]
     }
 ]

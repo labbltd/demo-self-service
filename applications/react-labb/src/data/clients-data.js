@@ -104,6 +104,22 @@ export const clientsData = [
         region: '🇺🇸'
     },
     {
+        name: 'FBTO',
+        logo: 'img/logo-fbto.svg',
+        framework: 'img/logo-react.png',
+        link: '/demo-self-service/react-fbto/',
+        available: true,
+        region: '🇳🇱'
+    },
+    {
+        name: 'Centraal Beheer',
+        logo: 'img/logo-centraalbeheer.svg',
+        framework: 'img/logo-react.png',
+        link: '/demo-self-service/react-centraalbeheer/',
+        available: true,
+        region: '🇳🇱'
+    },
+    {
         name: 'Angular reference',
         logo: 'img/logo-angular.png',
         framework: 'img/logo-angular.png',
