@@ -32,7 +32,7 @@ export default function DxSimpleTableManual(props: { container: SimpleTableManua
           </tr>
         </thead>
         <tbody className="nhsuk-table__body">
-          {container.elementsData.map((row, rowIndex) =>
+          {(container.elementsData || []).map((row, rowIndex) =>
             <tr key={rowIndex} className="nhsuk-table__row">
               {row.map((col, colIndex) => <td className="nhsuk-table__cell" key={colIndex}><GeneratePContainer container={col} /></td>)}
             </tr>

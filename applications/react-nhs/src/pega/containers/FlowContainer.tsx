@@ -10,6 +10,10 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
     setErrorMessage(e.message || 'Error');
   }
 
+  if (!props.container.hasAssignment()) {
+    return <>{props.container.config.caseMessages.map(message => <div className="govuk-body" key={message}>{message}</div>)}</>;
+  }
+
   return (
     <div>
       <h1 className="nhsuk-heading-l">
