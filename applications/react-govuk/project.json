@@ -52,26 +52,15 @@
             "output": "./prerequisite/js"
           },
           {
-            "glob": "*.*",
-            "input": "./node_modules/govuk-frontend/govuk/assets/images",
-            "output": "./assets/images"
-          },
-          {
-            "glob": "*.*",
-            "input": "./node_modules/govuk-frontend/govuk/assets/fonts",
-            "output": "./assets/fonts"
+            "glob": "govuk-frontend.min.js",
+            "input": "./node_modules/govuk-frontend/dist/govuk",
+            "output": "./"
           }
         ],
         "styles": [
           "applications/react-govuk/src/style.scss"
         ],
-        "scripts": [
-          {
-            "input": "node_modules/govuk-frontend/govuk/all.js",
-            "bundleName": "govuk",
-            "inject": false
-          }
-        ],
+        "scripts": [],
         "babelUpwardRootMode": true,
         "webpackConfig": "applications/react-govuk/webpack.config.js"
       },

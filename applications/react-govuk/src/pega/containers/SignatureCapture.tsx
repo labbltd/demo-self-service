@@ -48,19 +48,19 @@ export default function DxSignatureCapture(props: { container: PContainer }) {
         setHasValueChanged(true);
     }
 
-    return <><label htmlFor={container.id}>{container.config.label}</label>
+    return <><div className="govuk-form-group">
+        <label className="govuk-label">
+            {container.config.label}
+        </label></div>
         {container.config.readOnly && <img src={container.config.value} />}
         {
             !container.config.readOnly && <>
                 <canvas style={{ width: '100%', height: '200px', border: '1px dashed' }} ref={canvas}></canvas>
-                <button type="button" onClick={() => onClear()}>
-                    Clear
-                </button>
-                <button type="button" onClick={() => onAccept()}
-                    disabled={!hasValueChanged}>
-                    Accept
-                </button>
-                {info && <div>{info}</div>}
+                <div className="govuk-button-group">
+                    <a className="govuk-link" onClick={(e) => { e.preventDefault(); onClear() }} href="#">Clear</a>
+                    {hasValueChanged && <a onClick={(e) => { e.preventDefault(); onAccept() }} className="govuk-link" href="#">Accept</a>}
+                </div>
+                {info && <div className="govuk-body">{info}</div>}
             </>
         }
     </>

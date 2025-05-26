@@ -4,7 +4,7 @@ import { ChangeEvent, useEffect, useRef, useState } from "react";
 export default function DxLocation(props: { container: Location }) {
     const map = useRef(null);
     const [suggestions, setSuggestions] = useState<string[]>([]);
-    const [searchValue, setSearchValue] = useState<string>('');
+    const [searchValue, setSearchValue] = useState<string>(props.container.config.value);
     const { container } = props;
 
     useEffect(() => {
@@ -26,18 +26,41 @@ export default function DxLocation(props: { container: Location }) {
         container.updateFieldValue(value);
         container.triggerFieldChange(value);
     }
-
+    if (container.config.readOnly) {
+        return <div className="govuk-summary-list__row">
+            <dt className="govuk-summary-list__key">
+                {props.container.config.label}
+            </dt>
+            <dd className="govuk-summary-list__value">
+                {props.container.config.value}
+            </dd>
+        </div>
+    }
     return <>
-        <label> {container.config.label}
-            <input type="text" value={searchValue} onChange={(event) => updateSearch(event)} />
-        </label>
+        <div className="govuk-form-group">
+            <label className="govuk-label">
+                {container.config.label}
+            </label>
+            <input className="govuk-input"
+                type="text"
+                value={searchValue}
+                onChange={(e) => updateSearch(e)}
+            />
+        </div>
         {suggestions.length > 0 &&
-            <select value={container.config.value} onChange={(event) => select(event)}>
-                <option value={''}>Select {container.config.label}...</option>
-                {suggestions.map(suggestion =>
-                    <option key={suggestion} value={suggestion}>{suggestion}</option>
-                )}
-            </select>
+            <div className="govuk-form-group">
+                <select className="govuk-select"
+                    onChange={(event) => select(event)}
+                    value={container.config.value}
+                >
+                    <option value="">
+                        Select...
+                    </option>
+                    {suggestions.map(suggestion =>
+                        <option key={suggestion} value={suggestion}>{suggestion}</option>
+                    )}
+                </select>
+            </div>
         }
         <div ref={map} style={{ height: '25rem' }}></div>
     </>

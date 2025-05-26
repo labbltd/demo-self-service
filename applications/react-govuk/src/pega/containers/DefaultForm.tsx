@@ -24,7 +24,14 @@ export default function DefaultForm(props: { container: PContainer }) {
     }
     return divClass
   }
+  if (container.config.instructions?.includes('Review details')) {
+    return <dl className="govuk-summary-list">
+      {props.container.children.map((child) => (
+        <GeneratePContainer container={child} key={child.id} />
+      ))}
+    </dl>
 
+  }
   return <div className={getClassName()}>
     {props.container.children.map((child) => (
       <GeneratePContainer container={child} key={child.id} />

@@ -20,6 +20,17 @@ export default function DxDate(props: {
     }
   }
 
+  if (props.container.config.readOnly) {
+    return <div className="govuk-summary-list__row">
+      <dt className="govuk-summary-list__key">
+        {props.container.config.label}
+      </dt>
+      <dd className="govuk-summary-list__value">
+        {props.container.config.value}
+      </dd>
+    </div>
+  }
+
   return (
     <div className={"govuk-form-group" + (validatemessage ? " govuk-form-group--error" : "")}>
       <fieldset className="govuk-fieldset" role="group" aria-describedby={(helperText && `${id}-hint`) + (validatemessage && ` ${id}-error`)}>

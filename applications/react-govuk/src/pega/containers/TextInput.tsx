@@ -92,6 +92,17 @@ export default function TextInput(props: {
     }
   }
 
+  if (props.container.config.readOnly) {
+    return <div className="govuk-summary-list__row">
+      <dt className="govuk-summary-list__key">
+        {props.container.config.label}
+      </dt>
+      <dd className="govuk-summary-list__value">
+        {props.container.config.value}
+      </dd>
+    </div>
+  }
+
   return (
     <div className={"govuk-form-group" + (validatemessage ? " govuk-form-group--error" : "")}>
       <label className="govuk-label" htmlFor={id}>
@@ -108,8 +119,6 @@ export default function TextInput(props: {
         inputMode={inputmode()}
         step={step()}
         value={value}
-        readOnly={readOnly}
-        disabled={readOnly}
         required={required}
         onChange={(e) => props.container.updateFieldValue(getValue(e.target))}
         onBlur={(e) => props.container.triggerFieldChange(getValue(e.target))}

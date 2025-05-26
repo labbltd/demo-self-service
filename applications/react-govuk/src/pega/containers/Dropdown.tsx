@@ -1,7 +1,6 @@
 import { PContainer } from '@labb/dx-engine';
 
 export default function DxDropdown(props: { container: PContainer }) {
-  // get properties as configured in Pega
   const {
     label,
     required,
@@ -13,7 +12,17 @@ export default function DxDropdown(props: { container: PContainer }) {
   } = props.container.config;
   const id = props.container.getId();
 
-  // return a component styled using the Gov UK Design system
+  if (props.container.config.readOnly) {
+    return <div className="govuk-summary-list__row">
+      <dt className="govuk-summary-list__key">
+        {props.container.config.label}
+      </dt>
+      <dd className="govuk-summary-list__value">
+        {props.container.config.value}
+      </dd>
+    </div>
+  }
+
   return (
     <div className="govuk-form-group">
       <label className="govuk-label" htmlFor={id}>

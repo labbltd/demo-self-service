@@ -1,20 +1,19 @@
 import { PContainer } from "@labb/dx-engine";
 import { GeneratePContainer } from "@labb/react-adapter";
-import { useState } from "react";
 
 export default function DxCaseSummary(props: { container: PContainer }) {
-    const [showSummary, setShowSummary] = useState(false);
     const { container } = props;
-    return <>
-        <button role="button" onClick={() => setShowSummary(!showSummary)}>
-            <h3>
-                <span>Show Case Details</span>
-            </h3>
-        </button >
-        {showSummary &&
-            <div role="region">
+    return <details className="govuk-details">
+        <summary className="govuk-details__summary">
+            <span className="govuk-details__summary-text">
+                Case Details
+            </span>
+        </summary>
+        <div className="govuk-details__text">
+            <dl className="govuk-summary-list">
                 {container.children.map(child => <GeneratePContainer key={child.id} container={child} />)}
-            </div>
-        }
-    </>
+            </dl>
+        </div>
+    </details>
+
 }

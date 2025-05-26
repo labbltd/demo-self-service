@@ -70,7 +70,7 @@
     "carbon-components-angular": "^5.47.1",
     "core-js": "^3.6.5",
     "date-fns": "^4.1.0",
-    "govuk-frontend": "^4.4.1",
+    "govuk-frontend": "^5.10.1",
     "imask": "^7.6.1",
     "nhsuk-frontend": "^7.0.0",
     "npm-run-all": "^4.1.5",
