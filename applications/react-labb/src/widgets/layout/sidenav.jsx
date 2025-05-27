@@ -22,8 +22,9 @@ export function Sidenav({ brandImg, brandName, routes }) {
       className={`${sidenavTypes[sidenavType]} ${openSidenav ? "translate-x-0" : "-translate-x-80"
         } fixed inset-0 z-50 h-[100vh] w-72 transition-transform duration-300 xl:translate-x-0`}
       style={{
-        backgroundImage: 'url(./img/lion.png)',
-        backgroundSize: 'contain',
+        backgroundImage: 'url(./img/lion-black-background.png)',
+        backgroundSize: '500px',
+        backgroundPositionX: '-200px',
         backgroundPositionY: 'bottom',
         backgroundRepeat: 'no-repeat',
         backgroundColor: 'black',

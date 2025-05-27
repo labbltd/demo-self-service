@@ -154,6 +154,9 @@ function StructuredCard(props) {
               Get started
             </Button>
           </div>
+          {scenario.technologies && <ul className="list-disc list-inside">
+            {scenario.technologies.map(tech => <li key={tech} dangerouslySetInnerHTML={{ __html: tech }}></li>)}
+          </ul>}
         </div>
       </div>
     </CardBody>
