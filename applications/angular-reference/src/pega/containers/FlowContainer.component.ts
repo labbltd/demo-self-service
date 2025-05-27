@@ -38,9 +38,8 @@ import { FlowContainer } from '@labb/dx-engine';
         <fieldset>
           <legend>
             <h2>
-            {{container.getActiveViewLabel() ||
-              container.getAssignmentName()}}
-              </h2>
+              {{container.getAssignmentName() || container.getActiveViewLabel()}}
+            </h2>
           </legend>
           @for (child of container.children; track child.id) {
             <ng-container dxContainer [container]="child"/>
@@ -72,6 +71,8 @@ import { FlowContainer } from '@labb/dx-engine';
 })
 export class FlowContainerComponent extends PContainerComponent<FlowContainer> implements OnInit, OnDestroy {
   public todoAssignments: Assignment[] = [];
+  public errorMessage?: string;
+  public loading = false;
 
   public override ngOnInit(): void {
     super.ngOnInit();
@@ -81,12 +82,13 @@ export class FlowContainerComponent extends PContainerComponent<FlowContainer> i
     });
   }
 
-  public override ngOnDestroy(): void {
-    super.ngOnDestroy();
+  public openAssignment(assignment: Assignment) {
+    this.container.openAssignment(assignment);
   }
 
-  public errorMessage?: string;
-  public loading = false;
+  private updateAssignments(): void {
+    this.todoAssignments = this.container.getTodoAssignments();
+  }
 
   public async buttonClick(button: ActionButton): Promise<void> {
     try {
@@ -100,14 +102,4 @@ export class FlowContainerComponent extends PContainerComponent<FlowContainer> i
     this.loading = false;
   }
 
-  public openAssignment(assignment: Assignment) {
-    this.container.openAssignment(assignment);
-  }
-
-  private updateAssignments(): void {
-    this.todoAssignments = this.container.getTodoAssignments();
-    if (this.todoAssignments.length === 1 && !this.container.hasAssignment()) {
-      this.container.openAssignment(this.todoAssignments[0]);
-    }
-  }
 }

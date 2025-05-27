@@ -28,7 +28,9 @@ import { CdsDropdownService } from "../../design-system/cds-dropdown/cds-dropdow
                 </cds-dropdown>
             </cds-form-field>
         }
+        @if(!container.config.readOnly) {
         <div #map style="height: 25rem"></div>
+        }
     `,
     providers: [CdsDropdownService],
     standalone: false
@@ -44,7 +46,9 @@ export class LocationComponent extends PContainerComponent<Location> implements 
     }
 
     public async ngAfterViewInit(): Promise<void> {
-        await this.container.loadMap(this.map.nativeElement);
+        if (this.map) {
+            await this.container.loadMap(this.map.nativeElement);
+        }
         this.searchControl.setValue(this.container.config.value);
     }
 

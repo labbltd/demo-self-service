@@ -11,7 +11,15 @@ import { FlowContainer } from '@labb/dx-engine';
           {{message}}
         </div>
     }
-    @if (container.hasAssignment()) {
+    @if (!container.hasAssignment()) {
+          @for(assignment of todoAssignments; track assignment.ID) {
+            <div>
+              <div>{{assignment.processName}} > {{assignment.name}}</div>
+              <div>Assigned to {{assignment.assigneeInfo?.name}}</div>
+              <button type="button" (click)="openAssignment(assignment)">Go</button>
+            </div>
+          }
+    } @else {
       <citi-simple-layout [steps]="steps">
         <div *ngFor="let message of container.config.pageMessages">
           {{message.type}}: {{message.message}}
@@ -49,6 +57,7 @@ import { FlowContainer } from '@labb/dx-engine';
   standalone: false
 })
 export class FlowContainerComponent extends PContainerComponent<FlowContainer> {
+  public todoAssignments: Assignment[] = [];
   public errorMessage?: string;
   public loading = false;
 
@@ -58,6 +67,14 @@ export class FlowContainerComponent extends PContainerComponent<FlowContainer> {
       name: step.name,
       active: step.visited_status === 'current'
     }))
+  }
+
+  public override ngOnInit(): void {
+    super.ngOnInit();
+    this.updateAssignments();
+    this.container.updates.subscribe(() => {
+      this.updateAssignments();
+    });
   }
 
   public async buttonClick(button: ActionButton): Promise<void> {
@@ -74,5 +91,9 @@ export class FlowContainerComponent extends PContainerComponent<FlowContainer> {
 
   public openAssignment(assignment: Assignment) {
     this.container.openAssignment(assignment);
+  }
+
+  private updateAssignments(): void {
+    this.todoAssignments = this.container.getTodoAssignments();
   }
 }

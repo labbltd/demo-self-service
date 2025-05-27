@@ -8,11 +8,15 @@ import { CdsDropdownService } from '../../design-system/cds-dropdown/cds-dropdow
   selector: 'dx-dropdown-control',
   template: `
     <cds-form-field [label]="container.config.label" [errorMessage]="container.config.validatemessage">
-      <cds-dropdown (selected)="update($event)" [value]="container.config.value" [disabled]="container.config.readOnly">
-          @for (option of container.config.datasource; track option.key) {
-            <cds-option (click)="submit(option.value)" [value]="option.value"></cds-option>
-          }
-      </cds-dropdown>
+      @if(container.config.readOnly) {
+        {{container.config.value}}
+      } @else {
+        <cds-dropdown (selected)="update($event)" [value]="container.config.value" [disabled]="container.config.readOnly">
+            @for (option of container.config.datasource; track option.key) {
+              <cds-option (click)="submit(option.value)" [value]="option.value"></cds-option>
+            }
+        </cds-dropdown>
+      }
     </cds-form-field>
   `,
   providers: [

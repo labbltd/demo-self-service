@@ -1,17 +1,54 @@
 import { Component, OnInit } from '@angular/core';
-import { ActionButton } from '@labb/constellation-core-types';
+import { ActionButton, Assignment } from '@labb/constellation-core-types';
 import { PContainerComponent } from '@labb/angular-adapter';
 import { FlowContainer } from '@labb/dx-engine';
 
 @Component({
   selector: 'dx-flow-container',
   template: `
-    @for (message of container.config.caseMessages; track message) {
+      @for (message of container.config.caseMessages; track message) {
         <div>
           {{message}}
         </div>
-    }
-    @if (container.hasAssignment()) {
+      }
+      @if (!container.hasAssignment()) {
+          @for(assignment of todoAssignments; track assignment.ID) {
+            <div>
+              <div>{{assignment.processName}} > {{assignment.name}}</div>
+              <div>Assigned to {{assignment.assigneeInfo?.name}}</div>
+              <button type="button" (click)="openAssignment(assignment)">Go</button>
+            </div>
+          }
+          @if(todoAssignments.length === 0) {
+            <div>
+              <div class="sidepage-container">
+                <mat-card appearance="outlined" *ngIf="!container.hasAssignment()">
+                <h2>Uw gegevens zijn goed ontvangen</h2>
+                <strong>!Wij nemen zo spoedig mogelijk contact met u op.</strong>
+                </mat-card>
+                <mat-card appearance="outlined" *ngIf="container.hasAssignment()">
+                  <h2>Vast Pensioen</h2>
+                  <mat-list compact>
+                    <mat-list-item><a target="_blank" href="https:///www.zwitserleven.nl/siteassets/documenten/vergelijkingskaart/vermogen-opbouwen.pdf">Vergelijkingskaart</a></mat-list-item>
+                    <mat-list-item><a target="_blank" href="https://www.zwitserleven.nl/siteassets/documenten/voorwaarden/2514N-algemene-voorwaarden-direct-ingaand-pensioen.pdf"> Voorwaarden </a></mat-list-item>
+                  </mat-list>
+                </mat-card>
+                <mat-card appearance="outlined">
+                  <h2>Nog vragen?</h2>
+                  Stel ze aan uw adviseur of bel ons:<br><a href="tel:0205783160">020 578 31 60</a> (werkdagen 8:30 - 17:00&nbsp;uur)
+                </mat-card>
+                <mat-card appearance="outlined">
+                  <h2>Waarom Zwitserleven?</h2>
+                  <mat-list compact>
+                      <mat-list-item><span class="check"></span>Bereken in 2 minuten uw pensioen</mat-list-item>
+                      <mat-list-item><span class="check"></span>Aanvragen in 7 eenvoudige stappen</mat-list-item>
+                      <mat-list-item><span class="check"></span>Aantrekkelijk pensioen dat past bij uw situatie</mat-list-item>
+                  </mat-list>
+                </mat-card>
+              </div>
+            </div>
+          }
+      } @else {
       <mat-stepper labelPosition="bottom" [selectedIndex]="selectedIndex" *ngIf="container.navigation?.steps && container.navigation.steps.length > 1">
         <mat-step *ngFor="let step of container.navigation?.steps"
           [completed]="step.visited_status === 'success'">
@@ -46,33 +83,6 @@ import { FlowContainer } from '@labb/dx-engine';
             </button>
           </div>
         </mat-card>
-        <div>
-          <div class="sidepage-container">
-            <mat-card appearance="outlined" *ngIf="!container.hasAssignment()">
-            <h2>Uw gegevens zijn goed ontvangen</h2>
-            <strong>!Wij nemen zo spoedig mogelijk contact met u op.</strong>
-            </mat-card>
-            <mat-card appearance="outlined" *ngIf="container.hasAssignment()">
-              <h2>Vast Pensioen</h2>
-              <mat-list compact>
-                <mat-list-item><a target="_blank" href="https:///www.zwitserleven.nl/siteassets/documenten/vergelijkingskaart/vermogen-opbouwen.pdf">Vergelijkingskaart</a></mat-list-item>
-                <mat-list-item><a target="_blank" href="https://www.zwitserleven.nl/siteassets/documenten/voorwaarden/2514N-algemene-voorwaarden-direct-ingaand-pensioen.pdf"> Voorwaarden </a></mat-list-item>
-              </mat-list>
-            </mat-card>
-            <mat-card appearance="outlined">
-              <h2>Nog vragen?</h2>
-              Stel ze aan uw adviseur of bel ons:<br><a href="tel:0205783160">020 578 31 60</a> (werkdagen 8:30 - 17:00&nbsp;uur)
-            </mat-card>
-            <mat-card appearance="outlined">
-              <h2>Waarom Zwitserleven?</h2>
-              <mat-list compact>
-                  <mat-list-item><span class="check"></span>Bereken in 2 minuten uw pensioen</mat-list-item>
-                  <mat-list-item><span class="check"></span>Aanvragen in 7 eenvoudige stappen</mat-list-item>
-                  <mat-list-item><span class="check"></span>Aantrekkelijk pensioen dat past bij uw situatie</mat-list-item>
-              </mat-list>
-            </mat-card>
-          </div>
-        </div>
       </div>
     }
     <div>{{ errorMessage }}</div>
@@ -81,7 +91,8 @@ import { FlowContainer } from '@labb/dx-engine';
 })
 export class FlowContainerComponent extends PContainerComponent<FlowContainer> implements OnInit {
   public selectedIndex = 0;
-  public errorMessage!: string;
+  public todoAssignments: Assignment[] = [];
+  public errorMessage?: string;
   public loading = false;
 
   public override ngOnInit(): void {
@@ -93,6 +104,18 @@ export class FlowContainerComponent extends PContainerComponent<FlowContainer> i
         subTitle.innerHTML = this.container.getAssignmentName();
       });
     }
+    this.updateAssignments();
+    this.container.updates.subscribe(() => {
+      this.updateAssignments();
+    });
+  }
+
+  public openAssignment(assignment: Assignment) {
+    this.container.openAssignment(assignment);
+  }
+
+  private updateAssignments(): void {
+    this.todoAssignments = this.container.getTodoAssignments();
   }
 
   private setSelectedIndex(): void {

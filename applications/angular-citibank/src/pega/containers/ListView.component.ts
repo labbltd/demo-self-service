@@ -48,9 +48,8 @@ import { ListView } from "@labb/dx-engine";
                         @for(col of container.fields; track col.config.name) {
                             @if(container.showButton(col.config.name, col)) {
                                 <td>
-                                    <button cdsButton="secondary"
-                                        (click)="container.listViewClick(col.config, row)"
-                                        [innerHTML]="row[col.config.name] || '---'"></button>
+                                    <a (click)="container.listViewClick(col.config, row)"
+                                        [innerHTML]="row[col.config.name] || '---'"></a>
                                 </td>
                             } @else {
                                 <td [innerHTML]="row[col.config.name] || '---'"></td>

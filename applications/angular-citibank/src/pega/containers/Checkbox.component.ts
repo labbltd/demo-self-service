@@ -7,7 +7,7 @@ import { PContainerComponent } from '@labb/angular-adapter';
   template: `
       <cds-form-field [errorMessage]="container.config.validatemessage" [tooltip]="container.config.helperText" [label]="container.config.label">
         @if(container.config.readOnly) {
-          {{container.config.value}}
+          {{container.config.value ? container.config.trueLabel : container.config.falseLabel}}
         } @else {
           <cds-checkbox [label]="container.config.caption" [for]="container.id">
               <input [id]="container.id" cdsInput type="checkbox" [formControl]="control" (change)="change($event)">
