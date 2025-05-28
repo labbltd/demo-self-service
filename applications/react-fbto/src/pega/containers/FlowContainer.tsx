@@ -8,7 +8,7 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
 
   function handleActionError(e: Error) {
     console.error(e);
-    setErrorMessage(e.message || 'Error');
+    setErrorMessage(e?.message || 'Error');
   }
 
   if (!props.container.hasAssignment()) {
@@ -16,13 +16,13 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
   }
 
   const currentStepIndex = props.container.navigation?.steps.findIndex(step => step.visited_status === 'current');
-  const nSteps = props.container.navigation.steps?.length;
+  const nSteps = props.container.navigation?.steps?.length;
 
   return <>
     <form className="xforms-form dev-html5 tpl-xforms row script unknown unknown_1.0">
       <div className="xforms-group sfs-paging-overview xforms-ap-default xforms-htc">
         <label><span>Stappen</span></label>
-        <StepperHeader currentStep={currentStepIndex} steps={props.container.navigation.steps.map(step => step.name)} />
+        <StepperHeader currentStep={currentStepIndex} steps={props.container.navigation?.steps.map(step => step.name)} />
       </div>
       <div className="xforms-group container col sfs-page-container-group xforms-ap-full">
         <label className="formTitle">

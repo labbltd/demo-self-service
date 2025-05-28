@@ -48,7 +48,7 @@ export default function TextInput(props: TextInputProps) {
                     {props.type === 'textarea' && <textarea
                         onChange={props.onChange}
                         onBlur={props.onBlur}
-                        className="xforms-input xforms-control col-sm-4 xforms-ap-full">{props.value}</textarea>}
+                        className="xforms-input xforms-control col-sm-4 xforms-ap-full" value={props.value}></textarea>}
                     {props.type === 'date' && <>
                         <button type="button" className="ui-datepicker-trigger">...</button>
                         <button className="ui-datepicker-clear" type="button">x</button>

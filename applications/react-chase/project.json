@@ -91,7 +91,7 @@
         "buildTarget": "react-chase:build",
         "hmr": true,
         "proxyConfig": "applications/react-chase/proxy.conf.json",
-        "port": 4203
+        "port": 4200
       },
       "configurations": {
         "development": {

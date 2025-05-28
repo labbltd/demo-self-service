@@ -100,7 +100,7 @@
         "buildTarget": "react-nhs:build",
         "hmr": true,
         "proxyConfig": "applications/react-nhs/proxy.conf.json",
-        "port": 4203
+        "port": 4200
       },
       "configurations": {
         "development": {

@@ -92,7 +92,7 @@
       "defaultConfiguration": "development",
       "options": {
         "proxyConfig": "applications/angular-athora/proxy.conf.json",
-        "port": 4201
+        "port": 4200
       }
     },
     "extract-i18n": {

@@ -16,11 +16,16 @@ export default function FlowContainer(props: { container: PFlowContainer }) {
     return <div>No active assignment</div>;
   }
 
-  const activeStep = props.container.navigation.steps.findIndex(step => step.visited_status === 'current');
+  const activeStep = props.container.navigation?.steps.findIndex(step => step.visited_status === 'current');
   const caseName = props.container.pconnect.getCaseInfo().getCaseTypeName();
   return <>
+    {props.container.config.caseMessages?.map(message =>
+      <div key={message}>
+        {message}
+      </div>
+    )}
     <StepperHeader
-      steps={props.container.navigation.steps.map(step => step.name)}
+      steps={props.container.navigation?.steps.map(step => step.name)}
       activeStep={activeStep} />
     <section className='container'>
       <div className="strip-funnel__title">

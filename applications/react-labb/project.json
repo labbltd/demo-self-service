@@ -31,7 +31,8 @@
       "executor": "@nx/vite:dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "react-labb:build"
+        "buildTarget": "react-labb:build",
+        "port": 4200
       },
       "configurations": {
         "development": {

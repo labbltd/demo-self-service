@@ -74,7 +74,7 @@ export default function DxTextInput(props: {
       case 'number':
         return t.valueAsNumber;
       case 'date':
-        return t.valueAsDate?.toISOString().split('T')[0];
+        return t.value.split('-').reverse().join('-');
       case 'checkbox':
         return t.checked;
       default:
@@ -94,7 +94,7 @@ export default function DxTextInput(props: {
       inputmode={inputmode()}
       label={props.container.config.label}
       required={props.container.config.required}
-      value={props.container.config.value}
+      value={props.container.config.value.split('-').reverse().join('-')}
       onChange={(e) => props.container.updateFieldValue(getValue(e.target) ?? (e.target as any).value)}
       onBlur={(e) => props.container.triggerFieldChange(getValue(e.target) ?? (e.target as any).value)}
     />

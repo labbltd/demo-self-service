@@ -16,8 +16,8 @@ import { DemoBootstrap } from '@labb/demo-utilities';
         [token]="token"
         (loadingDone)="loadingStatus = $event"></dx-pega-entry>
     }
-    @if (!token && !authError) { <h1>Authentication in progress</h1> }
-    @if (token && loadingStatus === undefined) { <h1>Process is being loaded</h1> }
+    @if (!token && !authError) { <h3>Taming the chaos...</h3> }
+    @if (token && loadingStatus === undefined) { <h3>Leading the change...</h3> }
     @if (authError) { <h1>{{authError}}</h1> }
     @if (loadingStatus === false) { <h1>Error communicating with Pega</h1> }
   </dx-page-header-footer>

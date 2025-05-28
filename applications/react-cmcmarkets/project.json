@@ -114,7 +114,7 @@
         "buildTarget": "react-cmcmarkets:build",
         "hmr": true,
         "proxyConfig": "applications/react-cmcmarkets/proxy.conf.json",
-        "port": 4203
+        "port": 4200
       },
       "configurations": {
         "development": {

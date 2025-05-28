@@ -94,7 +94,7 @@
         "buildTarget": "react-govuk:build",
         "hmr": true,
         "proxyConfig": "applications/react-govuk/proxy.conf.json",
-        "port": 4204
+        "port": 4200
       },
       "configurations": {
         "development": {

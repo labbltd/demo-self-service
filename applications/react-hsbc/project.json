@@ -95,7 +95,7 @@
         "buildTarget": "react-hsbc:build",
         "hmr": true,
         "proxyConfig": "applications/react-hsbc/proxy.conf.json",
-        "port": 4203
+        "port": 4200
       },
       "configurations": {
         "development": {

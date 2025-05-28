@@ -6,7 +6,7 @@ interface StepperHeaderProps {
 export default function StepperHeader({ steps, currentStep }: StepperHeaderProps) {
     return (
         <div className="xforms-repeat xforms-group xforms-ap-default">
-            {steps.map((step, index) => {
+            {steps?.map((step, index) => {
                 const isPast = index < currentStep;
                 const isActive = index === currentStep;
                 const isFuture = index > currentStep;

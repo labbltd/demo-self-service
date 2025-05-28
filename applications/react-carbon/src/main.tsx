@@ -60,8 +60,8 @@ function Main(props?: { setTitle?: Function }) {
         );
       }}
     />}
-    {(!token && !authError) && <h1>Authentication in progress</h1>}
-    {(token && loadingStatus === undefined) && <h1>Process is being loaded</h1>}
+    {(!token && !authError) && <h3>Taming the chaos...</h3>}
+    {(token && loadingStatus === undefined) && <h3>Leading the change...</h3>}
     {(authError) && <h1>{authError}</h1>}
     {(loadingStatus === false) && <h1>Error communicating with Pega</h1>}
   </>

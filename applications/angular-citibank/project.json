@@ -107,7 +107,7 @@
       "defaultConfiguration": "development",
       "options": {
         "proxyConfig": "applications/angular-citibank/proxy.conf.json",
-        "port": 4201,
+        "port": 4200,
         "host": "127.0.0.1"
       }
     },
