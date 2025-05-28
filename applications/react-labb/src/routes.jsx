@@ -1,12 +1,14 @@
-import { Home } from "@/pages/dashboard";
 import {
-  ChatBubbleBottomCenterIcon,
   ComputerDesktopIcon,
-  HomeIcon
+  FilmIcon,
+  HomeIcon,
+  UsersIcon
 } from "@heroicons/react/24/solid";
-import Chat from "./pages/dashboard/chat";
+import { Home } from "./pages/dashboard/home";
 import OotbPegaEmbed from "./pages/dashboard/ootb-pega-embed";
+import { Scenarios } from "./pages/dashboard/scenarios";
 import './pega/ContainerMapping';
+import { Videos } from "./pages/dashboard/videos";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -18,21 +20,27 @@ export const routes = [
     pages: [
       {
         icon: <HomeIcon {...icon} />,
-        name: "dashboard",
+        name: "Dashboard",
         path: "/home",
         element: <Home />,
       },
       {
-        icon: <ChatBubbleBottomCenterIcon {...icon} />,
-        name: "chat",
-        path: "/chat",
-        element: <Chat />,
+        icon: <UsersIcon {...icon} />,
+        name: "Scenarios",
+        path: "/scenarios",
+        element: <Scenarios />,
+      },
+      {
+        icon: <FilmIcon {...icon} />,
+        name: "Video Gallery",
+        path: "/videos",
+        element: <Videos />,
       },
       {
         icon: <ComputerDesktopIcon {...icon} />,
         name: "Constellation Embed",
         path: "/constellation",
-        element: <OotbPegaEmbed caseTypeID='Labb-LabbCS-Work-Service-MakePayment'/>,
+        element: <OotbPegaEmbed caseTypeID='Labb-LabbCS-Work-Service-MakePayment' />,
       }
     ],
   },

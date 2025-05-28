@@ -6,11 +6,14 @@ import {
   Typography
 } from "@material-tailwind/react";
 import PropTypes from "prop-types";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 export function Sidenav({ brandImg, brandName, routes }) {
   const [controller, dispatch] = useMaterialTailwindController();
   const { sidenavColor, sidenavType, openSidenav } = controller;
+  const location = useLocation();
+  console.log(location.pathname);
+
   const sidenavTypes = {
     dark: "bg-gradient-to-br from-gray-800 to-gray-900",
     white: "bg-white shadow-sm",
@@ -21,8 +24,8 @@ export function Sidenav({ brandImg, brandName, routes }) {
     <aside
       className={`${sidenavTypes[sidenavType]} ${openSidenav ? "translate-x-0" : "-translate-x-80"
         } fixed inset-0 z-50 h-[100vh] w-72 transition-transform duration-300 xl:translate-x-0`}
-      style={{
-        backgroundImage: 'url(./img/lion-black-background.png)',
+      style={location.pathname === '/dashboard/home' ? { backgroundColor: 'black' } : {
+        backgroundImage: 'url(./img/pw-labb-lion-head.svg)',
         backgroundSize: '500px',
         backgroundPositionX: '-200px',
         backgroundPositionY: 'bottom',
