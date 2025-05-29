@@ -45,6 +45,7 @@ import { ViewComponent } from './containers/View.component';
 import { TranslatePipe } from './translate.pipe';
 import { DxHintComponent } from './containers/Hint.component';
 import { DxLoaderComponent } from './containers/Loader.component';
+import { DxDateComponent } from './containers/Date.component';
 
 @NgModule({
   imports: [
@@ -92,7 +93,8 @@ import { DxLoaderComponent } from './containers/Loader.component';
     MaskedInputComponent,
     TranslatePipe,
     DxHintComponent,
-    DxLoaderComponent
+    DxLoaderComponent,
+    DxDateComponent
   ],
   providers: [
     {
@@ -117,7 +119,7 @@ import { DxLoaderComponent } from './containers/Loader.component';
         Attachment: AttachmentComponent,
         Checkbox: CheckboxComponent,
         Currency: TextInputComponent,
-        Date: TextInputComponent,
+        Date: DxDateComponent,
         DateTime: TextInputComponent,
         Decimal: TextInputComponent,
         Dropdown: DropdownComponent,

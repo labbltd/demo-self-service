@@ -92,6 +92,7 @@ function Main(props?: { setTitle?: Function }) {
   }, []);
   return <>
     {token && <PegaEmbed
+      caseID={action === 'openCase' ? DemoBootstrap.getCaseId() : undefined}
       caseTypeID={action === 'createCase' ? DemoBootstrap.getCaseTypeId() : undefined}
       pageID={action === 'openPage' ? DemoBootstrap.getPageId() : undefined}
       className={action === 'openPage' ? DemoBootstrap.getPageClass() : undefined}
@@ -105,10 +106,15 @@ function Main(props?: { setTitle?: Function }) {
           window.PCore.getStore().getState().data["app/primary_1"]
             ?.caseInfo?.caseTypeName
         );
+        const caseID = window.PCore.getStore().getState().data['app/primary_1']?.caseInfo.ID;
+        if (caseID) {
+          DemoBootstrap.setAction('openCase');
+          DemoBootstrap.setCaseId(caseID);
+        }
       }}
     />}
-    {(!token && !authError) && <h1 className="govuk-heading-l">Authentication in progress</h1>}
-    {(token && loadingStatus === undefined) && <h1 className="govuk-heading-l">Process is being loaded</h1>}
+    {(!token && !authError) && <h1 className="govuk-heading-l">Taming the chaos...</h1>}
+    {(token && loadingStatus === undefined) && <h1 className="govuk-heading-l">Leading the change...</h1>}
     {(authError) && <h1 className="govuk-heading-l">{authError}</h1>}
     {(loadingStatus === false) && <h1 className="govuk-heading-l">Error communicating with Pega</h1>}
   </>

@@ -16,6 +16,7 @@ const props = defineProps<{
     portal?: string;
     caseTypeID?: string;
     pageID?: string;
+    caseID?: string;
     assignmentID?: string;
     className?: string;
     deployUrl?: string;
@@ -49,6 +50,8 @@ async function init() {
             await BootstrapService.openPage(props.pageID, props.className, context);
         } else if (props.assignmentID) {
             await BootstrapService.openAssignment(props.assignmentID, context);
+        } else if (props.caseID) {
+            await BootstrapService.openCase(props.caseID, context);
         }
         emit('loadingDone', true);
     } catch(e) {

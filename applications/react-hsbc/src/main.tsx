@@ -1,7 +1,7 @@
 import { TokenInfo } from "@labb/constellation-core-types";
 import { DemoBootstrap } from "@labb/demo-utilities";
 import { PegaEmbed } from "@labb/react-adapter";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import HsbcTemplate from "../design-system/hsbc-template";
 import FloatingChatContainer from "./components/chat/FloatingChatContainer";
@@ -14,7 +14,11 @@ const root = ReactDOM.createRoot(
 
 async function render() {
   try {
-    root.render(<MainHsbc />);
+    root.render(
+      <Suspense>
+        <MainHsbc />
+      </Suspense>
+    );
   } catch (error) {
     root.render(null);
   }
@@ -31,7 +35,7 @@ function MainHsbc() {
           productImage="public/HSBC_Premier_Debit_Header.png"
           productName={title}
         >
-          <Main setTitle={setTitle}/>
+          <Main setTitle={setTitle} />
         </HsbcTemplate>
         <FloatingChatContainer />
       </ChatProvider>
@@ -54,6 +58,7 @@ function Main(props?: { setTitle?: Function }) {
   }, []);
   return <>
     {token && <PegaEmbed
+      caseID={action === 'openCase' ? DemoBootstrap.getCaseId() : undefined}
       caseTypeID={action === 'createCase' ? DemoBootstrap.getCaseTypeId() : undefined}
       pageID={action === 'openPage' ? DemoBootstrap.getPageId() : undefined}
       className={action === 'openPage' ? DemoBootstrap.getPageClass() : undefined}
@@ -67,6 +72,11 @@ function Main(props?: { setTitle?: Function }) {
           window.PCore.getStore().getState().data["app/primary_1"]
             ?.caseInfo?.caseTypeName
         );
+        const caseID = window.PCore.getStore().getState().data['app/primary_1']?.caseInfo.ID;
+        if (caseID) {
+          DemoBootstrap.setAction('openCase');
+          DemoBootstrap.setCaseId(caseID);
+        }
       }}
     />}
     {(!token && !authError) && <h3>Taming the chaos...</h3>}

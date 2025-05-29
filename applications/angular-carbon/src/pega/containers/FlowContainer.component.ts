@@ -21,6 +21,16 @@ import { Step } from 'carbon-components-angular';
             <button type="button" (click)="openAssignment(assignment)">Go</button>
           </div>
         }
+        @if (todoAssignments.length === 0) {
+          <cds-inline-notification
+            [notificationObj]="{
+                      type: 'info',
+                      title: 'Thank you',
+                      message: 'Your request has been recieved',
+                      showClose: false,
+                      lowContrast: false}"
+          ></cds-inline-notification>
+        }
     } @else {
       <div ibmRow>
         <div ibmCol [columnNumbers]="leftColumn">
@@ -91,11 +101,11 @@ export class FlowContainerComponent extends PContainerComponent<FlowContainer> i
   }
 
   public get leftColumn() {
-    return this.navigationOrientation === 'vertical' ? {'lg': 2, 'md': 2, 'sm': 2} : {'lg': 10, 'md': 10, 'sm': 10};
+    return this.navigationOrientation === 'vertical' ? { 'lg': 2, 'md': 2, 'sm': 2 } : { 'lg': 10, 'md': 10, 'sm': 10 };
   }
 
   public get rightColumn() {
-    return this.navigationOrientation === 'vertical' ? {'lg': 6, 'md': 6, 'sm': 6} : {'lg': 10, 'md': 10, 'sm': 10};
+    return this.navigationOrientation === 'vertical' ? { 'lg': 6, 'md': 6, 'sm': 6 } : { 'lg': 10, 'md': 10, 'sm': 10 };
   }
 
   public get buttons(): ActionButtons {

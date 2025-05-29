@@ -12,6 +12,7 @@ export class DemoBootstrap {
             localeId: 'en-US',
             appAlias: 'LabbCS',
             caseTypeId: 'Labb-LabbCS-Work-Service-InsuranceIssuance',
+            caseId: 'Labb-LabbCS-Work-Service-InsuranceIssuance',
             action: 'openPage',
             pageId: 'pyWorklist',
             pageClass: 'Data-Portal',
@@ -35,10 +36,31 @@ export class DemoBootstrap {
     }
 
     public static updateConfig(prop: string, val: string) {
+        console.log('updateConfig("%s", "%s")', prop, val);
         localStorage.setItem('LabbDemoConfig', JSON.stringify({
             ...this.getConfig(),
             [prop]: val
-        }))
+        }));
+    }
+
+    public static updateScenario(scenario: any) {
+        if (scenario?.caseTypeId) {
+            DemoBootstrap.setAction('createCase');
+            DemoBootstrap.setCaseTypeId(scenario.caseTypeId);
+        }
+        if (scenario?.pageId) {
+            DemoBootstrap.setAction('openPage');
+            DemoBootstrap.setCaseTypeId(scenario.pageId);
+            DemoBootstrap.setPageClass(scenario.pageClass);
+        }
+    }
+
+    public static setScenarios(scenarios: any) {
+        localStorage.setItem('LabbDemoScenarios', JSON.stringify(scenarios));
+    }
+
+    public static getScenarios() {
+        return JSON.parse(localStorage.getItem('LabbDemoScenarios') || '[]');
     }
 
     public static setAction(action: string) {
@@ -47,6 +69,10 @@ export class DemoBootstrap {
 
     public static setCaseTypeId(caseTypeId: string) {
         this.updateConfig('caseTypeId', caseTypeId);
+    }
+
+    public static setCaseId(caseId: string) {
+        this.updateConfig('caseId', caseId);
     }
 
     public static setPageId(pageId: string) {
@@ -88,6 +114,10 @@ export class DemoBootstrap {
 
     public static getCaseTypeId() {
         return this.getConfig().caseTypeId;
+    }
+
+    public static getCaseId() {
+        return this.getConfig().caseId;
     }
 
     public static getAccessTokenUrl() {

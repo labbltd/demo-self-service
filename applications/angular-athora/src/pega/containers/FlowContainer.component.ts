@@ -23,8 +23,8 @@ import { FlowContainer } from '@labb/dx-engine';
             <div>
               <div class="sidepage-container">
                 <mat-card appearance="outlined" *ngIf="!container.hasAssignment()">
-                <h2>Uw gegevens zijn goed ontvangen</h2>
-                <strong>!Wij nemen zo spoedig mogelijk contact met u op.</strong>
+                <h2>Uw gegevens zijn goed ontvangen!</h2>
+                <strong>Wij nemen zo spoedig mogelijk contact met u op.</strong>
                 </mat-card>
                 <mat-card appearance="outlined" *ngIf="container.hasAssignment()">
                   <h2>Vast Pensioen</h2>

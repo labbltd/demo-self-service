@@ -1,21 +1,45 @@
+import { Assignment } from '@labb/constellation-core-types';
 import { FlowContainer } from '@labb/dx-engine';
 import { GeneratePContainer } from '@labb/react-adapter';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function DxFlowContainer(props: { container: FlowContainer }) {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [todoAssignments, setTodoAssignments] = useState<Assignment[]>([]);
+
+  useEffect(() => {
+    updateAssignments();
+    props.container.updates.subscribe(() => {
+      updateAssignments();
+    });
+  }, []);
+
+  function openAssignment(assignment: Assignment) {
+    props.container.openAssignment(assignment);
+  }
+
+  function updateAssignments(): void {
+    setTodoAssignments(props.container.getTodoAssignments());
+  }
 
   function handleActionError(e: Error) {
     console.error(e);
     setErrorMessage(e.message || 'Error');
   }
 
-  if (!props.container.hasAssignment()) {
-    return <>{props.container.config.caseMessages.map(message => <div className="govuk-body" key={message}>{message}</div>)}</>;
-  }
-
-  return (
-    <div>
+  return <>
+    {props.container.config.caseMessages?.map(message => <div className="govuk-body" key={message}>{message}</div>)}
+    {!props.container.hasAssignment() && <>
+      {todoAssignments.map(assignment =>
+        <div key={assignment.ID}>
+          <div>{assignment.processName} {'>'} {assignment.name}</div>
+          <div>Assigned to {assignment.assigneeInfo?.name}</div>
+          <button type="button" onClick={() => openAssignment(assignment)}>Go</button>
+        </div>
+      )}
+      {todoAssignments.length === 0 && <p>Thank you for your request. We will contact you as soon as possible.</p>}
+    </>}
+    {props.container.hasAssignment() && <div>
       <h1 className="nhsuk-heading-l">
         {props.container.getActiveViewLabel() ||
           props.container.getAssignmentName()}
@@ -64,5 +88,5 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
         </strong>
       </div>}
     </div>
-  );
+    }</>
 }

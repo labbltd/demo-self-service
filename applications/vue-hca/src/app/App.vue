@@ -8,9 +8,32 @@ import PageTemplate from '../../design-system/PageTemplate.vue';
 
 const token = ref<TokenInfo | null>(null);
 const infinityServer = DemoBootstrap.getServerUrl();
-const appId = DemoBootstrap.getAppId();
-const caseTypeID = DemoBootstrap.getCaseTypeId();
-DemoBootstrap.getToken().then(t => token.value = t);
+const userIdentifier = DemoBootstrap.getUsername();
+const password = window.btoa(DemoBootstrap.getPassword());
+const clientId = DemoBootstrap.getClientId();
+const clientSecret = DemoBootstrap.getClientSecret();
+const staticContentUrl = DemoBootstrap.getStaticContentUrl();
+const appID = DemoBootstrap.getAppId();
+const action = DemoBootstrap.getAction();
+const tokenUri = DemoBootstrap.getAccessTokenUrl();
+const casePage = DemoBootstrap.getCasePage();
+const caseTypeID = action === 'createCase' ? DemoBootstrap.getCaseTypeId() : undefined;
+const caseID = action === 'openCase' ? DemoBootstrap.getCaseId() : undefined
+const pageID = action === 'openPage' ? DemoBootstrap.getPageId() : undefined;
+const className = action === 'openPage' ? DemoBootstrap.getPageClass() : undefined;
+const authError = ref();
+const loadingStatus = ref<boolean | undefined>(undefined);
+const constellation = ref(false);
+
+DemoBootstrap.getToken().then(t => token.value = t).catch(e => authError.value = e);
+function doneLoading(status: boolean) {
+  loadingStatus.value = status;
+  // const caseID = window.PCore.getStore().getState().data['app/primary_1']?.caseInfo.ID;
+  // if (caseID) {
+  //   DemoBootstrap.setAction('openCase');
+  //   DemoBootstrap.setCaseId(caseID);
+  // }
+}
 </script>
 
 <template>
@@ -40,13 +63,40 @@ DemoBootstrap.getToken().then(t => token.value = t);
       </div>
     </div>
     <div class="row pega">
-      <PegaEntry
-        v-if="token"
-        :appId
+      <pega-embed id='theEmbed' v-if="constellation"
+        :action
         :caseTypeID
-        :infinityServer
-        :token
-      />
+        :pageID
+        :pageClass="className"
+        :casePage
+        :tokenUri
+        :pegaServerUrl="infinityServer"
+        :staticContentUrl
+        autoReauth="true"
+        :appAlias="appID"
+        grantType="passwordCreds"
+        :userIdentifier
+        :password
+        :clientId
+        :clientSecret
+        style="width: 100%; padding: 50px"></pega-embed>
+      <template v-if="!constellation">
+          <PegaEntry
+            v-if="token"
+            :appID
+            :caseID
+            :pageID
+            :className
+            :caseTypeID
+            :infinityServer
+            :token
+            @loadingDone="doneLoading"
+          />
+          <h3 v-if="!token && !authError">Taming the chaos...</h3>
+          <h3 v-if="token && loadingStatus === undefined">Leading the change...</h3>
+          <h1 v-if="authError">{{authError}}</h1>
+          <h1 v-if="loadingStatus === false">Error communicating with Pega</h1>
+      </template>
     </div>
     <div class="row">
       <div class="col-sm-12 hca-margin-top-40">
@@ -55,7 +105,7 @@ DemoBootstrap.getToken().then(t => token.value = t);
             Already have an account?
           </p>
           <a
-            href="#"
+            @click="constellation = !constellation"
             tabindex="0"
             role="link"
             class="hca-button hca-button--outline hca-button--max-width-contain bold-text text-center hca-text--evening"

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { PContainer } from '@labb/dx-engine';
+import HcaInput from '../../../design-system/HcaInput.vue';
 
 const {container} = defineProps<{
     container: PContainer;
@@ -92,22 +93,24 @@ function blur(event: Event) {
 </script>
 
 <template>
-    <template v-if="container.config.readOnly">
-        <dt>{{ label() }}</dt>
-        <dd>{{ container.config.value }}</dd>
-    </template>
-    <HcaInput
-        :label="container.config.label || container.config.caption"
-        :id="container.id"
-        :helperText="container.config.helperText"
-        :errorMessage="container.config.validatemessage"
-        :name="container.config.label"
-        :value="container.config.value"
-        :readonly="container.config.readOnly"
-        :type="type()"
-        :inputmode="inputmode()"
-        :step="step()"
-        @change="change"
-        @blur="blur"
-    />
+    <div>
+        <template v-if="container.config.readOnly">
+            <dt>{{ label() }}</dt>
+            <dd>{{ container.config.value }}</dd>
+        </template>
+        <HcaInput v-if="!container.config.readOnly"
+            :label="container.config.label || container.config.caption"
+            :id="container.id"
+            :helperText="container.config.helperText"
+            :errorMessage="container.config.validatemessage"
+            :name="container.config.label"
+            :value="container.config.value"
+            :readonly="container.config.readOnly"
+            :type="type()"
+            :inputmode="inputmode()"
+            :step="step()"
+            @change="change"
+            @blur="blur"
+        />
+    </div>
 </template>

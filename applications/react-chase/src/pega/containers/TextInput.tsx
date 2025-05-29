@@ -1,5 +1,6 @@
 import { PContainer } from '@labb/dx-engine';
 import { HTMLInputTypeAttribute } from 'react';
+import MdsTextInput from '../../design-system/mds-text-input/mds-text-input';
 
 export default function TextInput(props: {
   container: PContainer;
@@ -80,7 +81,16 @@ export default function TextInput(props: {
     }
   }
 
+
+
   return <>
+    <MdsTextInput
+      label={props.container.config.label}
+      errorMessage={props.container.config.validatemessage}
+      value={props.container.config.value}
+      onChange={(e) => props.container.updateFieldValue(getValue(e.target))}
+      onBlur={(e) => props.container.triggerFieldChange(getValue(e.target))}
+    />
     <label htmlFor={props.container.id}>
       {props.container.config.label}
       {props.container.config.required ? ' *' : ''}
@@ -95,8 +105,6 @@ export default function TextInput(props: {
       readOnly={props.container.config.readOnly}
       disabled={props.container.config.readOnly}
       required={props.container.config.required}
-      onChange={(e) => props.container.updateFieldValue(getValue(e.target))}
-      onBlur={(e) => props.container.triggerFieldChange(getValue(e.target))}
     />
     {props.container.config.validatemessage}
   </>;

@@ -1,5 +1,6 @@
 export const scenariosData = [
     {
+        id: 'mortgage',
         profile: 'img/team-1.jpeg',
         type: 'Mortgage - Pre-approval',
         title: "What's slowing down your mortgage journey?",
@@ -28,6 +29,7 @@ export const scenariosData = [
         ]
     },
     {
+        id: 'healthcare',
         profile: 'img/team-2.jpeg',
         type: 'Healthcare - Personalised Plan Enrolment',
         title: 'Are your patients falling through the cracks?',
@@ -52,6 +54,7 @@ export const scenariosData = [
         ]
     },
     {
+        id: 'insurance',
         profile: 'img/team-3.jpeg',
         type: 'Insurance - Life insurance application',
         title: 'Why do life insurance applications still feel like hard work?',
@@ -82,6 +85,7 @@ export const scenariosData = [
         ]
     },
     {
+        id: 'bike-tour',
         profile: 'img/team-4.jpeg',
         type: 'Bike Tour - Red Rock Canyon Self-Service Planner',
         title: 'What does a modern customer experience look like — end to end?',
@@ -108,6 +112,7 @@ export const scenariosData = [
         ]
     },
     {
+        id: 'worklist',
         profile: 'img/team-4.jpeg',
         type: 'Pick up where you left off',
         title: 'What happened to my service request?',
@@ -130,6 +135,7 @@ export const scenariosData = [
         pageClass: 'Data-Portal'
     },
     {
+        id: 'insurance-claim',
         image: 'img/fnol.png',
         type: 'First notice of loss',
         title: '',

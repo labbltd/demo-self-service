@@ -3,14 +3,18 @@ import { DemoBootstrap } from '@labb/demo-utilities';
 import { PegaEmbed } from '@labb/react-adapter';
 import ReactDOM from 'react-dom/client';
 import './pega/ContainerMapping';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 
 const root = ReactDOM.createRoot(
   document.getElementsByTagName('app-root')[0] as HTMLElement
 );
 
 async function render() {
-  root.render(<MainNhs />);
+  root.render(
+    <Suspense>
+      <MainNhs />
+    </Suspense>
+  );
 }
 
 function MainNhs() {
@@ -79,6 +83,7 @@ function Main(props?: { setTitle?: Function }) {
   }, []);
   return <>
     {token && <PegaEmbed
+      caseID={action === 'openCase' ? DemoBootstrap.getCaseId() : undefined}
       caseTypeID={action === 'createCase' ? DemoBootstrap.getCaseTypeId() : undefined}
       pageID={action === 'openPage' ? DemoBootstrap.getPageId() : undefined}
       className={action === 'openPage' ? DemoBootstrap.getPageClass() : undefined}
@@ -92,6 +97,11 @@ function Main(props?: { setTitle?: Function }) {
           window.PCore.getStore().getState().data["app/primary_1"]
             ?.caseInfo?.caseTypeName
         );
+        const caseID = window.PCore.getStore().getState().data['app/primary_1']?.caseInfo.ID;
+        if (caseID) {
+          DemoBootstrap.setAction('openCase');
+          DemoBootstrap.setCaseId(caseID);
+        }
       }}
     />}
     {(!token && !authError) && <h3>Taming the chaos...</h3>}

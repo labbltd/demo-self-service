@@ -8,11 +8,10 @@ import {
 import PropTypes from "prop-types";
 import { Link, NavLink, useLocation } from "react-router-dom";
 
-export function Sidenav({ brandImg, brandName, routes }) {
+export function Sidenav({ routes }) {
   const [controller, dispatch] = useMaterialTailwindController();
   const { sidenavColor, sidenavType, openSidenav } = controller;
   const location = useLocation();
-  console.log(location.pathname);
 
   const sidenavTypes = {
     dark: "bg-gradient-to-br from-gray-800 to-gray-900",
@@ -51,49 +50,36 @@ export function Sidenav({ brandImg, brandName, routes }) {
         </IconButton>
       </div>
       <div className="m-4" style={{ background: 'white' }}>
-        {routes.map(({ layout, title, pages }, key) => (
-          <ul key={key} className="mb-4 flex flex-col gap-1">
-            {title && (
-              <li className="mx-3.5 mt-4 mb-2">
-                <Typography
-                  variant="small"
-                  color={sidenavType === "dark" ? "white" : "blue-gray"}
-                  className="font-black uppercase opacity-75"
-                >
-                  {title}
-                </Typography>
-              </li>
-            )}
-            {pages.map(({ icon, name, path }) => (
-              <li key={name}>
-                <NavLink to={`/${layout}${path}`}>
-                  {({ isActive }) => (
-                    <Button
-                      variant={isActive ? "gradient" : "text"}
-                      color={
-                        isActive
-                          ? sidenavColor
-                          : sidenavType === "dark"
-                            ? "white"
-                            : "blue-gray"
-                      }
-                      className="flex items-center gap-4 px-4 capitalize rounded-none"
-                      fullWidth
+        <ul className="mb-4 flex flex-col gap-1">
+          {routes.map(({ icon, name, path }) => (
+            <li key={name}>
+              <NavLink to={path}>
+                {({ isActive }) => (
+                  <Button
+                    variant={isActive ? "gradient" : "text"}
+                    color={
+                      isActive
+                        ? sidenavColor
+                        : sidenavType === "dark"
+                          ? "white"
+                          : "blue-gray"
+                    }
+                    className="flex items-center gap-4 px-4 capitalize rounded-none"
+                    fullWidth
+                  >
+                    {icon}
+                    <Typography
+                      color="inherit"
+                      className={`font-medium capitalize ${openSidenav ? '' : 'xs:hidden'}`}
                     >
-                      {icon}
-                      <Typography
-                        color="inherit"
-                        className={`font-medium capitalize ${openSidenav ? '' : 'xs:hidden'}`}
-                      >
-                        {name}
-                      </Typography>
-                    </Button>
-                  )}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        ))}
+                      {name}
+                    </Typography>
+                  </Button>
+                )}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
       </div>
     </aside>
   );

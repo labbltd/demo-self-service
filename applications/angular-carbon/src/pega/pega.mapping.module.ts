@@ -46,7 +46,7 @@ import {
 
 @NgModule({
   imports: [
-        ButtonModule,
+    ButtonModule,
     CheckboxModule,
     ComboBoxModule,
     CommonModule,
