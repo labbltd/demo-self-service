@@ -1,0 +1,137 @@
+{
+  "name": "react-lvcyclery",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "applications/react-lvcyclery/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/demo-self-service/rreact-lvcyclery",
+        "index": "applications/react-lvcyclery/src/index.html",
+        "baseHref": "/demo-self-service/react-lvcyclery/",
+        "main": "applications/react-lvcyclery/src/main.tsx",
+        "polyfills": "applications/react-lvcyclery/src/polyfills.ts",
+        "tsConfig": "applications/react-lvcyclery/tsconfig.app.json",
+        "assets": [
+          "applications/react-lvcyclery/src/favicon.ico",
+          "applications/react-lvcyclery/src/react.svg",
+          "applications/react-lvcyclery/src/public/",
+          {
+            "glob": "auth.html",
+            "input": "./node_modules/@labb/dx-engine/",
+            "output": "./"
+          },
+          {
+            "glob": "bootstrap-shell.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./"
+          },
+          {
+            "glob": "bootstrap-shell.*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./"
+          },
+          {
+            "glob": "*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/js",
+            "output": "./prerequisite/js"
+          },
+          {
+            "glob": "lib_asset.json",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./"
+          },
+          {
+            "glob": "constellation-core.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./prerequisite"
+          },
+          {
+            "glob": "constellation-core.*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./prerequisite"
+          }
+        ],
+        "styles": [
+          "applications/react-lvcyclery/src/style.css",
+          "applications/react-lvcyclery/design-system/lvc-panel.css"
+        ],
+        "scripts": [],
+        "webpackConfig": "applications/react-lvcyclery/webpack.config.js",
+        "babelUpwardRootMode": true
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "applications/react-lvcyclery/src/environments/environment.ts",
+              "with": "applications/react-lvcyclery/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "react-lvcyclery:build",
+        "hmr": true,
+        "proxyConfig": "applications/react-lvcyclery/proxy.conf.json",
+        "port": 4200
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "react-lvcyclery:build:development"
+        },
+        "production": {
+          "buildTarget": "react-lvcyclery:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/applications/react-lvcyclery"],
+      "options": {
+        "jestConfig": "applications/react-lvcyclery/jest.config.ts"
+      }
+    },
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "applications/react-lvcyclery/e2e/cypress.config.ts",
+        "testingType": "e2e"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "react-lvcyclery:serve:production"
+        },
+        "development": {
+          "devServerTarget": "react-lvcyclery:serve:development",
+          "watch": true
+        }
+      }
+    }
+  }
+}

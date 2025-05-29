@@ -1,0 +1,56 @@
+import { SimpleTableManual } from '@labb/dx-engine';
+import { GeneratePContainer } from '@labb/react-adapter';
+import LVCPanel from 'applications/react-lvcyclery/design-system/lvc-panel';
+
+export default function DxSimpleTableManual(props: { container: SimpleTableManual }) {
+  const { container } = props;
+  const showCarePlan = (container.config as any).viewName === 'CarePlanOptions_InEligibleCarePlans';
+  const showTable = !showCarePlan;
+
+  return <div className="formItem_P5zj_ marginBottom3_cHPnK clearfix_hhLma">
+    {container.config.label && <h3>{container.config.label}</h3>}
+    {showCarePlan && <div className="grid">
+      {container.config.referenceList.map(plan => <LVCPanel key={plan.CareLevel}
+        disabled={true}
+        price={plan.MonthlyCost}
+        label={plan.pyLabel}
+        description={plan.pyDescription}
+        benefits={plan.Benefits}
+        level={plan.CareLevel} />)}
+    </div>}
+    {showTable && container.readOnlyMode &&
+      <table>
+        <thead>
+          <tr>
+            {container.processedFields.map(col => <th key={col.config.name}>{col.config.name}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {container.rowData.map((row, index) => <tr key={index}>
+            {
+              container.processedFields.map(col =>
+                <td key={col.config.name} dangerouslySetInnerHTML={{ __html: row[col.config.name] || '---' }}></td>
+              )
+            }
+          </tr>)}
+        </tbody>
+      </table>
+    }
+    {showTable && container.editableMode &&
+      <table>
+        <thead>
+          <tr>
+            {container.fieldDefs.map(col => <th key={col.name}>{col.label}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {container.elementsData.map((row, rowIndex) =>
+            <tr key={rowIndex}>
+              {row.map((col, colIndex) => <td key={colIndex}><GeneratePContainer container={col} /></td>)}
+            </tr>
+          )}
+        </tbody>
+      </table>
+    }
+  </div>
+}

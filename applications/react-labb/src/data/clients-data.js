@@ -119,6 +119,14 @@ export const clientsData = [
         available: true,
         region: '🇳🇱'
     },
+        {
+        name: 'Las Vegas Cyclery',
+        logo: 'img/logo-lvc.png',
+        framework: 'img/logo-react.png',
+        link: '/demo-self-service/react-lvcyclery/',
+        available: true,
+        region: '🇺🇸'
+    },
     {
         name: 'Angular reference',
         logo: 'img/logo-angular.png',
