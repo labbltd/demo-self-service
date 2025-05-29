@@ -9,7 +9,8 @@ defineProps<{
 </script>
 
 <template>
-    <p v-if="container.config.label && container.config.showLabel">{{container.config.label}}</p>
-    <DxContainer v-for="child in container.children"
-        :key="child.id" :container="child" />
+    <div v-for="child in container.children[0].children" 
+        :key="child.id" >
+        <DxContainer :container="child" />
+    </div>
 </template>

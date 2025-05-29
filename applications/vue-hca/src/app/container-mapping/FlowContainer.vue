@@ -54,13 +54,11 @@ const errorMessage = ref<string | null>(null);
         {{ container.getActiveViewLabel() || container.getAssignmentName() }}
       </h2>
 
-      <div class="flex">
         <DxContainer
           v-for="child in container.children"
           :key="child.id"
           :container="child"
         />
-      </div>
 
       <template v-if="container.actionButtons">
         <button

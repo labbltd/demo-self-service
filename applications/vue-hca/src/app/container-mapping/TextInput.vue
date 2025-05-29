@@ -96,20 +96,18 @@ function blur(event: Event) {
         <dt>{{ label() }}</dt>
         <dd>{{ container.config.value }}</dd>
     </template>
-    <template v-if="!container.config.readOnly">
-        <label :for="container.id">
-            {{ label() }}{{ container.config.required ? ' *' : '' }}
-            <span v-if="container.config.helperText" :data-tooltip="container.config.helperText">?</span>
-        </label>
-        <input :type="type()"
-            :id="container.id"
-            :name="container.config.label" 
-            :inputmode="inputmode()"
-            :step="step()"
-            :value="container.config.value"
-            :disabled="container.config.readOnly"
-            @change="change"
-            @blur="blur" />
-        {{ container.config.validatemessage }}
-    </template>
+    <HcaInput
+        :label="container.config.label || container.config.caption"
+        :id="container.id"
+        :helperText="container.config.helperText"
+        :errorMessage="container.config.validatemessage"
+        :name="container.config.label"
+        :value="container.config.value"
+        :readonly="container.config.readOnly"
+        :type="type()"
+        :inputmode="inputmode()"
+        :step="step()"
+        @change="change"
+        @blur="blur"
+    />
 </template>

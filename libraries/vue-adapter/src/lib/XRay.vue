@@ -115,7 +115,7 @@ const name = props.container.pconnect.getRawMetadata().name;
     </div>
 </template>
 
-<style>
+<style scoped>
 .xray {
     display: block;
     margin: 2px;

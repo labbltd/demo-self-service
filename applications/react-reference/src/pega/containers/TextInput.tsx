@@ -1,9 +1,11 @@
 import { PContainer } from '@labb/dx-engine';
-import { HTMLInputTypeAttribute } from 'react';
+import { ChangeEvent, HTMLInputTypeAttribute, useState } from 'react';
 
 export default function TextInput(props: {
   container: PContainer;
 }): JSX.Element {
+  const [value, setValue] = useState<any>(props.container.config.value);
+
   function type(): HTMLInputTypeAttribute {
     switch (props.container.config.fieldMetadata?.type) {
       case 'Decimal':
@@ -66,21 +68,36 @@ export default function TextInput(props: {
 
   function getValue(
     target: EventTarget | null
-  ): number | boolean | string | undefined {
+  ): number | boolean | string | null {
     const t: HTMLInputElement = target as HTMLInputElement;
     switch (type()) {
       case 'number':
         return t.valueAsNumber;
       case 'date':
-        return t.valueAsDate?.toISOString().split('T')[0];
+        return t.valueAsDate?.toISOString().split('T')[0] || '';
       case 'checkbox':
         return t.checked;
       default:
         return t.value;
     }
   }
+
+  function change(event: ChangeEvent<HTMLInputElement>) {
+    if (type() !== 'date') {
+      props.container.updateFieldValue(getValue(event.target))
+    }
+    setValue(getValue(event.target));
+  }
+
+  function blur(event: ChangeEvent<HTMLInputElement>) {
+    if (type() === 'date') {
+      props.container.updateFieldValue(getValue(event.target))
+    }
+    props.container.triggerFieldChange(getValue(event.target))
+  }
+
   if (props.container.config.readOnly) {
-    return <><dt>{ props.container.config.label }</dt><dd>{props.container.config.value ?? '--'}</dd></>;
+    return <><dt>{props.container.config.label}</dt><dd>{props.container.config.value ?? '--'}</dd></>;
   }
   return <>
     <label htmlFor={props.container.id}>
@@ -93,12 +110,12 @@ export default function TextInput(props: {
       type={type()}
       inputMode={inputmode()}
       step={step()}
-      value={props.container.config.value}
+      value={value}
       readOnly={props.container.config.readOnly}
       disabled={props.container.config.readOnly}
       required={props.container.config.required}
-      onChange={(e) => props.container.updateFieldValue(getValue(e.target))}
-      onBlur={(e) => props.container.triggerFieldChange(getValue(e.target))}
+      onChange={e => change(e)}
+      onBlur={e => blur(e)}
     />
     {props.container.config.validatemessage}
   </>;

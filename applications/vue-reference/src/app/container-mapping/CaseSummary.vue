@@ -9,8 +9,6 @@ defineProps<{
 </script>
 
 <template>
-    <div v-for="child in container.children[0].children" 
-        :key="child.id" >
-        <DxContainer :container="child" />
-    </div>
+    <DxContainer v-for="child in container.children"
+        :key="child.id" :container="child" />
 </template>

@@ -1,3 +1,4 @@
+import { ActionButton } from '@labb/constellation-core-types';
 import { FlowContainer as PFlowContainer } from '@labb/dx-engine';
 import { GeneratePContainer } from '@labb/react-adapter';
 import { useState } from 'react';
@@ -10,6 +11,11 @@ export default function FlowContainer(props: { container: PFlowContainer }) {
     setErrorMessage(e.message || 'Error');
   }
 
+  function buttonClick(button: ActionButton) {
+    setErrorMessage(null);
+    props.container.buttonClick(button).catch(handleActionError)
+  }
+
   if (!props.container.hasAssignment()) {
     return <div>No active assignment</div>;
   }
@@ -17,20 +23,18 @@ export default function FlowContainer(props: { container: PFlowContainer }) {
   return (
     <form>
       <ul>
-        {props.container.pconnect
-          .getDataObject()
-          .caseInfo.navigation?.steps.map((step, i) => (
-            <li key={`first_${i}`}>
-              {step.name} ({step.ID}: {step.visited_status})
-            </li>
-          ))}
+        {props.container.navigation?.steps.map((step, i) => (
+          <li key={`first_${i}`}>
+            {step.name} ({step.ID}: {step.visited_status})
+          </li>
+        ))}
       </ul>
       <fieldset>
         <legend>
           <h2>
-          {props.container.getActiveViewLabel() ||
-            props.container.getAssignmentName()}
-            </h2>
+            {props.container.getActiveViewLabel() ||
+              props.container.getAssignmentName()}
+          </h2>
         </legend>
         {props.container.children.map((child) => (
           <GeneratePContainer key={child.id} container={child} />
@@ -42,9 +46,7 @@ export default function FlowContainer(props: { container: PFlowContainer }) {
             <button
               key={`secondary_${idx}`}
               type="button"
-              onClick={(e) =>
-                props.container.buttonClick(button).catch(handleActionError)
-              }
+              onClick={() => buttonClick(button)}
             >
               {button.name}
             </button>
@@ -53,9 +55,7 @@ export default function FlowContainer(props: { container: PFlowContainer }) {
             <button
               key={`main_${idx}`}
               type="button"
-              onClick={(e) =>
-                props.container.buttonClick(button).catch(handleActionError)
-              }
+              onClick={() => buttonClick(button)}
             >
               {button.name}
             </button>
