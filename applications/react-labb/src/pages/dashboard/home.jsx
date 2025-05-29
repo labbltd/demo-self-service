@@ -24,10 +24,10 @@ export function Home() {
                 <Typography variant="paragraph" className="mb-10">
                     Get started now and see how we bring self-service to life.
                 </Typography>
-                <Button variant='outlined' className="mr-6 mb-4" onClick={() => navigate("../scenarios")}>
+                <Button variant='outlined' className="mr-6 mb-4" onClick={() => navigate("/scenarios")}>
                     Explore scenarios
                 </Button>
-                <Button variant='outlined' className="mr-6 mb-4" onClick={() => navigate("../videos")}>
+                <Button variant='outlined' className="mr-6 mb-4" onClick={() => navigate("/videos")}>
                     Explore demo videos
                 </Button>
             </div>

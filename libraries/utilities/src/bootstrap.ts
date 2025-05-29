@@ -36,10 +36,31 @@ export class DemoBootstrap {
     }
 
     public static updateConfig(prop: string, val: string) {
+        console.log('updateConfig("%s", "%s")', prop, val);
         localStorage.setItem('LabbDemoConfig', JSON.stringify({
             ...this.getConfig(),
             [prop]: val
-        }))
+        }));
+    }
+
+    public static updateScenario(scenario: any) {
+        if (scenario?.caseTypeId) {
+            DemoBootstrap.setAction('createCase');
+            DemoBootstrap.setCaseTypeId(scenario.caseTypeId);
+        }
+        if (scenario?.pageId) {
+            DemoBootstrap.setAction('openPage');
+            DemoBootstrap.setCaseTypeId(scenario.pageId);
+            DemoBootstrap.setPageClass(scenario.pageClass);
+        }
+    }
+
+    public static setScenarios(scenarios: any) {
+        localStorage.setItem('LabbDemoScenarios', JSON.stringify(scenarios));
+    }
+
+    public static getScenarios() {
+        return JSON.parse(localStorage.getItem('LabbDemoScenarios') || '[]');
     }
 
     public static setAction(action: string) {

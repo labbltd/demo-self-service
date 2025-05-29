@@ -74,7 +74,6 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
                     } />
                 ))}
                 {props.container.actionButtons.secondary
-                  .filter(button => button.actionID === 'back')
                   .map((button) => (
                     <HsbcButton type="secondary"
                       key={button.actionID}
