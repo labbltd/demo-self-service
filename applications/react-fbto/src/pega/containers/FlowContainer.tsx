@@ -1,25 +1,53 @@
+import { Assignment } from '@labb/constellation-core-types';
 import { FlowContainer } from '@labb/dx-engine';
 import { GeneratePContainer } from '@labb/react-adapter';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import StepperHeader from '../../design-system/fbto-stepper-header';
 
 export default function DxFlowContainer(props: { container: FlowContainer }) {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [todoAssignments, setTodoAssignments] = useState<Assignment[]>([]);
+
+  useEffect(() => {
+    updateAssignments();
+    props.container.updates.subscribe(() => {
+      updateAssignments();
+    });
+  }, []);
+
+  function openAssignment(assignment: Assignment) {
+    props.container.openAssignment(assignment);
+  }
+
+  function updateAssignments(): void {
+    setTodoAssignments(props.container.getTodoAssignments());
+  }
 
   function handleActionError(e: Error) {
     console.error(e);
     setErrorMessage(e?.message || 'Error');
   }
 
-  if (!props.container.hasAssignment()) {
-    return <div>No active assignment</div>;
-  }
-
   const currentStepIndex = props.container.navigation?.steps.findIndex(step => step.visited_status === 'current');
   const nSteps = props.container.navigation?.steps?.length;
 
   return <>
-    <form className="xforms-form dev-html5 tpl-xforms row script unknown unknown_1.0">
+    {props.container.config.caseMessages?.map(message =>
+      <div key={message}>
+        {message}
+      </div>
+    )}
+    {!props.container.hasAssignment() && <>
+      {todoAssignments.map(assignment =>
+        <div key={assignment.ID}>
+          <div>{assignment.processName} {'>'} {assignment.name}</div>
+          <div>Assigned to {assignment.assigneeInfo?.name}</div>
+          <button type="button" onClick={() => openAssignment(assignment)}>Go</button>
+        </div>
+      )}
+      {todoAssignments.length === 0 && <p>Thank you for your request. We will contact you as soon as possible.</p>}
+    </>}
+    {props.container.hasAssignment() && <form className="xforms-form dev-html5 tpl-xforms row script unknown unknown_1.0">
       <div className="xforms-group sfs-paging-overview xforms-ap-default xforms-htc">
         <label><span>Stappen</span></label>
         <StepperHeader currentStep={currentStepIndex} steps={props.container.navigation?.steps.map(step => step.name)} />
@@ -79,6 +107,6 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
         )}
         {errorMessage && <div>{errorMessage}</div>}
       </div>
-    </form>
+    </form>}
   </>
 }

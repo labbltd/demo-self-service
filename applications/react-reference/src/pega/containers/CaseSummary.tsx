@@ -6,11 +6,11 @@ export default function DxCaseSummary(props: { container: PContainer }) {
     const [showSummary, setShowSummary] = useState(false);
     const { container } = props;
     return <>
-        <button role="button" onClick={() => setShowSummary(!showSummary)}>
+        <a role="button" onClick={() => setShowSummary(!showSummary)}>
             <h3>
                 <span>Show Case Details</span>
             </h3>
-        </button >
+        </a>
         {showSummary &&
             <div role="region">
                 {container.children.map(child => <GeneratePContainer key={child.id} container={child} />)}

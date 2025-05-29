@@ -1,3 +1,4 @@
+import { BugAntIcon } from "@heroicons/react/24/solid";
 import { DemoBootstrap } from "@labb/demo-utilities";
 import { BootstrapService } from "@labb/dx-engine";
 import {
@@ -10,15 +11,35 @@ import {
   Typography
 } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { clientsData } from "../../data/clients-data";
 import { scenariosData } from "../../data/scenarios-data";
 import './scenarios.css';
 
 export function Scenarios() {
+  const location = useLocation();
   const [scenario, setScenario] = useState(null);
   const [caseTypes, setCaseTypes] = useState([]);
   const [useFilter, setUseFilter] = useState(true);
-  const [url, setUrl] = useState();
+  const [url, setUrl] = useState(getUrl());
+  const navigate = useNavigate();
+
+  function getScenarioIndex() {
+    const match = location.pathname.match(/dashboard\/scenarios\/(\d+)/);
+    if (match) return +match[1];
+  }
+
+  function getScenario() {
+    const index = getScenarioIndex();
+    if (index != undefined) return scenariosData[index];
+    return null;
+  }
+
+  function getUrl() {
+    const match = location.pathname.match(/dashboard\/scenarios\/(\d+)\/(.+)$/);
+    if (match) return `/demo-self-service/${match[2]}/`;
+    return null;
+  }
 
   useEffect(() => {
     DemoBootstrap.getToken()
@@ -26,19 +47,38 @@ export function Scenarios() {
       .then(response => {
         setCaseTypes([...caseTypes, ...response.caseTypes]);
       });
+    const s = getScenario();
+    if (s) {
+      updateScenario(s, true);
+    }
   }, []);
 
-  function updateScenario(scenario) {
-    if (scenario.caseTypeId) {
-      DemoBootstrap.setAction('createCase');
-      DemoBootstrap.setCaseTypeId(scenario.caseTypeId);
+  function updateScenario(scenario, skipNav = false) {
+    if (DemoBootstrap.getAction() !== 'openCase' && !skipNav) {
+      if (scenario?.caseTypeId) {
+        DemoBootstrap.setAction('createCase');
+        DemoBootstrap.setCaseTypeId(scenario.caseTypeId);
+      }
+      if (scenario?.pageId) {
+        DemoBootstrap.setAction('openPage');
+        DemoBootstrap.setCaseTypeId(scenario.pageId);
+        DemoBootstrap.setPageClass(scenario.pageClass);
+      }
     }
-    if (scenario.pageId) {
-      DemoBootstrap.setAction('openPage');
-      DemoBootstrap.setCaseTypeId(scenario.pageId);
-      DemoBootstrap.setPageClass(scenario.pageClass);
+    if (!skipNav) {
+      const scenarioIndex = scenariosData.findIndex(s => s === scenario)
+      if (scenarioIndex > -1) {
+        navigate(`./${scenarioIndex}`);
+      } else {
+        navigate(`./`);
+      }
     }
     setScenario(scenario);
+  }
+
+  function updateUrl(url) {
+    navigate(url ? `${getScenarioIndex()}/${url.split('/')[2]}` : `${getScenarioIndex()}`);
+    setUrl(url);
   }
 
   return <>
@@ -52,10 +92,10 @@ export function Scenarios() {
         </Typography>}
       </div>
       <div>
-        {scenario && <Button variant='outlined' className="mr-6 mt-4" onClick={() => { setScenario(null); setUrl(null) }}>
+        {scenario && <Button variant='outlined' className="mr-6 mt-4" onClick={() => { updateScenario(null); updateUrl(null) }}>
           &lt; Select different scenario
         </Button>}
-        {url && <Button variant='outlined' className="mr-6 mt-4" onClick={() => { setUrl(null) }}>
+        {url && <Button variant='outlined' className="mr-6 mt-4" onClick={() => { updateUrl(null) }}>
           &lt; Select different company
         </Button>}
         {url && <a href={url} target="__blank"><Button variant='outlined' className="mr-6 mt-4">
@@ -67,7 +107,7 @@ export function Scenarios() {
       </div>
     </div>
     {!scenario && <ScenarioList updateScenario={s => updateScenario(s)} caseTypes={caseTypes} />}
-    {(scenario && !url) && <ClientList scenario={scenario} setScenario={setScenario} setUrl={setUrl} useFilter={useFilter} />}
+    {(scenario && !url) && <ClientList scenario={scenario} updateUrl={updateUrl} useFilter={useFilter} />}
     {url &&
       <div className="browser-container mt-4">
         <div className="browser-row">
@@ -75,9 +115,10 @@ export function Scenarios() {
             <span className="browser-dot" style={{ background: '#ED594A' }}></span>
             <span className="browser-dot" style={{ background: '#FDD800' }}></span>
             <span className="browser-dot" style={{ background: '#5AC05A' }}></span>
+            <BugAntIcon className="max-h-[21px] inline" onClick={() => window.frames[0].window.PCore.getDebugger().toggle()} />
           </div>
           <div className="browser-column browser-middle">
-            <input className="browser-url" type="text" value={url} onChange={(e) => setUrl(e.target.value)} />
+            <input className="browser-url" type="text" value={url} onChange={(e) => updateUrl(e.target.value)} />
           </div>
           <div className="browser-column browser-right">
             <div style={{ float: 'right' }}>
@@ -172,7 +213,7 @@ function ClientList(props) {
           .filter(client =>
             !useFilter || !props.scenario.clients || props.scenario.clients.includes(client.link.split('/')[2])
           )
-          .map(client => <a onClick={() => props.setUrl(client.link)} key={client.link}><Card className="overflow-hidden xl:col-span-1 border border-blue-gray-100 shadow-sm">
+          .map(client => <a onClick={() => props.updateUrl(client.link)} key={client.link}><Card className="overflow-hidden xl:col-span-1 border border-blue-gray-100 shadow-sm">
             <CardHeader
               floated={false}
               shadow={false}

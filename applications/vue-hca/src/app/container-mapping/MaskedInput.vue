@@ -2,6 +2,7 @@
 import { PContainer } from '@labb/dx-engine';
 import { onMounted, useTemplateRef } from 'vue';
 import IMask from 'imask';
+import HcaFormField from '../../../design-system/HcaFormField.vue'
 
 const {container} = defineProps<{
     container: PContainer;
@@ -33,7 +34,7 @@ onMounted(() => {
     :helperText="container.config.helperText"
     :errorMessage="container.config.validatemessage"
   >
-    <input
+    <input ref="masked-input"
       :id="container.id"
       :name="container.config.label"
       :value="container.config.value"

@@ -1,7 +1,7 @@
 import { TokenInfo } from '@labb/constellation-core-types';
 import { DemoBootstrap } from '@labb/demo-utilities';
 import { PegaEmbed } from '@labb/react-adapter';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './pega/ContainerMapping';
 import Header from './design-system/cb-header';
@@ -13,13 +13,13 @@ const root = ReactDOM.createRoot(
 );
 
 async function render() {
-  root.render(<>
-    <Header/>
+  root.render(<Suspense>
+    <Header />
     <MainTemplate>
       <Main />
     </MainTemplate>
-    <Footer/>
-  </>);
+    <Footer />
+  </Suspense>);
 }
 
 function Main(props?: { setTitle?: Function }) {
@@ -37,6 +37,7 @@ function Main(props?: { setTitle?: Function }) {
   }, []);
   return <>
     {token && <PegaEmbed
+      caseID={action === 'openCase' ? DemoBootstrap.getCaseId() : undefined}
       caseTypeID={action === 'createCase' ? DemoBootstrap.getCaseTypeId() : undefined}
       pageID={action === 'openPage' ? DemoBootstrap.getPageId() : undefined}
       className={action === 'openPage' ? DemoBootstrap.getPageClass() : undefined}
@@ -50,6 +51,11 @@ function Main(props?: { setTitle?: Function }) {
           window.PCore.getStore().getState().data["app/primary_1"]
             ?.caseInfo?.caseTypeName
         );
+        const caseID = window.PCore.getStore().getState().data['app/primary_1']?.caseInfo.ID;
+        if (caseID) {
+          DemoBootstrap.setAction('openCase');
+          DemoBootstrap.setCaseId(caseID);
+        }
       }}
     />}
     {(!token && !authError) && <h3>Taming the chaos...</h3>}

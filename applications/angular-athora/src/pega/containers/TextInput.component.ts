@@ -1,47 +1,47 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { PContainerComponent } from '@labb/angular-adapter';
+import { Component } from '@angular/core';
+import { DefaultProps } from '@labb/constellation-core-types';
+import { ControlComponent } from '../control.component';
 
 @Component({
   selector: 'dx-text-input-control',
   template: `
   @if (container.config.readOnly) {
-    <dt>{{ label }}</dt><dd>{{container.config.value ?? '--'}}</dd>
+    <dt>{{ label }}</dt><dd>{{container.config.value || '--'}}</dd>
   }
   @if (!container.config.readOnly) {
-    <label [for]="container.id">
-      {{ label }}{{ container.config.required ? ' *' : '' }}
-      @if(container.config.helperText) {
-        <span [attr.data-tooltip]="container.config.helperText">?</span>
-      }
-    </label>
-    <input
-      [id]="container.id"
-      [type]="type"
-      [attr.inputmode]="inputmode"
-      [attr.step]="step"
-      [attr.placeholder]="container.config.placeholder"
-      [formControl]="control"
-      (change)="container.updateFieldValue(getValue($event.target))"
-      (blur)="container.triggerFieldChange(getValue($event.target))"
-    />
+    <div class="dx-control">
+      <mat-label>
+          {{ container.config.label }}
+          <button type="button" mat-icon-button (click)="helperTextOpen = true" *ngIf="container.config.helperText"><mat-icon>info_outline</mat-icon></button>
+        </mat-label>
+      <mat-form-field>
+        <input matInput [placeholder]="container.config.placeholder" [formControl]="control">
+      </mat-form-field>
+    </div>
+    <dx-hint *ngIf="container.config.helperText && helperTextOpen"
+        (closed)="helperTextOpen = false"
+        [hint]="container.config.helperText"></dx-hint>
     {{ container.config.validatemessage }}
   }
   `,
   standalone: false
 })
-export class TextInputComponent extends PContainerComponent implements OnInit {
-  public control = new FormControl('');
+export class TextInputComponent extends ControlComponent<string, DefaultProps & { caption: string }> {
   public get label(): string {
     return this.container.config.label || this.container.config.caption;
   }
 
-  public override ngOnInit(): void {
-    super.ngOnInit();
-    this.control.setValue(this.container.config.value);
-    this.container.updates.subscribe(() => {
-      this.control.setValue(this.container.config.value);
-    });
+  public updateValue(val: string): void {
+    this.container.updateFieldValue(val);
+    this.container.triggerFieldChange(val);
+  }
+
+  public override toControlValue(val: string): string | null {
+    return this.type === 'date' ? val?.split('-').reverse().join('-') : val;
+  }
+
+  public override toPegaValue(val: string | null): string {
+    return this.type === 'date' ? val?.split('-').reverse().join('-') || '' : val || '';
   }
 
   public get type(): string {

@@ -34,10 +34,6 @@ onUnmounted(() => {
 const component = 
     DxVueAdapter.getComponent(container.pconnect.getComponentName()) || 
     DxVueAdapter.getComponent('default');
-setTimeout(() => {
-    counter.value++;
-}, 0);
-
 </script>
 
 <template>

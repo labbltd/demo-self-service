@@ -16,7 +16,7 @@ export default function TextInput(props: {
         <div className="input-group">
             <div className="input-text">
                 {isInput && <input className="input-text__input input" id={props.id} type={props.type} onChange={props.onChange} onBlur={props.onBlur} />}
-                {isTextarea && <textarea className="input-text__input input" value={props.value} onChange={props.onChange} onBlur={props.onBlur}></textarea>}
+                {isTextarea && <textarea className="input-text__input input" rows={15} value={props.value} onChange={props.onChange} onBlur={props.onBlur}></textarea>}
                 {isSelect && <select className="input-text__input input" value={props.value} onChange={props.onChange}>
                     <option value={''}>Select {props.label}...</option>
                     {props.options?.map(option =>

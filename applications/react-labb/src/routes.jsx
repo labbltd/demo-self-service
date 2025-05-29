@@ -27,7 +27,7 @@ export const routes = [
       {
         icon: <UsersIcon {...icon} />,
         name: "Scenarios",
-        path: "/scenarios",
+        path: "/scenarios/*",
         element: <Scenarios />,
       },
       {

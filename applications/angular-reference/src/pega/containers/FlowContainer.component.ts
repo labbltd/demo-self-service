@@ -20,6 +20,9 @@ import { FlowContainer } from '@labb/dx-engine';
               <button type="button" (click)="openAssignment(assignment)">Go</button>
             </div>
           }
+          @if(todoAssignments.length === 0) {
+            <p>Thank you for your request. We will contact you as soon as possible.</p>
+          }
       } @else {
         @if (container.navigation) {
           <nav>

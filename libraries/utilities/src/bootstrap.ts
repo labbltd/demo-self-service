@@ -12,6 +12,7 @@ export class DemoBootstrap {
             localeId: 'en-US',
             appAlias: 'LabbCS',
             caseTypeId: 'Labb-LabbCS-Work-Service-InsuranceIssuance',
+            caseId: 'Labb-LabbCS-Work-Service-InsuranceIssuance',
             action: 'openPage',
             pageId: 'pyWorklist',
             pageClass: 'Data-Portal',
@@ -47,6 +48,10 @@ export class DemoBootstrap {
 
     public static setCaseTypeId(caseTypeId: string) {
         this.updateConfig('caseTypeId', caseTypeId);
+    }
+
+    public static setCaseId(caseId: string) {
+        this.updateConfig('caseId', caseId);
     }
 
     public static setPageId(pageId: string) {
@@ -88,6 +93,10 @@ export class DemoBootstrap {
 
     public static getCaseTypeId() {
         return this.getConfig().caseTypeId;
+    }
+
+    public static getCaseId() {
+        return this.getConfig().caseId;
     }
 
     public static getAccessTokenUrl() {
