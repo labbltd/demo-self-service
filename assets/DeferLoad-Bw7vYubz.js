@@ -1,0 +1,1 @@
+import{j as e,a as o,G as i}from"./index-CtcmXlQC.js";function c(a){const{label:r}=a.container.config;return e.jsxs(e.Fragment,{children:[e.jsx("pre",{children:"DeferLoad"}),r&&e.jsx(o.Typography,{variant:"h6",color:"blue-gray",className:"mt-6",children:r}),a.container.children.map((n,t)=>e.jsx(i,{container:n},n.id+t))]})}export{c as default};
