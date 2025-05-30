@@ -10,5 +10,8 @@ export const videos = [
     },
     {
         url: 'https://www.youtube.com/embed/Mxd72y9ZN7M?si=mlZXk79pz3zDxCGx'
+    },
+    {
+        url: 'https://www.youtube.com/embed/JKMb37fm280?si=xBZ_syvbDTNoTfPy'
     }
 ]
