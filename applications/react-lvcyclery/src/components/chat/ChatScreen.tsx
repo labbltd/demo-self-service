@@ -26,6 +26,9 @@ export function ChatScreen() {
   useEffect(() => {
     if (chatWindowRef?.current) {
       chatWindowRef.current.scrollTop = chatWindowRef.current.scrollHeight;
+    };
+    if (chat.length == 0){
+      postBack("intr_aa11");
     }
   }, [chat]);
 
