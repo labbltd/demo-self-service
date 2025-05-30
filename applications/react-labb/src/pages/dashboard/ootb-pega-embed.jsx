@@ -4,6 +4,7 @@ export default function OotbPegaEmbed() {
     return <pega-embed id='theEmbed'
         action={DemoBootstrap.getAction()}
         caseTypeID={DemoBootstrap.getCaseTypeId()}
+        caseID={DemoBootstrap.getCaseId()}
         pageID={DemoBootstrap.getPageId()}
         pageClass={DemoBootstrap.getPageClass()}
         casePage={DemoBootstrap.getCasePage()}

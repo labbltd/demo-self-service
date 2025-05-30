@@ -41,7 +41,7 @@ import { FlowContainer } from '@labb/dx-engine';
         <fieldset>
           <legend>
             <h2>
-              {{container.getAssignmentName() || container.getActiveViewLabel()}}
+              {{title}}
             </h2>
           </legend>
           @for (child of container.children; track child.id) {
@@ -76,6 +76,24 @@ export class FlowContainerComponent extends PContainerComponent<FlowContainer> i
   public todoAssignments: Assignment[] = [];
   public errorMessage?: string;
   public loading = false;
+
+  public get title(): string {
+    const caseInfo = this.container.pconnect.getDataObject().caseInfo;
+    const assignment = caseInfo?.assignments?.[0] as any;
+    const stepName = this.container.navigation?.steps?.find(step => step.visited_status === 'current')?.name;
+    if (assignment.processName === 'Booking') {
+      return assignment.processName;
+    }
+    if (assignment?.isMultiStep === true || assignment?.isMultiStep === 'true') {
+      if (assignment.name === stepName) {
+        return assignment.name;
+      } else {
+        return assignment?.processName;
+      }
+    } else {
+      return assignment?.name;
+    }
+  }
 
   public override ngOnInit(): void {
     super.ngOnInit();

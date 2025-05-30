@@ -30,6 +30,23 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
     console.error(e);
     setErrorMessage(e?.message || 'Error');
   }
+  function getTitle(): string {
+    const caseInfo = props.container.pconnect.getDataObject().caseInfo;
+    const assignment = caseInfo?.assignments?.[0] as any;
+    const stepName = props.container.navigation?.steps?.find(step => step.visited_status === 'current')?.name
+    if (assignment.processName === 'Booking') {
+      return assignment.processName;
+    }
+    if (assignment?.isMultiStep === true || assignment?.isMultiStep === 'true') {
+      if (assignment.name === stepName) {
+        return assignment.name;
+      } else {
+        return assignment?.processName;
+      }
+    } else {
+      return assignment?.name;
+    }
+  }
 
   return <>
     {<HsbcContainer>
@@ -49,13 +66,13 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
       <HsbcContainer>
         <HsbcProgressBar
           name={
+            props.container.navigation?.steps.find(step => step.visited_status === 'current')?.name ||
             window.PCore.getStore().getState().data[props.container.pconnect.getContextName()].caseInfo.stageLabel
           }
           currentStep={props.container.navigation?.steps.findIndex(step => step.visited_status === 'current')}
           totalSteps={props.container.navigation?.steps.length} />
       </HsbcContainer>
-      <HsbcContainer title={props.container.getActiveViewLabel() ||
-        props.container.getAssignmentName()}>
+      <HsbcContainer title={getTitle()}>
         {props.container.children.map((child) => (
           <GeneratePContainer key={child.id} container={child} />
         ))}

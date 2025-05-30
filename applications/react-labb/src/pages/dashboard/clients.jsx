@@ -59,7 +59,7 @@ export function ClientList() {
                     className="py-0.5 px-2 text-[11px] font-medium w-fit"
                   />}
                 </Typography>
-                <Avatar src={client.framework} size="sm" />
+                <img src={client.framework} className="inline-block relative object-center h-9 rounded-md"></img>
               </CardHeader>
               <CardBody className="overflow-x-scroll px-0 pt-0 p-4 flex justify-center">
                 <img src={client.logo} className="h-40 object-scale-down" />

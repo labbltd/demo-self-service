@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Constellation WebEmbed</title>
+  <base href="/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+</head>
+
+<body style="max-width: 85ch;">
+  <app-root></app-root>
+  <script>
+    function embedPega(config, node) {
+      node.innerHTML = '';
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = `${config.staticContentUrl}pega-embed.js`;
+      node.appendChild(script);
+      const embed = document.createElement('pega-embed');
+      Object.entries(config).forEach(([key, value]) => embed.setAttribute(key, value))
+      embed.id = 'theEmbed';
+      embed.style = 'width:100%; padding: 50px';
+      node.appendChild(embed);
+    }
+    const query = new URLSearchParams(window.location.search);
+    const host = query.get('host') || 'http://localhost:3333'
+    const caseTypeId = query.get('caseTypeId') || 'CaseTypeId'
+    const staticServer = query.get('staticServer') || 'https://cs-cdn.constellation.pega.io/stage/8.24.51-236/react/prod/';
+    embedPega({
+      pegaServerUrl: `${host}/prweb/`,
+      staticContentUrl: staticServer,
+      grantType: 'passwordCreds',
+      clientId: '12113341416804660893',
+      clientSecret: '8164B7AEA010D996DB47D3881D9DC4EB',
+      userIdentifier: 'demo@PW25',
+      password: window.btoa('Labb@PW#32'),
+      tokenUri: `${host}/prweb/api/oauth2/v1/token`,
+      appAlias: 'LabbCS',
+      action: 'createCase',
+      caseTypeID: caseTypeId
+    }, document.getElementsByTagName('app-root')[0])
+  </script>
+</body>
+
+</html>
