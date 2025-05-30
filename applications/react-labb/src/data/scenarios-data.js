@@ -99,10 +99,17 @@ export const scenariosData = [
         ],
         technologies: [
             'Constellation',
-            'DX Accelerator'
+            'Pega Knowledge Buddy',
+            'DX Accelerator',
+            'Digital Messaging',
+            'ClientAPI',
+            'Custom front/back-end chat server and UX'
         ],
         image: 'img/mountain-bike.jpg',
-        caseTypeId: 'Labb-LabbCS-Work-Service-BikeTourBooking'
+        caseTypeId: 'Labb-LabbCS-Work-Service-BikeTourBooking',
+        clients:[
+            'react-lvcyclery'
+        ]
     },
     {
         id: 'worklist',
