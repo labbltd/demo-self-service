@@ -1,7 +1,7 @@
 import { TokenInfo } from "@labb/constellation-core-types";
 import { DemoBootstrap } from "@labb/demo-utilities";
 import { PegaEmbed } from "@labb/react-adapter";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import LVCTemplate from "../design-system/lvc-template";
 import FloatingChatContainer from "./components/chat/FloatingChatContainer";
@@ -14,7 +14,11 @@ const root = ReactDOM.createRoot(
 
 async function render() {
   try {
-    root.render(<MainRoot />);
+    root.render(
+      <Suspense>
+        <MainRoot />
+      </Suspense>
+  );
   } catch (error) {
     root.render(null);
   }
