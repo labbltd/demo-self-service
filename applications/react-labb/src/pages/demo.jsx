@@ -4,7 +4,7 @@ import {
   Button
 } from "@material-tailwind/react";
 import { Link, useLocation } from "react-router-dom";
-import { clientsData } from "../../data/clients-data";
+import { clientsData } from "../data/clients-data";
 import './scenarios.css';
 
 export function Demo() {

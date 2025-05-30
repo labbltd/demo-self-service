@@ -1,4 +1,4 @@
-import { videos } from "../../data/videos-data";
+import { videos } from "../data/videos-data";
 
 export function Videos() {
     return <div className="p-10 grid grid-cols-2 sm:grid-cols-1 gap-4">

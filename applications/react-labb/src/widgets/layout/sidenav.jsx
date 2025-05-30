@@ -24,7 +24,7 @@ export function Sidenav({ routes }) {
       className={`${sidenavTypes[sidenavType]} ${openSidenav ? "translate-x-0" : "-translate-x-80"
         } fixed inset-0 z-50 h-[100vh] w-72 transition-transform duration-300 xl:translate-x-0`}
       style={location.pathname === '/dashboard' ? { backgroundColor: 'black' } : {
-        backgroundImage: 'url(./img/pw-labb-lion-head.svg)',
+        backgroundImage: 'url(./img/pw-labb-lion-head.png)',
         backgroundSize: '500px',
         backgroundPositionX: '-200px',
         backgroundPositionY: 'bottom',
