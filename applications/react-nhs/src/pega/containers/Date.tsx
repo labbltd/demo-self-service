@@ -1,22 +1,26 @@
 import { PContainer } from '@labb/dx-engine';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function DxDate(props: {
   container: PContainer;
 }): JSX.Element {
-  const {
-    label,
-    required,
-    value,
-    validatemessage,
-    helperText
-  } = props.container.config;
+  const { container } = props;
   const id = props.container.getId();
-  const [date, setDate] = useState((value && value.split('-')) || ['', '', '']);
+  const [date, setDate] = useState((container.config.value && container.config.value.split('-')) || ['', '', '']);
+
+  useEffect(() => {
+    setDate(toDate());
+  }, [container.config.value]);
+
+  function toDate() {
+    return (container.config.value && container.config.value.split('-')) || ['', '', '']
+  }
 
   function updateDate() {
     if (date[0] && date[1] && date[2]) {
-      props.container.updateFieldValue(new Date(date.join('-')).toISOString().split('T')[0]);
+      const val = new Date(date.join('-')).toISOString().split('T')[0];
+      props.container.updateFieldValue(val);
+      props.container.triggerFieldChange(val);
     }
   }
 
@@ -31,16 +35,16 @@ export default function DxDate(props: {
   }
 
   return (
-    <div className={"nhsuk-form-group" + (validatemessage ? " nhsuk-form-group--error" : "")}>
-      <fieldset className="nhsuk-fieldset" role="group" aria-describedby={(helperText && `${id}-hint`) + (validatemessage && ` ${id}-error`)}>
+    <div className={"nhsuk-form-group" + (container.config.validatemessage ? " nhsuk-form-group--error" : "")}>
+      <fieldset className="nhsuk-fieldset" role="group" aria-describedby={(container.config.helperText && `${id}-hint`) + (container.config.validatemessage && ` ${id}-error`)}>
         <legend className="nhsuk-fieldset__legend">
-          {label}{!required ? ' (Optional)' : ''}
+          {container.config.label}{!container.config.required ? ' (Optional)' : ''}
         </legend>
-        {helperText && <div id={`${id}-hint`} className="nhsuk-hint">
-          {helperText}
+        {container.config.helperText && <div id={`${id}-hint`} className="nhsuk-hint">
+          {container.config.helperText}
         </div>}
-        {validatemessage && <p id={`${id}-error`} className="nhsuk-error-message">
-          <span className="nhsuk-visually-hidden">Error:</span> {validatemessage}
+        {container.config.validatemessage && <p id={`${id}-error`} className="nhsuk-error-message">
+          <span className="nhsuk-visually-hidden">Error:</span> {container.config.validatemessage}
         </p>}
         <div className="nhsuk-date-input" id={id}>
           <div className="nhsuk-date-input__item">

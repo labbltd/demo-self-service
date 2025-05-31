@@ -12,7 +12,6 @@ export default function DxLocation(props: { container: Location }) {
             if (map.current) {
                 await container.loadMap(map.current);
             }
-
         })();
     }, [map.current]);
 
@@ -48,7 +47,7 @@ export default function DxLocation(props: { container: Location }) {
                         )}
                     </select>
                 }
-                {container.config.value && <div ref={map} style={{ height: '25rem' }}></div>}
+                <div ref={map} style={{ height: '25rem', display: container.config.value ? 'block' : 'none' }}></div>
             </>
         }
     </>

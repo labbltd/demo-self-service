@@ -14,7 +14,7 @@ watch(folder, { recursive: true }, function (evt, file) {
         child.stderr.pipe(process.stderr);
 
         child.on('close', (code) => {
-            console.log(`child process exited with code ${code}`);
+            console.log(code ? '❌' : '✅')
         });
     }
 });

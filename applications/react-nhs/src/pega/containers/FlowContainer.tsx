@@ -32,12 +32,11 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
     {!props.container.hasAssignment() && <>
       {todoAssignments.map(assignment =>
         <div key={assignment.ID}>
-          <div>{assignment.processName} {'>'} {assignment.name}</div>
-          <div>Assigned to {assignment.assigneeInfo?.name}</div>
-          <button type="button" onClick={() => openAssignment(assignment)}>Go</button>
+          <p>{assignment.processName} {'>'} {assignment.name}</p>
+          <p>Assigned to {assignment.assigneeInfo?.name}</p>
+          <button className="nhsuk-button nhsuk-button--secondary" type="button" onClick={() => openAssignment(assignment)}>Go</button>
         </div>
       )}
-      {todoAssignments.length === 0 && <p>Thank you for your request. We will contact you as soon as possible.</p>}
     </>}
     {props.container.hasAssignment() && <div>
       <h1 className="nhsuk-heading-l">
@@ -83,7 +82,6 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
       {errorMessage && <div className="nhsuk-warning-text">
         <span className="nhsuk-warning-text__icon" aria-hidden="true">!</span>
         <strong className="nhsuk-warning-text__text">
-          <span className="nhsuk-warning-text__assistive">Warning</span>
           Please correct the fields in the form above.
         </strong>
       </div>}

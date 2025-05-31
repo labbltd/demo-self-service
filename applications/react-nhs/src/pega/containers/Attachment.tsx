@@ -19,18 +19,20 @@ export default function DxAttachment(props: {
 
   const error = props.container.config.validatemessage;
   return <>
-    <div className={"nhsuk-form-group" + (error ? ' nhsuk-form-group--error' : '')}>
-      <label className="nhsuk-label" htmlFor={props.container.id}>
-        {props.container.config.label}
+    <div className={"nhsuk-form-group" + (container.config.validatemessage ? " nhsuk-form-group--error" : "")}>
+      <label className="nhsuk-label" htmlFor={container.id}>
+        {container.config.label}{!container.config.required ? ' (Optional)' : ''}
       </label>
-      {error && <p className="nhsuk-error-message">
-        <span className="nhsuk-visually-hidden">Error:</span> {error}
+      {container.config.helperText && <div className="nhsuk-hint">
+        {container.config.helperText}
+      </div>}
+      {container.config.validatemessage && <p className="nhsuk-error-message">
+        <span className="nhsuk-visually-hidden">Error:</span> {container.config.validatemessage}
       </p>}
-      <input className={"nhsuk-file-upload" + (error ? ' nhsuk-file-upload--error' : '')} id={props.container.id} name={props.container.id} type="file"
+      <input className={"nhsuk-input nhsuk-file-upload" + (error ? ' nhsuk-file-upload--error' : '')} id={props.container.id} name={props.container.id} type="file"
+        multiple={props.container.config.allowMultiple === 'true'}
         onChange={(e) => props.container.uploadFile(e as unknown as Event)}
       />
-      {props.container.config.helperText}
-      {props.container.config.validatemessage}
     </div>
     {
       container.files.length > 0 &&
@@ -43,8 +45,8 @@ export default function DxAttachment(props: {
               <td>{file.type}</td>
               <td>{file.progress}%</td>
               <td>
-                <button type="button" onClick={() => container.removeFile(file.id)}>Delete</button>
-                {file.type.startsWith('image') && <button type="button" onClick={async () => preview(file)}>Preview</button>}
+                <button type="button" className="nhsuk-button--secondary" onClick={() => container.removeFile(file.id)}>Delete</button>
+                {file.type.startsWith('image') && <button type="button" className="nhsuk-button--secondary" onClick={async () => preview(file)}>Preview</button>}
               </td>
             </tr>
           )}

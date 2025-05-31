@@ -1,10 +1,18 @@
 import { PContainer } from "@labb/dx-engine";
-import { ChangeEvent, useEffect, useRef } from "react";
-import IMask from 'imask';
+import IMask, { InputMask } from 'imask';
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 
 export default function DxMaskedInput(props: { container: PContainer }) {
     const input = useRef(null);
+    const [mask, setMask] = useState<InputMask>();
     const { container } = props;
+
+    useEffect(() => {
+        if (mask) {
+            mask.value = container.config.value;
+        }
+    }, [container.config.value]);
+
 
     useEffect(() => {
         if (input.current) {
@@ -16,10 +24,11 @@ export default function DxMaskedInput(props: { container: PContainer }) {
                     A: /[A-Z]/
                 }
             }
-            IMask(input.current, maskOptions);
+            const mask = IMask(input.current, maskOptions);
+            mask.value = container.config.value;
+            setMask(mask);
         }
     }, [input.current])
-
 
     function getValue(event: ChangeEvent) {
         return (event.target as HTMLInputElement).value;
@@ -51,9 +60,10 @@ export default function DxMaskedInput(props: { container: PContainer }) {
                 id={container.id}
                 type="text"
                 placeholder={container.config.placeholder}
-                value={container.config.value}
-                onChange={e => container.updateFieldValue(getValue(e))}
-                onBlur={e => container.triggerFieldChange(getValue(e))}
+                onBlur={e => {
+                    container.updateFieldValue(getValue(e));
+                    container.triggerFieldChange(getValue(e));
+                }}
             />
         </div>
     </>

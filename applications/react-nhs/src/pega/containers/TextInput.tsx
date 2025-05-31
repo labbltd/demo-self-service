@@ -4,20 +4,12 @@ import { ChangeEvent, HTMLInputTypeAttribute, useState } from 'react';
 export default function TextInput(props: {
   container: PContainer;
 }): JSX.Element {
-  const [value, setValue] = useState<any>(props.container.config.value);
-  const {
-    fieldMetadata,
-    precision,
-    label,
-    required,
-    readOnly,
-    validatemessage,
-    helperText
-  } = props.container.config;
-  const id = props.container.getId();
+  const { container } = props;
+  const [value, setValue] = useState<any>(container.config.value);
+  const id = container.getId();
 
   function type(): HTMLInputTypeAttribute {
-    switch (fieldMetadata?.type) {
+    switch (container.config.fieldMetadata?.type) {
       case 'Decimal':
         return 'number';
       case 'Integer':
@@ -31,7 +23,7 @@ export default function TextInput(props: {
       case 'TimeOfDay':
         return 'time';
       case 'Text':
-        switch (fieldMetadata?.displayAs) {
+        switch (container.config.fieldMetadata?.displayAs) {
           case 'pxEmail':
             return 'email';
           default:
@@ -52,7 +44,7 @@ export default function TextInput(props: {
     | 'decimal'
     | 'search'
     | undefined {
-    switch (fieldMetadata?.type) {
+    switch (container.config.fieldMetadata?.type) {
       case 'Decimal':
         return 'decimal';
       case 'Percentage':
@@ -65,10 +57,10 @@ export default function TextInput(props: {
   }
 
   function step(): string | number | undefined {
-    switch (fieldMetadata?.type) {
+    switch (container.config.fieldMetadata?.type) {
       case 'Decimal':
       case 'Percentage':
-        return '0.' + '1'.padStart(precision ?? 2, '0');
+        return '0.' + '1'.padStart(container.config.precision ?? 2, '0');
       case 'Integer':
         return 1;
       default:
@@ -95,52 +87,49 @@ export default function TextInput(props: {
     if (type() === 'date') return formatters.Date(value);
     if (type() === 'datetime-local') return formatters.DateTime(value);
     if (type() === 'time') return formatters.Time(value);
-    if (type() === 'number' && props.container.config.currencyISOCode) return formatters.Currency(value);
+    if (type() === 'number' && container.config.currencyISOCode) return formatters.Currency(value);
     return value;
   }
 
   function change(event: ChangeEvent<HTMLInputElement>) {
     if (type() !== 'date') {
-      props.container.updateFieldValue(getValue(event.target))
+      container.updateFieldValue(getValue(event.target))
     }
     setValue(getValue(event.target));
   }
 
   function blur(event: ChangeEvent<HTMLInputElement>) {
     if (type() === 'date') {
-      props.container.updateFieldValue(getValue(event.target))
+      container.updateFieldValue(getValue(event.target))
     }
-    props.container.triggerFieldChange(getValue(event.target))
+    container.triggerFieldChange(getValue(event.target))
   }
 
-  if (props.container.config.readOnly) {
+  if (container.config.readOnly) {
     return <div className="nhsuk-summary-list__row">
       <dt className="nhsuk-summary-list__key">
-        {props.container.config.label}
+        {container.config.label}
       </dt>
-      <dd className="nhsuk-summary-list__value" dangerouslySetInnerHTML={{ __html: format(props.container.config.value) }}>
+      <dd className="nhsuk-summary-list__value" dangerouslySetInnerHTML={{ __html: format(container.config.value) }}>
       </dd>
     </div>
   }
   return (
-    <div className={"nhsuk-form-group" + (validatemessage ? " nhsuk-form-group--error" : "")}>
+    <div className={"nhsuk-form-group" + (container.config.validatemessage ? " nhsuk-form-group--error" : "")}>
       <label className="nhsuk-label" htmlFor={id}>
-        {label}{!required ? ' (Optional)' : ''}
+        {container.config.label}{!container.config.required ? ' (Optional)' : ''}
       </label>
-      {helperText && <div className="nhsuk-hint">
-        {helperText}
+      {container.config.helperText && <div className="nhsuk-hint">
+        {container.config.helperText}
       </div>}
-      {validatemessage && <p className="nhsuk-error-message">
-        <span className="nhsuk-visually-hidden">Error:</span> {validatemessage}
+      {container.config.validatemessage && <p className="nhsuk-error-message">
+        <span className="nhsuk-visually-hidden">Error:</span> {container.config.validatemessage}
       </p>}
       <input className="nhsuk-input" name={id} id={id}
         type={type()}
         inputMode={inputmode()}
         step={step()}
-        value={props.container.config.value}
-        readOnly={readOnly}
-        disabled={readOnly}
-        required={required}
+        value={value}
         onChange={e => change(e)}
         onBlur={e => blur(e)}
       />

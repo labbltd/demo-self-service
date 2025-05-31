@@ -1,9 +1,9 @@
-import { PContainer } from '@labb/dx-engine';
-import { HTMLInputTypeAttribute } from 'react';
 import { TextInput } from '@carbon/react';
+import { formatters, PContainer } from '@labb/dx-engine';
+import { HTMLInputTypeAttribute } from 'react';
 
 export default function DxTextInput(props: { container: PContainer }): JSX.Element {
-  const { label, helperText, validatemessage, fieldMetadata } = props.container.config;
+  const { container } = props;
 
   function onChange(value: number | Date | boolean | string | null) {
     props.container.updateFieldValue(value)
@@ -14,7 +14,7 @@ export default function DxTextInput(props: { container: PContainer }): JSX.Eleme
   }
 
   function type(): HTMLInputTypeAttribute {
-    switch (fieldMetadata?.type) {
+    switch (container.config.fieldMetadata?.type) {
       case 'Decimal':
         return 'number';
       case 'Integer':
@@ -28,7 +28,7 @@ export default function DxTextInput(props: { container: PContainer }): JSX.Eleme
       case 'TimeOfDay':
         return 'time';
       case 'Text':
-        switch (fieldMetadata?.displayAs) {
+        switch (container.config.fieldMetadata?.displayAs) {
           case 'pxEmail':
             return 'email';
           default:
@@ -54,15 +54,25 @@ export default function DxTextInput(props: { container: PContainer }): JSX.Eleme
         return t.value;
     }
   }
-
+  function format(value: any) {
+    if (type() === 'date') return formatters.Date(value);
+    if (type() === 'datetime-local') return formatters.DateTime(value);
+    if (type() === 'time') return formatters.Time(value);
+    if (type() === 'number' && props.container.config.currencyISOCode) return formatters.Currency(value);
+    return value;
+  }
+  if (props.container.config.readOnly) {
+    return <><dt>{props.container.config.label}</dt><dd>{format(props.container.config.value) ?? '--'}</dd></>;
+  }
   return (
     <TextInput
-      id={label}
+      id={container.config.label}
       type={type()}
-      labelText={label}
-      helperText={helperText}
-      invalid={!!validatemessage}
-      invalidText={validatemessage}
+      labelText={container.config.label}
+      helperText={container.config.helperText}
+      invalid={!!container.config.validatemessage}
+      invalidText={container.config.validatemessage}
+      value={container.config.value}
       onChange={e => onChange(getValue(e.target))}
       onBlur={e => onBlur(getValue(e.target))}
     />

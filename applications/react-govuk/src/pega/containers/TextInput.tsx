@@ -4,20 +4,11 @@ import { HTMLInputTypeAttribute } from 'react';
 export default function TextInput(props: {
   container: PContainer;
 }): JSX.Element {
-  const {
-    fieldMetadata,
-    precision,
-    label,
-    required,
-    value,
-    readOnly,
-    validatemessage,
-    helperText
-  } = props.container.config;
+  const { container } = props;
   const id = props.container.getId();
 
   function type(): HTMLInputTypeAttribute {
-    switch (fieldMetadata?.type) {
+    switch (container.config.fieldMetadata?.type) {
       case 'Decimal':
         return 'number';
       case 'Integer':
@@ -31,7 +22,7 @@ export default function TextInput(props: {
       case 'TimeOfDay':
         return 'time';
       case 'Text':
-        switch (fieldMetadata?.displayAs) {
+        switch (container.config.fieldMetadata?.displayAs) {
           case 'pxEmail':
             return 'email';
           default:
@@ -52,7 +43,7 @@ export default function TextInput(props: {
     | 'decimal'
     | 'search'
     | undefined {
-    switch (fieldMetadata?.type) {
+    switch (container.config.fieldMetadata?.type) {
       case 'Decimal':
         return 'decimal';
       case 'Percentage':
@@ -65,10 +56,10 @@ export default function TextInput(props: {
   }
 
   function step(): string | number | undefined {
-    switch (fieldMetadata?.type) {
+    switch (container.config.fieldMetadata?.type) {
       case 'Decimal':
       case 'Percentage':
-        return '0.' + '1'.padStart(precision ?? 2, '0');
+        return '0.' + '1'.padStart(container.config.precision ?? 2, '0');
       case 'Integer':
         return 1;
       default:
@@ -104,22 +95,22 @@ export default function TextInput(props: {
   }
 
   return (
-    <div className={"govuk-form-group" + (validatemessage ? " govuk-form-group--error" : "")}>
+    <div className={"govuk-form-group" + (container.config.validatemessage ? " govuk-form-group--error" : "")}>
       <label className="govuk-label" htmlFor={id}>
-        {label}{!required ? ' (Optional)' : ''}
+        {container.config.label}{!container.config.required ? ' (Optional)' : ''}
       </label>
-      {helperText && <div className="govuk-hint">
-        {helperText}
+      {container.config.helperText && <div className="govuk-hint">
+        {container.config.helperText}
       </div>}
-      {validatemessage && <p className="govuk-error-message">
-        <span className="govuk-visually-hidden">Error:</span> {validatemessage}
+      {container.config.validatemessage && <p className="govuk-error-message">
+        <span className="govuk-visually-hidden">Error:</span> {container.config.validatemessage}
       </p>}
       <input className="govuk-input" name={id}
         type={type()}
         inputMode={inputmode()}
         step={step()}
-        value={value}
-        required={required}
+        value={container.config.value}
+        required={container.config.required}
         onChange={(e) => props.container.updateFieldValue(getValue(e.target))}
         onBlur={(e) => props.container.triggerFieldChange(getValue(e.target))}
       />

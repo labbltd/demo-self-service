@@ -2,14 +2,30 @@ import { PContainer } from '@labb/dx-engine';
 import { GeneratePContainer } from '@labb/react-adapter';
 
 export default function DxDefaultForm(props: { container: PContainer }) {
-  if (props.container.children.length === 0) {
-    return null;
+  const { container } = props;
+
+  function getClassName() {
+    let divClass = 'one-column';
+    switch (container.config.NumCols ?? '1') {
+      case '1':
+        divClass = 'one-column';
+        break;
+      case '2':
+        divClass = 'two-column';
+        break;
+      case '3':
+        divClass = 'three-column';
+        break;
+      default:
+        divClass = 'one-column';
+        break;
+    }
+    if (container.children.length <= 2) {
+      divClass = 'one-column';
+    }
+    return divClass
   }
-  return <div style={{ paddingTop: '15px' }}>
-    {props.container.config.label && props.container.config.showLabel ? <h2>{props.container.config.label}</h2> : null}
-    {props.container.config.instructions && props.container.config.instructions !== 'none' ? <div dangerouslySetInnerHTML={{ __html: props.container.config.instructions }}></div> : null}
-    {props.container.children.map((child, index) => (
-      <GeneratePContainer key={child.id + index} container={child} />
-    ))}
-  </div>
+  return <div className={getClassName()}>{props.container.children.map((child, index) => (
+    <GeneratePContainer key={child.id + index} container={child} />
+  ))}</div>
 }

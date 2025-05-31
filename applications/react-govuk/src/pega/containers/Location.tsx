@@ -2,10 +2,10 @@ import { Location } from "@labb/dx-engine";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 
 export default function DxLocation(props: { container: Location }) {
+    const { container } = props;
     const map = useRef(null);
     const [suggestions, setSuggestions] = useState<string[]>([]);
-    const [searchValue, setSearchValue] = useState<string>(props.container.config.value);
-    const { container } = props;
+    const [searchValue, setSearchValue] = useState<string>(container.config.value);
 
     useEffect(() => {
         (async () => {
@@ -29,18 +29,24 @@ export default function DxLocation(props: { container: Location }) {
     if (container.config.readOnly) {
         return <div className="govuk-summary-list__row">
             <dt className="govuk-summary-list__key">
-                {props.container.config.label}
+                {container.config.label}
             </dt>
             <dd className="govuk-summary-list__value">
-                {props.container.config.value}
+                {container.config.value}
             </dd>
         </div>
     }
     return <>
-        <div className="govuk-form-group">
-            <label className="govuk-label">
-                {container.config.label}
+        <div className={"govuk-form-group" + (container.config.validatemessage ? ' govuk-form-group--error' : '')}>
+            <label className="govuk-label" htmlFor={container.id}>
+                {container.config.label}{!container.config.required && ' (Optional)'}
             </label>
+            {container.config.helperText && <div className="govuk-hint">
+                {container.config.helperText}
+            </div>}
+            {container.config.validatemessage && <p className="govuk-error-message">
+                <span className="govuk-visually-hidden">Error:</span> {container.config.validatemessage}
+            </p>}
             <input className="govuk-input"
                 type="text"
                 value={searchValue}
@@ -62,6 +68,6 @@ export default function DxLocation(props: { container: Location }) {
                 </select>
             </div>
         }
-        <div ref={map} style={{ height: '25rem' }}></div>
+        <div ref={map} style={{ height: '25rem', display: container.config.value ? 'block' : 'none' }}></div>
     </>
 }

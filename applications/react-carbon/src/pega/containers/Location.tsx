@@ -1,5 +1,6 @@
+import { Select, SelectItem, TextInput } from "@carbon/react";
 import { Location } from "@labb/dx-engine";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function DxLocation(props: { container: Location }) {
     const map = useRef(null);
@@ -15,30 +16,57 @@ export default function DxLocation(props: { container: Location }) {
         })();
     }, [map.current]);
 
-    async function updateSearch(event: ChangeEvent) {
-        const value = (event.target as HTMLInputElement)?.value;
+    useEffect(() => {
+        if (container.config.value) {
+            updateSearch(container.config.value);
+            container.setLocation(container.config.value);
+        }
+    }, [container.config.value])
+
+    async function updateSearch(event: { target: HTMLInputElement }) {
+        const value = event.target?.value;
         setSearchValue(value)
         setSuggestions(await container.getPlacePredictions(value));
     }
 
-    async function select(event: ChangeEvent) {
-        const value = (event.target as HTMLSelectElement).value;
-        container.updateFieldValue(value);
-        container.triggerFieldChange(value);
+    async function select(event: { target: HTMLInputElement }) {
+        container.setLocation(event.target.value);
     }
-
+    if (props.container.config.readOnly) {
+        return <><dt>{props.container.config.label}</dt><dd>{props.container.config.value ?? '--'}</dd></>;
+    }
     return <>
-        <label> {container.config.label}
-            <input type="text" value={searchValue} onChange={(event) => updateSearch(event)} />
-        </label>
-        {suggestions.length > 0 &&
-            <select value={container.config.value} onChange={(event) => select(event)}>
+        <TextInput
+            id={container.config.label}
+            type="text"
+            value={searchValue}
+            labelText={container.config.label}
+            helperText={container.config.helperText}
+            invalid={!!container.config.validatemessage}
+            invalidText={container.config.validatemessage}
+            onChange={(event) => updateSearch(event)}
+        />
+        {suggestions.length > 0 && <>
+            <Select
+                id={container.config.label}
+                defaultValue="Select..."
+                value={container.config.value}
+                labelText={container.config.label}
+                helperText={container.config.helperText}
+                invalid={!!container.config.validatemessage}
+                invalidText={container.config.validatemessage}
+                onChange={(event) => select(event)}>
                 <option value={''}>Select {container.config.label}...</option>
                 {suggestions.map(suggestion =>
-                    <option key={suggestion} value={suggestion}>{suggestion}</option>
+                    <SelectItem
+                        key={suggestion}
+                        value={suggestion}
+                        text={suggestion}
+                    />
                 )}
-            </select>
+            </Select>
+        </>
         }
-        <div ref={map} style={{ height: '25rem' }}></div>
+        <div ref={map} style={{ height: '25rem', display: container.config.value ? 'block' : 'none' }}></div>
     </>
 }

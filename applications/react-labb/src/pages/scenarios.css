@@ -1,4 +1,3 @@
-
 /* The browser window */
 .browser-container {
     border: 3px solid #f1f1f1;
@@ -6,6 +5,8 @@
     border-top-right-radius: 8px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 0px 20px, rgba(0, 0, 0, 0.23) 0px 0px 6px;
+    margin: 1rem;
 }
 
 /* Container for columns and the top "toolbar" */
@@ -26,11 +27,11 @@
 }
 
 .browser-right {
-    width: 10%;
+    width: 15%;
 }
 
 .browser-middle {
-    width: 75%;
+    width: 35%;
 }
 
 /* Clear floats after the columns */
@@ -60,7 +61,6 @@
     margin-top: -8px;
     height: 25px;
     color: #666;
-    padding: 5px;
 }
 
 /* Three bars (hamburger menu) */

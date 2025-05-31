@@ -49,7 +49,7 @@ function MainNhs() {
     <div className="nhsuk-width-container">
       <main className="nhsuk-main-wrapper" id="maincontent" role="main">
         <div className="nhsuk-grid-row">
-          <div className="nhsuk-grid-column-two-thirds">
+          <div className="nhsuk-grid-column-three-quarters">
             <h1>{title}</h1>
             <Main setTitle={setTitle} />
           </div>

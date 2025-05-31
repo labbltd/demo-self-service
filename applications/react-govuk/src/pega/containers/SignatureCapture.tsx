@@ -48,10 +48,20 @@ export default function DxSignatureCapture(props: { container: PContainer }) {
         setHasValueChanged(true);
     }
 
-    return <><div className="govuk-form-group">
-        <label className="govuk-label">
-            {container.config.label}
-        </label></div>
+    const label = container.config.inheritedProps.find((prop: { prop: string, value: string }) => prop.prop === 'label')?.value || container.config.label;
+
+    return <>
+        <div className={"govuk-form-group" + (container.config.validatemessage ? ' govuk-form-group--error' : '')}>
+            <label className="govuk-label" htmlFor={container.id}>
+                {label}{!container.config.required && ' (Optional)'}
+            </label>
+            {container.config.helperText && <div className="govuk-hint">
+                {container.config.helperText}
+            </div>}
+            {container.config.validatemessage && <p className="govuk-error-message">
+                <span className="govuk-visually-hidden">Error:</span> {container.config.validatemessage}
+            </p>}
+        </div>
         {container.config.readOnly && <img src={container.config.value} />}
         {
             !container.config.readOnly && <>

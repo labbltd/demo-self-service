@@ -32,12 +32,11 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
     {!props.container.hasAssignment() && <>
       {todoAssignments.map(assignment =>
         <div key={assignment.ID}>
-          <div>{assignment.processName} {'>'} {assignment.name}</div>
-          <div>Assigned to {assignment.assigneeInfo?.name}</div>
-          <button type="button" onClick={() => openAssignment(assignment)}>Go</button>
+          <div className="govuk-body">{assignment.processName} {'>'} {assignment.name}</div>
+          <div className="govuk-body">Assigned to {assignment.assigneeInfo?.name}</div>
+          <button className="govuk-button" type="button" onClick={() => openAssignment(assignment)}>Go</button>
         </div>
       )}
-      {todoAssignments.length === 0 && <p>Thank you for your request. We will contact you as soon as possible.</p>}
     </>}
     {props.container.hasAssignment() && <div>
       <h1 className="govuk-heading-l">

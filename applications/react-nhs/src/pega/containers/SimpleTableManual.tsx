@@ -10,7 +10,7 @@ export default function DxSimpleTableManual(props: { container: SimpleTableManua
       <table className="nhsuk-table">
         <thead className="nhsuk-table__head">
           <tr className="nhsuk-table__row">
-            {container.processedFields.map(col => <th className="nhsuk-table__cell" key={col.config.name}>{col.config.name}</th>)}
+            {container.processedFields.map(col => <th className="nhsuk-table__cell" key={col.config.label}>{col.config.label}</th>)}
           </tr>
         </thead>
         <tbody className="nhsuk-table__body">

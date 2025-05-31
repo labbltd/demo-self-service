@@ -5,12 +5,16 @@ export default function DxSimpleTableManual(props: { container: SimpleTableManua
   const { container } = props;
 
   return <>
-    {container.config.label && <h3>{container.config.label}</h3>}
+    <div className={"govuk-form-group"}>
+      <label className="govuk-label" htmlFor={props.container.id}>
+        {props.container.label}
+      </label>
+    </div>
     {container.readOnlyMode &&
       <table className="govuk-table">
         <thead className="govuk-table__head">
           <tr className="govuk-table__row">
-            {container.processedFields.map(col => <th className="govuk-table__cell" key={col.config.name}>{col.config.name}</th>)}
+            {container.processedFields.map(col => <th className="govuk-table__cell" key={col.config.label}>{col.config.label}</th>)}
           </tr>
         </thead>
         <tbody className="govuk-table__body">

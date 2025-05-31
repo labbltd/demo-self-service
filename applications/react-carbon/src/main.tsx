@@ -5,7 +5,6 @@ import { DemoBootstrap } from '@labb/demo-utilities';
 import { PegaEmbed } from '@labb/react-adapter';
 
 import './pega/ContainerMapping';
-import './styles.scss';
 
 import { TokenInfo } from '@labb/constellation-core-types';
 import LabbContent from './pega/components/content';

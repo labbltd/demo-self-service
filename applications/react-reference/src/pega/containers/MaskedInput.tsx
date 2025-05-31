@@ -16,7 +16,8 @@ export default function DxMaskedInput(props: { container: PContainer }) {
                     A: /[A-Z]/
                 }
             }
-            IMask(input.current, maskOptions);
+            const mask = IMask(input.current, maskOptions);
+            mask.value = container.config.value;
         }
     }, [input.current])
 
@@ -42,9 +43,10 @@ export default function DxMaskedInput(props: { container: PContainer }) {
                 id={container.id}
                 type="text"
                 placeholder={container.config.placeholder}
-                value={container.config.value}
-                onChange={e => container.updateFieldValue(getValue(e))}
-                onBlur={e => container.triggerFieldChange(getValue(e))}
+                onBlur={e => {
+                    container.updateFieldValue(getValue(e));
+                    container.triggerFieldChange(getValue(e));
+                }}
             />
         </>}
         {container.config.validatemessage && <span>{container.config.validatemessage}</span>}

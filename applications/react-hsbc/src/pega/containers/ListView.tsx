@@ -57,9 +57,9 @@ export default function DxListView(props: { container: ListView }) {
               }
               {container.fields.map(col => container.showButton(col.config.name, col) ?
                 <td key={col.config.name}>
-                  <button type="button"
-                    onClick={() => container.listViewClick(col.config, row)}
-                    dangerouslySetInnerHTML={{ __html: row[col.config.name] || '---' }}></button>
+                  <a type="button" href="#"
+                    onClick={(e) => { e.preventDefault(); container.listViewClick(col.config, row) }}
+                    dangerouslySetInnerHTML={{ __html: row[col.config.name] || '---' }}></a>
                 </td> :
                 <td key={col.config.name} dangerouslySetInnerHTML={{ __html: row[col.config.name] || '---' }}></td>
               )}

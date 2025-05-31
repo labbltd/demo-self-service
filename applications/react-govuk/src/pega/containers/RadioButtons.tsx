@@ -8,6 +8,10 @@ export default function RadioButtons(props: { container: PContainer }) {
     return (target as HTMLInputElement).value;
   }
 
+  if (props.container.config.readOnly) {
+    return <><dt>{props.container.config.label}</dt><dd>{props.container.config.value ?? '--'}</dd></>;
+  } 
+
   return (
     <div className={"govuk-form-group" + (validatemessage ? " govuk-form-group--error" : "")}>
       <fieldset className="govuk-fieldset">

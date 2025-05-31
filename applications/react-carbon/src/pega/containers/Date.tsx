@@ -1,28 +1,34 @@
-import { PContainer } from '@labb/dx-engine';
 import {
   DatePicker, DatePickerInput
 } from '@carbon/react';
+import { PContainer } from '@labb/dx-engine';
 
 export default function Date(props: {
   container: PContainer;
 }): JSX.Element {
-  const { label, validatemessage, helperText } = props.container.config;
+  const { container } = props;
   const id = props.container.getId();
 
   function onChange(dates: Date[]): void {
-    props.container.updateFieldValue(dates[0].toISOString());
-    props.container.triggerFieldChange(dates[0].toISOString());
+    const val = dates[0].toISOString().split('T')[0];
+    props.container.updateFieldValue(val);
+    props.container.triggerFieldChange(val);
   }
 
+  if (props.container.config.readOnly) {
+    return <><dt>{props.container.config.label}</dt><dd>{props.container.config.value ?? '--'}</dd></>;
+  }
+  
   return (
     <DatePicker datePickerType="single" onChange={onChange}>
       <DatePickerInput
         id={id}
-        labelText={label}
+        labelText={container.config.label}
         placeholder="mm/dd/yyyy"
-        invalid={!!validatemessage}
-        invalidText={validatemessage}
-        helperText={helperText}
+        value={container.config.value}
+        invalid={!!container.config.validatemessage}
+        invalidText={container.config.validatemessage}
+        helperText={container.config.helperText}
         size="lg"
       />
     </DatePicker>

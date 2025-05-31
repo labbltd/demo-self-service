@@ -7058,3 +7058,20 @@
     width: 25% !important;
   }
 }
+
+dialog {
+  max-width: 50%;
+  margin: auto;
+}
+
+.two-column {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: calc(1rem);
+}
+
+.three-column {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: calc(1rem);
+}

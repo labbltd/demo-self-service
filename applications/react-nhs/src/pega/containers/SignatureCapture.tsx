@@ -48,16 +48,20 @@ export default function DxSignatureCapture(props: { container: PContainer }) {
         setHasValueChanged(true);
     }
 
+    const label = container.config.inheritedProps.find((prop: { prop: string, value: string }) => prop.prop === 'label')?.value || container.config.label;
+
     return <>
-        <label className="nhsuk-label" htmlFor={container.id}>
-            {container.config.label}{!container.config.required ? ' (Optional)' : ''}
-        </label>
-        {container.config.helperText && <div className="nhsuk-hint">
-            {container.config.helperText}
-        </div>}
-        {container.config.validatemessage && <p className="nhsuk-error-message">
-            <span className="nhsuk-visually-hidden">Error:</span> {container.config.validatemessage}
-        </p>}
+        <div className={"nhsuk-form-group" + (container.config.validatemessage ? " nhsuk-form-group--error" : "")}>
+            <label className="nhsuk-label" htmlFor={container.id}>
+                {label}{!container.config.required ? ' (Optional)' : ''}
+            </label>
+            {container.config.helperText && <div className="nhsuk-hint">
+                {container.config.helperText}
+            </div>}
+            {container.config.validatemessage && <p className="nhsuk-error-message">
+                <span className="nhsuk-visually-hidden">Error:</span> {container.config.validatemessage}
+            </p>}
+        </div>
         {container.config.readOnly && <img src={container.config.value} />}
         {
             !container.config.readOnly && <>

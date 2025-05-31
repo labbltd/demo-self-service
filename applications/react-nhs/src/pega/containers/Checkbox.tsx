@@ -21,18 +21,20 @@ export default function Checkbox(props: {
     </div>
   }
   return (
-    <div className="nhsuk-checkboxes__item">
-      {label}
-      <input className="nhsuk-checkboxes__input" id={id} name={id} type="checkbox" value={caption} onChange={(e) => onChange(e.target.checked)} />
-      <label className="nhsuk-label nhsuk-checkboxes__label" htmlFor={id}>
-        {caption}
-      </label>
-      {helperText && <div className="nhsuk-hint">
-        {helperText}
-      </div>}
-      {validatemessage && <p className="nhsuk-error-message">
-        <span className="nhsuk-visually-hidden">Error:</span> {validatemessage}
-      </p>}
+    <div className={"nhsuk-form-group" + (validatemessage ? " nhsuk-form-group--error" : "")}>
+      <div className="nhsuk-checkboxes__item">
+        {label}
+        <input className="nhsuk-checkboxes__input" id={id} name={id} type="checkbox" value={caption} onChange={(e) => onChange(e.target.checked)} />
+        <label className="nhsuk-label nhsuk-checkboxes__label" htmlFor={id}>
+          {caption}
+        </label>
+        {helperText && <div className="nhsuk-hint">
+          {helperText}
+        </div>}
+        {validatemessage && <p className="nhsuk-error-message">
+          <span className="nhsuk-visually-hidden">Error:</span> {validatemessage}
+        </p>}
+      </div>
     </div>
   );
 }

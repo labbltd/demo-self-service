@@ -4,33 +4,29 @@ import {
   Select,
   SelectItem
 } from '@carbon/react';
+import { PicklistProps } from '@labb/constellation-core-types';
 
-interface DropdownConfig {
-  label: string;
-  helperText: string;
-  validatemessage: string;
-  datasource: { key: string, value: string }[];
-  visibility: boolean;
-}
-
-export default function DxDropdown(props: { container: PContainer<DropdownConfig> }) {
-  const { label, helperText, validatemessage, datasource } = props.container.config;
+export default function DxDropdown(props: { container: PContainer<PicklistProps> }) {
+  const { container } = props;
 
   function onChange(value: string) {
     props.container.updateFieldValue(value);
     props.container.triggerFieldChange(value);
   }
-
+  if (props.container.config.readOnly) {
+    return <><dt>{props.container.config.label}</dt><dd>{props.container.config.value ?? '--'}</dd></>;
+  }
   return (
     <Select
-      id={label}
+      id={container.config.label}
       defaultValue="Select..."
-      labelText={label}
-      helperText={helperText}
-      invalid={!!validatemessage}
-      invalidText={validatemessage}
+      value={container.config.value}
+      labelText={container.config.label}
+      helperText={container.config.helperText}
+      invalid={!!container.config.validatemessage}
+      invalidText={container.config.validatemessage}
       onChange={e => onChange(e.target.value)}>
-      {datasource.map(option => (
+      {container.config.datasource.map(option => (
         <SelectItem
           key={option.key}
           value={option.key}
