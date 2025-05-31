@@ -1,15 +1,15 @@
-import { PContainer } from '@labb/dx-engine';
-import { HTMLInputTypeAttribute } from 'react';
+import { formatters, PContainer } from '@labb/dx-engine';
+import { ChangeEvent, HTMLInputTypeAttribute, useState } from 'react';
 
 export default function TextInput(props: {
   container: PContainer;
 }): JSX.Element {
+  const [value, setValue] = useState<any>(props.container.config.value);
   const {
     fieldMetadata,
     precision,
     label,
     required,
-    value,
     readOnly,
     validatemessage,
     helperText
@@ -91,7 +91,37 @@ export default function TextInput(props: {
         return t.value;
     }
   }
+  function format(value: any) {
+    if (type() === 'date') return formatters.Date(value);
+    if (type() === 'datetime-local') return formatters.DateTime(value);
+    if (type() === 'time') return formatters.Time(value);
+    if (type() === 'number' && props.container.config.currencyISOCode) return formatters.Currency(value);
+    return value;
+  }
 
+  function change(event: ChangeEvent<HTMLInputElement>) {
+    if (type() !== 'date') {
+      props.container.updateFieldValue(getValue(event.target))
+    }
+    setValue(getValue(event.target));
+  }
+
+  function blur(event: ChangeEvent<HTMLInputElement>) {
+    if (type() === 'date') {
+      props.container.updateFieldValue(getValue(event.target))
+    }
+    props.container.triggerFieldChange(getValue(event.target))
+  }
+
+  if (props.container.config.readOnly) {
+    return <div className="nhsuk-summary-list__row">
+      <dt className="nhsuk-summary-list__key">
+        {props.container.config.label}
+      </dt>
+      <dd className="nhsuk-summary-list__value" dangerouslySetInnerHTML={{ __html: format(props.container.config.value) }}>
+      </dd>
+    </div>
+  }
   return (
     <div className={"nhsuk-form-group" + (validatemessage ? " nhsuk-form-group--error" : "")}>
       <label className="nhsuk-label" htmlFor={id}>
@@ -103,16 +133,16 @@ export default function TextInput(props: {
       {validatemessage && <p className="nhsuk-error-message">
         <span className="nhsuk-visually-hidden">Error:</span> {validatemessage}
       </p>}
-      <input className="nhsuk-input" name={id}
+      <input className="nhsuk-input" name={id} id={id}
         type={type()}
         inputMode={inputmode()}
         step={step()}
-        value={value}
+        value={props.container.config.value}
         readOnly={readOnly}
         disabled={readOnly}
         required={required}
-        onChange={(e) => props.container.updateFieldValue(getValue(e.target))}
-        onBlur={(e) => props.container.triggerFieldChange(getValue(e.target))}
+        onChange={e => change(e)}
+        onBlur={e => blur(e)}
       />
     </div>
   );

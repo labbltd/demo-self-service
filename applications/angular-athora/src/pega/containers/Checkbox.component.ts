@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ControlComponent } from '../control.component';
-import { CheckboxProps } from '@labb/constellation-core-types';
 
 @Component({
   selector: 'dx-checkbox-control',
@@ -14,14 +13,14 @@ import { CheckboxProps } from '@labb/constellation-core-types';
   `,
   standalone: false
 })
-export class CheckboxComponent extends ControlComponent<boolean, CheckboxProps> {
+export class CheckboxComponent extends ControlComponent {
   public async updateValue(value: boolean): Promise<void> {
     await this.container.updateFieldValue(value);
     await this.container.triggerFieldChange(value);
   }
 
-  public override toControlValue(val: string): boolean | null {
-    return val === 'true';
+  public override toControlValue(val: boolean): boolean | null {
+    return val;
   }
 
   public override toPegaValue(val: boolean | null): string {

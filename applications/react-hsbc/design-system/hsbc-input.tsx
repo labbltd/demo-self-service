@@ -8,6 +8,7 @@ interface InputProps {
     onBlur?: (v: string) => void,
     invalid?: boolean,
     reference?: MutableRefObject<HTMLInputElement | null>
+    multiple?: boolean
 }
 
 export default function HsbcInput(props: InputProps) {
@@ -29,7 +30,7 @@ function TextInput(props: InputProps) {
         name={props.id}
         type={props.type}
         value={props.value ?? ''}
-        onChange={e => props.onChange?.(e.target.value)}
+        onChange={e => props.onChange?.((props.type === 'file' ? e : e.target.value) as unknown as string)}
         onBlur={e => props.onBlur?.(e.target.value)}
     />
 }

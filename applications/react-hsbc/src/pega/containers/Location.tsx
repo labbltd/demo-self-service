@@ -1,4 +1,7 @@
 import { Location } from "@labb/dx-engine";
+import HsbcFormElement from "applications/react-hsbc/design-system/hsbc-form-element";
+import HsbcInput from "applications/react-hsbc/design-system/hsbc-input";
+import HsbcSelect from "applications/react-hsbc/design-system/hsbc-select";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 
 export default function DxLocation(props: { container: Location }) {
@@ -15,30 +18,43 @@ export default function DxLocation(props: { container: Location }) {
         })();
     }, [map.current]);
 
-    async function updateSearch(event: ChangeEvent) {
-        const value = (event.target as HTMLInputElement)?.value;
+    async function updateSearch(value: string) {
         setSearchValue(value)
         setSuggestions(await container.getPlacePredictions(value));
     }
 
-    async function select(event: ChangeEvent) {
-        const value = (event.target as HTMLSelectElement).value;
+    async function select(value: string) {
         container.updateFieldValue(value);
         container.triggerFieldChange(value);
     }
 
     return <>
-        <label> {container.config.label}
-            <input type="text" value={searchValue} onChange={(event) => updateSearch(event)} />
-        </label>
-        {suggestions.length > 0 &&
-            <select value={container.config.value} onChange={(event) => select(event)}>
-                <option value={''}>Select {container.config.label}...</option>
-                {suggestions.map(suggestion =>
-                    <option key={suggestion} value={suggestion}>{suggestion}</option>
-                )}
-            </select>
+        {container.config.readOnly && <>
+            <dt>{props.container.config.label}</dt><dd>{props.container.config.value ?? '--'}</dd>
+        </>}
+        {!container.config.readOnly && <>
+            <HsbcFormElement
+                label={props.container.config.label}
+                id={props.container.id}
+                hint={props.container.config.helperText}
+                error={props.container.config.validatemessage}>
+                <>
+                    <HsbcInput id={props.container.id}
+                        type="text"
+                        invalid={props.container.config.validatemessage}
+                        value={searchValue}
+                        onChange={(event) => updateSearch(event)}
+                    />
+                    {suggestions.length > 0 &&
+                        <HsbcSelect id={props.container.id}
+                            options={suggestions.map(suggestion => ({ key: suggestion, value: suggestion }))}
+                            value={props.container.config.value}
+                            onChange={v => select(v)} />
+                    }
+                </>
+            </HsbcFormElement>
+            {container.config.value && <div ref={map} style={{ height: '25rem' }}></div>}
+        </>
         }
-        <div ref={map} style={{ height: '25rem' }}></div>
     </>
 }

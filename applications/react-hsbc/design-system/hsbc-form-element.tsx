@@ -3,7 +3,7 @@ export default function HsbcFormElement(props: {
     label?: string,
     hint?: string,
     error?: string
-    children: JSX.Element | JSX.Element[]
+    children?: JSX.Element | JSX.Element[]
 }) {
     return <div className="formItem_P5zj_ marginBottom3_cHPnK clearfix_hhLma">
         {props.label && <label className="label_dQA2Y marginBottomHalf_HqntJ regular_u61RY fontSize3_hUHe0" htmlFor={props.id}>

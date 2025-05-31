@@ -4,6 +4,9 @@ import HsbcFormElement from 'applications/react-hsbc/design-system/hsbc-form-ele
 import HsbcSelect from 'applications/react-hsbc/design-system/hsbc-select';
 
 export default function DxDropdown(props: { container: PContainer<PicklistProps> }) {
+  if (props.container.config.readOnly) {
+    return <><dt>{props.container.config.label}</dt><dd>{props.container.config.value ?? '--'}</dd></>;
+  }
   return <HsbcFormElement
     label={props.container.config.label}
     id={props.container.id}

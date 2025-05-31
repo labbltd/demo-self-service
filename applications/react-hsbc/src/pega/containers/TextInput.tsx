@@ -1,4 +1,4 @@
-import { PContainer } from '@labb/dx-engine';
+import { formatters, PContainer } from '@labb/dx-engine';
 import HsbcFormElement from 'applications/react-hsbc/design-system/hsbc-form-element';
 import HsbcInput from 'applications/react-hsbc/design-system/hsbc-input';
 import { HTMLInputTypeAttribute } from 'react';
@@ -30,6 +30,18 @@ export default function DxTextInput(props: {
       default:
         return 'text';
     }
+  }
+
+  function format(value: any) {
+    if (type() === 'date') return formatters.Date(value);
+    if (type() === 'datetime-local') return formatters.DateTime(value);
+    if (type() === 'time') return formatters.Time(value);
+    if (type() === 'number' && props.container.config.currencyISOCode) return formatters.Currency(value);
+    return value;
+  }
+
+  if (props.container.config.readOnly) {
+    return <><dt>{props.container.config.label}</dt><dd>{format(props.container.config.value) ?? '--'}</dd></>;
   }
 
   return <HsbcFormElement

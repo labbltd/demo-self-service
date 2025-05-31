@@ -29,7 +29,7 @@ import { PicklistProps } from '@labb/constellation-core-types';
   `,
   standalone: false
 })
-export class DropdownComponent extends ControlComponent<string, PicklistProps> {
+export class DropdownComponent extends ControlComponent {
   public updateValue(val: string): void {
     this.container.updateFieldValue(val);
     this.container.triggerFieldChange(val);

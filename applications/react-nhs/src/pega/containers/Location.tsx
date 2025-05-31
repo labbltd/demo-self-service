@@ -37,10 +37,16 @@ export default function DxLocation(props: { container: Location }) {
         </div>
     }
     return <>
-        <div className="nhsuk-form-group">
-            <label className="nhsuk-label">
-                {container.config.label}
+        <div className={"nhsuk-form-group" + (container.config.validatemessage ? " nhsuk-form-group--error" : "")}>
+            <label className="nhsuk-label" htmlFor={container.id}>
+                {container.config.label}{!container.config.required ? ' (Optional)' : ''}
             </label>
+            {container.config.helperText && <div className="nhsuk-hint">
+                {container.config.helperText}
+            </div>}
+            {container.config.validatemessage && <p className="nhsuk-error-message">
+                <span className="nhsuk-visually-hidden">Error:</span> {container.config.validatemessage}
+            </p>}
             <input className="nhsuk-input"
                 type="text"
                 value={searchValue}

@@ -33,7 +33,7 @@ export default function HsbcTemplate(props: { productName: string, productImage:
             <header aria-hidden="true" className="productHeader_mouix" data-component="productHeader" role="header">
                 <div className="container_vN2FM constrain_EGyud">
                     <div className="grid_ghPKb clearfix_hhLma">
-                        <div className="cell_uuvmm size12_bNMEu sizeLarge6_tmXJ5 offsetLarge1_byBHQ">
+                        <div className="cell_uuvmm size12_bNMEu sizeLarge9_utOPa offsetLarge1_byBHQ">
                             <div className="productContainer_JRMdX">
                                 <span data-component="tracker">
                                     <img alt="" className="productImage_hlZsO marginTop2_JrTKO marginBottom2_EeogK marginRight2_SgGBZ" role="presentation" src={props.productImage} />

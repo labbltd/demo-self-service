@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { MatInput } from '@angular/material/input';
+import { PContainerComponent } from '@labb/angular-adapter';
 import { DefaultProps } from '@labb/constellation-core-types';
-import { ControlComponent } from '../control.component';
+import { PContainer } from '@labb/dx-engine';
 
 @Component({
   selector: 'dx-text-input-control',
@@ -15,7 +17,7 @@ import { ControlComponent } from '../control.component';
           <button type="button" mat-icon-button (click)="helperTextOpen = true" *ngIf="container.config.helperText"><mat-icon>info_outline</mat-icon></button>
         </mat-label>
       <mat-form-field>
-        <input matInput [placeholder]="container.config.placeholder" [formControl]="control">
+        <input matInput [placeholder]="container.config.placeholder" [value]="container.config.value">
       </mat-form-field>
     </div>
     <dx-hint *ngIf="container.config.helperText && helperTextOpen"
@@ -26,22 +28,19 @@ import { ControlComponent } from '../control.component';
   `,
   standalone: false
 })
-export class TextInputComponent extends ControlComponent<string, DefaultProps & { caption: string }> {
+export class TextInputComponent extends PContainerComponent<PContainer<DefaultProps & { caption: string }>> {
+  @ViewChild(MatInput) input!: MatInput;
+  public helperTextOpen = false;
   public get label(): string {
     return this.container.config.label || this.container.config.caption;
   }
 
-  public updateValue(val: string): void {
-    this.container.updateFieldValue(val);
-    this.container.triggerFieldChange(val);
-  }
-
-  public override toControlValue(val: string): string | null {
-    return this.type === 'date' ? val?.split('-').reverse().join('-') : val;
-  }
-
-  public override toPegaValue(val: string | null): string {
-    return this.type === 'date' ? val?.split('-').reverse().join('-') || '' : val || '';
+  ngAfterViewInit(): void {
+    this.input?.stateChanges.subscribe(() => {
+      const value = this.input.value;
+      this.container.updateFieldValue(value);
+      this.container.triggerFieldChange(value);
+    })
   }
 
   public get type(): string {

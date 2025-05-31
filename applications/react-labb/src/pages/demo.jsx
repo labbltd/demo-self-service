@@ -1,4 +1,4 @@
-import { BugAntIcon } from "@heroicons/react/24/solid";
+import { ArrowPathIcon, BugAntIcon } from "@heroicons/react/24/solid";
 import { DemoBootstrap } from "@labb/demo-utilities";
 import {
   Button
@@ -12,6 +12,7 @@ export function Demo() {
   const [_, __, scenarioId, clientId] = location.pathname.split('/');
   const scenario = DemoBootstrap.getScenarios().find(scenario => scenario.id === scenarioId);
   const client = clientsData.find(client => client.link.includes(clientId));
+  // DemoBootstrap.setAction('createCase');
   if (DemoBootstrap.getAction() !== 'openCase') {
     DemoBootstrap.updateScenario(scenario);
   }
@@ -43,6 +44,7 @@ export function Demo() {
           <span className="browser-dot" style={{ background: '#FDD800' }}></span>
           <span className="browser-dot" style={{ background: '#5AC05A' }}></span>
           <BugAntIcon className="max-h-[21px] inline" onClick={() => window.frames[0].window.PCore.getDebugger().toggle()} />
+          <ArrowPathIcon className="max-h-[21px] inline" onClick={() => window.frames[0].window.location.reload()} />
         </div>
         <div className="browser-column browser-middle">
           <input className="browser-url" type="text" value={client.link} onChange={(e) => updateUrl(e.target.value)} />

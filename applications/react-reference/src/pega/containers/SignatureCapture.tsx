@@ -48,11 +48,17 @@ export default function DxSignatureCapture(props: { container: PContainer }) {
         setHasValueChanged(true);
     }
 
-    return <><label htmlFor={container.id}>{container.config.label}</label>
+    return <>
+        <label htmlFor={props.container.id}>
+            {props.container.config.label}
+            {props.container.config.required ? ' *' : ''}
+            {props.container.config.helperText && <span data-tooltip={props.container.config.helperText}>?</span>}
+        </label>
+        {props.container.config.validatemessage && <em>{props.container.config.validatemessage}</em>}
         {container.config.readOnly && <img src={container.config.value} />}
         {
             !container.config.readOnly && <>
-                <canvas style={{ width: '100%', height: '200px', border: '1px dashed' }} ref={canvas}></canvas>
+                <canvas id={props.container.id} style={{ width: '100%', height: '200px', border: '1px dashed' }} ref={canvas}></canvas>
                 <button type="button" onClick={() => onClear()}>
                     Clear
                 </button>

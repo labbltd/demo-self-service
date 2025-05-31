@@ -8,6 +8,17 @@ export default function RadioButtons(props: { container: PContainer }) {
     return (target as HTMLInputElement).value;
   }
 
+  if (props.container.config.readOnly) {
+    return <div className="nhsuk-summary-list__row">
+      <dt className="nhsuk-summary-list__key">
+        {props.container.config.label}
+      </dt>
+      <dd className="nhsuk-summary-list__value">
+        {props.container.config.value}
+      </dd>
+    </div>
+  }
+
   return (
     <div className={"nhsuk-form-group" + (validatemessage ? " nhsuk-form-group--error" : "")}>
       <fieldset className="nhsuk-fieldset">

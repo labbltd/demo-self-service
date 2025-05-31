@@ -5,7 +5,7 @@ export default function HsbcContainer(props: {
 }) {
     return <div className="container_vN2FM constrain_EGyud">
         <div className="grid_ghPKb clearfix_hhLma">
-            <div className="cell_uuvmm size12_bNMEu sizeMedium9_CXgpP sizeLarge6_tmXJ5 offsetLarge1_byBHQ">
+            <div className="cell_uuvmm size12_bNMEu sizeMedium9_CXgpP sizeLarge9_utOPa offsetLarge1_byBHQ">
                 {props.title && <div className="container_CsI53 marginBottom3_cHPnK" data-component="PageHeader">
                     <div className="grid_ghPKb clearfix_hhLma">
                         <div className="cell_uuvmm size12_bNMEu"><div className="textContainer_kIkGx paddingBottom3_fOs8E">

@@ -22,7 +22,7 @@ import { ControlComponent } from '../control.component';
   },
   standalone: false
 })
-export class TextAreaComponent extends ControlComponent<string> implements OnInit {
+export class TextAreaComponent extends ControlComponent implements OnInit {
   public updateValue(value: string): void {
     this.container.updateFieldValue(value);
   }
@@ -30,7 +30,7 @@ export class TextAreaComponent extends ControlComponent<string> implements OnIni
   public commitValue(event: FocusEvent): void {
     this.container.triggerFieldChange((event.target as HTMLInputElement).value);
   }
-  
+
   public override toControlValue(val: string): string | null {
     return val;
   }

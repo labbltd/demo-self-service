@@ -1,4 +1,5 @@
 import { PContainer } from "@labb/dx-engine";
+import HsbcFormElement from "applications/react-hsbc/design-system/hsbc-form-element";
 import { useEffect, useRef, useState } from "react";
 import SignaturePad from 'signature_pad';
 
@@ -48,20 +49,26 @@ export default function DxSignatureCapture(props: { container: PContainer }) {
         setHasValueChanged(true);
     }
 
-    return <><label htmlFor={container.id}>{container.config.label}</label>
-        {container.config.readOnly && <img src={container.config.value} />}
-        {
-            !container.config.readOnly && <>
-                <canvas style={{ width: '100%', height: '200px', border: '1px dashed' }} ref={canvas}></canvas>
-                <button type="button" onClick={() => onClear()}>
-                    Clear
-                </button>
-                <button type="button" onClick={() => onAccept()}
-                    disabled={!hasValueChanged}>
-                    Accept
-                </button>
-                {info && <div>{info}</div>}
-            </>
-        }
+    return <>
+        <HsbcFormElement
+            label={props.container.config.label}
+            id={props.container.id}
+            hint={props.container.config.helperText}
+            error={props.container.config.validatemessage}
+        >
+            {
+                !container.config.readOnly && <>
+                    <canvas style={{ width: '100%', height: '200px', border: '1px dashed' }} ref={canvas}></canvas>
+                    <button type="button" onClick={() => onClear()}>
+                        Clear
+                    </button>
+                    <button type="button" onClick={() => onAccept()}
+                        disabled={!hasValueChanged}>
+                        Accept
+                    </button>
+                    {info && <div>{info}</div>}
+                </> || <></>
+            }
+        </HsbcFormElement>
     </>
 }

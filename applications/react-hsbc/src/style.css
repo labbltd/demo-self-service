@@ -8488,11 +8488,6 @@ html {
         float: right;
         padding-right: 0
     }
-
-    .buttonGroupItem_gF7Zn.fullWidth_a54j3:last-child,
-    .buttonGroupItem_gF7Zn:last-child {
-        margin-top: 0
-    }
 }
 
 .icon_Lsi_y {
@@ -11063,6 +11058,7 @@ table th {
 }
 
 @media (min-width: 960px) {
+
     table td,
     table th {
         padding: 20px 20px 20px 20px;
@@ -11071,6 +11067,7 @@ table th {
 }
 
 @media (min-width: 480px) {
+
     table td,
     table th {
         padding: 18px 18px 18px 18px;
@@ -11091,4 +11088,20 @@ table th {
 td,
 th {
     vertical-align: top;
+}
+
+.two-column {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: calc(1rem);
+}
+
+.three-column {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: calc(1rem);
+}
+
+dt {
+    font-weight: bold;
 }

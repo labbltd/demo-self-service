@@ -48,11 +48,20 @@ export default function DxSignatureCapture(props: { container: PContainer }) {
         setHasValueChanged(true);
     }
 
-    return <><label htmlFor={container.id}>{container.config.label}</label>
+    return <>
+        <label className="nhsuk-label" htmlFor={container.id}>
+            {container.config.label}{!container.config.required ? ' (Optional)' : ''}
+        </label>
+        {container.config.helperText && <div className="nhsuk-hint">
+            {container.config.helperText}
+        </div>}
+        {container.config.validatemessage && <p className="nhsuk-error-message">
+            <span className="nhsuk-visually-hidden">Error:</span> {container.config.validatemessage}
+        </p>}
         {container.config.readOnly && <img src={container.config.value} />}
         {
             !container.config.readOnly && <>
-                <canvas style={{ width: '100%', height: '200px', border: '1px dashed' }} ref={canvas}></canvas>
+                <canvas id={container.id} style={{ width: '100%', height: '200px', border: '1px dashed' }} ref={canvas}></canvas>
                 <button type="button" onClick={() => onClear()}>
                     Clear
                 </button>

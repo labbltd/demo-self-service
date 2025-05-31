@@ -1,4 +1,4 @@
-import { PContainer } from '@labb/dx-engine';
+import { formatters, PContainer } from '@labb/dx-engine';
 import { ChangeEvent, HTMLInputTypeAttribute, useState } from 'react';
 
 export default function TextInput(props: {
@@ -96,8 +96,16 @@ export default function TextInput(props: {
     props.container.triggerFieldChange(getValue(event.target))
   }
 
+  function format(value: any) {
+    if (type() === 'date') return formatters.Date(value);
+    if (type() === 'datetime-local') return formatters.DateTime(value);
+    if (type() === 'time') return formatters.Time(value);
+    if (type() === 'number' && props.container.config.currencyISOCode) return formatters.Currency(value);
+    return value;
+  }
+
   if (props.container.config.readOnly) {
-    return <><dt>{props.container.config.label}</dt><dd>{props.container.config.value ?? '--'}</dd></>;
+    return <><dt>{props.container.config.label}</dt><dd>{format(props.container.config.value) ?? '--'}</dd></>;
   }
   return <>
     <label htmlFor={props.container.id}>
@@ -105,6 +113,7 @@ export default function TextInput(props: {
       {props.container.config.required ? ' *' : ''}
       {props.container.config.helperText && <span data-tooltip={props.container.config.helperText}>?</span>}
     </label>
+    {props.container.config.validatemessage && <em>{props.container.config.validatemessage}</em>}
     <input
       id={props.container.id}
       type={type()}
@@ -117,6 +126,5 @@ export default function TextInput(props: {
       onChange={e => change(e)}
       onBlur={e => blur(e)}
     />
-    {props.container.config.validatemessage}
   </>;
 }

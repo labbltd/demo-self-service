@@ -9,6 +9,7 @@ DxReactAdapter.registerMapping('DefaultForm', React.lazy(() => import('./contain
 DxReactAdapter.registerMapping('DetailsThreeColumn', React.lazy(() => import('./containers/DetailsThreeColumn')));
 DxReactAdapter.registerMapping('DetailsTwoColumn', React.lazy(() => import('./containers/DetailsTwoColumn')));
 DxReactAdapter.registerMapping('FlowContainer', React.lazy(() => import('./containers/FlowContainer')));
+DxReactAdapter.registerMapping('RootContainer', React.lazy(() => import('./containers/RootContainer')));
 DxReactAdapter.registerMapping('ListPage', React.lazy(() => import('./containers/ListView')));
 DxReactAdapter.registerMapping('ListView', React.lazy(() => import('./containers/ListView')));
 DxReactAdapter.registerMapping('ModalViewContainer', React.lazy(() => import('./containers/ModalViewContainer')));

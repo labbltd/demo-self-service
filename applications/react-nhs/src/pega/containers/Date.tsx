@@ -20,6 +20,16 @@ export default function DxDate(props: {
     }
   }
 
+  if (props.container.config.readOnly) {
+    return <div className="nhsuk-summary-list__row">
+      <dt className="nhsuk-summary-list__key">
+        {props.container.config.label}
+      </dt>
+      <dd className="nhsuk-summary-list__value" dangerouslySetInnerHTML={{ __html: props.container.config.value }}>
+      </dd>
+    </div>
+  }
+
   return (
     <div className={"nhsuk-form-group" + (validatemessage ? " nhsuk-form-group--error" : "")}>
       <fieldset className="nhsuk-fieldset" role="group" aria-describedby={(helperText && `${id}-hint`) + (validatemessage && ` ${id}-error`)}>

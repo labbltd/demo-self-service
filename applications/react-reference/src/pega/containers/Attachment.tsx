@@ -1,65 +1,59 @@
-import { Attachment as PAttachment } from '@labb/dx-engine';
-import { useState } from 'react';
+import { FileStatus, Attachment as PAttachment } from '@labb/dx-engine';
+import { useRef, useState } from 'react';
 
 export default function Attachment(props: {
   container: PAttachment;
 }): JSX.Element {
   const [downloadedImage, setDownloadedImage] = useState<string | undefined>();
   const { container } = props;
+  const dialog = useRef<HTMLDialogElement>(null);
+
+  async function preview(file: FileStatus) {
+    if (file.linked) {
+      setDownloadedImage('data:image/png;base64,' + await container.downloadFile(file.id))
+    } else {
+      setDownloadedImage(file.src);
+    }
+    dialog.current?.showModal();
+  }
+
   return <>
-    <label>
+    <label htmlFor={container.id}>
       {container.config.label}
       {container.config.required ? ' *' : ''}
-      {(container.config.allowMultiple === 'true' || !container.files.length) &&
-        <input
-          type="file"
-          onChange={(e) => container.uploadFile(e as unknown as Event)}
-          multiple={container.config.allowMultiple === 'true'}
-        />
-      }
-      {container.config.helperText}
-      {container.config.validatemessage}
-      {container.config.extensions}
+      {props.container.config.helperText && <span data-tooltip={props.container.config.helperText}>?</span>}
     </label>
+    {container.config.validatemessage && <em>{container.config.validatemessage}</em>}
+    {(container.config.allowMultiple === 'true' || !container.files.length) &&
+      <input
+        id={container.id}
+        type="file"
+        onChange={(e) => container.uploadFile(e as unknown as Event)}
+        multiple={container.config.allowMultiple === 'true'}
+      />
+    }
     {
       container.files.length > 0 &&
       <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Size</th>
-            <th>Type</th>
-            <th>Uploaded</th>
-            <th>Error</th>
-            <th>Error Status</th>
-            <th>Progress</th>
-            <th>ID</th>
-            <th>Action</th>
-          </tr>
-        </thead>
         <tbody>
           {container.files.map(file =>
             <tr key={file.id}>
               <td>{file.name}</td>
-              <td>{file.size}</td>
+              <td>{container.formatBytes(file.size!)}</td>
               <td>{file.type}</td>
-              <td>{file.uploaded}</td>
-              <td>{file.error}</td>
-              <td>{file.errorStatus}</td>
-              <td>{file.progress}</td>
-              <td>{file.id}</td>
+              <td>{file.progress}%</td>
               <td>
-                <button type="button" onClick={() => container.removeFile(file.id)}>delete</button>
-                {file.linked && <button onClick={async () => setDownloadedImage(await container.downloadFile(file.id))}>download</button>}
+                <button type="button" onClick={() => container.removeFile(file.id)}>Delete</button>
+                {file.type.startsWith('image') && <button type="button" onClick={async () => preview(file)}>Preview</button>}
               </td>
             </tr>
           )}
         </tbody>
       </table>
     }
-    {
-      downloadedImage &&
-      <img width="100%" src={'data:image/png;base64,' + downloadedImage} />
-    }
+    <dialog ref={dialog}>
+      <button type="button" onClick={async () => dialog.current?.close()}>Close</button>
+      <img width="100%" src={downloadedImage} />
+    </dialog>
   </>;
 }

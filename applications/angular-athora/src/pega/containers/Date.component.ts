@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
-import { ControlComponent } from '../control.component';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { MatInput } from '@angular/material/input';
+import { PContainerComponent } from '@labb/angular-adapter';
+import { DefaultProps } from '@labb/constellation-core-types';
+import { PContainer } from '@labb/dx-engine';
 
 @Component({
   selector: 'dx-date-control',
@@ -13,8 +16,8 @@ import { ControlComponent } from '../control.component';
         <input
           matInput
           [matDatepicker]="picker"
-          [formControl]="control"
-          (blur)="commitValue($event)"
+          [value]="container.config.value"
+          
         />
         <mat-datepicker-toggle matIconSuffix [for]="picker">
             <mat-icon matDatepickerToggleIcon>date_range</mat-icon>
@@ -29,26 +32,16 @@ import { ControlComponent } from '../control.component';
   `,
   standalone: false
 })
-export class DxDateComponent extends ControlComponent<Date> {
+export class DxDateComponent extends PContainerComponent<PContainer<DefaultProps>> implements AfterViewInit {
+  @ViewChild(MatInput) input!: MatInput;
   public startDate = new Date(`${new Date().getFullYear() - 60}-${new Date().getMonth()}-${new Date().getDate()}`);
-
-  public updateValue(value: Date): void {
-    this.container.updateFieldValue(this.toPegaValue(value));
+  public helperTextOpen = false;
+  
+  ngAfterViewInit(): void {
+    this.input.stateChanges.subscribe(() => {
+      const value = (this.input.value as unknown as Date).toISOString().split('T')[0];
+      this.container.updateFieldValue(value);
+      this.container.triggerFieldChange(value);
+    })
   }
-
-  public commitValue(event: FocusEvent): void {
-    const target = event.target as HTMLInputElement;
-    if (target && target.valueAsDate) {
-      this.container.triggerFieldChange(this.toPegaValue(target.valueAsDate));
-    }
-  }
-
-  public override toControlValue(val: string): Date | null {
-    return new Date(val);
-  }
-
-  public override toPegaValue(val: Date | null): string {
-    return (val && !isNaN(val.getTime()) && val.toISOString().split('T')[0]) || '';
-  }
-
 }

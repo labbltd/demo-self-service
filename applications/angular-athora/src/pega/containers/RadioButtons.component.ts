@@ -22,7 +22,7 @@ import { ControlComponent } from '../control.component';
   `,
   standalone: false
 })
-export class RadioButtonsComponent extends ControlComponent<string, PicklistProps> {
+export class RadioButtonsComponent extends ControlComponent {
   public override updateValue(value: string | null): void {
     this.container.updateFieldValue(value);
     this.container.triggerFieldChange(value);

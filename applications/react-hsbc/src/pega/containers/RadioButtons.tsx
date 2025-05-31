@@ -4,6 +4,9 @@ import HsbcFormFieldset from 'applications/react-hsbc/design-system/hsbc-form-fi
 import HsbcRadio from 'applications/react-hsbc/design-system/hsbc-radio';
 
 export default function DxRadioButtons(props: { container: PContainer<PicklistProps> }) {
+  if (props.container.config.readOnly) {
+    return <><dt>{props.container.config.label}</dt><dd>{props.container.config.value ?? '--'}</dd></>;
+  }
   return <HsbcFormFieldset label={props.container.config.label}
     id={props.container.id}
     hint={props.container.config.helperText}

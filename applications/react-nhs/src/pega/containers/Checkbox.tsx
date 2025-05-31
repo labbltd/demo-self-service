@@ -10,7 +10,16 @@ export default function Checkbox(props: {
     props.container.updateFieldValue(val);
     props.container.triggerFieldChange(val);
   }
-
+  if (props.container.config.readOnly) {
+    return <div className="nhsuk-summary-list__row">
+      <dt className="nhsuk-summary-list__key">
+        {props.container.config.label}
+      </dt>
+      <dd className="nhsuk-summary-list__value">
+        {props.container.config.value ? props.container.config.trueLabel : props.container.config.falseLabel}
+      </dd>
+    </div>
+  }
   return (
     <div className="nhsuk-checkboxes__item">
       {label}
@@ -18,6 +27,12 @@ export default function Checkbox(props: {
       <label className="nhsuk-label nhsuk-checkboxes__label" htmlFor={id}>
         {caption}
       </label>
+      {helperText && <div className="nhsuk-hint">
+        {helperText}
+      </div>}
+      {validatemessage && <p className="nhsuk-error-message">
+        <span className="nhsuk-visually-hidden">Error:</span> {validatemessage}
+      </p>}
     </div>
   );
 }

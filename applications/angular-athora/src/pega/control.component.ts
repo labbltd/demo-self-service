@@ -1,26 +1,12 @@
 import { Directive, OnDestroy, OnInit } from "@angular/core";
 import { FormControl } from "@angular/forms";
-import { DefaultProps } from "@labb/constellation-core-types";
 import { PContainerComponent } from "@labb/angular-adapter";
 import { PContainer } from "@labb/dx-engine";
 import { Subject, takeUntil } from "rxjs";
 
-type ControlProps = {
-    visibility: boolean,
-    value: string,
-    readOnly: boolean,
-    disabled: boolean,
-    validatemessage: string,
-    helperText: string,
-    label: string,
-    fieldMetadata?: {
-        isDeclarativeTarget: boolean;
-    }
-};
-
 @Directive()
-export abstract class ControlComponent<T = string, S extends ControlProps = DefaultProps> extends PContainerComponent<PContainer<S>> implements OnInit, OnDestroy {
-    public control = new FormControl<T | null>(null);
+export abstract class ControlComponent extends PContainerComponent<PContainer> implements OnInit, OnDestroy {
+    public control = new FormControl<any>(null);
     private destroyed = new Subject<boolean>();
     public helperTextOpen = false;
 
@@ -64,7 +50,7 @@ export abstract class ControlComponent<T = string, S extends ControlProps = Defa
         }
     }
 
-    public abstract updateValue(val: T | null): void;
-    public abstract toPegaValue(val: T | null): string;
-    public abstract toControlValue(val: string): T | null;
+    public abstract updateValue(val: any): void;
+    public abstract toPegaValue(val: any): string;
+    public abstract toControlValue(val: any): any;
 }

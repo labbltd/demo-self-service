@@ -25,19 +25,28 @@ export default function DxMaskedInput(props: { container: PContainer }) {
         return (event.target as HTMLInputElement).value;
     }
 
+    if (props.container.config.readOnly) {
+        return <div className="nhsuk-summary-list__row">
+            <dt className="nhsuk-summary-list__key">
+                {props.container.config.label}
+            </dt>
+            <dd className="nhsuk-summary-list__value" dangerouslySetInnerHTML={{ __html: props.container.config.value }}>
+            </dd>
+        </div>
+    }
+
     return <>
-        {container.config.readOnly && <>
-            <dt>{container.config.label}</dt>
-            <dd>{container.config.value ?? '--'}</dd>
-        </>}
-        {!container.config.readOnly && <>
-            <label htmlFor={container.id}>
-                {container.config.label}{container.config.required ? ' *' : ''} ({container.config.mask})
-                {container.config.helperText &&
-                    <span data-tooltip={container.config.helperText}>?</span>
-                }
+        <div className={"nhsuk-form-group" + (container.config.validatemessage ? " nhsuk-form-group--error" : "")}>
+            <label className="nhsuk-label" htmlFor={container.id}>
+                {container.config.label}{!container.config.required ? ' (Optional)' : ''}
             </label>
-            <input
+            {container.config.mask && <div className="nhsuk-hint">
+                {container.config.mask}
+            </div>}
+            {container.config.validatemessage && <p className="nhsuk-error-message">
+                <span className="nhsuk-visually-hidden">Error:</span> {container.config.validatemessage}
+            </p>}
+            <input className="nhsuk-input"
                 ref={input}
                 id={container.id}
                 type="text"
@@ -46,7 +55,6 @@ export default function DxMaskedInput(props: { container: PContainer }) {
                 onChange={e => container.updateFieldValue(getValue(e))}
                 onBlur={e => container.triggerFieldChange(getValue(e))}
             />
-        </>}
-        {container.config.validatemessage && <span>{container.config.validatemessage}</span>}
+        </div>
     </>
 }
