@@ -1,28 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { PContainerComponent } from '@labb/angular-adapter';
 import { DefaultProps } from '@labb/constellation-core-types';
-import { PContainer } from '@labb/dx-engine';
+import { formatters, PContainer } from '@labb/dx-engine';
 
 @Component({
   selector: 'dx-text-input-control',
   template: `
-    <cds-form-field [label]="container.config.label" [for]="container.id"
-        [tooltip]="{body: container.config.helperText}"
-        [errorMessage]="container.config.validatemessage">
-        @if(disabled) {
-          {{value}}
-        } @else {
-          <input cdsInput
-            [value]="value"
-            [type]="type"
-            [name]="container.id"
-            (blur)="update($event.target)">
-        }
-    </cds-form-field>
+    @if(container.config.readOnly) {
+      <dt>{{container.config.label}}</dt><dd>{{format(container.config.value) ?? '--'}}</dd>
+    } @else {
+      <cds-form-field [label]="container.config.label" [for]="container.id"
+          [tooltip]="{body: container.config.helperText}"
+          [errorMessage]="container.config.validatemessage">
+          @if(disabled) {
+            {{value}}
+          } @else {
+            <input cdsInput
+              [value]="value"
+              [type]="type"
+              [name]="container.id"
+              (blur)="update($event.target)">
+          }
+      </cds-form-field>
+    }
   `,
   standalone: false
 })
 export class TextInputComponent extends PContainerComponent<PContainer<DefaultProps>> implements OnInit {
+  public format(value: any) {
+    if (this.type === 'date') return formatters.Date(value);
+    if (this.type === 'datetime-local') return formatters.DateTime(value);
+    if (this.type === 'time') return formatters.Time(value);
+    if (this.type === 'number' && this.container.config.currencyISOCode) return formatters.Currency(value);
+    return value;
+  }
 
   public update(target: EventTarget | null) {
     if (target instanceof HTMLInputElement) {

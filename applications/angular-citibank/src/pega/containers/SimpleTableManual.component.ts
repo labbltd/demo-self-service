@@ -12,7 +12,7 @@ import { SimpleTableManual } from '@labb/dx-engine';
       <table>
         <thead>
           @for(col of container.processedFields; track col.config.name) {
-            <th>{{col.config.name}}</th>
+            <th>{{col.config.label}}</th>
           }
         </thead>
         <tbody>

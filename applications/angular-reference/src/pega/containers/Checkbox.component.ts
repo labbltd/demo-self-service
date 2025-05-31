@@ -5,21 +5,25 @@ import { PContainerComponent } from '@labb/angular-adapter';
 @Component({
   selector: 'dx-text-input-control',
   template: `
-    <div>
-      <label [for]="container.id">
-      <input
-        [id]="container.id"
-        type="checkbox"
-        [attr.readonly]="container.config.readOnly"
-        [formControl]="control"
-        (change)="container.updateFieldValue(getValue($event.target))"
-        (blur)="container.triggerFieldChange(getValue($event.target))"
-      />
-      {{ label }}{{ container.config.required ? ' *' : '' }}
-      </label>
-      {{ container.config.helperText }}
-      {{ container.config.validatemessage }}
-    </div>
+    @if(container.config.readOnly) {
+        <dt>{{container.config.caption}}</dt><dd>{{container.config.value ? container.config.trueLabel : container.config.falseLabel}}</dd>
+    } @else {
+      <div>
+        <label [for]="container.id">
+        <input
+          [id]="container.id"
+          type="checkbox"
+          [attr.readonly]="container.config.readOnly"
+          [formControl]="control"
+          (change)="container.updateFieldValue(getValue($event.target))"
+          (blur)="container.triggerFieldChange(getValue($event.target))"
+        />
+        {{ label }}{{ container.config.required ? ' *' : '' }}
+        </label>
+        {{ container.config.helperText }}
+        {{ container.config.validatemessage }}
+      </div>
+    }
    `,
   standalone: false
 })

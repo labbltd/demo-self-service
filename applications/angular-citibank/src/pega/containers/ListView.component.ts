@@ -5,7 +5,9 @@ import { ListView } from "@labb/dx-engine";
 @Component({
     selector: 'dx-list-view',
     template: `
-        <h1>{{container.config.title}}</h1>
+        <cds-form-field [label]="container.config.label" [for]="container.id"
+          [tooltip]="{body: container.config.helperText}"
+          [errorMessage]="container.config.validatemessage"></cds-form-field>
         <table class="cds-table">
             <thead>
                 <tr>

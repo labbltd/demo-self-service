@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { PContainerComponent } from '@labb/angular-adapter';
+import { formatters } from '@labb/dx-engine';
 
 @Component({
   selector: 'dx-text-input-control',
   template: `
   @if (container.config.readOnly) {
-    <dt>{{ label }}</dt><dd>{{container.config.value ?? '--'}}</dd>
-  }
-  @if (!container.config.readOnly) {
+    <dt>{{ label }}</dt><dd>{{format(container.config.value) ?? '--'}}</dd>
+  } @else {
     <label [for]="container.id">
       {{ label }}{{ container.config.required ? ' *' : '' }}
-      @if(container.config.helperText) {
+      @if (container.config.helperText) {
         <span [attr.data-tooltip]="container.config.helperText">?</span>
+      }
+      @if (container.config.validatemessage) {
+        <em>{{ container.config.validatemessage }}</em>
       }
     </label>
     <input
@@ -25,7 +28,6 @@ import { PContainerComponent } from '@labb/angular-adapter';
       (change)="container.updateFieldValue(getValue($event.target))"
       (blur)="container.triggerFieldChange(getValue($event.target))"
     />
-    {{ container.config.validatemessage }}
   }
   `,
   standalone: false
@@ -42,6 +44,14 @@ export class TextInputComponent extends PContainerComponent implements OnInit {
     this.container.updates.subscribe(() => {
       this.control.setValue(this.container.config.value);
     });
+  }
+
+  public format(value: any) {
+    if (this.type === 'date') return formatters.Date(value);
+    if (this.type === 'datetime-local') return formatters.DateTime(value);
+    if (this.type === 'time') return formatters.Time(value);
+    if (this.type === 'number' && this.container.config.currencyISOCode) return formatters.Currency(value);
+    return value;
   }
 
   public get type(): string {

@@ -6,7 +6,9 @@ import { SimpleTableManual } from '@labb/dx-engine';
   selector: 'dx-simple-table-manual-container',
   template: `
     @if(container.config.label) {
-      <h3>{{container.config.label}}</h3>
+      <label [for]="container.id">
+      {{ container.config.label }}
+      </label>
     }
     @if(container.readOnlyMode) {
       <table>
