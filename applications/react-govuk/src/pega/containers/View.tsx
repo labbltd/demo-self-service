@@ -10,8 +10,8 @@ export default function DxView(props: { container: View }) {
         </div>
     )}
         {container.config.showHeading && <h2 className="govuk-heading-s">{container.config.heading}</h2>}
-        {container.config.showLabel && <span className="govuk-body">{container.config.label}</span>}
-        {(container.config.instructions && container.config.instructions !== 'none') && <div className="govuk-body" dangerouslySetInnerHTML={{ __html: container.config.instructions }}></div>}
+        {container.config.showLabel && <p className="govuk-body">{container.config.label}</p>}
+        {(container.config.instructions && container.config.instructions !== 'none') && <p className="govuk-body" dangerouslySetInnerHTML={{ __html: container.config.instructions }}></p>}
         {props.container.children.map((child) => (
             <GeneratePContainer key={child.id} container={child} />
         ))}

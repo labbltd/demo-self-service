@@ -1,4 +1,7 @@
 import { Location } from "@labb/dx-engine";
+import LvcError from "applications/react-lvcyclery/design-system/lvc-error";
+import LVCFormElement from "applications/react-lvcyclery/design-system/lvc-form-element";
+import LVCInput from "applications/react-lvcyclery/design-system/lvc-input";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 
 export default function DxLocation(props: { container: Location; readonly?: boolean }) {
@@ -8,40 +11,36 @@ export default function DxLocation(props: { container: Location; readonly?: bool
   const [showSuggestions, setShowSuggestions] = useState(false);
   const { container, readonly } = props;
 
-useEffect(() => {
-  (async () => {
-    if (map.current && !readonly) {
-      await container.loadMap(map.current);
-
-      const value = container.config.value;
-      if (value) {
-        setSearchValue(value);
-        handleSelectSuggestion(value); // Reuse the working selection logic
+  useEffect(() => {
+    (async () => {
+      if (map.current) {
+        await container.loadMap(map.current);
       }
-    }
-  })();
-}, [readonly, container]);
+    })();
+  }, [map.current]);
 
+  useEffect(() => {
+    (async () => {
+      if (container.config.value && !searchValue) {
+        const event = { target: { value: container.config.value } } as any;
+        await updateSearch(event);
+        await select(event);
+        await container.putMarker(container.config.value);
+      }
+    })();
+  }, [container.config.value]);
 
-  async function updateSearch(event: ChangeEvent<HTMLInputElement>) {
-    const value = event.target.value;
-    setSearchValue(value);
-    if (value.trim()) {
-      const results = await container.getPlacePredictions(value);
-      setSuggestions(results);
-      setShowSuggestions(true);
-    } else {
-      setSuggestions([]);
-      setShowSuggestions(false);
-    }
+  async function updateSearch(event: ChangeEvent) {
+    const value = (event.target as HTMLInputElement)?.value;
+    setSearchValue(value)
+    setSuggestions(await container.getPlacePredictions(value));
+    setShowSuggestions(true);
   }
 
-  function handleSelectSuggestion(suggestion: string) {
-    setSearchValue(suggestion);
-    setSuggestions([]);
-    setShowSuggestions(false);
-    container.updateFieldValue(suggestion);
-    container.triggerFieldChange(suggestion);
+  async function select(event: ChangeEvent) {
+    const value = (event.target as HTMLSelectElement).value;
+    container.updateFieldValue(value);
+    container.triggerFieldChange(value);
   }
 
   if (readonly || container.config.readOnly) {
@@ -70,22 +69,25 @@ useEffect(() => {
   return (
     <>
       <div className="paddingBottom1_v2sBX" style={{ position: 'relative' }}>
-        <label
-          className="label_dQA2Y marginBottomHalf_HqntJ regular_u61RY fontSize3_hUHe0"
-          style={{ display: 'block', marginBottom: '0.25rem' }}
+        <LVCFormElement
+          label={props.container.config.label}
+          id={props.container.id}
+          hint={props.container.config.helperText}
+          error={props.container.config.validatemessage}
         >
-          {container.config.label}
-        </label>
-        <input
-          type="text"
-          style={{ width: '100%' }}
-          value={searchValue}
-          onChange={updateSearch}
-          onBlur={() => setTimeout(() => setShowSuggestions(false), 100)}
-          onFocus={() => {
-            if (suggestions.length > 0) setShowSuggestions(true);
-          }}
-        />
+          <LVCInput id={props.container.id}
+            type={'text'}
+            invalid={props.container.config.validatemessage}
+            value={searchValue}
+            onChange={updateSearch}
+            onBlur={() => setTimeout(() => setShowSuggestions(false), 100)}
+            onFocus={() => {
+              if (suggestions.length > 0) setShowSuggestions(true);
+            }}
+            readonly={props.container.config.readOnly}
+          />
+        </LVCFormElement>
+
         {showSuggestions && suggestions.length > 0 && (
           <ul
             style={{
@@ -93,7 +95,7 @@ useEffect(() => {
               backgroundColor: 'white',
               border: '1px solid #ccc',
               listStyle: 'none',
-              marginTop: 0,
+              marginTop: '-31px',
               padding: 0,
               width: '100%',
               maxHeight: '10rem',
@@ -105,7 +107,7 @@ useEffect(() => {
               <li
                 key={suggestion}
                 style={{ padding: '0.5rem', cursor: 'pointer' }}
-                onMouseDown={() => handleSelectSuggestion(suggestion)}
+                onMouseDown={() => select({ target: { value: suggestion } } as any)}
               >
                 {suggestion}
               </li>
@@ -113,7 +115,7 @@ useEffect(() => {
           </ul>
         )}
       </div>
-      <div ref={map} style={{ height: '25rem' }}></div>
+      <div ref={map} style={{ height: '25rem', marginBottom: '1.5rem', display: container.config.value ? 'block' : 'none' }}></div>
     </>
   );
 }

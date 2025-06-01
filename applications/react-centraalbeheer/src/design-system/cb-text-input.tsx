@@ -8,6 +8,7 @@ export default function TextInput(props: {
     label: string;
     type: string;
     value?: string;
+    error?: string
 }) {
     const isSelect = props.type === 'select';
     const isTextarea = props.type === 'textarea';
@@ -26,6 +27,9 @@ export default function TextInput(props: {
                 <label className="input-text__label label" htmlFor={props.id}>
                     {props.label}
                 </label>
+                <div className="input-message input-message--error">
+                    {props.error}
+                </div>
             </div>
         </div>
     );

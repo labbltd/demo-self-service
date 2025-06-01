@@ -43,7 +43,7 @@ export default function DxLocation(props: { container: Location }) {
                         type="text"
                         invalid={props.container.config.validatemessage}
                         value={searchValue}
-                        onChange={(event) => updateSearch(event)}
+                        onChange={(event) => updateSearch(event.target.value)}
                     />
                     {suggestions.length > 0 &&
                         <HsbcSelect id={props.container.id}

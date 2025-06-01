@@ -50,15 +50,19 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
         {message}
       </div>
     )}
+    {(props.container.config as any).httpMessages?.map((message: any) =>
+      message.type === 'error' ? <em key={message.message}>
+        {message.message}
+      </em> : <div>{message.message}</div>
+    )}
     {!props.container.hasAssignment() && <>
       {todoAssignments.map(assignment =>
         <div key={assignment.ID}>
           <div>{assignment.processName} {'>'} {assignment.name}</div>
           <div>Assigned to {assignment.assigneeInfo?.name}</div>
-          <button type="button" onClick={() => openAssignment(assignment)}>Go</button>
+          <Button type="button" onClick={() => openAssignment(assignment)}>Go</Button>
         </div>
       )}
-      {todoAssignments.length === 0 && <p>Thank you for your request. We will contact you as soon as possible.</p>}
     </>}
     {props.container.hasAssignment() && <Grid>
       <Column sm={isVertical() ? 2 : 4} md={isVertical() ? 2 : 8} lg={isVertical() ? 4 : 16}>

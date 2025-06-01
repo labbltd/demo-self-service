@@ -1,4 +1,5 @@
 import { ListView } from '@labb/dx-engine';
+import LvcError from 'applications/react-lvcyclery/design-system/lvc-error';
 import LVCPanel from 'applications/react-lvcyclery/design-system/lvc-panel';
 
 export default function DxListView(props: { container: ListView }) {
@@ -9,7 +10,8 @@ export default function DxListView(props: { container: ListView }) {
       ? row[container.rowID] === container.config.value
       : Array.isArray(container.config.value) && container.config.value.includes(row[container.rowID]);
 
-  return (
+  return <>
+    {props.container.config.validatemessage && <LvcError error={props.container.config.validatemessage} />}
     <div className="formItem_P5zj_ marginBottom3_cHPnK clearfix_hhLma">
       {/* Care plan grid */}
       {container.config.referenceList === "D_CareplanList" && (
@@ -98,5 +100,5 @@ export default function DxListView(props: { container: ListView }) {
         </div>
       )}
     </div>
-  );
+  </>
 }

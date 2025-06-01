@@ -18,7 +18,7 @@ async function render() {
       <Suspense>
         <MainRoot />
       </Suspense>
-  );
+    );
   } catch (error) {
     root.render(null);
   }
@@ -35,7 +35,7 @@ function MainRoot() {
           productImage="public/LVCWebsiteBanner.png"
           productName={title}
         >
-          <Main setTitle={setTitle}/>
+          <Main setTitle={setTitle} />
         </LVCTemplate>
         <FloatingChatContainer />
       </ChatProvider>
@@ -58,6 +58,7 @@ function Main(props?: { setTitle?: Function }) {
   }, []);
   return <>
     {token && <PegaEmbed
+      caseID={action === 'openCase' ? DemoBootstrap.getCaseId() : undefined}
       caseTypeID={action === 'createCase' ? DemoBootstrap.getCaseTypeId() : undefined}
       pageID={action === 'openPage' ? DemoBootstrap.getPageId() : undefined}
       className={action === 'openPage' ? DemoBootstrap.getPageClass() : undefined}
@@ -71,6 +72,11 @@ function Main(props?: { setTitle?: Function }) {
           window.PCore.getStore().getState().data["app/primary_1"]
             ?.caseInfo?.caseTypeName
         );
+        const caseID = window.PCore.getStore().getState().data['app/primary_1']?.caseInfo.ID;
+        if (caseID) {
+          DemoBootstrap.setAction('openCase');
+          DemoBootstrap.setCaseId(caseID);
+        }
       }}
     />}
     {(!token && !authError) && <h3>Taming the chaos...</h3>}

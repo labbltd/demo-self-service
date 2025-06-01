@@ -28,10 +28,10 @@ export default function DxMaskedInput(props: { container: PContainer }) {
 
     if (props.container.config.readOnly) {
         return <div className="govuk-summary-list__row">
-            <dt className="govuk-summary-list__key">
+            <dt className="govuk-summary-list__key govuk-body">
                 {props.container.config.label}
             </dt>
-            <dd className="govuk-summary-list__value">
+            <dd className="govuk-summary-list__value govuk-body">
                 {props.container.config.value}
             </dd>
         </div>

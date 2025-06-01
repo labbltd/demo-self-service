@@ -1,7 +1,6 @@
 import { DemoBootstrap } from "@labb/demo-utilities";
 import { BootstrapService } from "@labb/dx-engine";
 import { useEffect } from "react";
-import { Footer } from "react-day-picker";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { useMaterialTailwindController } from "./context";
 import { scenariosData } from "./data/scenarios-data";
@@ -15,6 +14,7 @@ import routes from "./routes";
 import Configurator from "./widgets/layout/configurator";
 import DashboardNavbar from "./widgets/layout/dashboard-navbar";
 import Sidenav from "./widgets/layout/sidenav";
+import Footer from "./widgets/layout/footer";
 
 export default function App() {
   const [controller] = useMaterialTailwindController();

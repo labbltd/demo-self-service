@@ -1,4 +1,4 @@
-import { PContainer } from '@labb/dx-engine';
+import { formatters, PContainer } from '@labb/dx-engine';
 import { HTMLInputTypeAttribute } from 'react';
 
 export default function TextInput(props: {
@@ -83,13 +83,21 @@ export default function TextInput(props: {
     }
   }
 
+  function format(value: any) {
+    if (type() === 'date') return formatters.Date(value);
+    if (type() === 'datetime-local') return formatters.DateTime(value);
+    if (type() === 'time') return formatters.Time(value);
+    if (type() === 'number' && props.container.config.currencyISOCode) return formatters.Currency(value);
+    return value;
+  }
+
   if (props.container.config.readOnly) {
     return <div className="govuk-summary-list__row">
-      <dt className="govuk-summary-list__key">
+      <dt className="govuk-summary-list__key govuk-body">
         {props.container.config.label}
       </dt>
-      <dd className="govuk-summary-list__value">
-        {props.container.config.value}
+      <dd className="govuk-summary-list__value govuk-body">
+        {format(props.container.config.value) || '--'}
       </dd>
     </div>
   }

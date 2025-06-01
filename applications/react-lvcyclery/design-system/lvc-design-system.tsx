@@ -31,7 +31,7 @@ export default function HsbcDesignSystem() {
                 <LVCFormElement label="Input" id="input" hint="Hint message">
                     <LVCInput id="input" type="text"
                         value={state['input']}
-                        onChange={v => setState({ ...state, input: v })} />
+                        onChange={v => setState({ ...state, input: v.target.value })} />
                 </LVCFormElement>
                 <LVCFormElement label="Input Error" id="error" error="Error message">
                     <LVCInput id="error" type="text" invalid={true} />
@@ -72,7 +72,7 @@ export default function HsbcDesignSystem() {
                 <LVCFormElement label="Number" id="number" hint="Hint message">
                     <LVCInput id="number" type="number"
                         value={state['number']}
-                        onChange={v => setState({ ...state, number: v })} />
+                        onChange={v => setState({ ...state, number: v.target.value })} />
                 </LVCFormElement>
                 <LVCFormElement id="checkbox" hint="Hint message">
                     <LVCCheckbox id="checkbox"

@@ -1,11 +1,12 @@
-import { MutableRefObject } from "react";
+import { ChangeEventHandler, FocusEventHandler, MutableRefObject } from "react";
 
 interface InputProps {
   id: string;
   type: string;
   value?: string;
-  onChange?: (v: string) => void;
-  onBlur?: (v: string) => void;
+  onChange?: ChangeEventHandler<any>;
+  onBlur?: FocusEventHandler<any>;
+  onFocus?: FocusEventHandler<any>;
   invalid?: boolean;
   reference?: MutableRefObject<HTMLInputElement | null>;
   readonly?: boolean;
@@ -83,8 +84,9 @@ if (props.readonly) {
         name={props.id}
         type={props.type}
         value={props.value ?? ''}
-        onChange={e => props.onChange?.(e.target.value)}
-        onBlur={e => props.onBlur?.(e.target.value)}
+        onChange={props.onChange}
+        onBlur={props.onBlur}
+        onFocus={props.onFocus}
       />
     </div>
   );

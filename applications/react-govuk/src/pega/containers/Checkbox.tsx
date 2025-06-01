@@ -8,10 +8,10 @@ export default function Checkbox(props: {
 
   if (props.container.config.readOnly) {
     return <div className="govuk-summary-list__row">
-      <dt className="govuk-summary-list__key">
+      <dt className="govuk-summary-list__key govuk-body">
         {props.container.config.caption}
       </dt>
-      <dd className="govuk-summary-list__value">
+      <dd className="govuk-summary-list__value govuk-body">
         {props.container.config.value ? props.container.config.trueLabel : props.container.config.falseLabel}
       </dd>
     </div>

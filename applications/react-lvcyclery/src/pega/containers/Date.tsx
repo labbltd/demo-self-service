@@ -14,7 +14,9 @@ export default function DxTextInput(props: {
     <HsbcDate id={props.container.id}
       invalid={props.container.config.validatemessage}
       value={props.container.config.value}
-      onChange={v => props.container.updateFieldValue(v)}
-      onBlur={v => props.container.triggerFieldChange(v)} />
+      onBlur={v => {
+        props.container.updateFieldValue(v);
+        props.container.triggerFieldChange(v);
+      }} />
   </HsbcFormElement>
 }

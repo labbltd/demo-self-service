@@ -10,7 +10,9 @@ export default function DxDropdown(props: { container: PContainer<PicklistProps>
   return <HsbcFormElement
     label={props.container.config.label}
     id={props.container.id}
-    hint={props.container.config.helperText}>
+    hint={props.container.config.helperText}
+    error={props.container.config.validatemessage}
+    >
     <HsbcSelect id={props.container.id}
       options={props.container.config.datasource}
       value={props.container.config.value}

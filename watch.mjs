@@ -2,8 +2,8 @@ import { spawn } from 'child_process';
 import watch from 'node-watch';
 
 const folder = './applications';
-// const commandFn = file => ['npm', ['run', 'build:development']];
-const commandFn = file => ['npx', ['nx', 'run', `${file.split('/')[1]}:build`, '--configuration=development']];
+// const commandFn = file => ['npm', ['run', 'build']];
+const commandFn = file => ['npx', ['nx', 'run', `${file.split('/')[1]}:build`]];
 watch(folder, { recursive: true }, function (evt, file) {
     if (!file.includes('vite.config.mts')) {
         console.log('%s changed.', file);

@@ -31,7 +31,7 @@ export default function HsbcDesignSystem() {
                 <HsbcFormElement label="Input" id="input" hint="Hint message">
                     <HsbcInput id="input" type="text"
                         value={state['input']}
-                        onChange={v => setState({ ...state, input: v })} />
+                        onChange={v => setState({ ...state, input: v.target.value })} />
                 </HsbcFormElement>
                 <HsbcFormElement label="Input Error" id="error" error="Error message">
                     <HsbcInput id="error" type="text" invalid={true} />
@@ -61,18 +61,13 @@ export default function HsbcDesignSystem() {
                 <HsbcFormFieldset label="Radio Error" id="radio-error" error="Error message">
                     <HsbcRadio id="radio-error" options={options} />
                 </HsbcFormFieldset>
-                <HsbcFormFieldset label="Date" id="date" hint="Hint message">
-                    <HsbcDate id="date"
-                        value={state['date']}
-                        onChange={v => setState({ ...state, date: v })} />
-                </HsbcFormFieldset>
                 <HsbcFormFieldset label="Date Error" id="date-error" error="Error message">
                     <HsbcDate id="date-error" invalid={true} />
                 </HsbcFormFieldset>
                 <HsbcFormElement label="Number" id="number" hint="Hint message">
                     <HsbcInput id="number" type="number"
                         value={state['number']}
-                        onChange={v => setState({ ...state, number: v })} />
+                        onChange={v => setState({ ...state, number: v.target.value })} />
                 </HsbcFormElement>
                 <HsbcFormElement id="checkbox" hint="Hint message">
                     <HsbcCheckbox id="checkbox"

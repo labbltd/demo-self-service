@@ -61,7 +61,7 @@ export function ClientList() {
                 </Typography>
                 <img src={client.framework} className="inline-block relative object-center h-9 rounded-md"></img>
               </CardHeader>
-              <CardBody className="overflow-x-scroll px-0 pt-0 p-4 flex justify-center">
+              <CardBody className="overflow-x-auto px-0 pt-0 p-4 flex justify-center">
                 <img src={client.logo} className="h-40 object-scale-down" />
               </CardBody>
             </Link>

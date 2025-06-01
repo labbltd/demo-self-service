@@ -1,6 +1,6 @@
 import { Select, SelectItem, TextInput } from "@carbon/react";
 import { Location } from "@labb/dx-engine";
-import { useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 
 export default function DxLocation(props: { container: Location }) {
     const map = useRef(null);
@@ -17,11 +17,15 @@ export default function DxLocation(props: { container: Location }) {
     }, [map.current]);
 
     useEffect(() => {
-        if (container.config.value) {
-            updateSearch(container.config.value);
-            container.setLocation(container.config.value);
-        }
-    }, [container.config.value])
+        (async () => {
+            if (container.config.value && !searchValue && !container.config.readOnly) {
+                const event = { target: { value: container.config.value } } as any;
+                await updateSearch(event);
+                await select(event);
+                await container.putMarker(container.config.value);
+            }
+        })();
+    }, [container.config.value]);
 
     async function updateSearch(event: { target: HTMLInputElement }) {
         const value = event.target?.value;
@@ -29,7 +33,7 @@ export default function DxLocation(props: { container: Location }) {
         setSuggestions(await container.getPlacePredictions(value));
     }
 
-    async function select(event: { target: HTMLInputElement }) {
+    async function select(event: ChangeEvent<HTMLSelectElement>) {
         container.setLocation(event.target.value);
     }
     if (props.container.config.readOnly) {

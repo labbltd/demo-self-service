@@ -1,4 +1,4 @@
-import { PContainer } from '@labb/dx-engine';
+import { formatters, PContainer } from '@labb/dx-engine';
 import { HTMLInputTypeAttribute } from 'react';
 import TextInput from '../../design-system/cb-text-input';
 
@@ -80,30 +80,22 @@ export default function DxTextInput(props: {
         return t.value;
     }
   }
+  function format(value: any) {
+    if (type() === 'date') return formatters.Date(value);
+    if (type() === 'datetime-local') return formatters.DateTime(value);
+    if (type() === 'time') return formatters.Time(value);
+    if (type() === 'number' && props.container.config.currencyISOCode) return formatters.Currency(value);
+    return value;
+  }
+
   if (props.container.config.readOnly) {
-    return <><dt>{props.container.config.label}</dt><dd>{props.container.config.value ?? '--'}</dd></>;
+    return <><dt>{props.container.config.label}</dt><dd>{format(props.container.config.value) ?? '--'}</dd></>;
   }
   return <>
-    <TextInput id={props.container.id} label={props.container.config.label} type={type()}
+    <TextInput id={props.container.id} label={props.container.config.label}
+      error={props.container.config.validatemessage}
+      type={type()}
       onChange={(e) => props.container.updateFieldValue(getValue(e.target))}
       onBlur={(e) => props.container.triggerFieldChange(getValue(e.target))} />
-    {/* <label htmlFor={props.container.id}>
-      {props.container.config.label}
-      {props.container.config.required ? ' *' : ''}
-      {props.container.config.helperText && <span data-tooltip={props.container.config.helperText}>?</span>}
-    </label>
-    <input
-      id={props.container.id}
-      type={type()}
-      inputMode={inputmode()}
-      step={step()}
-      value={props.container.config.value}
-      readOnly={props.container.config.readOnly}
-      disabled={props.container.config.readOnly}
-      required={props.container.config.required}
-      onChange={(e) => props.container.updateFieldValue(getValue(e.target))}
-      onBlur={(e) => props.container.triggerFieldChange(getValue(e.target))}
-    />
-    {props.container.config.validatemessage} */}
   </>;
 }

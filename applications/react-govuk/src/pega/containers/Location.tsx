@@ -15,6 +15,17 @@ export default function DxLocation(props: { container: Location }) {
         })();
     }, [map.current]);
 
+    useEffect(() => {
+        (async () => {
+            if (container.config.value && !searchValue) {
+                const event = { target: { value: container.config.value } } as any;
+                await updateSearch(event);
+                await select(event);
+                await container.putMarker(container.config.value);
+            }
+        })();
+    }, [container.config.value]);
+
     async function updateSearch(event: ChangeEvent) {
         const value = (event.target as HTMLInputElement)?.value;
         setSearchValue(value)
@@ -28,10 +39,10 @@ export default function DxLocation(props: { container: Location }) {
     }
     if (container.config.readOnly) {
         return <div className="govuk-summary-list__row">
-            <dt className="govuk-summary-list__key">
+            <dt className="govuk-summary-list__key govuk-body">
                 {container.config.label}
             </dt>
-            <dd className="govuk-summary-list__value">
+            <dd className="govuk-summary-list__value govuk-body">
                 {container.config.value}
             </dd>
         </div>
@@ -52,22 +63,22 @@ export default function DxLocation(props: { container: Location }) {
                 value={searchValue}
                 onChange={(e) => updateSearch(e)}
             />
+            {suggestions.length > 0 &&
+                <div className="govuk-form-group">
+                    <select className="govuk-select"
+                        onChange={(event) => select(event)}
+                        value={container.config.value}
+                    >
+                        <option value="">
+                            Select...
+                        </option>
+                        {suggestions.map(suggestion =>
+                            <option key={suggestion} value={suggestion}>{suggestion}</option>
+                        )}
+                    </select>
+                </div>
+            }
+            <div ref={map} style={{ height: '25rem', display: container.config.value ? 'block' : 'none' }}></div>
         </div>
-        {suggestions.length > 0 &&
-            <div className="govuk-form-group">
-                <select className="govuk-select"
-                    onChange={(event) => select(event)}
-                    value={container.config.value}
-                >
-                    <option value="">
-                        Select...
-                    </option>
-                    {suggestions.map(suggestion =>
-                        <option key={suggestion} value={suggestion}>{suggestion}</option>
-                    )}
-                </select>
-            </div>
-        }
-        <div ref={map} style={{ height: '25rem', display: container.config.value ? 'block' : 'none' }}></div>
     </>
 }

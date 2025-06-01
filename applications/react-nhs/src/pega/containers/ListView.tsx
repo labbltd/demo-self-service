@@ -27,11 +27,17 @@ export default function DxListView(props: { container: ListView }) {
           <tr key={row.id} className="nhsuk-table__row">
             {container.singleSelectionMode &&
               <td>
-                <input type="radio"
-                  name={container.id}
-                  value={row[container.rowID]}
-                  checked={row[container.rowID] === container.config.value}
-                  onChange={() => container.selectRow(row)} />
+                <div className="nhsuk-form-group">
+                  <div className="nhsuk-radios__item">
+                    <input type="radio"
+                      className="nhsuk-radios__input"
+                      name={container.id}
+                      value={row[container.rowID]}
+                      checked={row[container.rowID] === container.config.value}
+                      onChange={() => container.selectRow(row)} />
+                    <label className="nhsuk-label nhsuk-radios__label"></label>
+                  </div>
+                </div>
               </td>
             }
             {container.multiSelectionMode &&

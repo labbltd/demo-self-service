@@ -1,11 +1,11 @@
-import { MutableRefObject } from "react";
+import { ChangeEventHandler, FocusEventHandler, MutableRefObject } from "react";
 
 interface InputProps {
     id: string,
     type: string,
     value?: string,
-    onChange?: (v: string) => void,
-    onBlur?: (v: string) => void,
+    onChange?: ChangeEventHandler<HTMLInputElement>,
+    onBlur?: FocusEventHandler<HTMLInputElement>,
     invalid?: boolean,
     reference?: MutableRefObject<HTMLInputElement | null>
     multiple?: boolean
@@ -30,7 +30,7 @@ function TextInput(props: InputProps) {
         name={props.id}
         type={props.type}
         value={props.value ?? ''}
-        onChange={e => props.onChange?.((props.type === 'file' ? e : e.target.value) as unknown as string)}
-        onBlur={e => props.onBlur?.(e.target.value)}
+        onChange={props.onChange}
+        onBlur={props.onBlur}
     />
 }

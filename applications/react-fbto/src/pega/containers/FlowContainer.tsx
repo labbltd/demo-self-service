@@ -1,4 +1,4 @@
-import { Assignment } from '@labb/constellation-core-types';
+import { ActionButton, Assignment } from '@labb/constellation-core-types';
 import { FlowContainer } from '@labb/dx-engine';
 import { GeneratePContainer } from '@labb/react-adapter';
 import { useEffect, useState } from 'react';
@@ -28,6 +28,11 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
     setErrorMessage(e?.message || 'Error');
   }
 
+  function buttonClick(button: ActionButton) {
+    setErrorMessage(null);
+    props.container.buttonClick(button).catch(handleActionError);
+  }
+
   const currentStepIndex = props.container.navigation?.steps.findIndex(step => step.visited_status === 'current');
   const nSteps = props.container.navigation?.steps?.length;
 
@@ -40,9 +45,20 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
     {!props.container.hasAssignment() && <>
       {todoAssignments.map(assignment =>
         <div key={assignment.ID}>
-          <div>{assignment.processName} {'>'} {assignment.name}</div>
-          <div>Assigned to {assignment.assigneeInfo?.name}</div>
-          <button type="button" onClick={() => openAssignment(assignment)}>Go</button>
+          <div className="xforms-group container col sfs-page-container-group xforms-ap-full">
+            <div>{assignment.processName} {'>'} {assignment.name}</div>
+            <div>Assigned to {assignment.assigneeInfo?.name}</div>
+            <div className="xforms-group sfs-paging-buttons xforms-ap-default">
+              <label className="xforms-empty-group-label"><span></span></label>
+              <button
+                className="xforms-trigger xforms-control trg_right next_btn xforms-ap-default"
+                type="button"
+                onClick={() => openAssignment(assignment)}
+              >
+                Go
+              </button>
+            </div>
+          </div>
         </div>
       )}
       {todoAssignments.length === 0 && <p>Thank you for your request. We will contact you as soon as possible.</p>}
@@ -83,9 +99,7 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
                   key={`secondary_${idx}`}
                   className={"xforms-trigger xforms-control xforms-ap-default trg_left" + (button.name === 'Vorige' ? ' trg_left' : '')}
                   type="button"
-                  onClick={(e) =>
-                    props.container.buttonClick(button).catch(handleActionError)
-                  }
+                  onClick={(e) => buttonClick(button)}
                 >
                   {button.name}
                 </button>
@@ -95,9 +109,7 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
                   key={`main_${idx}`}
                   className="xforms-trigger xforms-control trg_right next_btn xforms-ap-default"
                   type="button"
-                  onClick={(e) =>
-                    props.container.buttonClick(button).catch(handleActionError)
-                  }
+                  onClick={(e) => buttonClick(button)}
                 >
                   {button.name}
                 </button>

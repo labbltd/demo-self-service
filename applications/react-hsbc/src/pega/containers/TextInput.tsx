@@ -1,11 +1,13 @@
 import { formatters, PContainer } from '@labb/dx-engine';
 import HsbcFormElement from 'applications/react-hsbc/design-system/hsbc-form-element';
 import HsbcInput from 'applications/react-hsbc/design-system/hsbc-input';
-import { HTMLInputTypeAttribute } from 'react';
+import { ChangeEvent, HTMLInputTypeAttribute, useState } from 'react';
 
 export default function DxTextInput(props: {
   container: PContainer;
 }): JSX.Element {
+  const [value, setValue] = useState<any>(props.container.config.value);
+
   function type(): HTMLInputTypeAttribute {
     switch (props.container.config.fieldMetadata?.type) {
       case 'Decimal':
@@ -32,6 +34,37 @@ export default function DxTextInput(props: {
     }
   }
 
+  function getValue(
+    target: EventTarget | null
+  ): number | boolean | string | null {
+    const t: HTMLInputElement = target as HTMLInputElement;
+    switch (type()) {
+      case 'number':
+        return t.valueAsNumber;
+      case 'date':
+        return t.valueAsDate?.toISOString().split('T')[0] || '';
+      case 'checkbox':
+        return t.checked;
+      default:
+        return t.value;
+    }
+  }
+
+  function change(event: ChangeEvent<HTMLInputElement>) {
+    if (type() !== 'date') {
+      props.container.updateFieldValue(getValue(event.target))
+    }
+    setValue(getValue(event.target));
+  }
+
+  function blur(event: ChangeEvent<HTMLInputElement>) {
+    if (type() === 'date') {
+      props.container.updateFieldValue(getValue(event.target))
+    }
+    props.container.triggerFieldChange(getValue(event.target))
+  }
+
+
   function format(value: any) {
     if (type() === 'date') return formatters.Date(value);
     if (type() === 'datetime-local') return formatters.DateTime(value);
@@ -53,9 +86,9 @@ export default function DxTextInput(props: {
     <HsbcInput id={props.container.id}
       type={type()}
       invalid={props.container.config.validatemessage}
-      value={props.container.config.value}
-      onChange={v => props.container.updateFieldValue(v)}
-      onBlur={v => props.container.triggerFieldChange(v)}
+      value={value}
+      onChange={e => change(e)}
+      onBlur={e => blur(e)}
     />
   </HsbcFormElement>
 }

@@ -15,6 +15,17 @@ export default function DxLocation(props: { container: Location }) {
         })();
     }, [map.current]);
 
+    useEffect(() => {
+        (async () => {
+            if (container.config.value && !searchValue) {
+                const event = { target: { value: container.config.value } } as any;
+                await updateSearch(event);
+                await select(event);
+                await container.putMarker(container.config.value);
+            }
+        })();
+    }, [container.config.value]);
+
     async function updateSearch(event: ChangeEvent) {
         const value = (event.target as HTMLInputElement)?.value;
         setSearchValue(value)
@@ -68,6 +79,8 @@ export default function DxLocation(props: { container: Location }) {
                 </select>
             </div>
         }
-        <div ref={map} style={{ height: '25rem' }}></div>
+        <div className="nhsuk-form-group">
+            <div ref={map} style={{ height: '25rem', marginBottom: '1.5rem', display: container.config.value ? 'block' : 'none' }}></div>
+        </div>
     </>
 }

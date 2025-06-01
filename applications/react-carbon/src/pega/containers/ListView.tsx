@@ -1,46 +1,65 @@
+import { TableHead } from '@carbon/react';
+import { TableBody } from '@carbon/react';
+import { TableHeader } from '@carbon/react';
+import { RadioButton } from '@carbon/react';
+import { Checkbox } from '@carbon/react';
+import { InlineNotification } from '@carbon/react';
+import { TableCell } from '@carbon/react';
+import { TableRow } from '@carbon/react';
+import { Table } from '@carbon/react';
 import { ListView } from '@labb/dx-engine';
 
 export default function DxListView(props: { container: ListView }) {
   const { container } = props;
-  return <table>
-    {container.label && <caption>{container.label}</caption>}
-    <thead>
-      <tr>
-        {(container.singleSelectionMode || container.multiSelectionMode) && <th>Select</th>}
-        {container.fields.map(col => <th key={col.config.label}>{col.config.label}</th>)}
-      </tr>
-    </thead>
-    <tbody>
-      {container.updatedRefList.map(row =>
-        <tr key={row.id}>
-          {container.singleSelectionMode &&
-            <td>
-              <input type="radio"
-                name={container.id}
-                value={row[container.rowID]}
-                checked={row[container.rowID] === container.config.value}
-                onChange={() => container.selectRow(row)} />
-            </td>
-          }
-          {container.multiSelectionMode &&
-            <td>
-              <input type="checkbox"
-                name={container.id}
-                value={row[container.rowID]}
-                checked={row[container.rowID] === container.config.value}
-                onChange={e => container.selectRow(row, e.target.checked)} />
-            </td>
-          }
-          {container.fields.map(col => container.showButton(col.config.name, col) ?
-            <td key={col.config.name}>
-              <a type="button" href="#"
-                onClick={(e) => { e.preventDefault(); container.listViewClick(col.config, row) }}
-                dangerouslySetInnerHTML={{ __html: row[col.config.name] || '---' }} />
-            </td> :
-            <td key={col.config.name} dangerouslySetInnerHTML={{ __html: row[col.config.name] || '---' }}></td>
-          )}
-        </tr>
-      )}
-    </tbody>
-  </table >
+  return <>
+    {container.label && <h4>{container.label}</h4>}
+    {container.config.validatemessage && <InlineNotification
+      kind="error"
+      onClose={() => { }}
+      onCloseButtonClick={() => { }}
+      title={container.config.validatemessage}
+    />}
+    <Table>
+      <TableHead>
+        <TableRow>
+          {(container.singleSelectionMode || container.multiSelectionMode) && <TableHeader>Select</TableHeader>}
+          {container.fields.map(col => <TableHeader key={col.config.label}>{col.config.label}</TableHeader>)}
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {container.updatedRefList.map(row =>
+          <TableRow key={row.id}>
+            {container.singleSelectionMode &&
+              <TableCell>
+                <RadioButton
+                  labelText=""
+                  value={row[container.rowID]}
+                  checked={row[container.rowID] === container.config.value}
+                  onChange={() => container.selectRow(row)}
+                />
+              </TableCell>
+            }
+            {container.multiSelectionMode &&
+              <TableHeader>
+                <Checkbox
+                  id=""
+                  labelText=""
+                  value={row[container.rowID]}
+                  checked={row[container.rowID] === container.config.value}
+                  onChange={(e: any) => container.selectRow(row, e.target.checked)} />
+              </TableHeader>
+            }
+            {container.fields.map(col => container.showButton(col.config.name, col) ?
+              <TableCell key={col.config.name}>
+                <a type="button" href="#"
+                  onClick={(e) => { e.preventDefault(); container.listViewClick(col.config, row) }}
+                  dangerouslySetInnerHTML={{ __html: row[col.config.name] || '---' }} />
+              </TableCell> :
+              <td key={col.config.name} dangerouslySetInnerHTML={{ __html: row[col.config.name] || '---' }}></td>
+            )}
+          </TableRow>
+        )}
+      </TableBody>
+    </Table>
+  </>
 }

@@ -36,8 +36,7 @@ export default function TextInput(props: TextInputProps) {
                         onBlur={props.onBlur}
                         placeholder={props.placeholder}
                         className={
-                            "xforms-input xforms-control col-sm-4 xforms-ap-full" +
-                            (props.type === 'date' ? ' ui-date-picker xforms-builtin-type-date hasDatepicker' : '')
+                            "xforms-input xforms-control col-sm-4 xforms-ap-full"
                         } />}
                     {props.type === 'select' && <select className="xforms-input xforms-control col-sm-4 xforms-ap-full" onChange={props.onChange}>
                         <option value="">Select...</option>
@@ -49,10 +48,6 @@ export default function TextInput(props: TextInputProps) {
                         onChange={props.onChange}
                         onBlur={props.onBlur}
                         className="xforms-input xforms-control col-sm-4 xforms-ap-full" value={props.value}></textarea>}
-                    {props.type === 'date' && <>
-                        <button type="button" className="ui-datepicker-trigger">...</button>
-                        <button className="ui-datepicker-clear" type="button">x</button>
-                    </>}
                 </div>
                 {props.helperMessage && <div className="offset-lg-3 order-1 col-lg-9">
                     <small className="form-text text-muted xforms-field-info xforms-field-help ">

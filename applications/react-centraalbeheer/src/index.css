@@ -9,3 +9,28 @@
 .legacy .btn--plus:before {
     content: "\2b";
 }
+
+
+td {
+    padding: 10px;
+}
+
+tr {
+    border-bottom: 1px solid lightgray;
+}
+
+label {
+    display: block;
+}
+
+input[type="checkbox"] {
+    margin-top: 10px;
+}
+
+table {
+    margin-bottom: 15px;
+}
+
+.site {
+    background: white;
+}

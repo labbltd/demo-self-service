@@ -57,7 +57,11 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
         <div key={assignment.ID}>
           <div>{assignment.processName} {'>'} {assignment.name}</div>
           <div>Assigned to {assignment.assigneeInfo?.name}</div>
-          <button type="button" onClick={() => openAssignment(assignment)}>Go</button>
+          <HsbcButton type="primary"
+            label={'Go'}
+            onClick={() =>
+              openAssignment(assignment)
+            } />
         </div>
       )}
       {todoAssignments.length === 0 && <p>Thank you for your request. We will contact you as soon as possible.</p>}
@@ -95,6 +99,7 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
                     <HsbcButton type="secondary"
                       key={button.actionID}
                       label={button.name}
+                      showArrow={button.actionID === 'Previous'}
                       onClick={() =>
                         props.container.buttonClick(button).catch(handleActionError)
                       } />

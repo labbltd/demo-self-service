@@ -1,3 +1,4 @@
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@carbon/react';
 import { SimpleTableManual } from '@labb/dx-engine';
 import { GeneratePContainer } from '@labb/react-adapter';
 
@@ -6,37 +7,37 @@ export default function DxSimpleTableManual(props: { container: SimpleTableManua
   return <>
     {container.config.label && <h3>{container.config.label}</h3>}
     {container.readOnlyMode &&
-      <table>
-        <thead>
-          <tr>
-            {container.processedFields.map(col => <th key={col.config.name}>{col.config.name}</th>)}
-          </tr>
-        </thead>
-        <tbody>
-          {container.rowData.map((row, index) => <tr key={index}>
+      <Table>
+        <TableHead>
+          <TableRow>
+            {container.processedFields.map(col => <TableHeader key={col.config.name}>{col.config.name}</TableHeader>)}
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {container.rowData.map((row, index) => <TableRow key={index}>
             {
               container.processedFields.map(col =>
-                <td key={col.config.name} dangerouslySetInnerHTML={{ __html: row[col.config.name] || '---' }}></td>
+                <TableCell key={col.config.name} dangerouslySetInnerHTML={{ __html: row[col.config.name] || '---' }}></TableCell>
               )
             }
-          </tr>)}
-        </tbody>
-      </table>
+          </TableRow>)}
+        </TableBody>
+      </Table>
     }
     {container.editableMode &&
       <table>
-        <thead>
-          <tr>
-            {container.fieldDefs.map(col => <th key={col.name}>{col.label}</th>)}
-          </tr>
-        </thead>
-        <tbody>
+        <TableHead>
+          <TableRow>
+            {container.fieldDefs.map(col => <TableHeader key={col.name}>{col.label}</TableHeader>)}
+          </TableRow>
+        </TableHead>
+        <TableBody>
           {container.elementsData.map((row, rowIndex) =>
-            <tr key={rowIndex}>
-              {row.map((col, colIndex) => <td key={colIndex}><GeneratePContainer container={col} /></td>)}
-            </tr>
+            <TableRow key={rowIndex}>
+              {row.map((col, colIndex) => <TableCell key={colIndex}><GeneratePContainer container={col} /></TableCell>)}
+            </TableRow>
           )}
-        </tbody>
+        </TableBody>
       </table>
     }
   </>

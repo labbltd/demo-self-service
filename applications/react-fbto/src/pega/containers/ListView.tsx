@@ -3,7 +3,23 @@ import { ListView } from '@labb/dx-engine';
 export default function DxListView(props: { container: ListView }) {
   const { container } = props;
   return <table>
-    {container.label && <caption>{container.label}</caption>}
+    <div className={
+      "d-flex row ml-0 xforms-cc xforms-ap-full ui-date-picker col-sm-4" +
+      (props.container.config.validatemessage ? 'xforms-invalid' : 'xforms-valid')
+    }>
+      <label className="col-lg-3 col-form-label pl-lg-0" htmlFor={props.container.id}>
+        {props.container.config.label}
+      </label>
+      {props.container.config.helperText && <div className="offset-lg-3 order-1 col-lg-9">
+        <small className="form-text text-muted xforms-field-info xforms-field-help ">
+          <span className="xforms-help-box">{props.container.config.helperText}</span>
+        </small>
+      </div>}
+    </div>
+    {props.container.config.validatemessage && <span className="xforms-field-info order-2 offset-lg-3 col-lg-9 xforms-field-alert text-danger small">
+      {props.container.config.validatemessage}
+      <ul className="wcag-alerts"></ul>
+    </span>}
     <thead>
       <tr>
         {(container.singleSelectionMode || container.multiSelectionMode) && <th>Select</th>}

@@ -1,7 +1,7 @@
-import { PContainer } from '@labb/dx-engine';
+import { DefaultProps } from '@labb/constellation-core-types';
+import { formatters, PContainer } from '@labb/dx-engine';
 import { HTMLInputTypeAttribute } from 'react';
 import TextInput from '../../design-system/fbto-text-input';
-import { DefaultProps } from '@labb/constellation-core-types';
 
 export default function DxTextInput(props: {
   container: PContainer<DefaultProps & { precision: number }>
@@ -81,8 +81,16 @@ export default function DxTextInput(props: {
         return t.value;
     }
   }
+
+  function format(value: any) {
+    if (type() === 'date') return formatters.Date(value);
+    if (type() === 'datetime-local') return formatters.DateTime(value);
+    if (type() === 'time') return formatters.Time(value);
+    if (type() === 'number' && props.container.config.currencyISOCode) return formatters.Currency(value);
+    return value;
+  }
   if (props.container.config.readOnly) {
-    return <><dt>{props.container.config.label}</dt><dd>{props.container.config.value ?? '--'}</dd></>;
+    return <><dt>{props.container.config.label}</dt><dd>{format(props.container.config.value) ?? '--'}</dd></>;
   }
   return <>
     <TextInput id={props.container.id}

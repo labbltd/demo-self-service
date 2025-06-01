@@ -26,6 +26,7 @@ export default function DxDropdown(props: { container: PContainer<PicklistProps>
       invalid={!!container.config.validatemessage}
       invalidText={container.config.validatemessage}
       onChange={e => onChange(e.target.value)}>
+        <SelectItem value={null} text={'Select an option...'}/>
       {container.config.datasource.map(option => (
         <SelectItem
           key={option.key}

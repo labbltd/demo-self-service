@@ -16,6 +16,17 @@ export default function DxLocation(props: { container: Location }) {
         })();
     }, [map.current]);
 
+    useEffect(() => {
+        (async () => {
+            if (container.config.value && !searchValue) {
+                const event = { target: { value: container.config.value } } as any;
+                await updateSearch(event);
+                await select(event);
+                await container.putMarker(container.config.value);
+            }
+        })();
+    }, [container.config.value]);
+
     async function updateSearch(event: ChangeEvent) {
         const value = (event.target as HTMLInputElement)?.value;
         setSearchValue(value)
@@ -28,11 +39,18 @@ export default function DxLocation(props: { container: Location }) {
         container.triggerFieldChange(value);
     }
 
+    if (props.container.config.readOnly) {
+        return <><dt>{props.container.config.label}</dt><dd>{props.container.config.value ?? '--'}</dd></>;
+    }
     return <>
-        <TextInput type="text" label={container.config.label} value={searchValue} onChange={(event) => updateSearch(event)} />
+        <TextInput type="text"
+            label={container.config.label}
+            helperMessage={container.config.helperText}
+            errorMessage={container.config.validatemessage}
+            value={searchValue} onChange={(event) => updateSearch(event)} />
         {suggestions.length > 0 &&
             <TextInput type="select" value={container.config.value} onChange={(event) => select(event)} options={suggestions} />
         }
-        {container.config.value && <div ref={map} style={{ height: '25rem' }}></div>}
+        <div ref={map} style={{ height: '25rem', marginBottom: '1.5rem', display: container.config.value ? 'block' : 'none' }}></div>
     </>
 }

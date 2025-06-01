@@ -6,10 +6,10 @@ export default function DxDropdown(props: { container: PContainer }) {
 
   if (container.config.readOnly) {
     return <div className="govuk-summary-list__row">
-      <dt className="govuk-summary-list__key">
+      <dt className="govuk-summary-list__key govuk-body">
         {container.config.label}
       </dt>
-      <dd className="govuk-summary-list__value">
+      <dd className="govuk-summary-list__value govuk-body">
         {container.config.value}
       </dd>
     </div>

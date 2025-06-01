@@ -26,10 +26,10 @@ export default function DxDate(props: {
 
   if (props.container.config.readOnly) {
     return <div className="govuk-summary-list__row">
-      <dt className="govuk-summary-list__key">
+      <dt className="govuk-summary-list__key govuk-body">
         {props.container.config.label}
       </dt>
-      <dd className="govuk-summary-list__value">
+      <dd className="govuk-summary-list__value govuk-body">
         {props.container.config.value}
       </dd>
     </div>

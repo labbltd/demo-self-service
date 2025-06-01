@@ -5,7 +5,7 @@ export default function Button(props: {
     children: React.ReactNode,
     onClick: MouseEventHandler<HTMLButtonElement>
 }) {
-    const className = `btn btn-${props.variant}`;
+    const className = props.variant === 'primary' ? `btn btn-${props.variant}` : 'btn';
     return (
         <button type="button" className={className} onClick={props.onClick}>
             {props.children}

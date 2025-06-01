@@ -7,6 +7,7 @@ export default function DxDropdown(props: { container: PContainer<PicklistProps>
   return <LVCFormElement
     label={props.container.config.label}
     id={props.container.id}
+    error={props.container.config.validatemessage}
     hint={props.container.config.helperText}>
     <LVCSelect id={props.container.id}
       options={props.container.config.datasource}

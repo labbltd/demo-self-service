@@ -18,14 +18,22 @@ export default function Date(props: {
   if (props.container.config.readOnly) {
     return <><dt>{props.container.config.label}</dt><dd>{props.container.config.value ?? '--'}</dd></>;
   }
-  
+
+  function toDatePickerFormat(value: string): string {
+    if (!value) return value;
+    const dateParts = value.split('-');
+    return [dateParts[1], dateParts[2], dateParts[0]].join('/');
+  }
+
   return (
-    <DatePicker datePickerType="single" onChange={onChange}>
+    <DatePicker datePickerType="single"
+      dateFormat={'m/d/Y'}
+      onChange={onChange}
+      value={toDatePickerFormat(container.config.value)}>
       <DatePickerInput
         id={id}
         labelText={container.config.label}
         placeholder="mm/dd/yyyy"
-        value={container.config.value}
         invalid={!!container.config.validatemessage}
         invalidText={container.config.validatemessage}
         helperText={container.config.helperText}

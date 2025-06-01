@@ -18,9 +18,7 @@ export default function LVCButton(props: {
             type="button"
             onClick={() => props.onClick?.()}>
             <div role="presentation" className="icon_QFBvN alignMiddle_wxoAR navigation_REiKw small_liJq4 padRight_znmdG">
-                <svg focusable="false" viewBox="0 0 465 465">
-                    <polygon points="293.6097412,401.1834106 331.9074097,362.8890991 206.5081177,237.5170593 331.9074097,112.1142731 293.5960999,73.8165817 129.8785858,237.4965515 	"></polygon>
-                </svg>
+                
             </div>
             {props.label}
         </button>

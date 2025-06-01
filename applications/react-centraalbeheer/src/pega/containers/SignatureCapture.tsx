@@ -48,8 +48,17 @@ export default function DxSignatureCapture(props: { container: PContainer }) {
         setHasValueChanged(true);
     }
 
-    return <><label htmlFor={container.id}>{container.config.label}</label>
-        {container.config.readOnly && <img src={container.config.value} />}
+    return <>
+        <div className="input-group">
+            <div className="input-text">
+                <label className="input-text__label">
+                    {container.config.label}
+                </label>
+                {container.config.validatemessage && <div className="input-message input-message--error">
+                    {container.config.validatemessage}
+                </div>}
+            </div>
+        </div>
         {
             !container.config.readOnly && <>
                 <canvas style={{ width: '100%', height: '200px', border: '1px dashed' }} ref={canvas}></canvas>

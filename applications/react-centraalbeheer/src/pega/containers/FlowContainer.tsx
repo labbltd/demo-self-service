@@ -1,4 +1,4 @@
-import { Assignment } from '@labb/constellation-core-types';
+import { ActionButton, Assignment } from '@labb/constellation-core-types';
 import { FlowContainer as PFlowContainer } from '@labb/dx-engine';
 import { GeneratePContainer } from '@labb/react-adapter';
 import { useEffect, useState } from 'react';
@@ -29,6 +29,12 @@ export default function FlowContainer(props: { container: PFlowContainer }) {
     setErrorMessage(e.message || 'Error');
   }
 
+  function buttonClick(button: ActionButton) {
+    setErrorMessage('');
+    props.container.buttonClick(button).catch(handleActionError)
+
+  }
+
   const activeStep = props.container.navigation?.steps.findIndex(step => step.visited_status === 'current');
   const caseName = props.container.pconnect.getCaseInfo().getCaseTypeName();
   return <>
@@ -54,7 +60,7 @@ export default function FlowContainer(props: { container: PFlowContainer }) {
         <div className="strip-funnel__title">
           <h1 className="heading-page-title ng-binding">{caseName}</h1>
           <h2 className="heading-page-subtitle ng-binding">
-            {activeStep + 1}. {props.container.getActiveViewLabel() || props.container.getAssignmentName()}
+            {activeStep != undefined ? `${activeStep + 1}.` : ''} {props.container.getActiveViewLabel() || props.container.getAssignmentName()}
           </h2>
         </div>
         <div className='row flex'>
@@ -76,9 +82,7 @@ export default function FlowContainer(props: { container: PFlowContainer }) {
                       key={`main_${idx}`}
                       variant='primary'
                       label={button.name}
-                      onClick={() =>
-                        props.container.buttonClick(button).catch(handleActionError)
-                      }
+                      onClick={() => buttonClick(button)}
                     />
                   ))}
                 {props.container.actionButtons.secondary
@@ -88,9 +92,7 @@ export default function FlowContainer(props: { container: PFlowContainer }) {
                       key={`secondary_${idx}`}
                       variant={button.actionID === 'back' ? 'back' : 'secondary'}
                       label={button.name}
-                      onClick={() =>
-                        props.container.buttonClick(button).catch(handleActionError)
-                      }
+                      onClick={() => buttonClick(button)}
                     />
                   ))}
               </div>

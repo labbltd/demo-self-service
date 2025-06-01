@@ -92,7 +92,7 @@ export function Demo() {
         </div>
       </div>
       <div className="browser-content">
-        <iframe src={client.link} style={{ width: '100%', height: 'calc(100vh - 180px)' }} />
+        <iframe src={`${client.link}?v=${new Date().getTime()}`} style={{ width: '100%', height: 'calc(100vh - 180px)' }} />
       </div>
     </div>
   </>

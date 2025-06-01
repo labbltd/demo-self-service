@@ -48,12 +48,11 @@ export default function DxSignatureCapture(props: { container: PContainer }) {
         setHasValueChanged(true);
     }
 
-    const label = container.config.inheritedProps.find((prop: { prop: string, value: string }) => prop.prop === 'label')?.value || container.config.label;
 
     return <>
         <div className={"nhsuk-form-group" + (container.config.validatemessage ? " nhsuk-form-group--error" : "")}>
             <label className="nhsuk-label" htmlFor={container.id}>
-                {label}{!container.config.required ? ' (Optional)' : ''}
+                {container.config.label}{!container.config.required ? ' (Optional)' : ''}
             </label>
             {container.config.helperText && <div className="nhsuk-hint">
                 {container.config.helperText}
@@ -66,10 +65,10 @@ export default function DxSignatureCapture(props: { container: PContainer }) {
         {
             !container.config.readOnly && <>
                 <canvas id={container.id} style={{ width: '100%', height: '200px', border: '1px dashed' }} ref={canvas}></canvas>
-                <button type="button" onClick={() => onClear()}>
+                <button className="nhsuk-button nhsuk-button--secondary" type="button" onClick={() => onClear()}>
                     Clear
                 </button>
-                <button type="button" onClick={() => onAccept()}
+                <button className="nhsuk-button nhsuk-button--secondary" type="button" onClick={() => onAccept()}
                     disabled={!hasValueChanged}>
                     Accept
                 </button>

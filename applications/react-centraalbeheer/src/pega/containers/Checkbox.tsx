@@ -4,7 +4,10 @@ export default function Checkbox(props: {
   container: PContainer;
 }): JSX.Element {
   function getValue(target: EventTarget & HTMLInputElement): boolean {
-    return target.value === 'on';
+    return target.checked;
+  }
+  if (props.container.config.readOnly) {
+    return <><dt>{props.container.config.caption}</dt><dd>{props.container.config.value ? props.container.config.trueLabel : props.container.config.falseLabel}</dd></>;
   }
 
   return <>
@@ -12,8 +15,10 @@ export default function Checkbox(props: {
       {props.container.config.required ? ' *' : ''}
       <input
         type="checkbox"
-        onChange={(e) => props.container.updateFieldValue(getValue(e.target))}
-        onBlur={(e) => props.container.triggerFieldChange(getValue(e.target))}
+        onChange={(e) => {
+          props.container.updateFieldValue(getValue(e.target));
+          props.container.triggerFieldChange(getValue(e.target));
+        }}
       />
       {props.container.config.caption}
     </label>
