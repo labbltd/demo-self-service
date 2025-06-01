@@ -7,7 +7,11 @@ import { CdsDropdownService } from "../../design-system/cds-dropdown/cds-dropdow
 @Component({
     selector: 'dx-location',
     template: `
-        <cds-form-field [label]="container.config.label" [for]="container.id">
+        <cds-form-field 
+        [errorMessage]="container.config.validatemessage"
+        [tooltip]="{body: container.config.helperText}"
+        [label]="container.config.label" 
+        [for]="container.id">
             @if(this.container.config.readOnly) {
                 {{container.config.value}}
             } @else {
@@ -32,6 +36,14 @@ import { CdsDropdownService } from "../../design-system/cds-dropdown/cds-dropdow
         <div #map style="height: 25rem"></div>
         }
     `,
+    styles: [
+        `
+        :host{
+            display: block;
+            margin-bottom: 15px
+        }
+        `
+    ],
     providers: [CdsDropdownService],
     standalone: false
 })

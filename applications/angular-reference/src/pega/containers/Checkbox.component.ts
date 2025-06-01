@@ -15,10 +15,9 @@ import { PContainerComponent } from '@labb/angular-adapter';
           type="checkbox"
           [attr.readonly]="container.config.readOnly"
           [formControl]="control"
-          (change)="container.updateFieldValue(getValue($event.target))"
-          (blur)="container.triggerFieldChange(getValue($event.target))"
+          (change)="change($event)"
         />
-        {{ label }}{{ container.config.required ? ' *' : '' }}
+        {{ container.config.caption }}{{ container.config.required ? ' *' : '' }}
         </label>
         {{ container.config.helperText }}
         {{ container.config.validatemessage }}
@@ -29,9 +28,6 @@ import { PContainerComponent } from '@labb/angular-adapter';
 })
 export class CheckboxComponent extends PContainerComponent implements OnInit {
   public control = new FormControl('');
-  public get label(): string {
-    return this.container.config.label || this.container.config.caption;
-  }
 
   public override ngOnInit(): void {
     super.ngOnInit();
@@ -41,10 +37,10 @@ export class CheckboxComponent extends PContainerComponent implements OnInit {
     });
   }
 
-  public getValue(
-    target: EventTarget | null
-  ): number | Date | boolean | string | null {
-    const t: HTMLInputElement = target as HTMLInputElement;
-    return t.checked;
+  public change(event: Event) {
+    if (!event.target) return;
+    const val = (event.target as HTMLInputElement).checked;
+    this.container.updateFieldValue(val);
+    this.container.triggerFieldChange(val);
   }
 }

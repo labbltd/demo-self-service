@@ -4861,10 +4861,10 @@ a>.cbolui-cds code {
 }
 
 
-.cbolui-cds dx-signature-capture .cds-form-field .cds-warning-icon {
+.cbolui-cds .cds-form-field.cds-signature-info .cds-warning-icon {
   background: url('data:image/svg+xml,<svg viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="m3.464 11.371 6.222 5.974L21.582 5 23 6.371 9.732 20 2 12.743l1.464-1.372Z"></path></svg>') no-repeat;
 }
-.cbolui-cds dx-signature-capture .cds-form-field .cds-error {
+.cbolui-cds .cds-form-field.cds-signature-info .cds-error {
   color: #006e0a !important;
 }
 

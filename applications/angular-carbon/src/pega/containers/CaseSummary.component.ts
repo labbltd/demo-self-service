@@ -19,6 +19,14 @@ import { BootstrapService } from '@labb/dx-engine';
       </div>
     }
   `,
+  styles: [
+    `
+    :host {
+      display: block;
+      margin-bottom: 15px;
+    }
+    `
+  ],
   encapsulation: ViewEncapsulation.None,
   standalone: false
 })

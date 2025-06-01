@@ -14,13 +14,11 @@ import { ListItem } from 'carbon-components-angular';
         [invalid]="!!container.config.validatemessage"
         [invalidText]="container.config.validatemessage"
         [placeholder]="container.config.placeholder"
-        [disabled]="container.config.readOnly"
         (selected)="selected($event)"
         >
           <ibm-dropdown-list [items]="items"></ibm-dropdown-list>
       </ibm-dropdown>
     }`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false
 })
 export class DropdownComponent extends PContainerComponent implements OnInit {

@@ -8,7 +8,6 @@ import {
 } from "@material-tailwind/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import './scenarios.css';
 
 export function ScenarioList() {
   const [allCaseTypes, setAllCaseTypes] = useState(false);

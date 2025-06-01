@@ -1,29 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PContainerComponent } from '@labb/angular-adapter';
 import { ListView } from '@labb/dx-engine';
 
 @Component({
   selector: 'dx-list-view-container',
   template: `
-    <table>
-      @if(container.label) {
-        <caption>{{container.label}}</caption>
-      }
-      <thead>
+    <ibm-label
+        [helperText]="container.config.helperText"
+        [invalid]="!!container.config.validatemessage"
+        [invalidText]="container.config.validatemessage">
+        {{container.config.label}}
+    </ibm-label>
+    <table cdsTable>
+      <thead cdsTableHead>
         <tr>
           @if(container.singleSelectionMode || container.multiSelectionMode) {
-            <th></th>
+            <th>Select</th>
           }
           @for(col of container.fields; track col.config.name) {
             <th>{{col.config.label}}</th>
           }
         </tr>
       </thead>
-      <tbody>
+      <tbody cdsTableBody>
         @for(row of container.updatedRefList; track row.id) {
-          <tr>
+          <tr >
             @if(container.singleSelectionMode) {
-              <td>
+              <td >
                 <input type="radio" 
                   [name]="container.id" 
                   [value]="row[container.rowID]" 
@@ -32,7 +35,7 @@ import { ListView } from '@labb/dx-engine';
               </td>
             }
             @if(container.multiSelectionMode) {
-              <td>
+              <td >
                 <input type="checkbox"
                   [name]="container.id"
                   [value]="row[container.rowID]"
@@ -42,12 +45,12 @@ import { ListView } from '@labb/dx-engine';
             }
             @for(col of container.fields; track col.config.name) {
               @if(container.showButton(col.config.name, col)) {
-                  <td>
+                  <td >
                       <a (click)="container.listViewClick(col.config, row)"
                           [innerHTML]="row[col.config.name] || '---'"></a>
                   </td>
               } @else {
-                  <td [innerHTML]="row[col.config.name] || '---'"></td>
+                  <td  [innerHTML]="row[col.config.name] || '---'"></td>
               }
             }
           </tr>
@@ -57,7 +60,7 @@ import { ListView } from '@labb/dx-engine';
   `,
   standalone: false
 })
-export class ListViewComponent extends PContainerComponent<ListView> implements OnInit {
+export class ListViewComponent extends PContainerComponent<ListView> {
   public selectRow(row: any, event?: Event) {
     this.container.selectRow(row, event && (event.target as HTMLInputElement).checked);
   }

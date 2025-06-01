@@ -8,7 +8,7 @@ import { PContainerComponent } from '@labb/angular-adapter';
       @if (container.config.readOnly) {
         <dt>{{container.config.caption}}</dt><dd>{{container.config.value ? container.config.trueLabel : container.config.falseLabel}}</dd>
       } @else {
-        <cds-form-field [errorMessage]="container.config.validatemessage" [tooltip]="container.config.helperText" [label]="container.config.label">
+        <cds-form-field [errorMessage]="container.config.validatemessage" [tooltip]="container.config.helperText">
           @if(container.config.readOnly) {
             {{container.config.value ? container.config.trueLabel : container.config.falseLabel}}
           } @else {

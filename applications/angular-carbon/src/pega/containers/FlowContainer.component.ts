@@ -88,7 +88,7 @@ export class FlowContainerComponent extends PContainerComponent<FlowContainer> i
     return this.container.navigation?.steps?.map(step => ({
       text: step.name,
       state: [],
-      label: step.ID
+      label: step.name
     })) ?? [];
   }
 
@@ -97,7 +97,8 @@ export class FlowContainerComponent extends PContainerComponent<FlowContainer> i
   }
 
   public get navigationOrientation(): 'horizontal' | 'vertical' {
-    return this.container.navigation?.template === 'Vertical' ? 'vertical' : 'horizontal';
+    // return this.container.navigation?.template === 'Vertical' ? 'vertical' : 'horizontal';
+    return 'vertical';
   }
 
   public get leftColumn() {

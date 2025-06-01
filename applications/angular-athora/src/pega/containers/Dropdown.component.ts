@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
 import { ControlComponent } from '../control.component';
-import { PicklistProps } from '@labb/constellation-core-types';
 
 @Component({
   selector: 'dx-dropdown-control',
   template: `
-    @if (container.config.readOnly) {
-      <span>{{container.config.value}}</span>
-    } @else {
+     @if(container.config.readOnly) {
+        <div class="dx-control">
+          <mat-label>
+            {{ container.config.label }}
+          </mat-label>
+          {{container.config.value}}
+        </div>
+      } @else  {
       <div class="dx-control">
         <mat-label>
           {{ container.config.label }}

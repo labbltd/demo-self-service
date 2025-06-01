@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { PContainerComponent } from '@labb/angular-adapter';
+import { formatters } from '@labb/dx-engine';
 
 @Component({
   selector: 'dx-text-input-control',
   template: `
   @if (container.config.readOnly) {
-    <dt>{{ label }}</dt><dd>{{container.config.value ?? '--'}}</dd>
+    <dt>{{ label }}</dt><dd>{{format(container.config.value) ?? '--'}}</dd>
   } @else {
     <ibm-label
         [disabled]="container.config.readOnly"
@@ -40,6 +41,14 @@ export class TextInputComponent extends PContainerComponent implements OnInit {
     if (this.container.config.readOnly) {
       this.control.disable();
     }
+  }
+
+  public format(value: any) {
+    if (this.type === 'date') return formatters.Date(value);
+    if (this.type === 'datetime-local') return formatters.DateTime(value);
+    if (this.type === 'time') return formatters.Time(value);
+    if (this.type === 'number' && this.container.config.currencyISOCode) return formatters.Currency(value);
+    return value;
   }
 
   public get type(): string {

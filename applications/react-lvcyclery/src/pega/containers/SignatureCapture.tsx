@@ -48,7 +48,15 @@ export default function DxSignatureCapture(props: { container: PContainer }) {
         setHasValueChanged(true);
     }
 
-    return <><label htmlFor={container.id}>{container.config.label}</label>
+    return <>
+        <div className="formItem_P5zj_ marginTop2_JrTKO marginBottom3_cHPnK clearfix_hhLma">
+            {container.config.label && <label className="label_dQA2Y marginBottomHalf_HqntJ regular_u61RY fontSize3_hUHe0">
+                {container.config.label}
+            </label>}
+            {container.config.helperText && <div className="hint_RGDKH fontSize2_QsxkM marginBottom1_fwI3m"
+                dangerouslySetInnerHTML={{ __html: container.config.helperText }}></div>}
+        </div>
+        <label htmlFor={container.id}>{container.config.label}</label>
         {container.config.readOnly && <img src={container.config.value} />}
         {
             !container.config.readOnly && <>

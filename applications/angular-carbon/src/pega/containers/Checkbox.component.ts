@@ -4,17 +4,21 @@ import { PContainerComponent } from '@labb/angular-adapter';
 @Component({
   selector: 'dx-checkbox-control',
   template: `
+  @if (container.config.readOnly) {
+    <dt>{{ container.config.label }}</dt><dd>{{container.config.value ? container.config.trueLabel : container.config.falseLabel ?? '--'}}</dd>
+  } @else {
     <ibm-checkbox
-        [value]="container.config.value"
-        (change)="change(null, $event)">
+        [checked]="container.config.value"
+        (checkedChange)="change($event)">
         {{container.config.caption}}
     </ibm-checkbox>
+  }
   `,
   standalone: false
 })
 export class CheckboxComponent extends PContainerComponent {
-  public change(e: any, t: Event): void {
-    this.container.updateFieldValue((t as any).checked);
-    this.container.triggerFieldChange((t as any).checked);
+  public change(value: boolean): void {
+    this.container.updateFieldValue(value);
+    this.container.triggerFieldChange(value);
   }
 }

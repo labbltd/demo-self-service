@@ -69,7 +69,7 @@ import { FlowContainer } from '@labb/dx-engine';
               [ngClass]="{'button--prev' : button.name === 'Previous'}"
               (click)="buttonClick(button)"
             >
-              {{ button.name | translate }}
+              {{ button.name }}
             </button>
             <button
               mat-flat-button
@@ -79,7 +79,7 @@ import { FlowContainer } from '@labb/dx-engine';
               *ngFor="let button of container.actionButtons.main"
               (click)="buttonClick(button)"
             >
-              {{ button.name | translate }}
+              {{ button.name }}
             </button>
           </div>
         </mat-card>

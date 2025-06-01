@@ -1,6 +1,5 @@
 import { DemoBootstrap } from "@labb/demo-utilities";
 import {
-  Avatar,
   Button,
   Card,
   CardBody,
@@ -11,7 +10,6 @@ import {
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { clientsData } from "../data/clients-data";
-import './scenarios.css';
 
 export function ClientList() {
   const [useFilter, setUseFilter] = useState(true);

@@ -5,7 +5,10 @@ import SignaturePad from 'signature_pad';
 @Component({
   selector: 'dx-signature-capture',
   template: `
-    <label [for]="container.id">{{container.config.label}}</label>
+    <mat-label>
+        {{ container.config.label }}
+    </mat-label>
+    @if(container.config.validatemessage) { <mat-error>{{container.config.validatemessage}}</mat-error> }
     @if (container.config.readOnly) {
       <img [src]="container.config.value">
     }

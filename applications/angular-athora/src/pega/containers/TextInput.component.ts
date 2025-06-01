@@ -1,23 +1,32 @@
 import { Component, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatInput } from '@angular/material/input';
 import { PContainerComponent } from '@labb/angular-adapter';
 import { DefaultProps } from '@labb/constellation-core-types';
-import { PContainer } from '@labb/dx-engine';
+import { formatters, PContainer } from '@labb/dx-engine';
 
 @Component({
   selector: 'dx-text-input-control',
   template: `
-  @if (container.config.readOnly) {
-    <dt>{{ label }}</dt><dd>{{container.config.value || '--'}}</dd>
-  }
-  @if (!container.config.readOnly) {
+      @if(container.config.readOnly) {
+        <div class="dx-control">
+          <mat-label>
+            {{ container.config.label }}
+          </mat-label>
+          {{format(container.config.value)}}
+        </div>
+      } @else  {
     <div class="dx-control">
       <mat-label>
           {{ container.config.label }}
           <button type="button" mat-icon-button (click)="helperTextOpen = true" *ngIf="container.config.helperText"><mat-icon>info_outline</mat-icon></button>
         </mat-label>
       <mat-form-field>
-        <input matInput [placeholder]="container.config.placeholder" [value]="container.config.value">
+        <input matInput 
+        [placeholder]="container.config.placeholder"
+        [value]="container.config.value"
+        [formControl]="formControl"/>
+        @if(container.config.validatemessage) { <mat-error>{{container.config.validatemessage}}</mat-error> }
       </mat-form-field>
     </div>
     <dx-hint *ngIf="container.config.helperText && helperTextOpen"
@@ -30,6 +39,7 @@ import { PContainer } from '@labb/dx-engine';
 })
 export class TextInputComponent extends PContainerComponent<PContainer<DefaultProps & { caption: string }>> {
   @ViewChild(MatInput) input!: MatInput;
+  public formControl = new FormControl();
   public helperTextOpen = false;
   public get label(): string {
     return this.container.config.label || this.container.config.caption;
@@ -37,10 +47,25 @@ export class TextInputComponent extends PContainerComponent<PContainer<DefaultPr
 
   ngAfterViewInit(): void {
     this.input?.stateChanges.subscribe(() => {
+      this.formControl.markAsDirty();
+      this.formControl.markAsTouched();
       const value = this.input.value;
       this.container.updateFieldValue(value);
       this.container.triggerFieldChange(value);
+    });
+    this.container.updates.subscribe(() => {
+      if (this.container.config.validatemessage) {
+        this.formControl.setErrors({ required: true });
+      }
     })
+  }
+
+  public format(value: any) {
+    if (this.type === 'date') return formatters.Date(value);
+    if (this.type === 'datetime-local') return formatters.DateTime(value);
+    if (this.type === 'time') return formatters.Time(value);
+    if (this.type === 'number' && this.container.config.currencyISOCode) return formatters.Currency(value);
+    return value;
   }
 
   public get type(): string {

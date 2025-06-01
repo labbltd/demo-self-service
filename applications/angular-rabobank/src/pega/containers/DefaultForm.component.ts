@@ -4,17 +4,11 @@ import { PContainerComponent } from '@labb/angular-adapter';
 @Component({
   selector: 'dx-default-form-template',
   template: `
-    <div class="sfc-margin-block-start-300">
-      <div [ngClass]="{'sfc-margin-block-start-200': container.config.instructions && container.config.instructions !== 'none'}">
-        <div [ngClass]="divClass">
-            <ng-template
-              *ngFor="let child of container.children"
-              dxContainer
-              [container]="child"
-            ></ng-template>
-        </div>
-      </div>
-    </div>
+      <ng-template
+        *ngFor="let child of container.children"
+        dxContainer
+        [container]="child"
+      ></ng-template>
   `,
   styles: [
     `

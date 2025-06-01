@@ -16,13 +16,10 @@ import { FlowContainer } from '@labb/dx-engine';
             <div>
               <div>{{assignment.processName}} > {{assignment.name}}</div>
               <div>Assigned to {{assignment.assigneeInfo?.name}}</div>
-              <button type="button" (click)="openAssignment(assignment)">Go</button>
-            </div>
-          }
-          @if (todoAssignments.length === 0) {
-            <div class="card" appearance="outlined">
-              <h2>Uw gegevens zijn goed ontvangen!</h2>
-              <strong>Wij nemen zo spoedig mogelijk contact met u op.</strong>
+              <dx-button
+                class="sfc-margin-block-end-75 sfc-display-inline-block sfc-margin-inline-end-50"
+                type="primary"
+                (click)="openAssignment(assignment)">Go</dx-button>
             </div>
           }
     } @else {
@@ -45,7 +42,7 @@ import { FlowContainer } from '@labb/dx-engine';
               [loading]="loading === button"
               (click)="buttonClick(button)"
             >
-              {{ button.name | translate}}
+              {{ button.name}}
             </dx-button>
             <dx-button
               *ngFor="let button of container.actionButtons.main"
@@ -54,12 +51,12 @@ import { FlowContainer } from '@labb/dx-engine';
               [loading]="loading === button"
               (click)="buttonClick(button)"
             >
-              {{ button.name | translate}}
+              {{ button.name}}
             </dx-button>
           </div>
         </ng-container>
     }
-  <div>{{ errorMessage | translate}}</div>
+  <div>{{ errorMessage }}</div>
   `,
   styles: [],
   standalone: false

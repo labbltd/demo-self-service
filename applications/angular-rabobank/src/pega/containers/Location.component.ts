@@ -6,18 +6,38 @@ import { Location } from "@labb/dx-engine";
 @Component({
     selector: 'dx-location',
     template: `
-        <label> {{container.config.label}}
-            <input type="text" [formControl]="searchControl" (change)="updateSearch($event)">
-        </label>
+    @if (container.config.readOnly) {
+        <dx-input-wrapper
+            [label]="container.config.label" 
+            [labelEnd]="container.config.helperText"
+            [errorMessage]="container.config.validatemessage">
+            {{container.config.value}}
+        </dx-input-wrapper>
+    } @else {
+        <dx-input-wrapper
+            [label]="container.config.label" 
+            [labelEnd]="container.config.helperText"
+            [errorMessage]="container.config.validatemessage">
+            <dx-input>
+                <input
+                    [id]="container.id"
+                    [type]="'text'"
+                    [formControl]="searchControl"
+                    (change)="updateSearch($event)"
+                />
+            </dx-input>
+        </dx-input-wrapper>
         @if(suggestions.length > 0) {
-            <select [formControl]="selectControl" (change)="select($event)">
-                <option value selected>Select {{container.config.label}}...</option>
-                @for(suggestion of suggestions; track suggestion) {
-                    <option [value]="suggestion">{{suggestion}}</option>
-                }
-             </select>
+            <dx-input-wrapper
+                [errorMessage]="container.config.validatemessage | translate:'dropdown'">
+                <dx-select
+                    [value]="container.config.value"
+                    [options]="suggestions"
+                    (valueChanged)="select($event)"></dx-select>
+            </dx-input-wrapper>
         }
-        <div #map style="height: 25rem"></div>
+        <div #map [attr.style]="'height: 25rem; margin-bottom: 1.5rem; display: ' + (container.config.value ? 'block' : 'none')"></div>
+    }
     `,
     standalone: false
 })
@@ -25,18 +45,36 @@ export class LocationComponent extends PContainerComponent<Location> implements 
     @ViewChild('map') map!: ElementRef;
     public searchControl = new FormControl('');
     public selectControl = new FormControl('');
-    public suggestions: string[] = [];
+    public suggestions: { key: string, value: string }[] = [];
 
     public async ngAfterViewInit(): Promise<void> {
         await this.container.loadMap(this.map.nativeElement);
+        if (this.container.config.value && !this.searchControl.value) {
+            await this.prefill();
+        }
+        this.container.updates.subscribe(() => {
+            if (this.container.config.value) {
+                this.prefill();
+            }
+        });
+    }
+
+    private async prefill() {
+        const event = { target: { value: this.container.config.value } } as any;
+        this.searchControl.setValue(this.container.config.value);
+        await this.updateSearch(event);
+        this.selectControl.setValue(this.container.config.value);
+        await this.select(this.container.config.value);
+        await this.container.putMarker(this.container.config.value);
     }
 
     public async updateSearch(event: Event) {
-        this.suggestions = await this.container.getPlacePredictions((event.target as HTMLInputElement)?.value);
+        const list = await this.container.getPlacePredictions((event.target as HTMLInputElement)?.value);
+        this.suggestions = list.map(suggestion => ({ key: suggestion, value: suggestion }));
     }
 
-    public async select(event: Event) {
-        this.container.updateFieldValue((event.target as HTMLSelectElement).value);
-        this.container.triggerFieldChange((event.target as HTMLSelectElement).value);
+    public async select(value: string) {
+        this.container.updateFieldValue(value);
+        this.container.triggerFieldChange(value);
     }
 }

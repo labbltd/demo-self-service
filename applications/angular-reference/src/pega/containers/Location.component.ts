@@ -6,18 +6,32 @@ import { Location } from "@labb/dx-engine";
 @Component({
     selector: 'dx-location',
     template: `
-        <label> {{container.config.label}}
-            <input type="text" [formControl]="searchControl" (change)="updateSearch($event)">
-        </label>
-        @if(suggestions.length > 0) {
-            <select [formControl]="selectControl" (change)="select($event)">
-                <option value selected>Select {{container.config.label}}...</option>
-                @for(suggestion of suggestions; track suggestion) {
-                    <option [value]="suggestion">{{suggestion}}</option>
-                }
-             </select>
+         @if (container.config.readOnly) {
+            <dt>{{ container.config.label }}</dt><dd>{{container.config.value ?? '--'}}</dd>
+        } @else {
+            <label [for]="container.id">
+            {{ container.config.label }}{{ container.config.required ? ' *' : '' }}
+            @if (container.config.helperText) {
+                <span [attr.data-tooltip]="container.config.helperText">?</span>
+            }
+            </label>
+            @if (container.config.validatemessage) {
+                <em>{{ container.config.validatemessage }}</em>
+            }
+            <input type="text" [formControl]="searchControl" 
+                (change)="updateSearch($event)"
+                [id]="container.id">
+        
+            @if(suggestions.length > 0) {
+                <select [formControl]="selectControl" (change)="select($event)">
+                    <option value selected>Select {{container.config.label}}...</option>
+                    @for(suggestion of suggestions; track suggestion) {
+                        <option [value]="suggestion">{{suggestion}}</option>
+                    }
+                </select>
+            }
+            <div #map [attr.style]="'height: 25rem; margin-bottom: 1.5rem; display: ' + (container.config.value ? 'block' : 'none')"></div>
         }
-        <div #map style="height: 25rem"></div>
     `,
     standalone: false
 })
@@ -29,6 +43,23 @@ export class LocationComponent extends PContainerComponent<Location> implements 
 
     public async ngAfterViewInit(): Promise<void> {
         await this.container.loadMap(this.map.nativeElement);
+        if (this.container.config.value && !this.searchControl.value) {
+            await this.prefill();
+        }
+        this.container.updates.subscribe(() => {
+            if (this.container.config.value) {
+                this.prefill();
+            }
+        });
+    }
+
+    private async prefill() {
+        const event = { target: { value: this.container.config.value } } as any;
+        this.searchControl.setValue(this.container.config.value);
+        await this.updateSearch(event);
+        this.selectControl.setValue(this.container.config.value);
+        await this.select(event);
+        await this.container.putMarker(this.container.config.value);
     }
 
     public async updateSearch(event: Event) {
@@ -36,7 +67,6 @@ export class LocationComponent extends PContainerComponent<Location> implements 
     }
 
     public async select(event: Event) {
-        this.container.updateFieldValue((event.target as HTMLSelectElement).value);
-        this.container.triggerFieldChange((event.target as HTMLSelectElement).value);
+        await this.container.setLocation((event?.target as any).value);
     }
 }

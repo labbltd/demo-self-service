@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PContainerComponent } from '@labb/angular-adapter';
+import { formatters } from '@labb/dx-engine';
 
 @Component({
   selector: 'dx-text-input-control',
@@ -9,7 +10,7 @@ import { PContainerComponent } from '@labb/angular-adapter';
       [label]="container.config.label" 
       [labelEnd]="container.config.helperText"
       [errorMessage]="container.config.validatemessage">
-      {{container.config.value}}
+      {{format(container.config.value)}}
     </dx-input-wrapper>
   } @else {
     <dx-input-wrapper
@@ -100,5 +101,13 @@ export class TextInputComponent extends PContainerComponent {
       default:
         return t.value;
     }
+  }
+
+  public format(value: any) {
+    if (this.type === 'date') return formatters.Date(value);
+    if (this.type === 'datetime-local') return formatters.DateTime(value);
+    if (this.type === 'time') return formatters.Time(value);
+    if (this.type === 'number' && this.container.config.currencyISOCode) return formatters.Currency(value);
+    return value;
   }
 }

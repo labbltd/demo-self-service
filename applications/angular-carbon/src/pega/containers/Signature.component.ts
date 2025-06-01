@@ -5,11 +5,15 @@ import SignaturePad from 'signature_pad';
 @Component({
   selector: 'dx-signature-capture',
   template: `
-    <label [for]="container.id">{{container.config.label}}</label>
     @if (container.config.readOnly) {
       <img [src]="container.config.value">
-    }
-    @if (!container.config.readOnly) {
+    } @else {
+    <ibm-label
+        [helperText]="container.config.helperText"
+        [invalid]="!!container.config.validatemessage"
+        [invalidText]="container.config.validatemessage">
+        {{container.config.label}}
+    </ibm-label>
       <canvas style="width: 100%; height: 200px; border: 1px dashed" #canvas></canvas>
       <button type="button" (click)="onClear()">
         Clear

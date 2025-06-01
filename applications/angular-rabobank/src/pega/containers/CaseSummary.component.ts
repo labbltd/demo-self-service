@@ -5,8 +5,8 @@ import { BootstrapService } from '@labb/dx-engine';
 @Component({
   selector: 'dx-case-summary',
   template: `
-    <a (click)="backToWorklist()" style="display: block">< Back to worklist</a>
-    <a role="button" (click)="showSummary = !showSummary">
+    <a (click)="backToWorklist()" class="breadcrumb-link">< Back to worklist</a><br>
+    <a (click)="showSummary = !showSummary" class="breadcrumb-link">
         {{showSummary ? 'Hide' : 'Show'}} Case Details
     </a>
     @if (showSummary) {
@@ -19,6 +19,14 @@ import { BootstrapService } from '@labb/dx-engine';
       </div>
     }
   `,
+  styles: [
+    `
+      :host {
+        display: block;
+        margin-bottom: 15px;
+      }
+    `
+  ],
   encapsulation: ViewEncapsulation.None,
   standalone: false
 })

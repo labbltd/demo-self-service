@@ -6,7 +6,7 @@ import {
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { clientsData } from "../data/clients-data";
 import { scenariosData } from "../data/scenarios-data";
-import './scenarios.css';
+import './demo.css';
 
 export function Demo() {
   const location = useLocation();

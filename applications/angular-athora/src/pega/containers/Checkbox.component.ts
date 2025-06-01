@@ -4,12 +4,21 @@ import { ControlComponent } from '../control.component';
 @Component({
   selector: 'dx-checkbox-control',
   template: `
-    <mat-checkbox [formControl]="control">
-      {{ container.config.caption }}
-    </mat-checkbox>
-    <mat-error *ngIf="container.config.validatemessage">{{container.config.validatemessage}}</mat-error>
-    <br>
-    <mat-hint *ngIf="container.config.helperText">{{container.config.helperText}}</mat-hint>
+    @if(container.config.readOnly) {
+      <div class="dx-control">
+        <mat-label>
+          {{ container.config.label }}
+        </mat-label>
+        {{container.config.value ? container.config.trueLabel : container.config.falseLabel}}
+      </div>
+    } @else  {
+      <mat-checkbox [formControl]="control">
+        {{ container.config.caption }}
+      </mat-checkbox>
+      <mat-error *ngIf="container.config.validatemessage">{{container.config.validatemessage}}</mat-error>
+      <br>
+      <mat-hint *ngIf="container.config.helperText">{{container.config.helperText}}</mat-hint>
+    }
   `,
   standalone: false
 })

@@ -9,7 +9,7 @@
                 (change)="emit($event)"
                 (focus)="isFocused = true"
                 (blur)="isFocused = false">
-                <option value="">Maak een keuze</option>
+                <option value="">Please select...</option>
                 <option *ngFor="let option of options"
                     [value]="option.value"
                     [selected]="option.value === value">

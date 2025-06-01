@@ -5,10 +5,12 @@ import { ListView } from '@labb/dx-engine';
 @Component({
   selector: 'dx-list-view-container',
   template: `
+    <dx-input-wrapper
+      [label]="container.config.label" 
+      [labelEnd]="container.config.helperText"
+      [errorMessage]="container.config.validatemessage">
+    </dx-input-wrapper>
     <table class="sfc-table">
-      @if(container.label) {
-        <caption>{{container.label}}</caption>
-      }
       <thead>
         <tr>
           @if(container.singleSelectionMode || container.multiSelectionMode) {
@@ -54,17 +56,6 @@ import { ListView } from '@labb/dx-engine';
         }
       </tbody>
     </table>
-    @if(container.config.validatemessage) {
-      <div class="sfc-input-error-root">
-          <div class="sfc-input-error">
-              <dx-icon class="sfc-input-error__icon"
-                  name="exclamation-circle-fill"
-                  size="xs">
-              </dx-icon>
-              <span>{{container.config.validatemessage}}</span>
-          </div>
-      </div>
-    }
   `,
   styles: [
     `

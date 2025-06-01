@@ -16,7 +16,9 @@ import { FlowContainer } from '@labb/dx-engine';
             <div>
               <div>{{assignment.processName}} > {{assignment.name}}</div>
               <div>Assigned to {{assignment.assigneeInfo?.name}}</div>
-              <button type="button" (click)="openAssignment(assignment)">Go</button>
+              <button type="button" 
+                cdsButton="primary"
+                (click)="openAssignment(assignment)">Go</button>
             </div>
           }
           @if (todoAssignments.length === 0) {

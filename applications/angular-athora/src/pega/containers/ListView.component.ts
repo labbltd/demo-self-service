@@ -5,10 +5,11 @@ import { ListView } from '@labb/dx-engine';
 @Component({
   selector: 'dx-list-view-container',
   template: `
+    <mat-label>
+        {{ container.config.label }}
+    </mat-label>
+    @if(container.config.validatemessage) { <mat-error>{{container.config.validatemessage}}</mat-error> }
     <table>
-      @if(container.label) {
-        <caption>{{container.label}}</caption>
-      }
       <thead>
         <tr>
           @if(container.singleSelectionMode || container.multiSelectionMode) {

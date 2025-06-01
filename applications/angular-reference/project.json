@@ -65,7 +65,8 @@
           }
         ],
         "styles": [
-          "applications/angular-reference/src/classless.css"
+          "applications/angular-reference/src/classless.css",
+          "applications/angular-reference/src/index.css"
         ],
         "scripts": []
       },

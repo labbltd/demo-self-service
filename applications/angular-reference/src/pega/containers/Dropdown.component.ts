@@ -5,8 +5,18 @@ import { PContainerComponent } from '@labb/angular-adapter';
 @Component({
   selector: 'dx-dropdown-control',
   template: `
-  <label>{{ container.config.label }}{{ container.config.required ? ' *' : '' }}
-    @if(!container.config.readOnly) {
+    @if (container.config.readOnly) {
+      <dt>{{ container.config.label }}</dt><dd>{{container.config.value ?? '--'}}</dd>
+    } @else {
+      <label [for]="container.id">
+        {{ container.config.label }}{{ container.config.required ? ' *' : '' }}
+        @if (container.config.helperText) {
+          <span [attr.data-tooltip]="container.config.helperText">?</span>
+        }
+      </label>
+      @if (container.config.validatemessage) {
+        <em>{{ container.config.validatemessage }}</em>
+      }
       <select
         [id]="container.id"
         [formControl]="control"
@@ -22,12 +32,8 @@ import { PContainerComponent } from '@labb/angular-adapter';
           </option>
         }
       </select>
-    } @else {
-      <span>{{container.config.value}}</span>
     }
-    {{ container.config.helperText }}
-    {{ container.config.validatemessage }}
-  </label> `,
+    `,
   standalone: false
 })
 export class DropdownComponent extends PContainerComponent implements OnInit {

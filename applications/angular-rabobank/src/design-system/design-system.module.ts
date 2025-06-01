@@ -17,6 +17,7 @@ import { PageHeaderFooterComponent } from "./page-header-footer/page-header-foot
 import { SpinnerComponent } from "./spinner/spinner.component";
 import { InputComponent } from "./input/input.component";
 import { CheckboxComponent } from "./checkbox/checkbox.component";
+import { ToggleButton } from "./toggle-button/toggle-button.component";
 
 @NgModule({
     imports: [
@@ -41,7 +42,8 @@ import { CheckboxComponent } from "./checkbox/checkbox.component";
         SelectComponent,
         TicketComponent,
         InputComponent,
-        CheckboxComponent
+        CheckboxComponent,
+        ToggleButton
     ],
     exports: [
         ButtonComponent,
@@ -55,7 +57,8 @@ import { CheckboxComponent } from "./checkbox/checkbox.component";
         SelectComponent,
         TicketComponent,
         InputComponent,
-        CheckboxComponent
+        CheckboxComponent,
+        ToggleButton
     ]
 })
 export class DesignSystemModule { }

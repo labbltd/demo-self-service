@@ -10,10 +10,10 @@ import { ListView } from '@labb/dx-engine';
       @if (container.config.helperText) {
         <span [attr.data-tooltip]="container.config.helperText">?</span>
       }
-      @if (container.config.validatemessage) {
-        <em>{{ container.config.validatemessage }}</em>
-      }
     </label>
+    @if (container.config.validatemessage) {
+      <em>{{ container.config.validatemessage }}</em>
+    }
     <table>
       <thead>
         <tr>

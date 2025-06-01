@@ -1,4 +1,4 @@
-import { Assignment } from '@labb/constellation-core-types';
+import { ActionButton, Assignment } from '@labb/constellation-core-types';
 import { FlowContainer } from '@labb/dx-engine';
 import { GeneratePContainer } from '@labb/react-adapter';
 import LVCButton from 'applications/react-lvcyclery/design-system/lvc-button';
@@ -30,6 +30,12 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
   function handleActionError(e: Error) {
     console.error(e);
     setErrorMessage(e?.message || 'Error');
+  }
+
+  function buttonClick(button: ActionButton) {
+    setErrorMessage(null);
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // scroll to top smoothly
+    props.container.buttonClick(button).catch(handleActionError);
   }
 
   return <>
@@ -73,10 +79,7 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
                     type="primary"
                     key={button.actionID}
                     label={button.name}
-                    onClick={() => {
-                      window.scrollTo({ top: 0, behavior: 'smooth' }); // scroll to top smoothly
-                      props.container.buttonClick(button).catch(handleActionError);
-                    }}
+                    onClick={() => buttonClick(button)}
                   />
                 ))}
                 {props.container.actionButtons.secondary
@@ -84,11 +87,7 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
                     <LVCButton type="secondary"
                       key={button.actionID}
                       label={button.name}
-                      onClick={() => {
-                        window.scrollTo({ top: 0, behavior: 'smooth' }); // scroll to top smoothly
-                        props.container.buttonClick(button).catch(handleActionError)
-                      }
-                      } />
+                      onClick={() => buttonClick(button)} />
                   ))}
               </>
             </LVCButtonGroup>

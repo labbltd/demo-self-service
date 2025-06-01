@@ -20,7 +20,7 @@ import SignaturePad from 'signature_pad';
       >
         Accept
       </button>
-      <div *ngIf="info" class="cds-form-field">
+      <div *ngIf="info" class="cds-form-field cds-signature-info">
         <div class="cds-warning-icon"></div>
         <cds-error>{{info}}</cds-error>
       </div>

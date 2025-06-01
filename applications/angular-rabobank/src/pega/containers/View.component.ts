@@ -12,7 +12,7 @@ import { View } from '@labb/dx-engine';
         </div>
       }
       @if (container.config.showHeading) { <h2>{{container.config.heading}}</h2> }
-      @if (container.config.showLabel) { <span>{{container.config.label}}</span> }
+      @if (container.config.showLabel) { <p>{{container.config.label}}</p> }
       @if (container.config.instructions && container.config.instructions !== 'none') { <div [innerHtml]="container.config.instructions"></div> }
       <div class="body">
         @for (child of container.children; track child.id) {
@@ -21,6 +21,13 @@ import { View } from '@labb/dx-engine';
       </div>
     </div>
   `,
+  styles: [
+    `
+      p { 
+        margin-bottom: 15px;
+      }
+    `
+  ],
   standalone: false
 })
 export class ViewComponent extends PContainerComponent<View> {
