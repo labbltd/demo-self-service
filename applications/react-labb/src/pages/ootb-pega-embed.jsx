@@ -1,6 +1,7 @@
 import { DemoBootstrap } from "@labb/demo-utilities";
 
 export default function OotbPegaEmbed() {
+    sessionStorage.clear();
     return <pega-embed id='theEmbed'
         action={DemoBootstrap.getAction()}
         caseTypeID={DemoBootstrap.getCaseTypeId()}

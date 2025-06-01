@@ -64,7 +64,6 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
             } />
         </div>
       )}
-      {todoAssignments.length === 0 && <p>Thank you for your request. We will contact you as soon as possible.</p>}
     </>}
     {props.container.hasAssignment() && <>
       <HsbcContainer>

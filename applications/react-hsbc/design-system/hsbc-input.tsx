@@ -29,7 +29,7 @@ function TextInput(props: InputProps) {
         id={props.id}
         name={props.id}
         type={props.type}
-        value={props.value ?? ''}
+        value={props.value}
         onChange={props.onChange}
         onBlur={props.onBlur}
     />

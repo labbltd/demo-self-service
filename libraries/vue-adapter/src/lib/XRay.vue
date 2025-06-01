@@ -2,13 +2,14 @@
 import { PContainer } from '@labb/dx-engine';
 import { ref } from 'vue';
 
-const props = defineProps<{
+const {container} = defineProps<{
     container: PContainer;
 }>();
 
 const display = ref(false);
 function toggleDisplay() {
     display.value = !display.value;
+    (window as any).$pContainer = container;
     setTimeout(() => {
         dragElement(document.getElementById("draggable"));
     });
@@ -61,14 +62,14 @@ function dragElement(elmnt: HTMLElement | null) {
     }
 }
 
-const propKeys = Object.keys(props.container.config);
-const stateKeys = Object.keys(props.container.pconnect.getStateProps());
+const propKeys = Object.keys(container.config);
+const stateKeys = Object.keys(container.pconnect.getStateProps());
 
 function stringify(val: any) {
     return JSON.stringify(val, null, 2);
 }
 
-const name = props.container.pconnect.getRawMetadata().name;
+const name = container.pconnect.getRawMetadata().name;
 </script>
 
 <template>

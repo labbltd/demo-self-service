@@ -48,10 +48,13 @@ export default function FlowContainer(props: { container: PFlowContainer }) {
         <div key={assignment.ID}>
           <div>{assignment.processName} {'>'} {assignment.name}</div>
           <div>Assigned to {assignment.assigneeInfo?.name}</div>
-          <button type="button" onClick={() => openAssignment(assignment)}>Go</button>
+          <Button
+            variant={'primary'}
+            label={'Go'}
+            onClick={() => openAssignment(assignment)}
+          />
         </div>
       )}
-      {todoAssignments.length === 0 && <p>Thank you for your request. We will contact you as soon as possible.</p>}
     </>}
     {props.container.hasAssignment() && <><StepperHeader
       steps={props.container.navigation?.steps.map(step => step.name)}

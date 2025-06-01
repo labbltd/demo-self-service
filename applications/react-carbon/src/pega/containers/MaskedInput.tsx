@@ -1,9 +1,10 @@
+import { TextInput } from "@carbon/react";
 import { PContainer } from "@labb/dx-engine";
-import { ChangeEvent, useEffect, useRef } from "react";
 import IMask from 'imask';
+import { useEffect, useRef } from "react";
 
 export default function DxMaskedInput(props: { container: PContainer }) {
-    const input = useRef(null);
+    const input = useRef<HTMLInputElement>(null);
     const { container } = props;
 
     useEffect(() => {
@@ -17,36 +18,23 @@ export default function DxMaskedInput(props: { container: PContainer }) {
                 }
             }
             IMask(input.current, maskOptions);
+            input.current.value = container.config.value;
         }
     }, [input.current])
 
-
-    function getValue(event: ChangeEvent) {
-        return (event.target as HTMLInputElement).value;
-    }
-
     return <>
-        {container.config.readOnly && <>
-            <dt>{container.config.label}</dt>
-            <dd>{container.config.value ?? '--'}</dd>
-        </>}
-        {!container.config.readOnly && <>
-            <label htmlFor={container.id}>
-                {container.config.label}{container.config.required ? ' *' : ''} ({container.config.mask})
-                {container.config.helperText &&
-                    <span data-tooltip={container.config.helperText}>?</span>
-                }
-            </label>
-            <input
-                ref={input}
-                id={container.id}
-                type="text"
-                placeholder={container.config.placeholder}
-                value={container.config.value}
-                onChange={e => container.updateFieldValue(getValue(e))}
-                onBlur={e => container.triggerFieldChange(getValue(e))}
-            />
-        </>}
-        {container.config.validatemessage && <span>{container.config.validatemessage}</span>}
+        <TextInput
+            id={container.config.label}
+            type={'text'}
+            labelText={container.config.label}
+            helperText={container.config.mask}
+            invalid={!!container.config.validatemessage}
+            invalidText={container.config.validatemessage}
+            ref={input}
+            onBlur={e => {
+                container.updateFieldValue(e.target.value);
+                container.triggerFieldChange(e.target.value);
+            }}
+        />
     </>
 }

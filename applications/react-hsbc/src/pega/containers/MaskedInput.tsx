@@ -37,9 +37,10 @@ export default function DxMaskedInput(props: { container: PContainer }) {
                     reference={input}
                     type="text"
                     invalid={props.container.config.validatemessage}
-                    value={props.container.config.value}
-                    onChange={v => props.container.updateFieldValue(v)}
-                    onBlur={v => props.container.triggerFieldChange(v)}
+                    onBlur={e => {
+                        props.container.updateFieldValue(e.target.value);
+                        props.container.triggerFieldChange(e.target.value);
+                    }}
                 />
             </HsbcFormElement>
         }

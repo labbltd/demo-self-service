@@ -8,31 +8,28 @@ import IMask from 'imask';
   template: `
   @if (container.config.readOnly) {
     <dt>{{ container.config.label }}</dt><dd>{{container.config.value ?? '--'}}</dd>
-  }
-  @if (!container.config.readOnly) {
-    <label [for]="container.id">
-      {{ container.config.label }}{{ container.config.required ? ' *' : '' }} ({{ container.config.mask }})
-      @if(container.config.helperText) {
-        <span [attr.data-tooltip]="container.config.helperText">?</span>
-      }
-    </label>
-    <input
-      #input
-      [id]="container.id"
-      type="text"
-      [attr.placeholder]="container.config.placeholder"
-      [formControl]="control"
-      (change)="container.updateFieldValue(getValue($event.target))"
-      (blur)="container.triggerFieldChange(getValue($event.target))"
-    />
-    @if(container.config.validatemessage) { <span>{{ container.config.validatemessage }}</span> }
+  } @else {
+    <ibm-label
+        [disabled]="container.config.readOnly"
+        [helperText]="container.config.mask"
+        [invalid]="!!container.config.validatemessage"
+        [invalidText]="container.config.validatemessage">
+        {{container.config.label}}
+        <input ibmText
+          #input
+          [type]="'text'"
+          [formControl]="control"
+          (blur)="blur($event)"
+          [invalid]="!!container.config.validatemessage"
+          [placeholder]="container.config.placeholder ?? ''">
+      </ibm-label>
   }
   `,
   standalone: false
 })
 export class MaskedInputComponent extends PContainerComponent implements OnInit, AfterViewInit {
   @ViewChild('input') input!: ElementRef;
-  public control = new FormControl('');
+  public control = new FormControl();
 
   public ngAfterViewInit(): void {
     const maskOptions = {
@@ -44,6 +41,13 @@ export class MaskedInputComponent extends PContainerComponent implements OnInit,
       }
     }
     IMask(this.input.nativeElement, maskOptions);
+    this.control.setValue(this.container.config.value);
+  }
+
+  public blur(event: FocusEvent) {
+    if (!event.target) return;
+    this.container.updateFieldValue((event.target as any).value);
+    this.container.triggerFieldChange((event.target as any).value);
   }
 
   public override ngOnInit(): void {

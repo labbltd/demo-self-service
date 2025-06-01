@@ -1,9 +1,19 @@
 import { ListView } from '@labb/dx-engine';
 import LvcError from 'applications/react-lvcyclery/design-system/lvc-error';
 import LVCPanel from 'applications/react-lvcyclery/design-system/lvc-panel';
+import { useEffect, useState } from 'react';
 
 export default function DxListView(props: { container: ListView }) {
   const { container } = props;
+  const [fullData, setFullData] = useState<any[]>([]);
+  useEffect(() => {
+    (async () => {
+      if (container.config.referenceList === 'D_BikesList') {
+        const response = await window.PCore.getDataApiUtils().getData(container.config.referenceList, {})
+        setFullData(response.data.data)
+      }
+    })()
+  }, [])
 
   const isSelected = (row: any) =>
     container.singleSelectionMode
@@ -71,28 +81,31 @@ export default function DxListView(props: { container: ListView }) {
                 )}
 
                 {/* Field values */}
-                <div style={{ display: 'grid', gap: '0.5rem' }}>
-                  {container.fields.map((col) => {
-                    const fieldValue = row[col.config.name] || '---';
-                    return (
-                      <div key={col.config.name} style={{ display: 'flex', gap: '0.5rem' }}>
-                        <strong>{col.config.label}:</strong>
-                        {container.showButton(col.config.name, col) ? (
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.stopPropagation(); // Prevent card click from firing
-                              container.listViewClick(col.config, row);
-                            }}
-                            dangerouslySetInnerHTML={{ __html: fieldValue }}
-                            style={{ background: 'none', border: 'none', padding: 0, color: '#007bff', cursor: 'pointer' }}
-                          />
-                        ) : (
-                          <span dangerouslySetInnerHTML={{ __html: fieldValue }} />
-                        )}
-                      </div>
-                    );
-                  })}
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <div style={{ display: 'grid', gap: '0.5rem' }}>
+                    {container.fields.map((col) => {
+                      const fieldValue = row[col.config.name] || '---';
+                      return (
+                        <div key={col.config.name} style={{ display: 'flex', gap: '0.5rem' }}>
+                          <strong>{col.config.label}:</strong>
+                          {container.showButton(col.config.name, col) ? (
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation(); // Prevent card click from firing
+                                container.listViewClick(col.config, row);
+                              }}
+                              dangerouslySetInnerHTML={{ __html: fieldValue }}
+                              style={{ background: 'none', border: 'none', padding: 0, color: '#007bff', cursor: 'pointer' }}
+                            />
+                          ) : (
+                            <span dangerouslySetInnerHTML={{ __html: fieldValue }} />
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                  {fullData.length > 0 && <img width="250px" src={fullData.find(bike => bike.pyGUID === row['pyGUID'])?.DisplayImage} />}
                 </div>
               </div>
             );

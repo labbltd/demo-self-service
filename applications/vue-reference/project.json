@@ -22,7 +22,7 @@
           "mode": "development"
         },
         "production": {
-          "mode": "production"
+          "mode": "development"
         }
       }
     },

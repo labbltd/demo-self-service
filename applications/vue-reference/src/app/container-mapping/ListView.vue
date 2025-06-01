@@ -1,17 +1,25 @@
 <script setup lang="ts">
     import { ListView } from '@labb/dx-engine';
+import { ref } from 'vue';
+    const count = ref(0);
 
-    const props = defineProps<{
+    const {container} = defineProps<{
         container: ListView;
     }>();
 
-    function  selectRow(row: any, event?: Event) {
-        props.container.selectRow(row, event && (event.target as HTMLInputElement).checked);
+    console.log('fields',container.fields?.length)
+    console.log('updatedRefList',container.updatedRefList?.length)
+
+    setTimeout(() => {
+        count.value++;
+    },500);
+    function selectRow(row: any, event?: Event) {
+        container.selectRow(row, event && (event.target as HTMLInputElement).checked);
     }
 </script>
 
 <template>
-    <table>
+    <table :data-count="count">
     <caption v-if="container.label">{{container.label}}</caption>
       <thead>
         <tr>

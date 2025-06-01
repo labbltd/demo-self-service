@@ -21,14 +21,20 @@ function getValue(target: EventTarget | null): string {
 </script>
 
 <template>
-  <HcaDropdown
-    :label="props.container.config.label"
-    :id="props.container.id"
-    :value="props.container.config.value"
-    :helperText="props.container.config.helperText"
-    :errorMessage="props.container.config.validatemessage"
-    :options="props.container.config.datasource"
-    @change="change"
-    @blur="blur"
-  ></HcaDropdown>
+  <div>
+    <template v-if="container.config.readOnly">
+      <dt>{{ container.config.label }}</dt>
+      <dd>{{ container.config.value }}</dd>
+    </template>
+    <HcaDropdown
+      :label="props.container.config.label"
+      :id="props.container.id"
+      :value="props.container.config.value"
+      :helperText="props.container.config.helperText"
+      :errorMessage="props.container.config.validatemessage"
+      :options="props.container.config.datasource"
+      @change="change"
+      @blur="blur"
+      />
+  </div>
 </template>

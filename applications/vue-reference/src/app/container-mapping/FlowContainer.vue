@@ -47,6 +47,7 @@ const errorMessage = ref<string | null>(null);
                 <strong>Wij nemen zo spoedig mogelijk contact met u
                     op.</strong>
             </div>
+
         </template>
         <template v-if="container.hasAssignment()">
             <h2>

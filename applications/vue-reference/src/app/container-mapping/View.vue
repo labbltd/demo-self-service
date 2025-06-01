@@ -2,7 +2,7 @@
 import { View } from '@labb/dx-engine';
 import { DxContainer } from '@labb/vue-adapter';
 
-defineProps<{
+const {container} = defineProps<{
     container: View;
 }>();
 
@@ -17,6 +17,6 @@ defineProps<{
     <div v-if="container.config.instructions && container.config.instructions !== 'none'" v-html="container.config.instructions"></div>
     <div class="body">
         <DxContainer v-for="child in container.children"
-        :key="child.id" :container="child" />
+            :key="child.id" :container="child" />
     </div>
 </template>

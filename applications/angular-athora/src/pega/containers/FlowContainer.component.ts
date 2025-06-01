@@ -16,7 +16,9 @@ import { FlowContainer } from '@labb/dx-engine';
             <div>
               <div>{{assignment.processName}} > {{assignment.name}}</div>
               <div>Assigned to {{assignment.assigneeInfo?.name}}</div>
-              <button type="button" (click)="openAssignment(assignment)">Go</button>
+              <button mat-flat-button
+              color="primary"
+              type="button" (click)="openAssignment(assignment)">Go</button>
             </div>
           }
           @if(todoAssignments.length === 0) {
@@ -123,6 +125,7 @@ export class FlowContainerComponent extends PContainerComponent<FlowContainer> i
   }
 
   public buttonClick(button: ActionButton): void {
+    this.errorMessage = '';
     this.loading = true;
     this.container.buttonClick(button)
       .then(() => {

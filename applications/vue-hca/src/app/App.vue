@@ -28,11 +28,11 @@ const constellation = ref(false);
 DemoBootstrap.getToken().then(t => token.value = t).catch(e => authError.value = e);
 function doneLoading(status: boolean) {
   loadingStatus.value = status;
-  // const caseID = window.PCore.getStore().getState().data['app/primary_1']?.caseInfo.ID;
-  // if (caseID) {
-  //   DemoBootstrap.setAction('openCase');
-  //   DemoBootstrap.setCaseId(caseID);
-  // }
+  const caseID = window.PCore.getStore().getState().data['app/primary_1']?.caseInfo.ID;
+  if (caseID) {
+    DemoBootstrap.setAction('openCase');
+    DemoBootstrap.setCaseId(caseID);
+  }
 }
 </script>
 

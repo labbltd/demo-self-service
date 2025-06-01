@@ -1,9 +1,10 @@
 import { PContainer } from "@labb/dx-engine";
-import { ChangeEvent, useEffect, useRef } from "react";
 import IMask from 'imask';
+import { useEffect, useRef } from "react";
+import TextInput from "../../design-system/fbto-text-input";
 
 export default function DxMaskedInput(props: { container: PContainer }) {
-    const input = useRef(null);
+    const input = useRef<HTMLInputElement>(null);
     const { container } = props;
 
     useEffect(() => {
@@ -20,33 +21,26 @@ export default function DxMaskedInput(props: { container: PContainer }) {
         }
     }, [input.current])
 
-
-    function getValue(event: ChangeEvent) {
-        return (event.target as HTMLInputElement).value;
-    }
-
-    return <>
-        {container.config.readOnly && <>
+    if (container.config.readOnly) {
+        return <>
             <dt>{container.config.label}</dt>
             <dd>{container.config.value ?? '--'}</dd>
-        </>}
-        {!container.config.readOnly && <>
-            <label htmlFor={container.id}>
-                {container.config.label}{container.config.required ? ' *' : ''} ({container.config.mask})
-                {container.config.helperText &&
-                    <span data-tooltip={container.config.helperText}>?</span>
-                }
-            </label>
-            <input
-                ref={input}
-                id={container.id}
-                type="text"
-                placeholder={container.config.placeholder}
-                value={container.config.value}
-                onChange={e => container.updateFieldValue(getValue(e))}
-                onBlur={e => container.triggerFieldChange(getValue(e))}
-            />
-        </>}
-        {container.config.validatemessage && <span>{container.config.validatemessage}</span>}
+        </>
+    }
+    return <>
+        <TextInput id={container.id}
+            errorMessage={container.config.validatemessage}
+            helperMessage={container.config.mask}
+            placeholder={container.config.placeholder}
+            type={'masked'}
+            label={container.config.label}
+            required={container.config.required}
+            inputRef={input}
+            onBlur={() => {
+                if (!input.current) return;
+                container.updateFieldValue(input.current.value)
+                container.updateFieldValue(input.current.value)
+            }}
+        />
     </>
 }

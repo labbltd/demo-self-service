@@ -94,6 +94,7 @@ export default function DxTextInput(props: {
   return <>
     <TextInput id={props.container.id} label={props.container.config.label}
       error={props.container.config.validatemessage}
+      helperText={props.container.config.helperText}
       type={type()}
       onChange={(e) => props.container.updateFieldValue(getValue(e.target))}
       onBlur={(e) => props.container.triggerFieldChange(getValue(e.target))} />

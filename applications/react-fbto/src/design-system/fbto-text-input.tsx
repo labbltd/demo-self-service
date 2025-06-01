@@ -1,4 +1,4 @@
-import { ChangeEventHandler } from "react";
+import { ChangeEventHandler, RefObject } from "react";
 
 interface TextInputProps {
     id?: string;
@@ -12,8 +12,9 @@ interface TextInputProps {
     step?: number | string | undefined;
     inputmode?: any;
     options?: string[];
-    onChange: ChangeEventHandler<HTMLElement>;
+    onChange?: ChangeEventHandler<HTMLElement>;
     onBlur?: ChangeEventHandler<HTMLElement>;
+    inputRef?: RefObject<HTMLInputElement>
 }
 
 export default function TextInput(props: TextInputProps) {
@@ -28,13 +29,21 @@ export default function TextInput(props: TextInputProps) {
                     {props.required && <span className="required-indicator text-danger">*</span>}
                 </label>
                 <div className="col-lg-9">
-                    {(props.type !== 'select' && props.type !== 'textarea') && <input name={props.label} id={props.id} type={props.type === 'date' ? 'text' : props.type}
+                    {(props.type !== 'select' && props.type !== 'textarea' && props.type !== 'masked') && <input name={props.label} id={props.id} type={props.type === 'date' ? 'text' : props.type}
                         value={props.value}
                         step={props.step}
                         inputMode={props.inputmode}
                         onChange={props.onChange}
                         onBlur={props.onBlur}
                         placeholder={props.placeholder}
+                        ref={props.inputRef}
+                        className={
+                            "xforms-input xforms-control col-sm-4 xforms-ap-full"
+                        } />}
+                    {(props.type === 'masked') && <input name={props.label} id={props.id} type={'text'}
+                        onBlur={props.onBlur}
+                        placeholder={props.placeholder}
+                        ref={props.inputRef}
                         className={
                             "xforms-input xforms-control col-sm-4 xforms-ap-full"
                         } />}

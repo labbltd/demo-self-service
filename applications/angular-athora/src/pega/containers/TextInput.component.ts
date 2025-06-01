@@ -32,7 +32,6 @@ import { formatters, PContainer } from '@labb/dx-engine';
     <dx-hint *ngIf="container.config.helperText && helperTextOpen"
         (closed)="helperTextOpen = false"
         [hint]="container.config.helperText"></dx-hint>
-    {{ container.config.validatemessage }}
   }
   `,
   standalone: false

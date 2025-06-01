@@ -20,6 +20,13 @@ import { ControlComponent } from '../control.component';
       <mat-hint *ngIf="container.config.helperText">{{container.config.helperText}}</mat-hint>
     }
   `,
+  styles: [
+    `
+    :host {
+      display: block;
+    }
+    `
+  ],
   standalone: false
 })
 export class CheckboxComponent extends ControlComponent {
