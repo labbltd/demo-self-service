@@ -5,10 +5,6 @@ export default function DxAttachment(props: { container: Attachment }): JSX.Elem
   return (
     <>
       <FileUploader
-        accept={[
-          '.jpg',
-          '.png'
-        ]}
         buttonLabel="Add file"
         filenameStatus="edit"
         iconDescription="Delete file"

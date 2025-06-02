@@ -10,6 +10,7 @@ export default function TextInput(props: {
     type: string;
     value?: string;
     error?: string;
+    multiple?: boolean;
     inputRef?: RefObject<HTMLInputElement>;
 }) {
     const isSelect = props.type === 'select';
@@ -19,7 +20,7 @@ export default function TextInput(props: {
     return (
         <div className="input-group">
             <div className="input-text">
-                {isInput && <input className="input-text__input input" id={props.id} type={props.type} onChange={props.onChange} onBlur={props.onBlur} />}
+                {isInput && <input className="input-text__input input" id={props.id} type={props.type} multiple={props.multiple} onChange={props.onChange} onBlur={props.onBlur} />}
                 {isMasked && <input className="input-text__input input" id={props.id} type={'text'} onBlur={props.onBlur} ref={props.inputRef} />}
                 {isTextarea && <textarea className="input-text__input input" rows={15} value={props.value} onChange={props.onChange} onBlur={props.onBlur}></textarea>}
                 {isSelect && <select className="input-text__input input" value={props.value} onChange={props.onChange}>

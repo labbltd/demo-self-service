@@ -10,6 +10,7 @@ interface InputProps {
   invalid?: boolean;
   reference?: MutableRefObject<HTMLInputElement | null>;
   readonly?: boolean;
+  multiple?: boolean;
   currencyCode?: string; // NEW
 }
 
@@ -79,6 +80,7 @@ if (props.readonly) {
           (props.invalid ? ' invalid_Wd4pb' : '') +
           (currencySymbol ? ' pl-7' : '') // Add padding for symbol
         }
+        multiple={props.multiple}
         ref={props.reference}
         id={props.id}
         name={props.id}

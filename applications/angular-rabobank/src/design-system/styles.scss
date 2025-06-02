@@ -6142,3 +6142,8 @@ sfc-table[horizontal-scroll] .sfc-table-scroll__observed-start {
 sfc-table[horizontal-scroll] .sfc-table-scroll__observed-end {
   right: 0px;
 }
+
+input[type="file"]::file-selector-button {
+    background: none;
+    margin-top: 9px;
+}

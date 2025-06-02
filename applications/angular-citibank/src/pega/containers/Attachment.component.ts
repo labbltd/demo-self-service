@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { PContainerComponent } from '@labb/angular-adapter';
 import { Attachment, FileStatus } from '@labb/dx-engine';
 
@@ -13,30 +13,57 @@ import { Attachment, FileStatus } from '@labb/dx-engine';
             (change)="upload($event)"
             [multiple]="allowMultiple"
           />
-        } @else {
-          {{container.files[0].name}}
-        }
-        {{ container.config.extensions }}
-        @for(file of container.files; track file.id) {
-            @if (file.uploaded){ 
-              <cds-icon name="checkmark"/>
-              <cds-icon name="trash" (click)="remove(file)"/>
-            }
-            @else { {{file.progress}} }
-            @if(file.linked) { <cds-icon name="eye" (click)="download(file)"/> }
         }
     </cds-form-field>
-    @if(downloadedImage) {
-      <img width="100%" [src]="'data:image/png;base64,' + downloadedImage" />
+    @if (container.files.length) {
+      <table class="cds-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Size</th>
+            <th>Type</th>
+            <th>Progress</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (file of container.files; track file.id) {
+            <tr>
+              <td>{{file.name}}</td>
+              <td>{{container.formatBytes(file.size!)}}</td>
+              <td>{{file.type}}</td>
+              <td>{{file.progress! < 100 ? file.progress : ''}}@if(file.progress === 100) { <cds-icon name="checkmark"/> }</td>
+              <td>
+                <cds-icon name="trash" (click)="remove(file)"/>
+                @if (file.type.startsWith('image')) { <cds-icon name="eye" (click)="preview(file)"/> }
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
     }
+    <dialog #dialogRef>
+      <button type="button" (click)="dialog.nativeElement.close()">Close</button>
+      <img width="100%" [src]="downloadedImage" />
+    </dialog>
   `,
   standalone: false
 })
 export class AttachmentComponent extends PContainerComponent<Attachment> {
+  @ViewChild('dialogRef') dialog!: ElementRef<HTMLDialogElement>;
   public downloadedImage?: string;
 
   public get allowMultiple(): boolean {
     return this.container.config.allowMultiple === 'true';
+  }
+
+  public async preview(file: FileStatus) {
+    if (file.linked) {
+      this.downloadedImage = 'data:image/png;base64,' + await this.container.downloadFile(file.id);
+    } else {
+      this.downloadedImage = file.src;
+    }
+    this.dialog.nativeElement.showModal();
   }
 
   public async upload(e: Event): Promise<void> {

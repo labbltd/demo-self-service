@@ -30,6 +30,7 @@ function TextInput(props: InputProps) {
         name={props.id}
         type={props.type}
         value={props.value}
+        multiple={props.multiple}
         onChange={props.onChange}
         onBlur={props.onBlur}
     />

@@ -8,6 +8,7 @@ interface TextInputProps {
     errorMessage?: string;
     helperMessage?: string;
     placeholder?: string;
+    multiple?: boolean;
     value?: string;
     step?: number | string | undefined;
     inputmode?: any;
@@ -32,6 +33,7 @@ export default function TextInput(props: TextInputProps) {
                     {(props.type !== 'select' && props.type !== 'textarea' && props.type !== 'masked') && <input name={props.label} id={props.id} type={props.type === 'date' ? 'text' : props.type}
                         value={props.value}
                         step={props.step}
+                        multiple={props.multiple}
                         inputMode={props.inputmode}
                         onChange={props.onChange}
                         onBlur={props.onBlur}
