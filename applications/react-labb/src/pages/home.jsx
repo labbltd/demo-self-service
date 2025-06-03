@@ -27,7 +27,7 @@ export function Home() {
                 <Button variant='outlined' className="mr-6 mb-4" onClick={() => navigate("/scenarios")}>
                     Explore scenarios
                 </Button>
-                <Button variant='outlined' className="mr-6 mb-4" onClick={() => navigate("/videos")}>
+                <Button variant='outlined' className="mr-6 mb-4" onClick={() => navigate("/media")}>
                     Explore demo videos
                 </Button>
             </div>

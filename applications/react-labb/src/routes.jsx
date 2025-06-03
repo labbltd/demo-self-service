@@ -23,8 +23,8 @@ export const routes = [
   },
   {
     icon: <FilmIcon {...icon} />,
-    name: "Video Gallery",
-    path: "/videos"
+    name: "Media Gallery",
+    path: "/media"
   },
   {
     icon: <ComputerDesktopIcon {...icon} />,

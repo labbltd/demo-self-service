@@ -9,7 +9,7 @@ import { Demo } from "./pages/demo";
 import { Home } from "./pages/home";
 import OotbPegaEmbed from "./pages/ootb-pega-embed";
 import { ScenarioList } from "./pages/scenarios";
-import { Videos } from "./pages/videos";
+import { Media } from "./pages/media";
 import routes from "./routes";
 import Configurator from "./widgets/layout/configurator";
 import DashboardNavbar from "./widgets/layout/dashboard-navbar";
@@ -49,7 +49,7 @@ export default function App() {
           <Route path="scenarios" element={<ScenarioList />} />
           <Route path="scenarios/:scenarioId" element={<ClientList />} />
           <Route path="scenarios/:scenarioId/:clientId" element={<Demo />} />
-          <Route path="videos" element={<Videos />} />
+          <Route path="media" element={<Media />} />
           <Route path="constellation" element={<OotbPegaEmbed />} />
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Routes>
