@@ -8,6 +8,7 @@ import { BOIProgressBar, BOIVerticalProgressBar } from '../design-system/progres
 
 export default function DxFlowContainer(props: { container: FlowContainer }) {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
   const [todoAssignments, setTodoAssignments] = useState<Assignment[]>([]);
 
   useEffect(() => {
@@ -18,7 +19,7 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
   }, []);
 
   function openAssignment(assignment: Assignment) {
-    props.container.openAssignment(assignment);
+    props.container.openAssignment(assignment).catch(console.log);
   }
 
   function updateAssignments(): void {
@@ -27,12 +28,13 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
 
   function handleActionError(e: Error) {
     console.error(e);
-    setErrorMessage(e.message || 'Error');
+    setErrorMessage(e?.message || 'Error');
   }
 
   function buttonClick(button: ActionButton) {
+    setLoading(true);
     setErrorMessage(null);
-    props.container.buttonClick(button).catch(handleActionError)
+    props.container.buttonClick(button).catch(handleActionError).finally(() => setLoading(false));
   }
   const currentStep = props.container.navigation?.steps.findIndex(s => s.visited_status === 'current') || 0;
   const nSteps = props.container.navigation?.steps.length || 0;
@@ -56,7 +58,13 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
             <div key={assignment.ID}>
               <div>{assignment.processName} {'>'} {assignment.name}</div>
               <div>Assigned to {assignment.assigneeInfo?.name}</div>
-              <button type="button" onClick={() => openAssignment(assignment)}>Go</button>
+              <BOIBackButton
+                disabled={false}
+                showArrow={false}
+                onClick={() => openAssignment(assignment)}
+              >
+                Go
+              </BOIBackButton>
             </div>
           )}
           {todoAssignments.length === 0 && <p>Thank you for your request. We will contact you as soon as possible.</p>}
@@ -67,28 +75,60 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
             {props.container.children.map((child) => (
               <GeneratePContainer key={child.id} container={child} />
             ))}
-            {props.container.actionButtons && (
+            {props.container.actionButtons && <>
               <BOINavigationButtons>
-                {props.container.actionButtons.main.map((button, idx) => (
-                  <BOINextButton
-                    key={`main_${idx}`}
-                    onClick={() => buttonClick(button)}
-                  >
-                    {button.name}
-                  </BOINextButton>
-                ))}
-                <div style={{ order: 'initial' }}>
-                  {props.container.actionButtons.secondary.filter(button => ['back','fillFormWithAI'].includes(button.actionID)).map((button, idx) => (
+                {props.container.actionButtons.main
+                  .filter(button => ['Approve', 'submit'].includes(button.actionID))
+                  .map((button, idx) => (
+                    <BOINextButton
+                      disabled={loading}
+                      key={`main_${idx}`}
+                      onClick={() => buttonClick(button)}
+                    >
+                      {button.name}
+                    </BOINextButton>
+                  ))}
+                {props.container.actionButtons.secondary
+                  .filter(button => ['Reject', 'back'].includes(button.actionID))
+                  .map((button, idx) => (
                     <BOIBackButton
+                      disabled={loading}
+                      style={{ order: 'initial' }}
                       key={`secondary_${idx}`}
+                      showArrow={button.actionID === 'back'}
                       onClick={() => buttonClick(button)}
                     >
                       {button.name}
                     </BOIBackButton>
                   ))}
-                </div>
               </BOINavigationButtons>
-            )}
+              <BOINavigationButtons>
+                {props.container.actionButtons.main
+                  .filter(button => !['Approve', 'submit'].includes(button.actionID))
+                  .map((button, idx) => (
+                    <BOINextButton
+                      disabled={loading}
+                      key={`main_${idx}`}
+                      onClick={() => buttonClick(button)}
+                    >
+                      {button.name}
+                    </BOINextButton>
+                  ))}
+                {props.container.actionButtons.secondary
+                  .filter(button => !['Reject', 'back'].includes(button.actionID))
+                  .map((button, idx) => (
+                    <BOIBackButton
+                      disabled={loading}
+                      style={{ order: 'initial' }}
+                      key={`secondary_${idx}`}
+                      showArrow={button.actionID === 'back'}
+                      onClick={() => buttonClick(button)}
+                    >
+                      {button.name}
+                    </BOIBackButton>
+                  ))}
+              </BOINavigationButtons>
+            </>}
             {errorMessage && <div>{errorMessage}</div>}
           </BOIFormContainer>
         </form>}

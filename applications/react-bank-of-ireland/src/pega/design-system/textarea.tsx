@@ -4,6 +4,7 @@ export function BOITextArea(props: {
     onBlur(e: FocusEvent<HTMLTextAreaElement, Element>): void;
     value: string | number | readonly string[] | undefined;
     placeholder: string;
+    errorMessage: string;
     onChange(e: ChangeEvent<HTMLTextAreaElement>): void;
     label: string
 }) {
@@ -34,7 +35,8 @@ export function BOITextArea(props: {
             </div>
         </div>
         <div className="sc-cYqXxZ fnFYgh">
-            <div className="sc-cYqXxZ jlEifH">6 of 1000 characters</div>
+            <div className="sc-cYqXxZ jlEifH">{props.value?.toString().length} of 1000 characters</div>
         </div>
+        {props.errorMessage && <div className="sc-eOQiIf eNGrju field-error" color="alert" style={{ order: 5 }}>{props.errorMessage}</div>}
     </div>
 }

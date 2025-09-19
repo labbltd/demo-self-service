@@ -16,30 +16,32 @@ export default function Todo(props: { container: PContainer }) {
 
     return <>
         <h2>{props.container.config.headerText} {props.container.config.datasource.source.length}</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Step Name</th>
-                    <th>Case ID</th>
-                    <th>Urgency</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {
-                    tasks.map((task: any) => (
-                        <tr key={task.id}>
-                            <td>{task.stepName}</td>
-                            <td>{task.value.split(' ')[1]}</td>
-                            <td>{task.priority}</td>
-                            <td>{task.status}</td>
-                            <td onClick={() => selectTask(task)}>Go</td>
-                        </tr>
-                    ))
-                }
-            </tbody>
-        </table>
+        <div className="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Step Name</th>
+                        <th>Case ID</th>
+                        <th>Urgency</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        tasks.map((task: any) => (
+                            <tr key={task.id}>
+                                <td>{task.stepName}</td>
+                                <td>{task.value.split(' ')[1]}</td>
+                                <td>{task.priority}</td>
+                                <td>{task.status}</td>
+                                <td onClick={() => selectTask(task)}>Go</td>
+                            </tr>
+                        ))
+                    }
+                </tbody>
+            </table>
+        </div>
         <button onClick={() => setExpanded(!expanded)}>Show {expanded ? 'less' : 'more'}</button>
     </>
 }

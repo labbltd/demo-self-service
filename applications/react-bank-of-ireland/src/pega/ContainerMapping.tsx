@@ -15,6 +15,7 @@ DxReactAdapter.registerMapping('ListView', React.lazy(() => import('./containers
 DxReactAdapter.registerMapping('ModalViewContainer', React.lazy(() => import('./containers/ModalViewContainer')));
 DxReactAdapter.registerMapping('SimpleTableManual', React.lazy(() => import('./containers/SimpleTableManual')));
 DxReactAdapter.registerMapping('View', React.lazy(() => import('./containers/View')));
+DxReactAdapter.registerMapping('AppAnnouncement', React.lazy(() => import('./containers/AppAnnouncement')));
 
 // controls
 DxReactAdapter.registerMapping('Attachment', React.lazy(() => import('./containers/Attachment')));

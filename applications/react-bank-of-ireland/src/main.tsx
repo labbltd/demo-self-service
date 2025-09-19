@@ -1,10 +1,10 @@
 import { TokenInfo } from '@labb/constellation-core-types';
-import { DemoBootstrap } from '@labb/demo-utilities';
 import { PegaEmbed } from '@labb/react-adapter';
 import { Suspense, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './pega/ContainerMapping';
 import BOITemplate from './pega/design-system/template';
+import { DemoBootstrap } from './bootstrap';
 
 const root = ReactDOM.createRoot(
   document.getElementsByTagName('app-root')[0] as HTMLElement
