@@ -71,7 +71,7 @@ export class FlowContainerComponent extends PContainerComponent<FlowContainer> {
     return this.container.navigation?.steps.map(step => ({
       name: step.name,
       active: step.visited_status === 'current'
-    }))
+    })) || []
   }
 
   public override ngOnInit(): void {

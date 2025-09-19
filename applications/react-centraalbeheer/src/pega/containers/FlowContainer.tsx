@@ -57,8 +57,8 @@ export default function FlowContainer(props: { container: PFlowContainer }) {
       )}
     </>}
     {props.container.hasAssignment() && <><StepperHeader
-      steps={props.container.navigation?.steps.map(step => step.name)}
-      activeStep={activeStep} />
+      steps={props.container.navigation?.steps.map(step => step.name) || []}
+      activeStep={activeStep || 0} />
       <section className='container'>
         <div className="strip-funnel__title">
           <h1 className="heading-page-title ng-binding">{caseName}</h1>

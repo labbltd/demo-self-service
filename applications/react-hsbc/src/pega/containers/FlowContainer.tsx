@@ -72,8 +72,8 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
             props.container.navigation?.steps.find(step => step.visited_status === 'current')?.name ||
             window.PCore.getStore().getState().data[props.container.pconnect.getContextName()].caseInfo.stageLabel
           }
-          currentStep={props.container.navigation?.steps.findIndex(step => step.visited_status === 'current')}
-          totalSteps={props.container.navigation?.steps.length} />
+          currentStep={props.container.navigation?.steps.findIndex(step => step.visited_status === 'current') || 0}
+          totalSteps={props.container.navigation?.steps.length || 0} />
       </HsbcContainer>
       <HsbcContainer title={getTitle()}>
         {props.container.children.map((child) => (

@@ -109,7 +109,7 @@ export class FlowContainerComponent extends PContainerComponent<FlowContainer> i
     return this.navigationOrientation === 'vertical' ? { 'lg': 6, 'md': 6, 'sm': 6 } : { 'lg': 10, 'md': 10, 'sm': 10 };
   }
 
-  public get buttons(): ActionButtons {
+  public get buttons(): ActionButtons | null {
     return this.container.actionButtons;
   }
 

@@ -60,8 +60,8 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
           name={
             window.PCore.getStore().getState().data[props.container.pconnect.getContextName()].caseInfo.stageLabel
           }
-          currentStep={props.container.navigation?.steps.findIndex(step => step.visited_status === 'current')}
-          totalSteps={props.container.navigation?.steps.length} />
+          currentStep={props.container.navigation?.steps.findIndex(step => step.visited_status === 'current') || 0}
+          totalSteps={props.container.navigation?.steps.length || 0} />
       </LVCContainer>
       <LVCContainer title={props.container.getActiveViewLabel() ||
         props.container.getAssignmentName()}>

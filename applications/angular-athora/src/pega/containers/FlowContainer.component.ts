@@ -51,7 +51,7 @@ import { FlowContainer } from '@labb/dx-engine';
             </div>
           }
       } @else {
-      <mat-stepper labelPosition="bottom" [selectedIndex]="selectedIndex" *ngIf="container.navigation?.steps && container.navigation.steps.length > 1">
+      <mat-stepper labelPosition="bottom" [selectedIndex]="selectedIndex" *ngIf="container.navigation?.steps && (container.navigation?.steps?.length || 0) > 1">
         <mat-step *ngFor="let step of container.navigation?.steps"
           [completed]="step.visited_status === 'success'">
           <ng-template matStepLabel>{{step.name}}</ng-template>
@@ -121,7 +121,7 @@ export class FlowContainerComponent extends PContainerComponent<FlowContainer> i
   }
 
   private setSelectedIndex(): void {
-    this.selectedIndex = this.container.navigation?.steps.findIndex(step => step.visited_status === 'current');
+    this.selectedIndex = this.container.navigation?.steps.findIndex(step => step.visited_status === 'current') || 0;
   }
 
   public buttonClick(button: ActionButton): void {
