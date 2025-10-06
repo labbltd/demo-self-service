@@ -23,6 +23,8 @@ SOFTWARE.
 Footer
 
 
+@labb/demo-utilities
+
 @labb/dx-engine
 SEE LICENSE IN LICENSE
 
