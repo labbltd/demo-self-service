@@ -1,6 +1,7 @@
-import { ChangeEvent } from "react"
+import { ChangeEvent, FormEventHandler } from "react"
 
 export function BOITextInput(props: {
+    onSubmit?: FormEventHandler<HTMLInputElement>
     id: string,
     label: string,
     hint: string,
@@ -20,8 +21,8 @@ export function BOITextInput(props: {
     step: string | number | undefined,
     value: string,
     disabled: boolean,
-    onChange: (e: ChangeEvent<HTMLInputElement>) => void,
-    onBlur: (e: ChangeEvent<HTMLInputElement>) => void
+    onChange?: (e: ChangeEvent<HTMLInputElement>) => void,
+    onBlur?: (e: ChangeEvent<HTMLInputElement>) => void
 }) {
     return <div className="sc-bhvsvk hfskxH field u-currency-euro error" >
         <div className="sc-dVAgQd gRHQTq">
@@ -42,7 +43,7 @@ export function BOITextInput(props: {
                                     {props.prefix && <div className="sc-kThouk jVCLQB sc-bLafmV gcqzPn">
                                         <div className="sc-fhsMEl fGZtMg">{props.prefix}</div>
                                     </div>}
-                                    <input id={props.id} type={props.type} name={props.id} placeholder={props.placeholder} inputMode={props.inputMode} tabIndex={0} className="sc-jthNAk irKvNF" data-rac="" value={props.value} onChange={props.onChange} onBlur={props.onBlur} />
+                                    <input id={props.id} type={props.type} placeholder={props.placeholder} inputMode={props.inputMode} tabIndex={0} className="sc-jthNAk irKvNF" data-rac="" value={props.value} onChange={props.onChange} onBlur={props.onBlur} onKeyDown={e => { if(e.key === 'Enter') props.onSubmit?.(e) }} />
                                 </div>
                             </div>
                         </div>

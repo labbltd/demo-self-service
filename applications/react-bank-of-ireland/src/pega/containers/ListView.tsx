@@ -2,7 +2,6 @@ import { ListView } from '@labb/dx-engine';
 
 export default function DxListView(props: { container: ListView }) {
   const { container } = props;
-
   return <>
     <label htmlFor={props.container.id}>
       {props.container.config.label}
@@ -15,14 +14,14 @@ export default function DxListView(props: { container: ListView }) {
         <table>
           <thead>
             <tr>
-              {(container.singleSelectionMode || container.multiSelectionMode || container.config.selectionMode === "single") && <th>Select</th>}
+              {(container.singleSelectionMode || container.multiSelectionMode) && <th>Select</th>}
               {container.fields.map(col => <th key={col.config.label}>{col.config.label}</th>)}
             </tr>
           </thead>
           <tbody>
             {container.updatedRefList.map(row =>
               <tr key={row.id}>
-                {(container.singleSelectionMode || container.config.selectionMode === 'single') &&
+                {container.singleSelectionMode &&
                   <td>
                     <input type="radio"
                       name={container.id}

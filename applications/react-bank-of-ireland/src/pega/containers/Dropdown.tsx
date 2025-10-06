@@ -6,7 +6,7 @@ import { BOISummaryItem } from '../design-system/summary';
 
 export default function DxDropdown(props: { container: PContainer<PicklistProps> }) {
   if (props.container.config.readOnly) {
-    return <BOISummaryItem label={props.container.config.label} value={props.container.config.value ?? '--'}/>;
+    return <BOISummaryItem label={props.container.config.label} value={props.container.config.value ?? '--'} />;
   }
 
   const [options, setOptions] = useState(props.container.config.datasource);
@@ -25,9 +25,10 @@ export default function DxDropdown(props: { container: PContainer<PicklistProps>
     label={props.container.config.label}
     value={props.container.config.value}
     hint={props.container.config.helperText}
-    select={value => {
-      props.container.updateFieldValue(value);
-      props.container.triggerFieldChange(value);
+    select={(value, key) => {
+      const fieldValue = (props.container.config as any).useKey ? key : value;
+      props.container.updateFieldValue(fieldValue);
+      props.container.triggerFieldChange(fieldValue);
     }}
     options={options}
   />

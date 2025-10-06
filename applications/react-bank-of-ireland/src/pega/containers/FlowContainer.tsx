@@ -34,7 +34,13 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
   function buttonClick(button: ActionButton) {
     setLoading(true);
     setErrorMessage(null);
-    props.container.buttonClick(button).catch(handleActionError).finally(() => setLoading(false));
+    props.container.buttonClick(button).catch(handleActionError).finally(() => {
+      if (!props.container.hasAssignment()) {
+        var event = new CustomEvent("caseStatus", { "detail": false });
+        document.dispatchEvent(event);
+      }
+      setLoading(false)
+    });
   }
   const currentStep = props.container.navigation?.steps.findIndex(s => s.visited_status === 'current') || 0;
   const nSteps = props.container.navigation?.steps.length || 0;

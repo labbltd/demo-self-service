@@ -13,7 +13,7 @@ export function Demo() {
   const navigate = useNavigate();
   const [_, __, scenarioId, clientId] = location.pathname.split('/');
   const scenario = DemoBootstrap.getScenarios().find(scenario => scenario.id === scenarioId);
-  const client = clientsData.find(client => client.link.includes(clientId));
+  const client = clientsData.find(client => client.link.endsWith(`${clientId}/`));
   if (DemoBootstrap.getAction() !== 'openCase') {
     DemoBootstrap.updateScenario(scenario);
   }

@@ -11,9 +11,9 @@
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
-        "outputPath": "dist/demo-self-service/bankofireland",
+        "outputPath": "dist/demo-self-service/react-bank-of-ireland",
         "index": "applications/react-bank-of-ireland/src/index.html",
-        "baseHref": "/demo-self-service/bankofireland/",
+        "baseHref": "/demo-self-service/react-bank-of-ireland/",
         "main": "applications/react-bank-of-ireland/src/main.tsx",
         "polyfills": "applications/react-bank-of-ireland/src/polyfills.ts",
         "tsConfig": "applications/react-bank-of-ireland/tsconfig.app.json",

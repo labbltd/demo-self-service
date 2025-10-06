@@ -1,4 +1,5 @@
 import { PContainer } from '@labb/dx-engine';
+import { BOIRadioButtons } from '../design-system/radio-buttons';
 
 export default function RadioButtons(props: { container: PContainer }) {
   function getValue(target: EventTarget | null): string {
@@ -9,33 +10,16 @@ export default function RadioButtons(props: { container: PContainer }) {
     return <><dt>{props.container.config.label}</dt><dd>{props.container.config.value ?? '--'}</dd></>;
   }
   return (
-    <fieldset>
-      <legend>
-        {props.container.config.label}
-        {props.container.config.required ? ' *' : ''}
-      </legend>
-      <i>{props.container.config.helperText}</i>
-      {props.container.config.validatemessage && <em>{props.container.config.validatemessage}</em>}
-      {props.container.config.datasource.map(
-        (option: { key: string; value: string }) => <>
-          <label key={option.key}>
-            <input
-              type="radio"
-              onChange={(e) =>
-                props.container.updateFieldValue(getValue(e.target))
-              }
-              onBlur={(e) =>
-                props.container.triggerFieldChange(getValue(e.target))
-              }
-              checked={props.container.config.value === option.key}
-              name={props.container.id}
-              id={`${props.container.id}.${option.key}`}
-              value={option.key}
-            />{' '}
-            {option.value}
-          </label>
-        </>
-      )}
-    </fieldset>
+    <BOIRadioButtons
+      id={props.container.id}
+      value={props.container.config.value}
+      label={props.container.config.label}
+      options={props.container.config.datasource}
+      onChange={(e) =>
+        props.container.updateFieldValue(getValue(e.target))
+      }
+      onBlur={(e) =>
+        props.container.triggerFieldChange(getValue(e.target))
+      } />
   );
 }

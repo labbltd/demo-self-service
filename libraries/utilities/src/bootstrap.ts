@@ -9,9 +9,16 @@ export class DemoBootstrap {
       config = {};
     }
     for (const [key, value] of new URLSearchParams(window.location.search).entries()) {
-      config[key] = ['true', 'false'].includes(value) ? value === 'true': value;
+      config[key] = ['true', 'false'].includes(value) ? value === 'true' : value;
     }
 
+    return {
+      ...this.defaultConfig(),
+      ...config,
+    };
+  }
+
+  private static defaultConfig() {
     return {
       accessTokenUrl: undefined,
       action: 'createCase',
@@ -36,9 +43,20 @@ export class DemoBootstrap {
       redirectUrl: `${new URL(window.location.href).pathname}auth.html`,
       staticContentUrl: 'https://cs-cdn.constellation.pega.io/prod/25.1.0-dev-15134/react/prod',
       useChat: false,
-      username: '<Username>',
-      ...config,
-    };
+      username: '<Username>'
+    } as { [key: string]: string | undefined | boolean };
+  }
+
+  public static getBookmark() {
+    const defConfig = this.defaultConfig();
+    const curConfig = this.getConfig();
+    const params = new URLSearchParams();
+    Object.keys(defConfig).forEach(key => {
+      if (defConfig[key] !== curConfig[key]) {
+        params.set(key, curConfig[key]);
+      }
+    });
+    return window.location.origin + window.location.pathname + window.location.hash + '?' + params.toString();
   }
 
   public static updateConfig(prop: string, val: string) {

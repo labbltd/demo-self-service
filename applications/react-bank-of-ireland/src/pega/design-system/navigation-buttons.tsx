@@ -10,11 +10,12 @@ export function BOIBackButton(props: {
     disabled: boolean,
     children: ReactNode,
     showArrow: boolean,
+    shadow?: boolean,
     style?: Object,
     onClick: MouseEventHandler<HTMLButtonElement>
 }) {
     return <button onClick={props.onClick} disabled={props.disabled ? true : undefined} data-disabled={props.disabled ? "true" : null} style={props.style} data-testid="button" type="button" tabIndex={0} data-react-aria-pressable="true" aria-label="Back to previous page of the form" className="sc-hrphqP jnHmVK" data-rac="" id="react-aria8716564887-:r2e:">
-        <div className="sc-jyqoAZ iJCXBt"></div>
+        {props.shadow !== false && <div className="sc-jyqoAZ iJCXBt"></div>}
         <div className="sc-cnVfeA cRyRxH">
             <div className="sc-eJZSpO llFwYq">
                 {props.showArrow && <span className="sc-EZsnr vVHbt">

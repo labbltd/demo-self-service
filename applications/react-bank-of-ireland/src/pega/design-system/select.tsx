@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useRef, useState } from "react";
 
 export function BOISelect(props: {
     id: string,
@@ -8,8 +8,14 @@ export function BOISelect(props: {
     select: (value: string, key?: string) => void,
     options: { key: string, value: string }[]
 }) {
-    const [active, setActive] = useState(false);
+    const [active, setActive] = useState<{ top: number, width: number } | null>(null);
+    const selectRef = useRef<HTMLDivElement>(null);
+    let options = props.options;
+    if (typeof props.options === 'string') options = [];
 
+    function getLabel(value: string) {
+        return props.options.find(option => option.key === value)?.value || value;
+    }
     return <>
         <div className="sc-bhvsvk hfskxH field" data-id="field_1880_171" >
             <div className="sc-dVAgQd gRHQTq">
@@ -22,16 +28,22 @@ export function BOISelect(props: {
                     </p>
                 </div>
             </div>}
-            <div className="sc-ljKisr gqXwSY">
+            <div className="sc-ljKisr gqXwSY" ref={selectRef}>
                 <div className="sc-QsWun cRqrFI">
                     <template data-react-aria-hidden="true"></template>
                     <div data-testid="select" className="react-aria-Select" data-rac="">
                         <div className="sc-crmhzO gflEL">
                             <div className="sc-dEZtDB hSYKSS">
                                 <button id=":r153:" type="button" data-react-aria-pressable="true" aria-labelledby="react-aria1831877564-:r15e:" aria-haspopup="listbox" aria-expanded="false" className="sc-jEBrHg sc-gsHOfL ftZiPo hwXXyo" data-rac="" tabIndex={0}
-                                    onClick={() => setActive(true)}>
+                                    onClick={() => {
+                                        if (!selectRef.current) return;
+                                        setActive({
+                                            top: selectRef.current?.offsetTop + selectRef.current?.clientHeight,
+                                            width: selectRef.current?.offsetWidth - selectRef.current?.clientWidth
+                                        });
+                                    }}>
                                     <p className="sc-kThouk yzVXl">
-                                        <span id="react-aria1831877564-:r15e:" className="sc-cvhvLv iIJwHm" data-rac="">{props.value}</span>
+                                        <span id="react-aria1831877564-:r15e:" className="sc-cvhvLv iIJwHm" data-rac="">{getLabel(props.value)}</span>
                                     </p>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true" className="sc-bkBUWa gPNWIB">
                                         <path fill="currentColor" d="m12 14.815 7.533-7.532a.933.933 0 0 1 .702-.29c.27.004.503.106.702.305a.96.96 0 0 1 .298.702c0 .27-.1.503-.298.702l-7.656 7.671c-.18.18-.383.315-.608.402-.224.087-.448.13-.673.13-.224 0-.448-.043-.673-.13a1.752 1.752 0 0 1-.607-.402L3.048 8.702a.942.942 0 0 1-.29-.71.997.997 0 0 1 .306-.71.96.96 0 0 1 .702-.297c.269 0 .503.099.702.298L12 14.815Z">
@@ -46,7 +58,7 @@ export function BOISelect(props: {
                             <select tabIndex={-1} id={props.id}>
                                 <option>
                                 </option>
-                                {props.options?.map(option => <option value={option.key} key={option.key}>{option.value}</option>)}
+                                {options?.map(option => <option value={option.key} key={option.key}>{option.value}</option>)}
                             </select>
                         </label>
                     </div>
@@ -55,9 +67,9 @@ export function BOISelect(props: {
         </div>
 
         {active && <>
-            <div style={{ position: 'fixed', inset: '0px' }} aria-hidden="true" onClick={() => setActive(false)}></div>
+            <div style={{ position: 'fixed', inset: '0px' }} aria-hidden="true" onClick={() => setActive(null)}></div>
             <div style={{ display: 'contents' }}>
-                <div className="sc-doJfcP jQzewn" data-rac="" aria-labelledby="" dir="ltr" data-trigger="Select" style={{ position: 'absolute', zIndex: 100000, maxHeight: '290px', left: '143.5px', top: '419px' }} role="dialog" tabIndex={-1} data-placement="bottom">
+                <div className="sc-doJfcP jQzewn" data-rac="" aria-labelledby="" dir="ltr" data-trigger="Select" style={{ position: 'absolute', zIndex: 100000, maxHeight: '290px', left: `${active.width}px`, top: `${active.top}px` }} role="dialog" tabIndex={-1} data-placement="bottom">
                     <div style={{ border: '0px', clip: 'rect(0px, 0px, 0px, 0px)', clipPath: 'inset(50%)', height: '1px', margin: '-1px', overflow: 'hidden', padding: '0px', position: 'absolute', width: '1px', whiteSpace: 'nowrap' }}>
                         <button id="react-aria1831877564-:r18j:" aria-label="Dismiss" tabIndex={-1} style={{ width: '1px', height: '1px' }}>
                         </button>
@@ -66,10 +78,10 @@ export function BOISelect(props: {
                     </span>
                     <div id="react-aria1831877564-:r158:" aria-labelledby="" role="listbox" tabIndex={-1} data-collection="react-aria1831877564-:r18k:" className="sc-dovqRS jmZMyI" data-rac="" data-layout="stack" data-orientation="vertical">
                         <section role="group" className="react-aria-ListBoxSection" data-rac="">
-                            {props.options?.map(option => <div key={option.key} role="option" aria-selected="false" tabIndex={-1} data-collection="react-aria1831877564-:r18k:" data-key="parents" data-react-aria-pressable="true" id="react-aria1831877564-:r158:-option-parents" className="sc-fnaTjL piqCy" data-rac="" data-selection-mode="single"
+                            {options?.map(option => <div key={option.key} role="option" aria-selected="false" tabIndex={-1} data-collection="react-aria1831877564-:r18k:" data-key="parents" data-react-aria-pressable="true" id="react-aria1831877564-:r158:-option-parents" className="sc-fnaTjL piqCy" data-rac="" data-selection-mode="single"
                                 onClick={() => {
                                     props.select(option.value, option.key);
-                                    setActive(false);
+                                    setActive(null);
                                 }}>
                                 <div className="sc-jyPUfK hJyVaF">
                                     <div className="sc-JNBUd bbQBUJ">
