@@ -15,16 +15,16 @@ export class DemoBootstrap {
     return {
       accessTokenUrl: undefined,
       action: 'openPage',
-      appAlias: 'mortgage-reference-application',
+      appAlias: 'ta',
       assignmentId: 'ASSIGN-WORKLIST OOUG64-MORTGAGE-WORK M-138102!APPLICATIONINTAKE_FLOW',
-      authFlow: 'oauth2',
+      authFlow: 'client_credentials',
       authorizationUrl: undefined,
       authService: 'pega',
       caseId: '<Case ID>',
       casePage: 'assignment',
       caseTypeId: 'OOUG64-Mortgage-Work-MortgageApplication',
-      clientId: '69781227547618423312',
-      clientSecret: undefined,
+      clientId: '54571136054767375659',
+      clientSecret: '9B08B01D59ED64F512550346513E8BA6',
       labbified: false,
       labbLogo: 'https://labbltd.github.io/demo-self-service/img/Labb%20Dark%20Blue%20Logo-RGB-1.png',
       localeId: 'en-US',
@@ -32,6 +32,8 @@ export class DemoBootstrap {
       pageId: 'pyHome',
       password: '<Password>',
       pegaServerUrl: `http://localhost:3333/prweb`,
+      gcServerUrl: `http://localhost:3333`,
+      // pegaServerUrl: `https://boihackathon20.pegademo.com/prweb`,
       pkce: true,
       redirectUrl: `${new URL(window.location.href).pathname}auth.html`,
       staticContentUrl: 'https://cs-cdn.constellation.pega.io/prod/25.1.0-dev-15134/react/prod',
@@ -149,6 +151,9 @@ export class DemoBootstrap {
 
   public static getServerUrl() {
     return this.getConfig().pegaServerUrl;
+  }
+  public static getGCServerUrl() {
+    return this.getConfig().gcServerUrl;
   }
   public static getAppId() {
     return this.getConfig().appAlias;

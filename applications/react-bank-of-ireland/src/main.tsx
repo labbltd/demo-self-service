@@ -1,10 +1,10 @@
 import { TokenInfo } from '@labb/constellation-core-types';
 import { PegaEmbed } from '@labb/react-adapter';
+import { DemoBootstrap } from '@labb/demo-utilities';
 import { Suspense, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './pega/ContainerMapping';
 import BOITemplate from './pega/design-system/template';
-import { DemoBootstrap } from './bootstrap';
 
 const root = ReactDOM.createRoot(
   document.getElementsByTagName('app-root')[0] as HTMLElement
@@ -51,10 +51,10 @@ function Main(props?: { setTitle?: Function }) {
             ?.caseInfo?.caseTypeName
         );
         const caseID = window.PCore.getStore().getState().data['app/primary_1']?.caseInfo.ID;
-        // if (caseID) {
-          // DemoBootstrap.setAction('openCase');
-          // DemoBootstrap.setCaseId(caseID);
-        // }
+        if (caseID) {
+          DemoBootstrap.setAction('openCase');
+          DemoBootstrap.setCaseId(caseID);
+        }
       }}
     />}
     {(!token && !authError) && <h3>Taming the chaos...</h3>}

@@ -32,6 +32,22 @@ export const clientsData = [
         region: '🇬🇧'
     },
     {
+        name: 'Bank of Ireland',
+        logo: 'img/logo-bank-of-ireland.png',
+        framework: 'img/logo-react.png',
+        link: '/demo-self-service/react-bank-of-ireland/',
+        available: true,
+        region: '🇮🇪'
+    },
+    {
+        name: 'Bank of Ireland - Investment app',
+        logo: 'img/logo-bank-of-ireland.png',
+        framework: 'img/logo-react.png',
+        link: '/demo-self-service/react-bank-of-ireland-investment/',
+        available: true,
+        region: '🇮🇪'
+    },
+    {
         name: 'Rabobank',
         logo: 'img/logo-rabobank.png',
         framework: 'img/logo-angular.png',
