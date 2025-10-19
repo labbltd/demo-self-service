@@ -1,0 +1,132 @@
+{
+  "name": "react-mkb-brandstof",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "applications/react-mkb-brandstof/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/demo-self-service/react-mkb-brandstof",
+        "index": "applications/react-mkb-brandstof/src/index.html",
+        "baseHref": "/demo-self-service/react-mkb-brandstof/",
+        "main": "applications/react-mkb-brandstof/src/main.tsx",
+        "polyfills": "applications/react-mkb-brandstof/src/polyfills.ts",
+        "tsConfig": "applications/react-mkb-brandstof/tsconfig.app.json",
+        "assets": [
+          "applications/react-mkb-brandstof/src/favicon.ico",
+          {
+            "glob": "auth.html",
+            "input": "./node_modules/@labb/dx-engine/",
+            "output": "./"
+          },
+          {
+            "glob": "bootstrap-shell.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./"
+          },
+          {
+            "glob": "bootstrap-shell.*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./"
+          },
+          {
+            "glob": "*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/js",
+            "output": "./prerequisite/js"
+          },
+          {
+            "glob": "lib_asset.json",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./"
+          },
+          {
+            "glob": "constellation-core.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./prerequisite"
+          },
+          {
+            "glob": "constellation-core.*.*",
+            "input": "./node_modules/@pega/constellationjs/dist/",
+            "output": "./prerequisite"
+          }
+        ],
+        "styles": ["applications/react-mkb-brandstof/src/index.css"],
+        "scripts": [],
+        "webpackConfig": "applications/react-mkb-brandstof/webpack.config.js",
+        "babelUpwardRootMode": true
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "applications/react-mkb-brandstof/src/environments/environment.ts",
+              "with": "applications/react-mkb-brandstof/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "react-mkb-brandstof:build",
+        "hmr": true,
+        "proxyConfig": "applications/react-mkb-brandstof/proxy.conf.json",
+        "port": 4200
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "react-mkb-brandstof:build:development"
+        },
+        "production": {
+          "buildTarget": "react-mkb-brandstof:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/applications/react-mkb-brandstof"],
+      "options": {
+        "jestConfig": "applications/react-mkb-brandstof/jest.config.ts"
+      }
+    },
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "applications/react-mkb-brandstof/e2e/cypress.config.ts",
+        "testingType": "e2e"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "react-mkb-brandstof:serve:production"
+        },
+        "development": {
+          "devServerTarget": "react-mkb-brandstof:serve:development",
+          "watch": true
+        }
+      }
+    }
+  }
+}

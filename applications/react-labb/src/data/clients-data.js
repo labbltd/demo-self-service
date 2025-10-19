@@ -33,7 +33,7 @@ export const clientsData = [
     },
     {
         name: 'Bank of Ireland',
-        logo: 'img/logo-bank-of-ireland.png',
+        logo: 'img/logo-bank-of-ireland.svg',
         framework: 'img/logo-react.png',
         link: '/demo-self-service/react-bank-of-ireland/',
         available: true,
@@ -41,7 +41,7 @@ export const clientsData = [
     },
     {
         name: 'Bank of Ireland - Investment app',
-        logo: 'img/logo-bank-of-ireland.png',
+        logo: 'img/logo-bank-of-ireland.svg',
         framework: 'img/logo-react.png',
         link: '/demo-self-service/react-bank-of-ireland-investment/',
         available: true,
@@ -87,7 +87,15 @@ export const clientsData = [
         available: true,
         region: '🇳🇱'
     },
-        {
+    {
+        name: 'MKB Brandstof',
+        logo: 'img/logo-mkb-brandstof.png',
+        framework: 'img/logo-react.png',
+        link: '/demo-self-service/react-mkb-brandstof/',
+        available: true,
+        region: '🇳🇱'
+    },
+    {
         name: 'Las Vegas Cyclery',
         logo: 'img/logo-lvc.png',
         framework: 'img/logo-react.png',
