@@ -3,5 +3,5 @@
   "isDevServerMode": false,
   "externals": [],
   "entry": [],
-  "prerequisite": [{ "constellation-core.cedf9b0c.js": "" }]
+  "prerequisite": [{ "constellation-core.b630c3e1.js": "" }]
 }
