@@ -22,23 +22,32 @@ export class DemoBootstrap {
     return {
       accessTokenUrl: undefined,
       action: 'createCase',
-      appAlias: 'LabbCS',
       assignmentId: 'ASSIGN-WORKLIST OOUG64-MORTGAGE-WORK M-138102!APPLICATIONINTAKE_FLOW',
       authFlow: 'client-credentials',
       authorizationUrl: undefined,
       authService: 'pega',
       caseId: '<Case ID>',
       casePage: 'assignment',
-      caseTypeId: 'OOUG64-Mortgage-Work-MortgageApplication',
-      clientId: '45081509181474503700',
-      clientSecret: 'FF1BC82F3B232AAFE5DF31B7ECA6A637',
+      // pegaServerUrl: `http://localhost:3333/prweb`,
+
+      pegaServerUrl: `https://labbconsulting10.pegalabs.io/prweb`,
+      appAlias: 'LabbCS',
+      clientId: '13417063419401422915',
+      clientSecret: '016B72C72F3147DF00C8753DD5F7E4A5',
+      caseTypeId: 'Labb-LabbCS-Work-Service-MortgageApplication',
+
+      // pegaServerUrl: `https://labbconsulting05.pegalabs.io/prweb`,
+      // appAlias: 'dx-accelerator',
+      // clientId: '45081509181474503700',
+      // clientSecret: '147BD9724DD2C68ACF754BCBD0BB7BB7',
+      // caseTypeId: 'OWXZJQ-DXAccele-Work-ModalContainer',
+
       labbified: false,
       labbLogo: 'https://labbltd.github.io/demo-self-service/img/Labb%20Dark%20Blue%20Logo-RGB-1.png',
       localeId: 'en-US',
       pageClass: 'Data-Portal',
       pageId: 'pyWorklist',
       password: '<Password>',
-      pegaServerUrl: `https://labbconsulting05.pegalabs.io/prweb`,
       pkce: true,
       redirectUrl: `${new URL(window.location.href).pathname}auth.html`,
       staticContentUrl: 'https://cs-cdn.constellation.pega.io/prod/25.1.0-dev-15134/react/prod',
@@ -47,7 +56,7 @@ export class DemoBootstrap {
     } as { [key: string]: string | undefined | boolean };
   }
 
-  public static getBookmark() {
+  public static getQuery() {
     const defConfig = this.defaultConfig();
     const curConfig = this.getConfig();
     const params = new URLSearchParams();
@@ -56,11 +65,23 @@ export class DemoBootstrap {
         params.set(key, curConfig[key]);
       }
     });
+    return params;
+  }
+
+  public static getBookmark() {
+    const params = this.getQuery();
     return window.location.origin + window.location.pathname + window.location.hash + '?' + params.toString();
   }
 
-  public static updateConfig(prop: string, val: string) {
-    console.log("updateConfig('%s', '%s')", prop, val);
+  public static reset() {
+    const conf = this.defaultConfig();
+    Object.keys(conf).forEach(key => {
+      this.updateConfig(key, conf[key]);
+    })
+  }
+
+  public static updateConfig(prop: string, val: string | boolean | undefined) {
+    console.log("updateConfig('%s', %s)", prop, JSON.stringify(val));
     localStorage.setItem(
       'LabbDemoConfig',
       JSON.stringify({
@@ -161,6 +182,12 @@ export class DemoBootstrap {
       `${this.getConfig().pegaServerUrl}/PRRestService/oauth2/v1/authorize`;
   }
 
+
+  public static getRevokeUrl(): string {
+    return this.getConfig().authorizationUrl ||
+      `${this.getConfig().pegaServerUrl}/PRRestService/oauth2/v1/revoke`;
+  }
+
   public static getPkce(): boolean {
     return this.getConfig().pkce;
   }
@@ -207,9 +234,10 @@ export class DemoBootstrap {
     return this.getConfig().useChat;
   }
 
-  public static async getToken() {
+  public static getAuthConfig(): OAuth2Config {
     const config: OAuth2Config = {
       accessTokenUrl: this.getAccessTokenUrl(),
+      revokeUrl: this.getRevokeUrl(),
       clientId: this.getClientId(),
       clientSecret: this.getClientSecret(),
     };
@@ -223,6 +251,13 @@ export class DemoBootstrap {
       config.appId = this.getAppId();
       config.authService = this.getAuthService();
       config.pkce = this.getPkce();
+    }
+    return config;
+  }
+
+  public static async getToken() {
+    const config = this.getAuthConfig();
+    if (this.getAuthFlow() === 'oauth2') {
       return OAuth2Service.getTokenAuthorizationCode(config);
     }
     return OAuth2Service.getTokenCredentials(config);

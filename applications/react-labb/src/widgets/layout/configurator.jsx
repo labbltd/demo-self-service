@@ -39,6 +39,9 @@ export function Configurator() {
       </div>
       <div className="px-6">
         <div className="mt-3 flex flex-col gap-2">
+          <Button onClick={() => {
+            DemoBootstrap.reset();
+          }}>Reset to default</Button>
           <Button onClick={async () => {
             const bookmark = DemoBootstrap.getBookmark();
             console.log(bookmark);

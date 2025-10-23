@@ -55,7 +55,7 @@ export function Demo() {
         </Link>
       </div>
       <div>
-        <a href={client.link} target="__blank"><Button variant='outlined' className="mr-4 mt-4">
+        <a href={client.link + '?' + DemoBootstrap.getQuery()} target="__blank"><Button variant='outlined' className="mr-4 mt-4">
           Open in new tab
         </Button></a>
       </div>
