@@ -27,7 +27,7 @@ import {
   theme,
   Typography
 } from 'antd';
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useMemo, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import './pega/ContainerMapping';
@@ -35,7 +35,7 @@ import logo from './public/Labb White Logo-RGB.png';
 import profile from './public/team-4.jpeg';
 
 const { Header, Content, Sider, Footer } = Layout;
-const { Title, Text } = Typography;
+const { Text } = Typography;
 
 const root = ReactDOM.createRoot(
   document.getElementsByTagName('app-root')[0] as HTMLElement
@@ -51,14 +51,11 @@ async function render() {
 
 function Main(props?: { setTitle?: Function }) {
   const [loadingStatus, setLoadingStatus] = useState<boolean | undefined>(undefined);
-  const [token, setToken] = useState<TokenInfo>();
-  const [showEmbed, setShowEmbed] = useState<boolean>(true);
+  const [token, setToken] = useState<TokenInfo | null>(null);
   const [authError, setAuthError] = useState<string>();
   const [collapsed, setCollapsed] = useState(true);
   const [selectedMenu, setSelectedMenu] = useState('1');
   const [isDarkMode, setIsDarkMode] = useState(true);
-
-  const action = DemoBootstrap.getAction();
 
   useEffect(() => {
     try {
@@ -67,6 +64,39 @@ function Main(props?: { setTitle?: Function }) {
       setAuthError(e as string);
     }
   }, []);
+
+  const memoEmbed = useMemo(() => token && <PegaEmbed
+    caseID={DemoBootstrap.getAction() === 'openCase' ? DemoBootstrap.getCaseId() : undefined}
+    caseTypeID={DemoBootstrap.getAction() === 'createCase' ? DemoBootstrap.getCaseTypeId() : undefined}
+    pageID={DemoBootstrap.getAction() === 'openPage' ? DemoBootstrap.getPageId() : undefined}
+    className={DemoBootstrap.getAction() === 'openPage' ? DemoBootstrap.getPageClass() : undefined}
+    infinityServer={DemoBootstrap.getServerUrl()}
+    localeID={DemoBootstrap.getLocaleId()}
+    appID={DemoBootstrap.getAppId()}
+    token={token}
+    authConfig={{
+      ...DemoBootstrap.getAuthConfig(),
+      // authType: 'custom'
+    }}
+    loadingDone={(status) => {
+      setLoadingStatus(status);
+      props?.setTitle?.(
+        window.PCore.getStore().getState().data['app/primary_1']?.caseInfo
+          ?.caseTypeName
+      );
+      const endOfAssignment = window.PCore.getConstants().PUB_SUB_EVENTS.CASE_EVENTS.END_OF_ASSIGNMENT_PROCESSING;
+      window.PCore.getPubSubUtils().subscribe(endOfAssignment, (args) => {
+        console.log('End of assignment processing event received', args);
+      }, endOfAssignment);
+
+      const caseID = window.PCore.getStore().getState().data['app/primary_1']
+        ?.caseInfo.ID;
+      if (caseID) {
+        DemoBootstrap.setAction('openCase');
+        DemoBootstrap.setCaseId(caseID);
+      }
+    }}
+  />, [token]);
 
   const userMenuItems = [
     {
@@ -250,62 +280,12 @@ function Main(props?: { setTitle?: Function }) {
                   </div>
                 )
               }
-              {/* <Button onClick={async () => {
-                window.PCore.getAuthUtils().revokeTokens();
-              }}>Refresh case</Button> */}
-              {token && showEmbed ? (
-                <PegaEmbed
-                  caseID={action === 'openCase' ? DemoBootstrap.getCaseId() : undefined}
-                  caseTypeID={action === 'createCase' ? DemoBootstrap.getCaseTypeId() : undefined}
-                  pageID={action === 'openPage' ? DemoBootstrap.getPageId() : undefined}
-                  className={action === 'openPage' ? DemoBootstrap.getPageClass() : undefined}
-                  infinityServer={DemoBootstrap.getServerUrl()}
-                  localeID={DemoBootstrap.getLocaleId()}
-                  appID={DemoBootstrap.getAppId()}
-                  token={token}
-                  authConfig={{
-                    ...DemoBootstrap.getAuthConfig(),
-                    // authType: 'custom'
-                  }}
-                  loadingDone={(status) => {
-                    setLoadingStatus(status);
-                    props?.setTitle?.(
-                      window.PCore.getStore().getState().data['app/primary_1']?.caseInfo
-                        ?.caseTypeName
-                    );
-                    const endOfAssignment = window.PCore.getConstants().PUB_SUB_EVENTS.CASE_EVENTS.END_OF_ASSIGNMENT_PROCESSING;
-                    window.PCore.getPubSubUtils().subscribe(endOfAssignment, (args) => {
-                      console.log('End of assignment processing event received', args);
-                    }, endOfAssignment);
-
-                    const custReauth = window.PCore.getConstants().PUB_SUB_EVENTS.EVENT_CUSTOM_REAUTH;
-                    window.PCore.getPubSubUtils().subscribe(custReauth, async (args) => {
-                      console.log('Custom Re-Authentication', args);
-                      setShowEmbed(false);
-                      const token = await DemoBootstrap.getToken()
-                      if (window.PCore) {
-                        window.PCore.getPubSubUtils().publish('updateSession', { updateStatus: 'success' });
-                      }
-                      setTimeout(() => {
-                        setToken(token);
-                        setShowEmbed(true);
-                      }, 2000)
-                    }, custReauth);
-
-                    const caseID = window.PCore.getStore().getState().data['app/primary_1']
-                      ?.caseInfo.ID;
-                    if (caseID) {
-                      DemoBootstrap.setAction('openCase');
-                      DemoBootstrap.setCaseId(caseID);
-                    }
-                  }}
-                />
-              ) : <pre>PegaEmbed removed</pre>}
+              {memoEmbed}
             </Content>
 
             <Footer style={{ textAlign: 'center', background: 'transparent' }}>
               <Text type="secondary">
-                Labb Bank Self-Service Portal © 2025 | Powered by Labb DX Accelerator
+                Labb Be.Bank Self-Service Portal © 2025 | Powered by Labb DX Accelerator
               </Text>
             </Footer>
           </Layout>

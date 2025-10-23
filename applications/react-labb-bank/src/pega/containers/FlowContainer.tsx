@@ -2,6 +2,7 @@ import { ActionButton, Assignment } from '@labb/constellation-core-types';
 import { FlowContainer } from '@labb/dx-engine';
 import { GeneratePContainer } from '@labb/react-adapter';
 import { Alert, Button, Card, Form, Skeleton, Space, Steps, Typography } from 'antd';
+import useBreakpoint from 'antd/es/grid/hooks/useBreakpoint';
 import { useEffect, useState } from 'react';
 
 const { Title, Text } = Typography;
@@ -10,6 +11,8 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
   const [loading, setLoading] = useState<ActionButton | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [todoAssignments, setTodoAssignments] = useState<Assignment[]>([]);
+
+  const screens = useBreakpoint();
 
   useEffect(() => {
     updateAssignments();
@@ -121,9 +124,10 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
             </Card>
 
             {props.container.actionButtons && (
-              <Space style={{ marginTop: 24 }}>
+              <Space style={{ marginTop: 24, display: screens.sm ? 'flex' : 'grid' }}>
                 {props.container.actionButtons.secondary.map((button, idx) => (
                   <Button
+                    style={!screens.sm ? { width: '100%' } : {}}
                     loading={loading?.name === button.name}
                     disabled={!!loading && loading?.name !== button.name}
                     key={`secondary_${idx}`}
@@ -133,6 +137,7 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
                 ))}
                 {props.container.actionButtons.main.map((button, idx) => (
                   <Button
+                    style={!screens.sm ? { width: '100%' } : {}}
                     loading={loading?.name === button.name}
                     disabled={!!loading && loading?.name !== button.name}
                     key={`main_${idx}`}

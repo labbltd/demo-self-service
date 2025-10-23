@@ -27,7 +27,7 @@ export default function CaseSummary(props: { container: PContainer }) {
       span: 'filled'
     } as { label: string, children: any, span: 'filled' }))
   );
-  return <Card style={{ marginBottom: '10px' }} actions={open ? [
+  return <Card style={{ marginBottom: '10px', backgroundColor: 'ButtonText' }} actions={open ? [
     <UpOutlined onClick={() => setOpen(false)} />] : [
     <DownOutlined onClick={() => setOpen(true)} />
   ]}>
