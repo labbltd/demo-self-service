@@ -1,12 +1,13 @@
 import { Dropdown } from '@labb/dx-engine';
 import { AutoComplete, Form } from 'antd';
-import { BaseOptionType } from 'antd/es/select';
 import { useState } from 'react';
 
 export default function DxAutocomplete(props: {
   container: Dropdown;
 }): JSX.Element {
-  const [items, setItems] = useState<BaseOptionType[]>([]);
+  const [items, setItems] = useState<{ label: string, value: string }[]>([]);
+  const [value, setValue] = useState<string>('');
+  console.log(items, value);
   if (props.container.config.readOnly) {
     return (
       <Form.Item label={props.container.config.label}>
@@ -32,9 +33,22 @@ export default function DxAutocomplete(props: {
             value: item.pyFieldValue
           }))
           setItems(items);
+          const matchedItem = items.find(item => item.value === value)?.label;
+          if (matchedItem) {
+            setValue(matchedItem);
+          }
         }
       }
     }
+  }
+
+  function matches(item: string, search: string) {
+    const normalizedItem = item.trim().toLowerCase();
+    const normalizedSearch = search.trim().toLowerCase();
+    return normalizedSearch.split('').reduce((idx, letter) =>
+      idx === -1 ? idx : normalizedItem.split('').indexOf(letter, idx == -2 ? 0 : idx + 1),
+      -2
+    ) >= 0;
   }
 
   return (
@@ -47,17 +61,20 @@ export default function DxAutocomplete(props: {
     >
       <AutoComplete
         id={props.container.id}
-        value={props.container.config.value || undefined}
+        value={value}
         status={props.container.config.validatemessage ? 'error' : ''}
         onClick={() => {
           setOptions();
         }}
         filterOption={(search, option) => {
-          return option!['label'].includes(search)
+          return matches(option!.label, search)
         }}
         onSelect={(value) => {
-          props.container.updateFieldValue(value)
-          props.container.triggerFieldChange(value)
+          props.container.updateFieldValue(value);
+          props.container.triggerFieldChange(value);
+        }}
+        onChange={val => {
+          setValue(val)
         }}
         disabled={props.container.config.readOnly}
         placeholder="Select..."

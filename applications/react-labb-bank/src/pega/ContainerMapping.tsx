@@ -15,6 +15,7 @@ DxReactAdapter.registerMapping('CaseSummary', React.lazy(() => import('./contain
 DxReactAdapter.registerMapping('CaseView', React.lazy(() => import('./containers/CaseView')));
 
 // Form controls
+DxReactAdapter.registerMapping('Address', React.lazy(() => import('./containers/Address')));
 DxReactAdapter.registerMapping('Attachment', React.lazy(() => import('./containers/Attachment')));
 DxReactAdapter.registerMapping('AutoComplete', React.lazy(() => import('./containers/Autocomplete')));
 DxReactAdapter.registerMapping('Checkbox', React.lazy(() => import('./containers/Checkbox')));

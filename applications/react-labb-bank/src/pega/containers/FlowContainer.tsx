@@ -83,7 +83,7 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
 
       {props.container.hasAssignment() && (
         <div>
-          {props.container.navigation?.steps && props.container.navigation.steps.length > 1 && (
+          {props.container.navigation?.template !== 'Standard' && props.container.navigation?.steps && props.container.navigation.steps.length > 1 && (
             <Steps
               current={currentStepIndex}
               style={{ marginBottom: 32 }}
@@ -100,28 +100,22 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
             />
           )}
 
-          <Form layout="vertical">
-            <Card loading={!!loading}>
-              <Title level={3}>
-                {props.container.getActiveViewLabel() || props.container.getAssignmentName()}
-              </Title>
+          <Form layout="vertical" autoComplete='false'>
+            {messages && messages.map((message: { type: string, message: string }) => <Alert
+              message="Error"
+              description={message.message}
+              type={message.type === 'error' ? 'error' : 'info'}
+              showIcon
+              closable
+              onClose={() => setErrorMessage(null)}
+              style={{ marginTop: 16, marginBottom: 16 }}
+            />)}
 
-              {messages && messages.map((message: { type: string, message: string }) => <Alert
-                message="Error"
-                description={message.message}
-                type={message.type === 'error' ? 'error' : 'info'}
-                showIcon
-                closable
-                onClose={() => setErrorMessage(null)}
-                style={{ marginTop: 16, marginBottom: 16 }}
-              />)}
-
-              {loading ? (
-                <Skeleton />
-              ) : props.container.children.map((child) => (
-                <GeneratePContainer key={child.id} container={child} />
-              ))}
-            </Card>
+            {loading ? (
+              <Skeleton />
+            ) : props.container.children.map((child) => (
+              <GeneratePContainer key={child.id} container={child} />
+            ))}
 
             {props.container.actionButtons && (
               <Space style={{ marginTop: 24, display: screens.sm ? 'flex' : 'grid' }}>
