@@ -33,6 +33,7 @@ import './index.css';
 import './pega/ContainerMapping';
 import logo from './public/Labb White Logo-RGB.png';
 import profile from './public/team-4.jpeg';
+import beBank from './public/be.logo.png';
 
 const { Header, Content, Sider, Footer } = Layout;
 const { Text } = Typography;
@@ -204,7 +205,7 @@ function Main(props?: { setTitle?: Function }) {
               style={{ fontSize: '16px', color: '#fff', marginRight: 16 }}
             />
             <img
-              src={logo}
+              src={beBank}
               alt="Labb Bank Logo"
               style={{ height: 40, marginRight: 8 }}
             />
@@ -268,17 +269,16 @@ function Main(props?: { setTitle?: Function }) {
                   </div>
                 )
               }
-              {
-                token && loadingStatus === false && (
-                  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', padding: 24 }}>
-                    <Alert
-                      message="Connection Error"
-                      description="Unable to communicate with the server. Please try again later."
-                      type="error"
-                      showIcon
-                    />
-                  </div>
-                )
+              {token && loadingStatus === false && (
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', padding: 24 }}>
+                  <Alert
+                    message="Connection Error"
+                    description="Unable to communicate with the server. Please try again later."
+                    type="error"
+                    showIcon
+                  />
+                </div>
+              )
               }
               {memoEmbed}
             </Content>
