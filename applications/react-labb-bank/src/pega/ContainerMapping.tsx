@@ -8,6 +8,7 @@ DxReactAdapter.registerMapping('Region', React.lazy(() => import('./containers/R
 DxReactAdapter.registerMapping('DetailsTwoColumn', React.lazy(() => import('./containers/DetailsColumn')));
 DxReactAdapter.registerMapping('DetailsThreeColumn', React.lazy(() => import('./containers/DetailsColumn')));
 DxReactAdapter.registerMapping('ListView', React.lazy(() => import('./containers/ListView')));
+DxReactAdapter.registerMapping('ListPage', React.lazy(() => import('./containers/ListView')));
 DxReactAdapter.registerMapping('SimpleTableManual', React.lazy(() => import('./containers/SimpleTableManual')));
 DxReactAdapter.registerMapping('Group', React.lazy(() => import('./containers/Group')));
 DxReactAdapter.registerMapping('ModalViewContainer', React.lazy(() => import('./containers/ModalViewContainer')));

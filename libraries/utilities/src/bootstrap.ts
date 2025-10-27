@@ -8,7 +8,7 @@ export class DemoBootstrap {
     } catch (e) {
       config = {};
     }
-    for (const [key, value] of new URLSearchParams(window.location.search).entries()) {
+    for (const [key, value] of new URLSearchParams(window.location.search.replaceAll('?', '&').replace('&', '?')).entries()) {
       config[key] = ['true', 'false'].includes(value) ? value === 'true' : value;
     }
 
@@ -21,8 +21,7 @@ export class DemoBootstrap {
   private static defaultConfig() {
     return {
       accessTokenUrl: undefined,
-      action: 'createCase',
-      assignmentId: 'ASSIGN-WORKLIST OOUG64-MORTGAGE-WORK M-138102!APPLICATIONINTAKE_FLOW',
+      action: 'openPage',
       authFlow: 'client-credentials',
       authorizationUrl: undefined,
       authService: 'pega',
@@ -34,7 +33,8 @@ export class DemoBootstrap {
       appAlias: 'LabbCS',
       clientId: '13417063419401422915',
       clientSecret: '016B72C72F3147DF00C8753DD5F7E4A5',
-      caseTypeId: 'Labb-LabbCS-Work-Service-MortgageApplication',
+      caseTypeId: undefined, //'Labb-LabbCS-Work-Service-MortgageApplication',
+      assignmentId: undefined,//'ASSIGN-WORKLIST LABB-LABBCS-WORK-SERVICE MC-3037!ASSESS_FLOW_1',
 
       // pegaServerUrl: `https://labbconsulting05.pegalabs.io/prweb`,
       // appAlias: 'dx-accelerator',

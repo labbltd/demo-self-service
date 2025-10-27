@@ -7,7 +7,7 @@ export default function DxAutocomplete(props: {
 }): JSX.Element {
   const [items, setItems] = useState<{ label: string, value: string }[]>([]);
   const [value, setValue] = useState<string>('');
-  console.log(items, value);
+
   if (props.container.config.readOnly) {
     return (
       <Form.Item label={props.container.config.label}>
@@ -72,6 +72,10 @@ export default function DxAutocomplete(props: {
         onSelect={(value) => {
           props.container.updateFieldValue(value);
           props.container.triggerFieldChange(value);
+          const matchedItem = items.find(item => item.value === value)?.label;
+          if (matchedItem) {
+            setValue(matchedItem);
+          }
         }}
         onChange={val => {
           setValue(val)

@@ -1,5 +1,13 @@
 export const clientsData = [
     {
+        name: 'Labb',
+        logo: 'img/Labb Dark Blue Logo-RGB-1.png',
+        framework: 'img/logo-react.png',
+        link: '/demo-self-service/react-labb-bank/',
+        available: true,
+        region: '🇳🇱'
+    },
+    {
         name: 'ZwitserLeven',
         logo: 'img/logo-zwitserleven.svg',
         framework: 'img/logo-angular.png',

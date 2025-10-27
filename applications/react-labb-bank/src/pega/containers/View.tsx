@@ -3,7 +3,7 @@ import { GeneratePContainer } from "@labb/react-adapter";
 
 export default function DxView(props: { container: View }) {
     const { container } = props;
-
+  
     return <div>
         {container.config.httpMessages?.map((message: any) =>
             <div key={message.message}>

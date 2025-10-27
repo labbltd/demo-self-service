@@ -31,9 +31,8 @@ import { Suspense, useEffect, useMemo, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import './pega/ContainerMapping';
-import logo from './public/Labb White Logo-RGB.png';
-import profile from './public/team-4.jpeg';
 import beBank from './public/be.logo.png';
+import profile from './public/team-4.jpeg';
 
 const { Header, Content, Sider, Footer } = Layout;
 const { Text } = Typography;
@@ -80,6 +79,7 @@ function Main(props?: { setTitle?: Function }) {
       // authType: 'custom'
     }}
     loadingDone={(status) => {
+      // window.PCore.getDebugger().toggle();
       setLoadingStatus(status);
       props?.setTitle?.(
         window.PCore.getStore().getState().data['app/primary_1']?.caseInfo

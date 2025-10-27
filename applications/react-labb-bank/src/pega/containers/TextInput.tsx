@@ -84,13 +84,13 @@ export default function TextInput(props: {
     if (isCurrencyInput) {
       return <InputNumber
         id={props.container.id}
-        prefix={isCurrencyInput ? currencies.find(cur => cur.alpha === (props.container.config.currencyISOCode ?? 'USD'))?.symbol : undefined}
-        value={props.container.config.value ?? ''}
+        prefix={isCurrencyInput ? currencies.find(cur => cur.alpha === (props.container.config.currencyISOCode || 'USD'))?.symbol : undefined}
+        value={props.container.config.value ?? undefined}
         disabled={props.container.config.disabled}
         status={props.container.config.validatemessage ? 'error' : ''}
         step={step()}
-        onChange={(val) => props.container.updateFieldValue(val)}
-        onBlur={(e) => props.container.triggerFieldChange(e.target.valueAsNumber)}
+        onChange={(val) => props.container.updateFieldValue(val ?? undefined)}
+        onBlur={(e) => props.container.triggerFieldChange(Number.isNaN(Number(e.target.value)) ? undefined : Number(e.target.value))}
         style={{ width: '100%' }}
       />
     }
