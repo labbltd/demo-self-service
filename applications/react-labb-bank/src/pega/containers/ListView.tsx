@@ -10,7 +10,7 @@ export default function DxListView(props: { container: ListView }) {
         label: 'Select',
         name: 'select'
       }
-    }, ...container.fields] : container.fields;
+    }, ...container.fields] : container.fields.filter(field => container.updatedRefList.some(item => item[field.config.name]));
   return <>
     {hasSelection ?
       <Radio.Group
@@ -46,11 +46,16 @@ export default function DxListView(props: { container: ListView }) {
         }))}
         onRow={(record) => ({
           onClick: () => {
-            if (props.container.config.rowClickAction === 'openAssignment') {
+            if (record.pzInsKey && record.pxRefObjectClass) {
               const { pxRefObjectClass, pzInsKey } = record;
               const sTarget = props.container.pconnect.getContainerName();
               const options: any = { containerName: sTarget };
               props.container.pconnect.getActionsApi().openAssignment(pzInsKey, pxRefObjectClass, options);
+            } else if (record.pxObjClass && record.pzInsKey) {
+              const { pxObjClass, pzInsKey } = record;
+              const sTarget = props.container.pconnect.getContainerName();
+              const options: any = { containerName: sTarget };
+              props.container.pconnect.getActionsApi().openWorkByHandle(pzInsKey, pxObjClass, options);
             }
           }
         })}

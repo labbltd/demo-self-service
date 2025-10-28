@@ -46,7 +46,7 @@ export class DemoBootstrap {
       labbLogo: 'https://labbltd.github.io/demo-self-service/img/Labb%20Dark%20Blue%20Logo-RGB-1.png',
       localeId: 'en-US',
       pageClass: 'Data-Portal',
-      pageId: 'pyWorklist',
+      pageId: 'pyHome',
       password: '<Password>',
       pkce: true,
       redirectUrl: `${new URL(window.location.href).pathname}auth.html`,

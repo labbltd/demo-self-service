@@ -14,6 +14,8 @@ DxReactAdapter.registerMapping('Group', React.lazy(() => import('./containers/Gr
 DxReactAdapter.registerMapping('ModalViewContainer', React.lazy(() => import('./containers/ModalViewContainer')));
 DxReactAdapter.registerMapping('CaseSummary', React.lazy(() => import('./containers/CaseSummary')));
 DxReactAdapter.registerMapping('CaseView', React.lazy(() => import('./containers/CaseView')));
+DxReactAdapter.registerMapping('DetailsSubTabs', React.lazy(() => import('./containers/DetailsSubTabs')));
+DxReactAdapter.registerMapping('DeferLoad', React.lazy(() => import('./containers/DeferLoad')));
 
 // Form controls
 DxReactAdapter.registerMapping('Address', React.lazy(() => import('./containers/Address')));

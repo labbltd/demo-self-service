@@ -2,9 +2,12 @@ import {
   BankOutlined,
   BulbFilled,
   BulbOutlined,
+  CalculatorOutlined,
+  CalendarOutlined,
   CreditCardOutlined,
   DollarOutlined,
   FileTextOutlined,
+  FormOutlined,
   LogoutOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -13,6 +16,7 @@ import {
 } from '@ant-design/icons';
 import { TokenInfo } from '@labb/constellation-core-types';
 import { DemoBootstrap } from '@labb/demo-utilities';
+import { BootstrapService, CaseTypes } from '@labb/dx-engine';
 import { PegaEmbed } from '@labb/react-adapter';
 import {
   Alert,
@@ -27,6 +31,7 @@ import {
   theme,
   Typography
 } from 'antd';
+import { ItemType, MenuItemType } from 'antd/es/menu/interface';
 import { Suspense, useEffect, useMemo, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -56,14 +61,63 @@ function Main(props?: { setTitle?: Function }) {
   const [collapsed, setCollapsed] = useState(true);
   const [selectedMenu, setSelectedMenu] = useState('1');
   const [isDarkMode, setIsDarkMode] = useState(true);
+  const [sideMenuItems, setSideMenuItems] = useState<ItemType<MenuItemType>[]>([
+    {
+      key: '1',
+      icon: <BankOutlined />,
+      label: 'Dashboard',
+    },
+    {
+      key: '2',
+      icon: <FileTextOutlined />,
+      label: 'My Requests',
+    },
+    {
+      key: '3',
+      icon: <CreditCardOutlined />,
+      label: 'Accounts',
+    },
+    {
+      key: '4',
+      icon: <DollarOutlined />,
+      label: 'Transactions',
+    },
+    {
+      key: '5',
+      label: 'Services',
+      icon: <SettingOutlined />,
+      children: [],
+    }
+  ]);
 
   useEffect(() => {
     try {
-      DemoBootstrap.getToken().then(setToken);
+      DemoBootstrap.getToken()
+        .then(setToken)
     } catch (e) {
       setAuthError(e as string);
     }
   }, []);
+  useEffect(() => {
+    if (!token) return;
+    (async () => {
+      const types = await BootstrapService.getCaseTypes(`${DemoBootstrap.getServerUrl()}/app/${DemoBootstrap.getAppId()}`, token!);
+      for (const casetype of types.caseTypes) {
+        (casetype as any).caseTypeIcon = (await (await fetch(`${DemoBootstrap.getServerUrl()}/app/${DemoBootstrap.getAppId()}/api/application/v2/casetypes/${casetype.ID}/actions/Create`, {
+          headers: {
+            Authorization: `${token.token_type} ${token.access_token}`
+          }
+        })).json()).data.caseInfo.caseTypeIcon
+      }
+
+      (sideMenuItems[4] as any).children = types.caseTypes.map((type, idx) => ({
+        key: type.ID,
+        icon: toIcon((type as any).caseTypeIcon),
+        label: type.name
+      }))
+      setSideMenuItems([...sideMenuItems]);
+    })();
+  }, [token]);
 
   const memoEmbed = useMemo(() => token && <PegaEmbed
     caseID={DemoBootstrap.getAction() === 'openCase' ? DemoBootstrap.getCaseId() : undefined}
@@ -120,34 +174,6 @@ function Main(props?: { setTitle?: Function }) {
     },
   ];
 
-  const sideMenuItems = [
-    {
-      key: '1',
-      icon: <BankOutlined />,
-      label: 'Dashboard',
-    },
-    {
-      key: '2',
-      icon: <FileTextOutlined />,
-      label: 'My Requests',
-    },
-    {
-      key: '3',
-      icon: <CreditCardOutlined />,
-      label: 'Accounts',
-    },
-    {
-      key: '4',
-      icon: <DollarOutlined />,
-      label: 'Transactions',
-    },
-    {
-      key: '5',
-      icon: <SettingOutlined />,
-      label: 'Services',
-    },
-  ];
-
   const themeConfig = {
     algorithm: isDarkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
     token: {
@@ -182,6 +208,17 @@ function Main(props?: { setTitle?: Function }) {
         </div>
       </ConfigProvider>
     );
+  }
+
+  const toIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'pi pi-user-solid': return <UserOutlined />;
+      case 'pi pi-case-solid': return <FormOutlined />;
+      case 'case-solid': return <FormOutlined />;
+      case 'calculator-solid': return <CalculatorOutlined />;
+      case 'calendar-solid': return <CalendarOutlined />;
+    }
+    return <FormOutlined />
   }
 
   return (
@@ -244,7 +281,17 @@ function Main(props?: { setTitle?: Function }) {
               selectedKeys={[selectedMenu]}
               items={sideMenuItems}
               style={{ borderRight: 0, paddingTop: 16 }}
-              onSelect={({ key }) => setSelectedMenu(key)}
+              onSelect={async ({ key }) => {
+                if (isNaN(+key)) {
+                  await BootstrapService.createCase(key, 'app', {});
+                  setSelectedMenu('5')
+                } else {
+                  setSelectedMenu(key);
+                  if (key === '1') {
+                    await BootstrapService.openPage('pyHome', 'Data-Portal', 'app');
+                  }
+                }
+              }}
             />
           </Sider>
 
