@@ -35,7 +35,7 @@
     "@carbon/react": "^1.83.0",
     "@heroicons/react": "2.0.18",
     "@labb/angular-adapter": "^24.19.6",
-    "@labb/constellation-core-types": "^24.2.11",
+    "@labb/constellation-core-types": "^24.2.12",
     "@labb/dx-engine": "24.2.22",
     "@labb/react-adapter": "^24.18.9",
     "@labb/vue-adapter": "^24.3.4",

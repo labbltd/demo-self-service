@@ -28,7 +28,7 @@ export default function DxDropdown(props: {
           props.container.updateFieldValue(value);
           props.container.triggerFieldChange(props.container.config.value)
         }}
-        disabled={props.container.config.readOnly}
+        disabled={props.container.config.disabled}
         placeholder="Select..."
         style={{ width: '100%' }}
       >

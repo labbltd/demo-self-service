@@ -108,11 +108,11 @@ export default function TextInput(props: {
     }
     if (isDateInput) {
       return <DatePicker
-        format={'MM/DD/YYYY'}
+        format={'DD/MM/YYYY'}
         value={dayjs(props.container.config.value).isValid() ? dayjs(props.container.config.value) : null}
         status={props.container.config.validatemessage ? 'error' : ''}
-        onChange={(_, date) => {
-          props.container.updateFieldValue(date);
+        onChange={(date) => {
+          props.container.updateFieldValue(date?.format('YYYY-MM-DD') ?? '');
         }}
         onBlur={() => {
           props.container.triggerFieldChange(props.container.config.value);

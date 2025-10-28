@@ -10,12 +10,14 @@ DxReactAdapter.registerMapping('DetailsThreeColumn', React.lazy(() => import('./
 DxReactAdapter.registerMapping('ListView', React.lazy(() => import('./containers/ListView')));
 DxReactAdapter.registerMapping('ListPage', React.lazy(() => import('./containers/ListView')));
 DxReactAdapter.registerMapping('SimpleTableManual', React.lazy(() => import('./containers/SimpleTableManual')));
+DxReactAdapter.registerMapping('SimpleTable', React.lazy(() => import('./containers/SimpleTable')));
 DxReactAdapter.registerMapping('Group', React.lazy(() => import('./containers/Group')));
 DxReactAdapter.registerMapping('ModalViewContainer', React.lazy(() => import('./containers/ModalViewContainer')));
 DxReactAdapter.registerMapping('CaseSummary', React.lazy(() => import('./containers/CaseSummary')));
 DxReactAdapter.registerMapping('CaseView', React.lazy(() => import('./containers/CaseView')));
 DxReactAdapter.registerMapping('DetailsSubTabs', React.lazy(() => import('./containers/DetailsSubTabs')));
 DxReactAdapter.registerMapping('DeferLoad', React.lazy(() => import('./containers/DeferLoad')));
+DxReactAdapter.registerMapping('FieldGroupListItem', React.lazy(() => import('./containers/FieldGroupListItem')));
 
 // Form controls
 DxReactAdapter.registerMapping('Address', React.lazy(() => import('./containers/Address')));

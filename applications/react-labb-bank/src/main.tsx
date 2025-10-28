@@ -16,7 +16,7 @@ import {
 } from '@ant-design/icons';
 import { TokenInfo } from '@labb/constellation-core-types';
 import { DemoBootstrap } from '@labb/demo-utilities';
-import { BootstrapService, CaseTypes } from '@labb/dx-engine';
+import { BootstrapService } from '@labb/dx-engine';
 import { PegaEmbed } from '@labb/react-adapter';
 import {
   Alert,
@@ -36,7 +36,7 @@ import { Suspense, useEffect, useMemo, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import './pega/ContainerMapping';
-import beBank from './public/be.logo.png';
+import beBank from './public/be.logo.transparent.png';
 import profile from './public/team-4.jpeg';
 
 const { Header, Content, Sider, Footer } = Layout;
@@ -98,6 +98,7 @@ function Main(props?: { setTitle?: Function }) {
       setAuthError(e as string);
     }
   }, []);
+
   useEffect(() => {
     if (!token) return;
     (async () => {
@@ -122,6 +123,7 @@ function Main(props?: { setTitle?: Function }) {
   const memoEmbed = useMemo(() => token && <PegaEmbed
     caseID={DemoBootstrap.getAction() === 'openCase' ? DemoBootstrap.getCaseId() : undefined}
     caseTypeID={DemoBootstrap.getAction() === 'createCase' ? DemoBootstrap.getCaseTypeId() : undefined}
+    assignmentID={DemoBootstrap.getAction() === 'openAssignment' ? DemoBootstrap.getAssignmentId() : undefined}
     pageID={DemoBootstrap.getAction() === 'openPage' ? DemoBootstrap.getPageId() : undefined}
     className={DemoBootstrap.getAction() === 'openPage' ? DemoBootstrap.getPageClass() : undefined}
     infinityServer={DemoBootstrap.getServerUrl()}
