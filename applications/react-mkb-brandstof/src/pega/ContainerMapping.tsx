@@ -15,9 +15,12 @@ DxReactAdapter.registerMapping('ListView', React.lazy(() => import('./containers
 DxReactAdapter.registerMapping('ModalViewContainer', React.lazy(() => import('./containers/ModalViewContainer')));
 DxReactAdapter.registerMapping('SimpleTableManual', React.lazy(() => import('./containers/SimpleTableManual')));
 DxReactAdapter.registerMapping('View', React.lazy(() => import('./containers/View')));
+DxReactAdapter.registerMapping('FieldGroupListItem', React.lazy(() => import('./containers/FieldGroupListItem')));
+DxReactAdapter.registerMapping('SimpleTable', React.lazy(() => import('./containers/SimpleTable')));
 
 // controls
 DxReactAdapter.registerMapping('Attachment', React.lazy(() => import('./containers/Attachment')));
+DxReactAdapter.registerMapping('AutoComplete', React.lazy(() => import('./containers/Autocomplete')));
 DxReactAdapter.registerMapping('Checkbox', React.lazy(() => import('./containers/Checkbox')));
 DxReactAdapter.registerMapping('Currency', React.lazy(() => import('./containers/TextInput')));
 DxReactAdapter.registerMapping('Date', React.lazy(() => import('./containers/TextInput')));

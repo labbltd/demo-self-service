@@ -114,8 +114,15 @@ export default function TextInput(props: {
         onChange={(date) => {
           props.container.updateFieldValue(date?.format('YYYY-MM-DD') ?? '');
         }}
-        onBlur={() => {
-          props.container.triggerFieldChange(props.container.config.value);
+        onBlur={(event) => {
+          const blurValue = (event.target as HTMLInputElement).value;
+          const date = blurValue?.split(/[-/ ]/).reverse().join('-')
+          if (date) {
+            props.container.updateFieldValue(date);
+            props.container.triggerFieldChange(date);
+          } else {
+            props.container.triggerFieldChange(props.container.config.value);
+          }
         }}
         style={{ width: '100%' }}
       />

@@ -18,21 +18,30 @@ export default function DxAutocomplete(props: {
 
   async function setOptions() {
     if (items.length === 0) {
-      const name = (props.container.config.fieldMetadata as any)?.datasource?.name;
+      const name = (props.container.config.fieldMetadata as any)?.datasource?.name || props.container.config.datasource;
       if (name) {
         console.log(props.container.config.fieldMetadata)
-        const parameters = (props.container.config.fieldMetadata as any)?.datasource.parameters;
+        const parameters = (props.container.config.fieldMetadata as any)?.datasource?.parameters || [];
         const dataPageParams = parameters.reduce((acc: any, param: any) => ({
           ...acc,
           [param.name]: param.value
         }), {} as { [key: string]: string });
         const response = await window.PCore.getDataApiUtils().getData<{ pyLocalizedValue: string, pyFieldValue: string }>(name, { dataViewParameters: dataPageParams });
         if (response.data?.data) {
-          const items = response.data.data.map(item => ({
-            label: item.pyLocalizedValue,
-            value: item.pyFieldValue
-          }))
-          setItems(items);
+          const cols = props.container.config.columns;
+          if (cols) {
+            const items = response.data.data.map((item: {[key: string]: string}) => ({
+              label: item[cols.find(col => col.display === 'true').value.replace('\.','')],
+              value: item[cols.find(col => col.key === 'true').value.replace('\.','')]
+            }))
+            setItems(items);
+          } else {
+            const items = response.data.data.map(item => ({
+              label: item.pyLocalizedValue,
+              value: item.pyFieldValue
+            }))
+            setItems(items);
+          }
           const matchedItem = items.find(item => item.value === value)?.label;
           if (matchedItem) {
             setValue(matchedItem);

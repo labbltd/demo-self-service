@@ -2,7 +2,7 @@ import { ActionButton, Assignment } from '@labb/constellation-core-types';
 import { FlowContainer } from '@labb/dx-engine';
 import { GeneratePContainer } from '@labb/react-adapter';
 import { useEffect, useState } from 'react';
-import { OrderSummary, StepProgressBar } from '../../design-system/design';
+import { StepProgressBar } from '../../design-system/design';
 
 export default function DxFlowContainer(props: { container: FlowContainer }) {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -25,7 +25,7 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
 
   function handleActionError(e: Error) {
     console.error(e);
-    setErrorMessage(e.message || 'Error');
+    setErrorMessage(e?.message || 'Error');
   }
 
   function buttonClick(button: ActionButton) {
@@ -47,7 +47,7 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
         <div key={assignment.ID}>
           <div>{assignment.processName} {'>'} {assignment.name}</div>
           <div>Assigned to {assignment.assigneeInfo?.name}</div>
-          <button type="button" onClick={() => openAssignment(assignment)}>Go</button>
+          <button className="btn color-brand-primary" type="submit" onClick={(e) => { e.preventDefault(); openAssignment(assignment) }}>Go</button>
         </div>
       )}
       {todoAssignments.length === 0 && <p>Thank you for your request. We will contact you as soon as possible.</p>}
@@ -83,7 +83,7 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
                           <button
                             key={`secondary_${idx}`}
                             type="button"
-                            className="arrow arrow-back text-color-brand-secondary"
+                            className={`arrow arrow-back text-color-brand-secondary`}
                             onClick={() => buttonClick(button)}
                           >
                             <span>

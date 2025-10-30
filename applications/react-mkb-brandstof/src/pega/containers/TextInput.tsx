@@ -1,6 +1,7 @@
 import { formatters, PContainer } from '@labb/dx-engine';
 import { ChangeEvent, HTMLInputTypeAttribute, useState } from 'react';
 import { TextInput } from '../../design-system/design';
+import MKBLicenseLookup from '../../design-system/licence-lookup';
 
 export default function DxTextInput(props: {
   container: PContainer;
@@ -108,13 +109,25 @@ export default function DxTextInput(props: {
   if (props.container.config.readOnly) {
     return <><dt>{props.container.config.label}</dt><dd>{format(props.container.config.value) ?? '--'}</dd></>;
   }
+  const isLicenceLookup = props.container.pconnect.getStateProps().value === '.VehicleLicensePlateNumber';
+  if (isLicenceLookup) {
+    return <MKBLicenseLookup
+      label={props.container.config.label}
+      value={props.container.config.value}
+      onChange={(license) => {
+        props.container.updateFieldValue(license);
+        props.container.triggerFieldChange(license);
+      }}
+    />
+  }
   return <>
     <TextInput
       name={props.container.id}
-      value={props.container.config.value}
+      value={value}
       label={props.container.config.label}
       type={type()}
-      onChange={(e) => { change(e) }}
+      onChange={(e) => change(e)}
+      onBlur={(e) => blur(e)}
       placeholder={props.container.config.placeholder}
       required={props.container.config.required}
       error={props.container.config.validatemessage}

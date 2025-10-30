@@ -111,11 +111,12 @@ export default function DxFlowContainer(props: { container: FlowContainer }) {
               style={{ marginTop: 16, marginBottom: 16 }}
             />)}
 
-            {loading ? (
-              <Skeleton />
-            ) : props.container.children.map((child) => (
-              <GeneratePContainer key={child.id} container={child} />
-            ))}
+            {loading && <Skeleton />}
+            <div style={{ display: (loading ? 'none' : 'block') }}>
+              {props.container.children.map((child) => (
+                <GeneratePContainer key={child.id} container={child} />
+              ))}
+            </div>
 
             {props.container.actionButtons && (
               <Space style={{ marginTop: 24, display: screens.sm ? 'flex' : 'grid' }}>

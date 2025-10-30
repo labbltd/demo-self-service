@@ -14362,30 +14362,30 @@ body.show-modal-overlay {
   transform: rotate(-90deg)
 }
 
-#features-table-options-tree .features-options .row-hidden,
-#features-table-options-tree h1,
+.features-options .row-hidden,
+h1,
 .features-table-options-tree .features-options .row-hidden,
 .features-table-options-tree h1 {
   display: none
 }
 
-#features-table-options-tree .features-options__row,
+.features-options__row,
 .features-table-options-tree .features-options__row {
   margin-bottom: 22px
 }
 
-#features-table-options-tree .features-options__row__title,
+.features-options__row__title,
 .features-table-options-tree .features-options__row__title {
   position: relative;
   font-size: 18px
 }
 
-#features-table-options-tree .features-options__row__title__tooltip,
+.features-options__row__title__tooltip,
 .features-table-options-tree .features-options__row__title__tooltip {
   display: inline-block
 }
 
-#features-table-options-tree .features-options__row__title__tooltip__button,
+.features-options__row__title__tooltip__button,
 .features-table-options-tree .features-options__row__title__tooltip__button {
   padding: 0;
   width: 18px;
@@ -14394,12 +14394,12 @@ body.show-modal-overlay {
   background: 0 0
 }
 
-#features-table-options-tree .features-options__row__title__tooltip__button:hover,
+.features-options__row__title__tooltip__button:hover,
 .features-table-options-tree .features-options__row__title__tooltip__button:hover {
   cursor: pointer
 }
 
-#features-table-options-tree .features-options__row__title__tooltip__button span,
+.features-options__row__title__tooltip__button span,
 .features-table-options-tree .features-options__row__title__tooltip__button span {
   position: relative;
   display: inline-block;
@@ -14407,14 +14407,14 @@ body.show-modal-overlay {
   height: 18px
 }
 
-#features-table-options-tree .features-options__row__title__tooltip__button span:focus:before,
-#features-table-options-tree .features-options__row__title__tooltip__button span:hover:before,
+.features-options__row__title__tooltip__button span:focus:before,
+.features-options__row__title__tooltip__button span:hover:before,
 .features-table-options-tree .features-options__row__title__tooltip__button span:focus:before,
 .features-table-options-tree .features-options__row__title__tooltip__button span:hover:before {
   background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2096.03%2093.73%22%3E%3Cpath%20fill%3D%22%23008f8d%22%20d%3D%22M49.8%200C35.93%200%2024.13%204.25%2014.85%2012.77S.58%2032.83.05%2046.87s3.59%2025.57%2012.27%2034.22C21%2089.48%2032.4%2093.73%2046.42%2093.73c13.86%200%2025.6-4.17%2034.77-12.58C90.52%2072.59%2095.45%2061.08%2096%2047s-3.61-25.54-12.29-34.17S63.76%200%2049.8%200%22%2F%3E%3C%2Fsvg%3E")
 }
 
-#features-table-options-tree .features-options__row__title__tooltip__button span:before,
+.features-options__row__title__tooltip__button span:before,
 .features-table-options-tree .features-options__row__title__tooltip__button span:before {
   content: '';
   position: absolute;
@@ -14429,7 +14429,7 @@ body.show-modal-overlay {
   z-index: 0
 }
 
-#features-table-options-tree .features-options__row__title__tooltip__button span:after,
+.features-options__row__title__tooltip__button span:after,
 .features-table-options-tree .features-options__row__title__tooltip__button span:after {
   content: '';
   position: absolute;
@@ -14445,7 +14445,7 @@ body.show-modal-overlay {
   background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%224%22%20height%3D%2211%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M1.13.557a.106.106%200%200%200-.104.105l-.039%201.85L3.6%202.7%203.642.63a.118.118%200%200%200-.12-.119L1.131.557ZM3.583%203.496.97%203.322l-.013.632-.014.497-.12%205.953c.552.04%201.677.415%202.716-.052l-.032-3.271.014-.497s.042-1.559.042-2.09l.02-.998Z%22%20fill%3D%22%23ffffff%22%2F%3E%3C%2Fsvg%3E")
 }
 
-#features-table-options-tree .features-options__row__buttons,
+.features-options__row__buttons,
 .features-table-options-tree .features-options__row__buttons {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -14456,19 +14456,19 @@ body.show-modal-overlay {
   flex-direction: row
 }
 
-#features-table-options-tree .features-options__row__buttons__input,
+.features-options__row__buttons__input,
 .features-table-options-tree .features-options__row__buttons__input {
   display: block;
   position: absolute;
   opacity: 0
 }
 
-#features-table-options-tree .features-options__row__buttons__label,
+.features-options__row__buttons__label,
 .features-table-options-tree .features-options__row__buttons__label {
   width: 50%
 }
 
-#features-table-options-tree .features-options__row__buttons__label__inner,
+.features-options__row__buttons__label__inner,
 .features-table-options-tree .features-options__row__buttons__label__inner {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -14494,7 +14494,7 @@ body.show-modal-overlay {
   text-align: center
 }
 
-#features-table-options-tree .features-options__row__buttons__label__inner-title,
+.features-options__row__buttons__label__inner-title,
 .features-table-options-tree .features-options__row__buttons__label__inner-title {
   margin-bottom: 5px;
   font-weight: 700;
@@ -14503,31 +14503,31 @@ body.show-modal-overlay {
 
 @media (min-width: 768px) {
 
-  #features-table-options-tree .features-options__row__buttons__label__inner,
+  .features-options__row__buttons__label__inner,
   .features-table-options-tree .features-options__row__buttons__label__inner {
     font-size: 18px
   }
 }
 
-#features-table-options-tree .features-options__row__buttons__label__inner:hover,
+.features-options__row__buttons__label__inner:hover,
 .features-table-options-tree .features-options__row__buttons__label__inner:hover {
   cursor: pointer
 }
 
-#features-table-options-tree .features-options__row__buttons__label:first-of-type span,
+.features-options__row__buttons__label:first-of-type span,
 .features-table-options-tree .features-options__row__buttons__label:first-of-type span {
   border-right: none;
   border-radius: 5px 0 0 5px
 }
 
-#features-table-options-tree .features-options__row__buttons__label:last-of-type span,
+.features-options__row__buttons__label:last-of-type span,
 .features-table-options-tree .features-options__row__buttons__label:last-of-type span {
   border-radius: 0 5px 5px 0
 }
 
-#features-table-options-tree .features-options__row__buttons__label input:checked+span,
-#features-table-options-tree .features-options__row__buttons__label:active+span,
-#features-table-options-tree .features-options__row__buttons__label:focus+span,
+.features-options__row__buttons__label input:checked+span,
+.features-options__row__buttons__label:active+span,
+.features-options__row__buttons__label:focus+span,
 .features-table-options-tree .features-options__row__buttons__label input:checked+span,
 .features-table-options-tree .features-options__row__buttons__label:active+span,
 .features-table-options-tree .features-options__row__buttons__label:focus+span {
@@ -14536,9 +14536,9 @@ body.show-modal-overlay {
   color: #FFF
 }
 
-#features-table-options-tree .features-options__row__buttons__label input:checked+span span,
-#features-table-options-tree .features-options__row__buttons__label:active+span span,
-#features-table-options-tree .features-options__row__buttons__label:focus+span span,
+.features-options__row__buttons__label input:checked+span span,
+.features-options__row__buttons__label:active+span span,
+.features-options__row__buttons__label:focus+span span,
 .features-table-options-tree .features-options__row__buttons__label input:checked+span span,
 .features-table-options-tree .features-options__row__buttons__label:active+span span,
 .features-table-options-tree .features-options__row__buttons__label:focus+span span {
@@ -14547,9 +14547,9 @@ body.show-modal-overlay {
 
 #electric-subscription-type .features-options__row__buttons__label .balloon-discount-holder .balloon-inner,
 #electric-subscription-type .features-options__row__subscription .balloon-discount-holder .balloon-inner,
-#features-table-options-tree .features-options__row__buttons__label input:checked+span .balloon-inner,
-#features-table-options-tree .features-options__row__buttons__label:active+span .balloon-inner,
-#features-table-options-tree .features-options__row__buttons__label:focus+span .balloon-inner,
+.features-options__row__buttons__label input:checked+span .balloon-inner,
+.features-options__row__buttons__label:active+span .balloon-inner,
+.features-options__row__buttons__label:focus+span .balloon-inner,
 #fuel-subscription-type .features-options__row__buttons__label .balloon-discount-holder .balloon-inner,
 #fuel-subscription-type .features-options__row__subscription .balloon-discount-holder .balloon-inner,
 .electric-subscription-type .features-options__row__buttons__label .balloon-discount-holder .balloon-inner,
@@ -14562,7 +14562,7 @@ body.show-modal-overlay {
   color: #56504B
 }
 
-#features-table-options-tree .features-options__row__buttons__icon,
+.features-options__row__buttons__icon,
 .features-table-options-tree .features-options__row__buttons__icon {
   margin: 0 auto 12px;
   display: block;
@@ -14572,17 +14572,17 @@ body.show-modal-overlay {
   background-repeat: no-repeat
 }
 
-#features-table-options-tree .features-options__row__buttons__icon--electrical,
+.features-options__row__buttons__icon--electrical,
 .features-table-options-tree .features-options__row__buttons__icon--electrical {
   background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2241%22%20height%3D%2240%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M21.241%200c-5.777%200-10.69%201.783-14.558%205.356C2.798%208.943.743%2013.77.519%2019.656c-.222%205.9%201.499%2010.728%205.112%2014.35l.004.005c3.586%203.517%208.364%205.3%2014.199%205.3%205.776%200%2010.666-1.757%2014.485-5.28%203.887-3.586%205.94-8.418%206.162-14.303.222-5.898-1.497-10.726-5.11-14.347C31.81%201.81%2027.057%200%2021.24%200Z%22%20fill%3D%22%23F1EFE6%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M9.395%2021.435c-.705%200-1.282.577-1.282%201.282%200%20.704.577%201.281%201.282%201.281.704%200%201.28-.577%201.28-1.281%200-.705-.576-1.282-1.28-1.282Z%22%20fill%3D%22%23fff%22%2F%3E%3Cmask%20id%3D%22a%22%20style%3D%22mask-type%3Aalpha%22%20maskUnits%3D%22userSpaceOnUse%22%20x%3D%2214%22%20y%3D%2211%22%20width%3D%2214%22%20height%3D%2218%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M14.456%2011.69h13.197v16.912H14.456V11.69Z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fmask%3E%3Cg%20mask%3D%22url%28%23a%29%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M21.054%2011.69c-3.651%200-6.598%202.306-6.598%206.534%200%203.14%203.651%207.752%205.51%209.866.576.64%201.537.64%202.113%200%201.858-2.114%205.51-6.727%205.51-9.866.064-4.164-2.883-6.534-6.535-6.534Z%22%20fill%3D%22%23A9228C%22%2F%3E%3C%2Fg%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M22.977%2019.001c-.449.256-1.09.384-1.858.384h-.064c-.128%200-.193.064-.193.193v1.537c0%20.128-.064.192-.192.192H19.39c-.128%200-.192-.064-.192-.192v-5.381c0-.128.064-.192.192-.192h1.666c.768%200%201.345.064%201.73.32.576.32%201.024.833%201.024%201.666%200%20.64-.256%201.153-.832%201.473Z%22%20fill%3D%22%23fff%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M21.887%2016.95c-.128-.063-.384-.127-.768-.127h-.064c-.129%200-.193.064-.193.192v.897c0%20.128.064.192.193.192h.064c.384%200%20.64-.064.768-.128.192-.128.32-.256.32-.512%200-.193-.128-.385-.32-.513Z%22%20fill%3D%22%23A32B86%22%2F%3E%3Cmask%20id%3D%22b%22%20style%3D%22mask-type%3Aalpha%22%20maskUnits%3D%22userSpaceOnUse%22%20x%3D%225%22%20y%3D%2213%22%20width%3D%2213%22%20height%3D%2216%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M5.167%2013.355h12.3v15.632h-12.3V13.355Z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fmask%3E%3Cg%20mask%3D%22url%28%23b%29%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M9.395%2024.054a1.285%201.285%200%200%201-1.282-1.281c0-.705.577-1.282%201.282-1.282.704%200%201.281.577%201.281%201.282%200%20.704-.577%201.28-1.281%201.28Zm3.972-4.805h-2.435c-.64%200-1.153-.64-.96-1.281l.704-2.05c.128-.385.192-.64.64-.64h2.371c.256-.706.577-1.346%201.025-1.923h-3.14c-.383%200-.896%200-1.408.256-.385.193-.897.577-1.09%201.154-.192.576-1.153%203.139-1.153%203.139h-1.41c-.704%200-1.345.576-1.345%201.345%200%20.705.577%201.345%201.346%201.345h.448s-.256.257-.384.577c-.192.448-.256.897-.256%201.602v4.484c0%20.961.768%201.794%201.793%201.794a1.79%201.79%200%200%200%201.794-1.794v-.192h7.688c-1.922-2.435-3.78-5.382-4.228-7.816Z%22%20fill%3D%22%2300AEAB%22%2F%3E%3C%2Fg%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M13.239%2018.168c0-1.089.192-2.05.448-2.883h-2.37c-.449%200-.513.256-.64.64l-.706%202.051a.982.982%200%200%200%20.961%201.281h2.435c-.064-.384-.128-.705-.128-1.089Z%22%20fill%3D%22%23fff%22%2F%3E%3Cmask%20id%3D%22c%22%20style%3D%22mask-type%3Aalpha%22%20maskUnits%3D%22userSpaceOnUse%22%20x%3D%2228%22%20y%3D%2211%22%20width%3D%228%22%20height%3D%2218%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M28.102%2011.69h7.88v16.848h-7.88V11.69Z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fmask%3E%3Cg%20mask%3D%22url%28%23c%29%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M33.227%2022.068c1.601-.705%202.754-2.37%202.754-4.228v-2.37a.71.71%200%200%200-.704-.705h-.897v-2.179c0-.384-.257-.768-.64-.768-.45-.064-.898.32-.898.768v2.243h-3.139V12.65c0-.384-.256-.768-.64-.768-.449-.064-.897.32-.897.768v2.243a8.55%208.55%200%200%201%20.704%203.46c0%20.896-.256%201.985-.704%203.01.384.32.768.64%201.217.833a1.971%201.971%200%200%201%201.153%201.794v2.114c0%201.473%201.217%202.627%202.627%202.627h1.345c.384%200%20.769-.257.833-.641.064-.449-.32-.897-.77-.897h-1.344c-.577%200-1.09-.513-1.09-1.09v-2.05c-.064-.96.385-1.665%201.09-1.985Z%22%20fill%3D%22%23A9228C%22%2F%3E%3C%2Fg%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M31.881%2020.282a.583.583%200%200%201-.512.256c-.128%200-.192%200-.257-.064-.256-.128-.384-.512-.192-.768l.385-.705-1.025.128c-.193%200-.449-.064-.577-.256a.582.582%200%200%201%200-.64l1.217-1.923c.192-.256.513-.384.769-.192s.384.513.192.769l-.512.833.96-.128c.193-.064.45.064.577.256.064.192.064.448%200%20.64l-1.025%201.794Z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E")
 }
 
-#features-table-options-tree .features-options__row__buttons__icon--fuel,
+.features-options__row__buttons__icon--fuel,
 .features-table-options-tree .features-options__row__buttons__icon--fuel {
   background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20243.43%20237.63%22%3E%3Cpath%20d%3D%22M129.54%2C244.2c-35.16%2C0-65.06-10.78-88.6-32.37S4.79%2C161%2C3.44%2C125.38s9.11-64.85%2C31.1-86.74l0%2C0c21.83-21.26%2C50.91-32%2C86.42-32%2C35.14%2C0%2C64.91%2C10.61%2C88.15%2C31.92%2C23.65%2C21.67%2C36.15%2C50.88%2C37.5%2C86.45s-9.11%2C64.84-31.1%2C86.74C193.86%2C233.26%2C164.94%2C244.2%2C129.54%2C244.2Z%22%20transform%3D%22translate%28-3.32%20-6.57%29%22%20style%3D%22fill%3A%23f1efe6%22%2F%3E%3Cpath%20d%3D%22M108.53%2C124.89a34.77%2C34.77%2C0%2C0%2C1%2C.59-6.13h-18a4.23%2C4.23%2C0%2C0%2C1-4-5.57L90%2C104.45a4.3%2C4.3%2C0%2C0%2C1%2C4.08-2.94h21c1.52-3.14%2C3.23-6.31%2C5.08-9.45-2.15-.09-4.52-0.14-7.12-0.14-18.22%2C0-25.16%2C2.52-25.16%2C2.52A9.41%2C9.41%2C0%2C0%2C0%2C83%2C99.35L78%2C113H71.84a5.75%2C5.75%2C0%2C1%2C0%2C0%2C11.5h1.87l-1.5%2C1.8a25.76%2C25.76%2C0%2C0%2C0-1.33%2C7.43V153a7.67%2C7.67%2C0%2C1%2C0%2C15.34%2C0v-0.8h30C111.35%2C145%2C108.53%2C135.85%2C108.53%2C124.89ZM84.31%2C139.41A5.66%2C5.66%2C0%2C1%2C1%2C90%2C133.75%2C5.66%2C5.66%2C0%2C0%2C1%2C84.31%2C139.41Z%22%20transform%3D%22translate%28-3.32%20-6.57%29%22%20style%3D%22fill%3A%2300afaa%22%2F%3E%3Cpath%20d%3D%22M156.42%2C69.64a6.46%2C6.46%2C0%2C0%2C0-10.23%2C0C137.1%2C81.41%2C119%2C106.95%2C119%2C124.31c0%2C23.21%2C14.44%2C36%2C32.26%2C36s32.26-12.81%2C32.26-36C183.57%2C106.95%2C165.52%2C81.41%2C156.42%2C69.64Z%22%20transform%3D%22translate%28-3.32%20-6.57%29%22%20style%3D%22fill%3A%23a9228c%22%2F%3E%3Cpath%20d%3D%22M166.83%2C145c-0.3.27-.62%2C0.52-0.94%2C0.75l-0.33.22c-0.22.15-.44%2C0.3-0.67%2C0.43l-0.41.22c-0.21.11-.42%2C0.23-0.63%2C0.33l-0.45.2-0.63.25-0.48.16-0.64.19-0.5.12-0.65.12-0.52.07-0.67.06-0.52%2C0h-0.24l-0.8%2C0a3.54%2C3.54%2C0%2C0%2C1-3.2-4.45c0-.08.06-0.14%2C0.08-0.22a3.53%2C3.53%2C0%2C0%2C1%2C.16-0.42c0-.08.09-0.16%2C0.14-0.24a3.54%2C3.54%2C0%2C0%2C1%2C.21-0.34c0.06-.08.13-0.14%2C0.19-0.22a3.55%2C3.55%2C0%2C0%2C1%2C.26-0.28l0.23-.18a3.53%2C3.53%2C0%2C0%2C1%2C.3-0.22l0.27-.14a3.5%2C3.5%2C0%2C0%2C1%2C.33-0.15l0.3-.09%2C0.36-.09%2C0.32%2C0%2C0.27%2C0h0.22a5.48%2C5.48%2C0%2C0%2C0%2C.77%2C0l0.43%2C0a5.4%2C5.4%2C0%2C0%2C0%2C.6-0.14c0.13%2C0%2C.26-0.06.39-0.11a5.4%2C5.4%2C0%2C0%2C0%2C.62-0.28c0.1-.05.21-0.09%2C0.3-0.15a5.52%2C5.52%2C0%2C0%2C0%2C.84-0.61%2C5.42%2C5.42%2C0%2C0%2C0%2C1.83-3.76%2C3.55%2C3.55%2C0%2C0%2C1%2C.11-0.7c0-.08.06-0.14%2C0.08-0.22a3.53%2C3.53%2C0%2C0%2C1%2C.16-0.42c0-.08.09-0.16%2C0.14-0.24a3.54%2C3.54%2C0%2C0%2C1%2C.21-0.34c0.06-.08.13-0.14%2C0.19-0.22a3.56%2C3.56%2C0%2C0%2C1%2C.26-0.27l0.24-.18a3.53%2C3.53%2C0%2C0%2C1%2C.3-0.22l0.27-.14a3.5%2C3.5%2C0%2C0%2C1%2C.33-0.15l0.3-.09%2C0.36-.09%2C0.32%2C0%2C0.27%2C0h0.22a3.54%2C3.54%2C0%2C0%2C1%2C3.32%2C3.76A12.45%2C12.45%2C0%2C0%2C1%2C166.83%2C145Z%22%20transform%3D%22translate%28-3.32%20-6.57%29%22%20style%3D%22fill%3A%23fff%22%2F%3E%3C%2Fsvg%3E")
 }
 
-#features-table-options-tree .features-options__row__subscription,
+.features-options__row__subscription,
 .features-table-options-tree .features-options__row__subscription {
   padding: 18px 24px;
   width: 100%;
@@ -14592,7 +14592,7 @@ body.show-modal-overlay {
   font-size: 12px
 }
 
-#features-table-options-tree .features-options__row__subscription p,
+.features-options__row__subscription p,
 .features-table-options-tree .features-options__row__subscription p {
   padding-bottom: 0;
   font-size: 15px;
@@ -14601,13 +14601,13 @@ body.show-modal-overlay {
 
 @media (min-width: 768px) {
 
-  #features-table-options-tree .features-options__row__subscription p,
+  .features-options__row__subscription p,
   .features-table-options-tree .features-options__row__subscription p {
     font-size: 18px
   }
 }
 
-#features-table-options-tree .features-options__row__subscription span,
+.features-options__row__subscription span,
 .features-table-options-tree .features-options__row__subscription span {
   font-size: 15px
 }
@@ -14653,7 +14653,7 @@ body.show-modal-overlay {
 
 @media (min-width: 768px) {
 
-  #features-table-options-tree .features-options__row__subscription span,
+  .features-options__row__subscription span,
   .features-table-options-tree .features-options__row__subscription span {
     font-size: 18px
   }
@@ -17488,25 +17488,25 @@ body.show-modal-overlay {
   }
 }
 
-#features-table-options-tree .label-with-tooltip input:checked+span .inline-tooltip .tooltip-icon,
-#features-table-options-tree .label-with-tooltip:active+span .inline-tooltip .tooltip-icon,
-#features-table-options-tree .label-with-tooltip:focus+span .inline-tooltip .tooltip-icon {
+.label-with-tooltip input:checked+span .inline-tooltip .tooltip-icon,
+.label-with-tooltip:active+span .inline-tooltip .tooltip-icon,
+.label-with-tooltip:focus+span .inline-tooltip .tooltip-icon {
   position: relative;
   display: inline-block
 }
 
-#features-table-options-tree .label-with-tooltip input:checked+span .inline-tooltip .tooltip-icon:focus:before,
-#features-table-options-tree .label-with-tooltip input:checked+span .inline-tooltip .tooltip-icon:hover:before,
-#features-table-options-tree .label-with-tooltip:active+span .inline-tooltip .tooltip-icon:focus:before,
-#features-table-options-tree .label-with-tooltip:active+span .inline-tooltip .tooltip-icon:hover:before,
-#features-table-options-tree .label-with-tooltip:focus+span .inline-tooltip .tooltip-icon:focus:before,
-#features-table-options-tree .label-with-tooltip:focus+span .inline-tooltip .tooltip-icon:hover:before {
+.label-with-tooltip input:checked+span .inline-tooltip .tooltip-icon:focus:before,
+.label-with-tooltip input:checked+span .inline-tooltip .tooltip-icon:hover:before,
+.label-with-tooltip:active+span .inline-tooltip .tooltip-icon:focus:before,
+.label-with-tooltip:active+span .inline-tooltip .tooltip-icon:hover:before,
+.label-with-tooltip:focus+span .inline-tooltip .tooltip-icon:focus:before,
+.label-with-tooltip:focus+span .inline-tooltip .tooltip-icon:hover:before {
   background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2096.03%2093.73%22%3E%3Cpath%20fill%3D%22%23f0f0f0%22%20d%3D%22M49.8%200C35.93%200%2024.13%204.25%2014.85%2012.77S.58%2032.83.05%2046.87s3.59%2025.57%2012.27%2034.22C21%2089.48%2032.4%2093.73%2046.42%2093.73c13.86%200%2025.6-4.17%2034.77-12.58C90.52%2072.59%2095.45%2061.08%2096%2047s-3.61-25.54-12.29-34.17S63.76%200%2049.8%200%22%2F%3E%3C%2Fsvg%3E")
 }
 
-#features-table-options-tree .label-with-tooltip input:checked+span .inline-tooltip .tooltip-icon:before,
-#features-table-options-tree .label-with-tooltip:active+span .inline-tooltip .tooltip-icon:before,
-#features-table-options-tree .label-with-tooltip:focus+span .inline-tooltip .tooltip-icon:before {
+.label-with-tooltip input:checked+span .inline-tooltip .tooltip-icon:before,
+.label-with-tooltip:active+span .inline-tooltip .tooltip-icon:before,
+.label-with-tooltip:focus+span .inline-tooltip .tooltip-icon:before {
   content: '';
   position: absolute;
   display: inline-block;
@@ -17520,9 +17520,9 @@ body.show-modal-overlay {
   z-index: 0
 }
 
-#features-table-options-tree .label-with-tooltip input:checked+span .inline-tooltip .tooltip-icon:after,
-#features-table-options-tree .label-with-tooltip:active+span .inline-tooltip .tooltip-icon:after,
-#features-table-options-tree .label-with-tooltip:focus+span .inline-tooltip .tooltip-icon:after {
+.label-with-tooltip input:checked+span .inline-tooltip .tooltip-icon:after,
+.label-with-tooltip:active+span .inline-tooltip .tooltip-icon:after,
+.label-with-tooltip:focus+span .inline-tooltip .tooltip-icon:after {
   content: '';
   position: absolute;
   display: inline-block;
@@ -21824,6 +21824,7 @@ body.show-modal-overlay {
 .registration-confirmation .registration-confirmation-step .bank-logo.bank-ingb:after {
   background-image: url(../img/banks/ing_bank@2x.png)
 }
+
 /* 
 .registration-confirmation .registration-confirmation-step .bank-logo.bank-snsb:after {
   background-image: url(../img/banks/sns_bank@2x.png)

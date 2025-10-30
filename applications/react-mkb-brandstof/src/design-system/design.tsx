@@ -38,10 +38,11 @@ export const TextInput: React.FC<{
     required?: boolean;
     value: string;
     onChange: ChangeEventHandler<HTMLInputElement>;
+    onBlur: ChangeEventHandler<HTMLInputElement>;
     type?: HTMLInputTypeAttribute;
     error?: string;
     disabled?: boolean
-}> = ({ id, name, label, placeholder, required, value, onChange, type = 'text', error, disabled }) => (
+}> = ({ id, name, label, placeholder, required, value, onChange, onBlur, type = 'text', error, disabled }) => (
     <fieldset>
         <div className="f-item">
             {label && (
@@ -58,6 +59,7 @@ export const TextInput: React.FC<{
                     placeholder={placeholder}
                     value={value}
                     onChange={(e) => onChange(e)}
+                    onBlur={(e) => onBlur(e)}
                     required={required}
                 />
             </div>
@@ -82,17 +84,16 @@ export const RadioGroup: React.FC<{
             </legend>
             <div className="f-element-radio__wrap">
                 {options.map((option) => (
-                    <div key={option.value} className="f-element-radio">
+                    <div key={`${name}-${option.key}`} className="f-element-radio">
                         <input
                             id={`${name}-${option.key}`}
                             name={name}
                             type="radio"
                             value={option.key}
-                            checked={value === option.value}
-                            onChange={(e) => onChange(e.target.value)}
+                            checked={value === option.key}
                             required={required}
                         />
-                        <label htmlFor={`${name}-${option.value}`}>{option.value}</label>
+                        <label onClick={() => onChange(option.key)} htmlFor={`${name}-${option.value}`}>{option.value}</label>
                     </div>
                 ))}
             </div>
@@ -124,12 +125,12 @@ export const Checkbox: React.FC<{
 // LAYOUT COMPONENTS
 // ======================
 
-export const NavigationHeader: React.FC = () => (
+export const NavigationHeader: React.FC<{ goHome: Function }> = (props: { goHome: Function }) => (
     <div className="navigation-header-wrapper">
         <div className="navigation-header">
             <div className="navigation-header-inner">
                 <nav className="wrapper-bounded">
-                    <a href="/" title="homepage" className="logo-tom">
+                    <a onClick={() => props.goHome()} title="homepage" className="logo-tom">
                         <img src="https://www.mkb-brandstof.nl/build/img/svg/logo-mkb-brandstof.svg" alt="MKB Brandstof" />
                     </a>
                     <div className="registration-support">
@@ -280,286 +281,4 @@ export const NavigationFooter: React.FC = () => (
     </div>
 );
 
-// ======================
-// MAIN FORM COMPONENT
-// ======================
-
-// const ContactForm: React.FC<{
-//     formData: FormData;
-//     onFormChange: (data: Partial<FormData>) => void;
-//     onSubmit: () => void;
-//     onBack: () => void;
-// }> = ({ formData, onFormChange, onSubmit, onBack }) => {
-//     const genderOptions = [
-//         { value: 'Male', label: 'Dhr.' },
-//         { value: 'Female', label: 'Mevr.' },
-//         { value: 'Other', label: 'Neutraal' },
-//     ];
-
-//     const isFormValid = () => {
-//         return (
-//             formData.gender &&
-//             formData.firstName &&
-//             formData.lastName &&
-//             formData.emailAddress &&
-//             formData.emailAddressConfirmed &&
-//             formData.emailAddress === formData.emailAddressConfirmed &&
-//             formData.phoneNumber
-//         );
-//     };
-
-//     return (
-//         <div className="registration-step">
-//             <div className="step-header">
-//                 <h2 className="step-header-title">
-//                     <span className="step-title">Zoek jouw bedrijf</span>
-//                 </h2>
-//             </div>
-
-//             <div>
-//                 <div>
-//                     <div className="general-form-errors"></div>
-//                     <div className="f-item">
-//                         <div className="input-wrapper">
-//                             <input
-//                                 name="term"
-//                                 id="term"
-//                                 type="text"
-//                                 placeholder="Vul hier je bedrijfsnaam of KvK-nummer in"
-//                                 value={formData.companySearchTerm}
-//                                 onChange={(e) => onFormChange({ companySearchTerm: e.target.value })}
-//                             />
-//                         </div>
-//                     </div>
-//                 </div>
-
-//                 <div>
-//                     <div className="step-header">
-//                         <h2 className="step-header-title">
-//                             <span className="step-title">We houden contact met</span>
-//                         </h2>
-//                     </div>
-
-//                     <RadioGroup
-//                         legend="Aanhef"
-//                         name="Sex"
-//                         options={genderOptions}
-//                         value={formData.gender}
-//                         onChange={(value) => onFormChange({ gender: value as FormData['gender'] })}
-//                         required
-//                     />
-
-//                     <div className="f-item name-fields">
-//                         <div className="f-item-group">
-//                             <div className="f-item-grouped">
-//                                 <label htmlFor="firstname">
-//                                     Voornaam <span className="required">*</span>
-//                                 </label>
-//                                 <div className="input-wrapper">
-//                                     <input
-//                                         placeholder="Voornaam *"
-//                                         name="FirstName"
-//                                         id="firstname"
-//                                         type="text"
-//                                         value={formData.firstName}
-//                                         onChange={(e) => onFormChange({ firstName: e.target.value })}
-//                                         required
-//                                     />
-//                                 </div>
-//                             </div>
-//                             <div className="f-item-split">
-//                                 <div className="f-item-grouped">
-//                                     <label htmlFor="prefixlastname">Tussenvoegsel</label>
-//                                     <div className="input-wrapper">
-//                                         <input
-//                                             placeholder="Tussenvoegsel"
-//                                             name="PrefixLastName"
-//                                             id="prefixlastname"
-//                                             type="text"
-//                                             value={formData.prefixLastName}
-//                                             onChange={(e) => onFormChange({ prefixLastName: e.target.value })}
-//                                         />
-//                                     </div>
-//                                 </div>
-//                                 <div className="f-item-grouped">
-//                                     <label htmlFor="lastname">
-//                                         Achternaam <span className="required">*</span>
-//                                     </label>
-//                                     <div className="input-wrapper">
-//                                         <input
-//                                             placeholder="Achternaam *"
-//                                             name="LastName"
-//                                             id="lastname"
-//                                             type="text"
-//                                             value={formData.lastName}
-//                                             onChange={(e) => onFormChange({ lastName: e.target.value })}
-//                                             required
-//                                         />
-//                                     </div>
-//                                 </div>
-//                             </div>
-//                         </div>
-//                     </div>
-
-//                     <TextInput
-//                         id="emailaddress"
-//                         name="EmailAddress"
-//                         label="E-mailadres"
-//                         type="email"
-//                         value={formData.emailAddress}
-//                         onChange={(value) => onFormChange({ emailAddress: value })}
-//                         required
-//                     />
-
-//                     <TextInput
-//                         id="emailaddress_confirmed"
-//                         name="EmailAddressConfirmed"
-//                         label="Herhaal e-mailadres"
-//                         type="email"
-//                         value={formData.emailAddressConfirmed}
-//                         onChange={(value) => onFormChange({ emailAddressConfirmed: value })}
-//                         required
-//                     />
-
-//                     <Checkbox
-//                         id="newsletterSubscription"
-//                         name="newsletterSubscription"
-//                         label="Houd mij op de hoogte van mijn aanvraag en stuur mij maandelijks de belangrijkste updates rondom mobiliteit per e-mail."
-//                         checked={formData.newsletterSubscription}
-//                         onChange={(checked) => onFormChange({ newsletterSubscription: checked })}
-//                     />
-
-//                     <TextInput
-//                         id="phonenumber"
-//                         name="PhoneNumber"
-//                         label="Telefoonnummer"
-//                         type="tel"
-//                         value={formData.phoneNumber}
-//                         onChange={(value) => onFormChange({ phoneNumber: value })}
-//                         required
-//                     />
-//                 </div>
-
-//                 <div className="f-buttons">
-//                     <button type="button" onClick={onBack} className="arrow arrow-back text-color-brand-secondary">
-//                         <span>Terug</span>
-//                     </button>
-//                     <button type="button" onClick={onSubmit} disabled={!isFormValid()} className="btn color-brand-primary">
-//                         <span>Volgende</span>
-//                     </button>
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// };
-
-// ======================
-// MAIN APP
-// ======================
-
-export const App: React.FC = () => {
-    const [currentStep] = useState(2);
-    const [formData, setFormData] = useState<FormData>({
-        gender: '',
-        firstName: '',
-        prefixLastName: '',
-        lastName: '',
-        emailAddress: '',
-        emailAddressConfirmed: '',
-        phoneNumber: '',
-        newsletterSubscription: false,
-        companySearchTerm: '',
-    });
-
-    const steps = [
-        { id: 1, label: 'Pas(sen)', route: '/aanmelden/formulier/passen' },
-        { id: 2, label: 'Contact', route: '/aanmelden/formulier/contact' },
-        { id: 3, label: 'Adres', route: '/aanmelden/formulier/adres' },
-        { id: 4, label: 'Check', route: '/aanmelden/formulier/check' },
-        { id: 5, label: 'Machtiging', route: '/aanmelden/formulier/machtiging' },
-    ];
-
-    const products: Product[] = [
-        {
-            id: '1',
-            name: 'Daniel',
-            license: 'K375TV',
-            pin: '1234',
-            monthlyPrice: 4.95,
-            originalPrice: 10.95,
-            deposit: 200,
-        },
-    ];
-
-    const handleFormChange = (data: Partial<FormData>) => {
-        setFormData((prev) => ({ ...prev, ...data }));
-    };
-
-    const handleSubmit = () => {
-        console.log('Form submitted:', formData);
-    };
-
-    const handleBack = () => {
-        console.log('Going back');
-    };
-
-    return (
-        <div id="app" className="container registration-form registration-route-contact" style={{ fontFamily: 'Arial, sans-serif', minHeight: '100vh', backgroundColor: '#f5f5f5' }}>
-            <NavigationHeader />
-
-            <div className="registration-content">
-                <div className="usp-bar" style={{ textAlign: 'center', padding: '10px', fontSize: '24px', fontWeight: 'bold' }}>2</div>
-
-                <section className="section-general">
-                    <div className="wrapper-bounded" style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
-                        <StepProgressBar currentStep={currentStep} steps={steps} />
-                    </div>
-                </section>
-
-                <section className="section-general">
-                    <div className="wrapper-bounded" style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
-                        <div className="row no-gutter" style={{ display: 'flex', gap: '30px', flexWrap: 'wrap' }}>
-                            <div className="col-main" style={{ flex: '1 1 60%', minWidth: '300px' }}>
-                                <div className="step-header">
-                                    <h1 className="step-header-title" style={{ fontSize: '28px', marginBottom: '20px' }}>
-                                        <span className="step-title">Contactgegevens</span>
-                                    </h1>
-                                </div>
-                                {/* <ContactForm
-                                    formData={formData}
-                                    onFormChange={handleFormChange}
-                                    onSubmit={handleSubmit}
-                                    onBack={handleBack}
-                                /> */}
-                            </div>
-                            <div className="col-aside" style={{ flex: '1 1 35%', minWidth: '300px' }}>
-                                <OrderSummary products={products} />
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <HelpBanner />
-            </div>
-
-            <NavigationFooter />
-
-            <div className="passes-shopping-cart-wrapper" style={{ position: 'fixed', bottom: '20px', right: '20px', zIndex: 1000 }}>
-                <div className="shopping-cart-button">
-                    <button type="button" style={{ backgroundColor: '#00AEAB', color: 'white', padding: '15px 20px', border: 'none', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                            <span className="shopping-cart-button__icon">🛒</span>
-                            <span className="shopping-cart-button__total">
-                                <span>Jouw bestelling</span> (1)
-                            </span>
-                        </div>
-                        <span className="shopping-cart-button__total-price">
-                            <span>€ 4,95 p/m</span>
-                        </span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    );
-};
 
