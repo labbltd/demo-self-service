@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function MKBLicenseLookup(props: {
     label: string,
@@ -8,6 +8,11 @@ export default function MKBLicenseLookup(props: {
     const [vehicle, setVehicle] = useState<{ brand: string, name: string, color: string } | null>(null);
     const [error, setError] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(false);
+    const [halfValue, setHalfValue] = useState(props.value);
+
+    useEffect(() => {
+        setHalfValue(props.value?.toUpperCase());
+    }, [props.value]);
 
     async function doSearch(license: string) {
         setLoading(true);
@@ -42,7 +47,10 @@ export default function MKBLicenseLookup(props: {
         <div className="f-items-wrap">
             <div className="licence-plate-field">
                 <input name="Licence" id="Licence" type="text" className="field-valid"
-                    value={props.value}
+                    value={halfValue}
+                    onChange={(e) => {
+                        setHalfValue(e.target.value?.toUpperCase());
+                    }}
                     onBlur={(e) => {
                         doSearch(e.target.value);
                     }} />

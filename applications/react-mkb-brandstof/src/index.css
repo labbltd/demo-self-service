@@ -11239,10 +11239,6 @@ ul.list-checked.color-white li:after {
 }
 
 @media (min-width: 768px) {
-  .usp-cta-block__columns__block {
-    width: 50%
-  }
-
   .usp-cta-block__columns__block:first-of-type {
     margin-right: 24px;
     margin-bottom: 0
